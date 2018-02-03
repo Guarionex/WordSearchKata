@@ -38,6 +38,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentOutOfRangeException();
             }
+            else if(y < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }
