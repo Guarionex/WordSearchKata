@@ -46,7 +46,7 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
-            else if(x == 1 && x == 1)
+            else if(x <= 1 && x <= 1)
             {
                 throw new ArgumentOutOfRangeException();
             }
