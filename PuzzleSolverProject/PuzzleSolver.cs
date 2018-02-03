@@ -26,6 +26,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if(char.IsSymbol(letter))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
