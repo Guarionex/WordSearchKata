@@ -60,14 +60,8 @@ namespace PuzzleSolverProject
                 throw new FormatException();
             }
 
-            List<String> wordList = new List<string>();
-            wordList.Add("BONES");
-            wordList.Add("KHAN");
-            wordList.Add("KIRK");
-            wordList.Add("SCOTTY");
-            wordList.Add("SPOCK");
-            wordList.Add("SULU");
-            wordList.Add("UHURA");
+            String[] splittedCSVWords = csvWords.Split(',');
+            List<String> wordList = new List<string>(splittedCSVWords);
 
             return wordList;
         }
