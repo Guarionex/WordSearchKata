@@ -18,7 +18,10 @@ namespace PuzzleSolverProject
 
         public void AddCharacterAt(char letter, int x, int y)
         {
-            
+            if(char.IsDigit(letter))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
