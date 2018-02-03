@@ -10,23 +10,7 @@ namespace PuzzleSolverProject
     {
         public void AddWord(String word)
         {
-            if(word.Any(char.IsDigit))
-            {
-                throw new ArgumentException();
-            }
-            else if(word.Contains(" "))
-            {
-                throw new ArgumentException();
-            }
-            else if(word.Any(char.IsSymbol))
-            {
-                throw new ArgumentException();
-            }
-            else if(word.Contains(","))
-            {
-                throw new ArgumentException();
-            }
-            else if(word.Any(char.IsPunctuation))
+            if(word.Any(ch => ! char.IsLetter(ch)))
             {
                 throw new ArgumentException();
             }
