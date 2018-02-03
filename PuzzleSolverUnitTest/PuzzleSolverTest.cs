@@ -218,5 +218,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.SetDimensions(1, 1);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenSettingPuzzleDimensionsIs00ThenSetDimensionsThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ZeroByZeroDimension));
+        }
+
+        private void ZeroByZeroDimension()
+        {
+            sut.SetDimensions(0, 0);
+        }
     }
 }
