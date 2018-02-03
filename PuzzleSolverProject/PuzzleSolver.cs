@@ -53,6 +53,13 @@ namespace PuzzleSolverProject
 
         public List<String> GetListOfWords(String csvWords)
         {
+
+            String[] ssvWords = csvWords.Split(' ');
+            if (ssvWords.Length > 1)
+            {
+                throw new FormatException();
+            }
+
             List<String> wordList = new List<string>();
             wordList.Add("BONES");
             wordList.Add("KHAN");
