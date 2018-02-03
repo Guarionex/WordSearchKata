@@ -107,5 +107,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddCharacterAt(' ', 0, 0);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedSymbolCharacterAtPosition00ThenAddCharacterAtThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(SymbolCharacterAt00));
+        }
+
+        private void SymbolCharacterAt00()
+        {
+            sut.AddCharacterAt('$', 0, 0);
+        }
     }
 }
