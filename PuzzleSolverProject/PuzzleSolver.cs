@@ -12,7 +12,7 @@ namespace PuzzleSolverProject
         {
             if(word.Any(char.IsDigit))
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentException();
             }
         }
     }
