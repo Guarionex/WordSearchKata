@@ -196,5 +196,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.SetDimensions(0, -1);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenSettingPuzzleDimensionsToUnequalXYThenSetDimensionsThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(UnequalXY));
+        }
+
+        private void UnequalXY()
+        {
+            sut.SetDimensions(2, 1000);
+        }
     }
 }
