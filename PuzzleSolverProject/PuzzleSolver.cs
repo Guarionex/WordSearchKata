@@ -18,23 +18,7 @@ namespace PuzzleSolverProject
 
         public void AddCharacterAt(char letter, int x, int y)
         {
-            if(char.IsDigit(letter))
-            {
-                throw new ArgumentException();
-            }
-            else if(char.IsWhiteSpace(letter))
-            {
-                throw new ArgumentException();
-            }
-            else if(char.IsSymbol(letter))
-            {
-                throw new ArgumentException();
-            }
-            else if(letter == ',')
-            {
-                throw new ArgumentException();
-            }
-            else if(char.IsPunctuation(letter))
+            if(!char.IsLetter(letter))
             {
                 throw new ArgumentException();
             }
