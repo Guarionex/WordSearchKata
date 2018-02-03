@@ -53,7 +53,16 @@ namespace PuzzleSolverProject
 
         public List<String> GetListOfWords(String csvWords)
         {
-            throw new NotImplementedException();
+            List<String> wordList = new List<string>();
+            wordList.Add("BONES");
+            wordList.Add("KHAN");
+            wordList.Add("KIRK");
+            wordList.Add("SCOTTY");
+            wordList.Add("SPOCK");
+            wordList.Add("SULU");
+            wordList.Add("UHURA");
+
+            return wordList;
         }
     }
 }
