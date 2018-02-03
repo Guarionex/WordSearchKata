@@ -46,5 +46,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddWord("BONES KHAN");
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedAStringWithSpecialCharactersThenAddWordThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(StringWordWithSpecialCharacters));
+        }
+
+        private void StringWordWithSpecialCharacters()
+        {
+            sut.AddWord("BONE$");
+        }
     }
 }
