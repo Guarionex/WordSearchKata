@@ -9,6 +9,7 @@ namespace PuzzleSolverProject
     public class PuzzleSolver
     {
         private int sizeX;
+        private int sizeY;
 
         public void AddWord(String word)
         {
@@ -36,7 +37,7 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentOutOfRangeException();
             }
-            else if(y > 20)
+            else if(y > sizeY)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -54,6 +55,7 @@ namespace PuzzleSolverProject
             }
 
             sizeX = x;
+            sizeY = y;
         }
     }
 }
