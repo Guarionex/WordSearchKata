@@ -12,11 +12,20 @@ namespace PuzzleSolverUnitTest
     public class PuzzleSolverTest
     {
         private PuzzleSolver sut;
+        private List<String> validWordList;
 
         [SetUp]
         public void init()
         {
             sut = new PuzzleSolver();
+            validWordList = new List<string>();
+            validWordList.Add("BONES");
+            validWordList.Add("KHAN");
+            validWordList.Add("KIRK");
+            validWordList.Add("SCOTTY");
+            validWordList.Add("SPOCK");
+            validWordList.Add("SULU");
+            validWordList.Add("UHURA");
         }
 
         [Test]
@@ -297,6 +306,13 @@ namespace PuzzleSolverUnitTest
         private void SmallDimensionsOutOfRangeY()
         {
             sut.AddLetterAt('U', 0, 5);
+        }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedCSVStringOfValidWordsThenGetListOfWordsReturnsAListofStringsContainigValidWords()
+        {
+            List<String> result = sut.GetListOfWords("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA");
+            Assert.AreEqual(validWordList, result);
         }
     }
 }

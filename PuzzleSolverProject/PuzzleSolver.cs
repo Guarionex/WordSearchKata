@@ -50,5 +50,10 @@ namespace PuzzleSolverProject
             sizeX = x;
             sizeY = y;
         }
+
+        public List<String> GetListOfWords(String csvWords)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
