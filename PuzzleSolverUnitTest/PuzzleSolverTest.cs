@@ -26,9 +26,9 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenPassedAnAlphanumericStringThenAddWordThrowsArgumentOutOfRangeException()
+        public void GivenPuzzleSolverWhenPassedAnAlphanumericStringThenAddWordThrowsArgumentException()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(AlphanumericWord));
+            Assert.Throws<ArgumentException>(new TestDelegate(AlphanumericWord));
         }
 
         private void AlphanumericWord()
