@@ -42,6 +42,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentOutOfRangeException();
             }
+            else if(x != y)
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
