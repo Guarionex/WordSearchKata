@@ -129,5 +129,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddCharacterAt(',', 0, 0);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedPunctiationCharacterAtPosition00ThenAddCharacterAtThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(PunctiationCharacterAt00));
+        }
+
+        private void PunctiationCharacterAt00()
+        {
+            sut.AddCharacterAt('!', 0, 0);
+        }
     }
 }
