@@ -207,5 +207,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.SetDimensions(2, 1000);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenSettingPuzzleDimensionsTooSmallThenSetDimensionsThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(OnebyOneDimension));
+        }
+
+        private void OnebyOneDimension()
+        {
+            sut.SetDimensions(1, 1);
+        }
     }
 }
