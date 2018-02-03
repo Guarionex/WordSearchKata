@@ -65,5 +65,10 @@ namespace PuzzleSolverProject
 
             return wordList;
         }
+
+        public void addAllWords(List<String> listOfWords)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

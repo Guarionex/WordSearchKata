@@ -354,5 +354,12 @@ namespace PuzzleSolverUnitTest
             List<String> result = sut.GetListOfWords("bones,khan,kirk,scotty,spock,sulu,uhura");
             Assert.AreEqual(lowerCaseValidWordList, result);
         }
+
+        [Test]
+        public void GivenCSVStringOfValidWordsWhenAddingListOfValidWordsThenAddAllWordsThrowsNoException()
+        {
+            List<String> listOfWords = sut.GetListOfWords("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA");
+            sut.addAllWords(listOfWords);
+        }
     }
 }
