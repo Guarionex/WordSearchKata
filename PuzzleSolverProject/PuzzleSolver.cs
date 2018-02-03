@@ -25,10 +25,15 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
-            else if(x < 0 || x > sizeX || y < 0 || y > sizeY)
+            else if(isPositionWithinDimensionRange(x, y))
             {
                 throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private bool isPositionWithinDimensionRange(int x, int y)
+        {
+            return x < 0 || x > sizeX || y < 0 || y > sizeY;
         }
 
         public void SetDimensions(int x, int y)
