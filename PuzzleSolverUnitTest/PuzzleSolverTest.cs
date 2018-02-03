@@ -81,13 +81,13 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenPassedLetterCharacterAtPosition00ThenAddCharacterAtThrowsNoException()
+        public void GivenPuzzleSolverWhenPassedLetterCharacterAtPosition00ThenAddLetterAtThrowsNoException()
         {
             sut.AddLetterAt('U', 0, 0);
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenPassedNumberCharacterAtPosition00ThenAddCharacterAtThrowsArgumentException()
+        public void GivenPuzzleSolverWhenPassedNumberCharacterAtPosition00ThenAddLetterAtThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(NumberCharacterAt00));
         }
@@ -98,7 +98,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenPassedSpaceCharacterAtPosition00ThenAddCharacterAtThrowsArgumentException()
+        public void GivenPuzzleSolverWhenPassedSpaceCharacterAtPosition00ThenAddLetterAtThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(SpaceCharacterAt00));
         }
@@ -109,7 +109,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenPassedSymbolCharacterAtPosition00ThenAddCharacterAtThrowsArgumentException()
+        public void GivenPuzzleSolverWhenPassedSymbolCharacterAtPosition00ThenAddLetterAtThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(SymbolCharacterAt00));
         }
@@ -120,7 +120,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenPassedCommaCharacterAtPosition00ThenAddCharacterAtThrowsArgumentException()
+        public void GivenPuzzleSolverWhenPassedCommaCharacterAtPosition00ThenAddLetterAtThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(CommaCharacterAt00));
         }
@@ -131,7 +131,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenPassedPunctiationCharacterAtPosition00ThenAddCharacterAtThrowsArgumentException()
+        public void GivenPuzzleSolverWhenPassedPunctiationCharacterAtPosition00ThenAddLetterAtThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(PunctiationCharacterAt00));
         }
