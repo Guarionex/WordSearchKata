@@ -25,19 +25,7 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
-            else if(x < 0)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-            else if(y < 0)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-            else if(x > sizeX)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-            else if(y > sizeY)
+            else if(x < 0 || x > sizeX || y < 0 || y > sizeY)
             {
                 throw new ArgumentOutOfRangeException();
             }
