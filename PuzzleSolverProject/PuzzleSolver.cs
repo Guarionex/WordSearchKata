@@ -10,7 +10,10 @@ namespace PuzzleSolverProject
     {
         public void AddWord(String word)
         {
-            throw new NotImplementedException();
+            if(word.Any(ch => ! char.IsLetter(ch)))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
