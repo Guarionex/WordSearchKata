@@ -83,7 +83,7 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenPuzzleSolverWhenPassedLetterCharacterAtPosition00ThenAddCharacterAtThrowsNoException()
         {
-            sut.AddCharacterAt('U', 0, 0);
+            sut.AddLetterAt('U', 0, 0);
         }
 
         [Test]
@@ -94,7 +94,7 @@ namespace PuzzleSolverUnitTest
 
         private void NumberCharacterAt00()
         {
-            sut.AddCharacterAt('5', 0, 0);
+            sut.AddLetterAt('5', 0, 0);
         }
 
         [Test]
@@ -105,7 +105,7 @@ namespace PuzzleSolverUnitTest
 
         private void SpaceCharacterAt00()
         {
-            sut.AddCharacterAt(' ', 0, 0);
+            sut.AddLetterAt(' ', 0, 0);
         }
 
         [Test]
@@ -116,7 +116,7 @@ namespace PuzzleSolverUnitTest
 
         private void SymbolCharacterAt00()
         {
-            sut.AddCharacterAt('$', 0, 0);
+            sut.AddLetterAt('$', 0, 0);
         }
 
         [Test]
@@ -127,7 +127,7 @@ namespace PuzzleSolverUnitTest
 
         private void CommaCharacterAt00()
         {
-            sut.AddCharacterAt(',', 0, 0);
+            sut.AddLetterAt(',', 0, 0);
         }
 
         [Test]
@@ -138,7 +138,7 @@ namespace PuzzleSolverUnitTest
 
         private void PunctiationCharacterAt00()
         {
-            sut.AddCharacterAt('!', 0, 0);
+            sut.AddLetterAt('!', 0, 0);
         }
     }
 }
