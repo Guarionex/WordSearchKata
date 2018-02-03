@@ -10,7 +10,10 @@ namespace PuzzleSolverProject
     {
         public void AddWord(String word)
         {
-            
+            if(word.Any(char.IsDigit))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }
