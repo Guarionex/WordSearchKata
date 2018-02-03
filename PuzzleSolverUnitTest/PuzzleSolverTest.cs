@@ -185,5 +185,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.SetDimensions(-1, 0);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenSettingPuzzleDimensionsToNegativeYThenSetDimensionsThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(NegativeYDimension));
+        }
+
+        private void NegativeYDimension()
+        {
+            sut.SetDimensions(0, -1);
+        }
     }
 }
