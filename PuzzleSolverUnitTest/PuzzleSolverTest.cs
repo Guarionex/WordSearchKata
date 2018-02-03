@@ -168,5 +168,22 @@ namespace PuzzleSolverUnitTest
         {
             sut.SetDimensions(2, 2);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenSettingPuzzleToLargeDimensionsThenSetDimensionsThrowsNoException()
+        {
+            sut.SetDimensions(1000, 1000);
+        }
+
+        [Test]
+        public void GivenPuzzleSolverWhenSettingPuzzleDimensionsToNegativeXandValidYThenSetDimensionsThrowsArgumentOutOfBoundsException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(NegativeXValidY));
+        }
+
+        private void NegativeXValidY()
+        {
+            sut.SetDimensions(-1, 0);
+        }
     }
 }
