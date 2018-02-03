@@ -57,5 +57,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddWord("BONE$");
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedAStringWithACommaThenAddWordThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(StringWordWithComma));
+        }
+
+        private void StringWordWithComma()
+        {
+            sut.AddWord("BONES,KHAN");
+        }
     }
 }
