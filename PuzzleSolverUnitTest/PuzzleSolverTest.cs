@@ -162,5 +162,11 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddLetterAt('U', 0, -1);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenSettingPuzzleDimensionTo2x2ThenSetDimensionsThrowsNoException()
+        {
+            sut.SetDimensions(2, 2);
+        }
     }
 }
