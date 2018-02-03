@@ -22,6 +22,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if(char.IsWhiteSpace(letter))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
