@@ -30,6 +30,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if(letter == ',')
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
