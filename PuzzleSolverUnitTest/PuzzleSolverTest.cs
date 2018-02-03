@@ -142,7 +142,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        private void GivenValidCharacterWhenPassedMegativeXPositionThenAddLetterAtThrowsArgumentOutOfRangeException()
+        public void GivenValidCharacterWhenPassedMegativeXPositionThenAddLetterAtThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ValidLetterAtMinus10));
         }
