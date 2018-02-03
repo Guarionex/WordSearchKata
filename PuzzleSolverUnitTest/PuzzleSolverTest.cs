@@ -178,10 +178,10 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenPuzzleSolverWhenSettingPuzzleDimensionsToNegativeXThenSetDimensionsThrowsArgumentOutOfRangeException()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(NegativeXValidY));
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(NegativeXDimension));
         }
 
-        private void NegativeXValidY()
+        private void NegativeXDimension()
         {
             sut.SetDimensions(-1, 0);
         }
