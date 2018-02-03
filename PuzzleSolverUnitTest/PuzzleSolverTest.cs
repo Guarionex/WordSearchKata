@@ -96,5 +96,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddCharacterAt('5', 0, 0);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedSpaceCharacterAtPosition00ThenAddCharacterAtThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(SpaceCharacterAt00));
+        }
+
+        private void SpaceCharacterAt00()
+        {
+            sut.AddCharacterAt(' ', 0, 0);
+        }
     }
 }
