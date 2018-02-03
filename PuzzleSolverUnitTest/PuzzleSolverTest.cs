@@ -229,5 +229,38 @@ namespace PuzzleSolverUnitTest
         {
             sut.SetDimensions(0, 0);
         }
+
+        [Test]
+        public void GivenValidDimensionsWhenAddingValidCharacterAtValidPositionThenAddLetterAtThrowsNoException()
+        {
+            sut.SetDimensions(20, 20);
+            sut.AddLetterAt('U', 20, 20);
+        }
+
+        [Test]
+        public  void GivenValidDimensionsWhenAddingValidCharacterAt00ThenAddLetterAtThrowsNoException()
+        {
+            sut.SetDimensions(20, 20);
+            sut.AddLetterAt('U', 0, 0);
+        }
+
+        [Test]
+        public void GivenValidDimensionsWhenAddingValidCharacterAtUnequalXYThenAddLetterAtThrowsNoException()
+        {
+            sut.SetDimensions(20, 20);
+            sut.AddLetterAt('U', 0, 20);
+        }
+
+        [Test]
+        public void GivenValidDimensionsWhenAddingValidCharacterAtAnXBiggerThanItsHorizontalSizeThenAddLetterAtThrowsArgumentOutOfRangeException()
+        {
+            sut.SetDimensions(20, 20);
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(OutOfRangeX));
+        }
+
+        private void OutOfRangeX()
+        {
+            sut.AddLetterAt('U', 21, 20);
+        }
     }
 }
