@@ -22,6 +22,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if(word.Contains(","))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
