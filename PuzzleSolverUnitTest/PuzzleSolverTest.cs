@@ -24,5 +24,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddWord("BONES");
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedAnAlphanumericStringThenAddWordThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(AlphanumericWord));
+        }
+
+        private void AlphanumericWord()
+        {
+            sut.AddWord("B0N3S");
+        }
     }
 }
