@@ -34,7 +34,10 @@ namespace PuzzleSolverProject
 
         public void SetDimensions(int x, int y)
         {
-            
+            if(x < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }
