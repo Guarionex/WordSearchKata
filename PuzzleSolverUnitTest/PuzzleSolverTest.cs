@@ -314,5 +314,16 @@ namespace PuzzleSolverUnitTest
             List<String> result = sut.GetListOfWords("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA");
             Assert.AreEqual(validWordList, result);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedSSVStringOfValidWordsThenGetListOfWordsThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(SSVStringOfWords));
+        }
+
+        private void SSVStringOfWords()
+        {
+            sut.GetListOfWords("BONES KHAN KIRK SCOTTY SPOCK SULU UHURA");
+        }
     }
 }
