@@ -176,7 +176,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenSettingPuzzleDimensionsToNegativeXandValidYThenSetDimensionsThrowsArgumentOutOfBoundsException()
+        public void GivenPuzzleSolverWhenSettingPuzzleDimensionsToNegativeXThenSetDimensionsThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(NegativeXValidY));
         }
