@@ -15,5 +15,10 @@ namespace PuzzleSolverProject
                 throw new ArgumentException();
             }
         }
+
+        public void AddCharacter(char letter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -79,5 +79,11 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddWord("BONES!");
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedLetterCharacterAtPositionThenAddCharacterThrowsNoException()
+        {
+            sut.AddCharacter('U');
+        }
     }
 }
