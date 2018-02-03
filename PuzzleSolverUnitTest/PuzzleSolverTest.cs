@@ -151,5 +151,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddLetterAt('U', -1, 0);
         }
+
+        [Test]
+        public void GivenValidCharacterWhenPassingMegativeYPositionThenAddLetterAtThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ValidLetterAt1Minus0));
+        }
+
+        private void ValidLetterAt1Minus0()
+        {
+            sut.AddLetterAt('U', 0, -1);
+        }
     }
 }
