@@ -8,6 +8,8 @@ namespace PuzzleSolverProject
 {
     public class PuzzleSolver
     {
+        private int sizeX;
+
         public void AddWord(String word)
         {
             if(word.Any(ch => ! char.IsLetter(ch)))
@@ -30,7 +32,7 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentOutOfRangeException();
             }
-            else if(x > 20)
+            else if(x > sizeX)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -46,6 +48,8 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+
+            sizeX = x;
         }
     }
 }
