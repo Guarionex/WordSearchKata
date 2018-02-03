@@ -262,5 +262,17 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddLetterAt('U', 21, 20);
         }
+
+        [Test]
+        public void GivenSmallestDimensionsWhenAddingValidCharacterAtAnXBiggerThanItsHorizontalSizeThenAddLetterAtThrowsArgumentOutOfRangeException()
+        {
+            sut.SetDimensions(2, 2);
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(SmallDimensionsOutOfRangeX));
+        }
+
+        private void SmallDimensionsOutOfRangeX()
+        {
+            sut.AddLetterAt('U', 5, 0);
+        }
     }
 }
