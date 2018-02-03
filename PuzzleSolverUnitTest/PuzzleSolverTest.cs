@@ -274,5 +274,17 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddLetterAt('U', 5, 0);
         }
+
+        [Test]
+        public void GivenValidDimensionsWhenAddingValidCharacterAtAnYBiggerThanItsVerticalSizeThenAddLetterAtThrowsArgumentOutOfRangeException()
+        {
+            sut.SetDimensions(20, 20);
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(OutOfRangeY));
+        }
+
+        private void OutOfRangeY()
+        {
+            sut.AddLetterAt('U', 20, 21);
+        }
     }
 }
