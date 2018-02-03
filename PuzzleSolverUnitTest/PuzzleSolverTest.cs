@@ -68,5 +68,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddWord("BONES,KHAN");
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedAStringWithAPunctuationThenAddWordThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(StringWordWithPunctiation));
+        }
+
+        private void StringWordWithPunctiation()
+        {
+            sut.AddWord("BONES!");
+        }
     }
 }
