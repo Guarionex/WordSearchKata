@@ -118,5 +118,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddCharacterAt('$', 0, 0);
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedCommaCharacterAtPosition00ThenAddCharacterAtThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(CommaCharacterAt00));
+        }
+
+        private void CommaCharacterAt00()
+        {
+            sut.AddCharacterAt(',', 0, 0);
+        }
     }
 }
