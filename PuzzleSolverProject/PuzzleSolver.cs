@@ -34,6 +34,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if(char.IsPunctuation(letter))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
