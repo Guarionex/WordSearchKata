@@ -50,5 +50,20 @@ namespace PuzzleSolverProject
             sizeX = x;
             sizeY = y;
         }
+
+        public List<String> GetListOfWords(String csvWords)
+        {
+
+            String[] ssvWords = csvWords.Split(' ');
+            if (ssvWords.Length > 1)
+            {
+                throw new FormatException();
+            }
+
+            String[] splittedCSVWords = csvWords.Split(',');
+            List<String> wordList = new List<string>(splittedCSVWords);
+
+            return wordList;
+        }
     }
 }
