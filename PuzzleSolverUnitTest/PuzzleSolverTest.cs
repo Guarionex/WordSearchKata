@@ -35,5 +35,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddWord("B0N3S");
         }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedAStringWithSpacesThenAddWordThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(StringWordWithSpaces));
+        }
+
+        private void StringWordWithSpaces()
+        {
+            sut.AddWord("BONES KHAN");
+        }
     }
 }
