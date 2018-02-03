@@ -13,11 +13,13 @@ namespace PuzzleSolverUnitTest
     {
         private PuzzleSolver sut;
         private List<String> validWordList;
+        private List<String> lowerCaseValidWordList;
 
         [SetUp]
         public void init()
         {
             sut = new PuzzleSolver();
+
             validWordList = new List<string>();
             validWordList.Add("BONES");
             validWordList.Add("KHAN");
@@ -26,6 +28,15 @@ namespace PuzzleSolverUnitTest
             validWordList.Add("SPOCK");
             validWordList.Add("SULU");
             validWordList.Add("UHURA");
+
+            lowerCaseValidWordList = new List<string>();
+            lowerCaseValidWordList.Add("bones");
+            lowerCaseValidWordList.Add("khan");
+            lowerCaseValidWordList.Add("kirk");
+            lowerCaseValidWordList.Add("scotty");
+            lowerCaseValidWordList.Add("spock");
+            lowerCaseValidWordList.Add("sulu");
+            lowerCaseValidWordList.Add("uhura");
         }
 
         [Test]
@@ -324,6 +335,24 @@ namespace PuzzleSolverUnitTest
         private void SSVStringOfWords()
         {
             sut.GetListOfWords("BONES KHAN KIRK SCOTTY SPOCK SULU UHURA");
+        }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedCommaAndSpaceSeparatedValuesStringOfValidWordsThenGetListOfWordsThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(CSSVStringOfWords));
+        }
+
+        private void CSSVStringOfWords()
+        {
+            sut.GetListOfWords("BONES, KHAN, KIRK, SCOTTY, SPOCK, SULU, UHURA");
+        }
+
+        [Test]
+        public void GivenPuzzleSolverWhenPassedLowerCaseCSVStringOfValidWordsThenGetListOfWordsReturnsAListofStringsContainigLowerCaseValidWords()
+        {
+            List<String> result = sut.GetListOfWords("bones,khan,kirk,scotty,spock,sulu,uhura");
+            Assert.AreEqual(lowerCaseValidWordList, result);
         }
     }
 }
