@@ -83,7 +83,12 @@ namespace PuzzleSolverProject
             }
             else if(rawWordString.Any(char.IsWhiteSpace))
             {
-                throw new ArgumentException();
+                String[] csvWords = rawWordString.Split(',');
+                if (csvWords.Length > 1)
+                {
+                    throw new ArgumentException();
+                }
+                throw new FormatException();
             }
             else if(rawWordString.Any(char.IsSymbol))
             {
