@@ -68,7 +68,7 @@ namespace PuzzleSolverProject
 
         public void addAllWords(List<String> listOfWords)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
