@@ -73,5 +73,10 @@ namespace PuzzleSolverProject
                 throw new ArgumentException();
             }
         }
+
+        public void ParseWords(String rawWordString)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

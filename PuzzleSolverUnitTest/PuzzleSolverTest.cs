@@ -15,6 +15,7 @@ namespace PuzzleSolverUnitTest
         private List<String> validWordList;
         private List<String> lowerCaseValidWordList;
         private List<String> wordListWithEmptyStringElement;
+        private String validWordsString;
 
         [SetUp]
         public void init()
@@ -47,6 +48,8 @@ namespace PuzzleSolverUnitTest
             wordListWithEmptyStringElement.Add("SPOCK");
             wordListWithEmptyStringElement.Add("");
             wordListWithEmptyStringElement.Add("UHURA");
+
+            validWordsString = "BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA";
         }
 
         [Test]
@@ -381,6 +384,12 @@ namespace PuzzleSolverUnitTest
         private void addAllWordsWithEmptyStrings()
         {
             sut.addAllWords(wordListWithEmptyStringElement);
+        }
+
+        [Test]
+        public void GivenCSVStringOfValidWordsWhenPassingGivenStringToParseWordsThenParseWordsThrowsNoException()
+        {
+            sut.ParseWords(validWordsString);
         }
     }
 }
