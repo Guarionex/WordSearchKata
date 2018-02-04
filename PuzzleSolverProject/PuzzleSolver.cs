@@ -76,7 +76,10 @@ namespace PuzzleSolverProject
 
         public void ParseWords(String rawWordString)
         {
-            
+            if(rawWordString.Any(char.IsDigit))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
