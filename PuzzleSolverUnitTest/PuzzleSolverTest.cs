@@ -387,13 +387,13 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenCSVStringOfValidWordsWhenPassingGivenStringToParseWordsThenParseWordsThrowsNoException()
+        public void GivenCSVStringOfValidWordsWhenPassingGivenStringToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowsNoException()
         {
             sut.ParseWordsIntoPuzzle(validWordsString);
         }
 
         [Test]
-        public void GivenCSVStringWithAlphaNumericWordsWhenPassingToParseWordsThenThrowArgumentException()
+        public void GivenCSVStringWithAlphaNumericWordsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseAlphaNumericWords));
         }
