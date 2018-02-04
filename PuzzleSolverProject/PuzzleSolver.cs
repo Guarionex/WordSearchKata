@@ -68,7 +68,10 @@ namespace PuzzleSolverProject
 
         public void addAllWords(List<String> listOfWords)
         {
-            
+            if(listOfWords.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
