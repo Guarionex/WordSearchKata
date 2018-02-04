@@ -14,6 +14,7 @@ namespace PuzzleSolverUnitTest
         private PuzzleSolver sut;
         private List<String> validWordList;
         private List<String> lowerCaseValidWordList;
+        private List<String> wordListWithEmptyStringElement;
 
         [SetUp]
         public void init()
@@ -37,6 +38,15 @@ namespace PuzzleSolverUnitTest
             lowerCaseValidWordList.Add("spock");
             lowerCaseValidWordList.Add("sulu");
             lowerCaseValidWordList.Add("uhura");
+
+            wordListWithEmptyStringElement = new List<string>();
+            wordListWithEmptyStringElement.Add("BONES");
+            wordListWithEmptyStringElement.Add("");
+            wordListWithEmptyStringElement.Add("KIRK");
+            wordListWithEmptyStringElement.Add("");
+            wordListWithEmptyStringElement.Add("SPOCK");
+            wordListWithEmptyStringElement.Add("");
+            wordListWithEmptyStringElement.Add("UHURA");
         }
 
         [Test]
@@ -360,6 +370,17 @@ namespace PuzzleSolverUnitTest
         {
             List<String> listOfWords = sut.GetListOfWords("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA");
             sut.addAllWords(listOfWords);
+        }
+
+        [Test]
+        public void GivenListOfStringsWithEmptyStringElementWhenAddingListOfValidWordsThenAddAllWordsThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(addAllWordsWithEmptyStrings));
+        }
+
+        private void addAllWordsWithEmptyStrings()
+        {
+            sut.addAllWords(wordListWithEmptyStringElement);
         }
     }
 }
