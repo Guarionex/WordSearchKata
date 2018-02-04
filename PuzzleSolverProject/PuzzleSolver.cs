@@ -80,6 +80,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if(rawWordString.Any(char.IsWhiteSpace))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
