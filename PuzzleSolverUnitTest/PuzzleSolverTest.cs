@@ -415,5 +415,17 @@ namespace PuzzleSolverUnitTest
             String csvWordsWithSpaces = "B NES,KH N,K RK,SCO  Y, POCK, ULU,UHUR ";
             sut.ParseWordsIntoPuzzle(csvWordsWithSpaces);
         }
+
+        [Test]
+        public void GivenCSVStringOfWordsWithSymbolsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseWordsWithSymbols));
+        }
+
+        private void ParseWordsWithSymbols()
+        {
+            String csvWordsWithSymbols = "BONE$,KH@N,KIRK,SC*TTY,$POCK,$ULU,U#UR@";
+            sut.ParseWordsIntoPuzzle(csvWordsWithSymbols);
+        }
     }
 }
