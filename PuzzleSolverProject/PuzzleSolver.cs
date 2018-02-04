@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PuzzleSolverProject
@@ -85,6 +86,10 @@ namespace PuzzleSolverProject
                 throw new ArgumentException();
             }
             else if(rawWordString.Any(char.IsSymbol))
+            {
+                throw new ArgumentException();
+            }
+            else if(Regex.IsMatch(rawWordString, @"[\p{P}-[,]]"))
             {
                 throw new ArgumentException();
             }
