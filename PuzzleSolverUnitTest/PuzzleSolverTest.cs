@@ -439,5 +439,17 @@ namespace PuzzleSolverUnitTest
             String csvWordsWithPunctuations = "BONES.,KHAN?,K!RK,SCOTTY!,SPOCK?,SULU.,UHURA;";
             sut.ParseWordsIntoPuzzle(csvWordsWithPunctuations);
         }
+
+        [Test]
+        public void GivenSSVStringOfValidWordsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseSSVWords));
+        }
+
+        private void ParseSSVWords()
+        {
+            String csvWordsWithPunctuations = "BONES KHAN KIRK SCOTTY SPOCK SULU UHURA";
+            sut.ParseWordsIntoPuzzle(csvWordsWithPunctuations);
+        }
     }
 }
