@@ -74,7 +74,7 @@ namespace PuzzleSolverProject
             }
         }
 
-        public void ParseWords(String rawWordString)
+        public void ParseWordsIntoPuzzle(String rawWordString)
         {
             if(rawWordString.Any(char.IsDigit))
             {

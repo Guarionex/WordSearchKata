@@ -389,7 +389,7 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenCSVStringOfValidWordsWhenPassingGivenStringToParseWordsThenParseWordsThrowsNoException()
         {
-            sut.ParseWords(validWordsString);
+            sut.ParseWordsIntoPuzzle(validWordsString);
         }
 
         [Test]
@@ -401,7 +401,7 @@ namespace PuzzleSolverUnitTest
         private void ParseAlphaNumericWords()
         {
             String csvAlphaNumericWords = "B0NES,KH8N,K1RK,SCO77Y,5POCK,5ULU,UHUR8";
-            sut.ParseWords(csvAlphaNumericWords);
+            sut.ParseWordsIntoPuzzle(csvAlphaNumericWords);
         }
     }
 }
