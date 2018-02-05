@@ -412,7 +412,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseWordsWithSpaces()
         {
-            String csvWordsWithSpaces = "B NES,KH N,K RK,SCO  Y, POCK, ULU,UHUR ";
+            String csvWordsWithSpaces = "B NES,KH N,K RK,SCO  Y,S POCK,SU LU,UHUR ";
             sut.ParseWordsIntoPuzzle(csvWordsWithSpaces);
         }
 
