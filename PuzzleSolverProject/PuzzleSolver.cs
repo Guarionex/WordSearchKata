@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PuzzleSolverProject
@@ -11,7 +12,7 @@ namespace PuzzleSolverProject
         private int sizeX;
         private int sizeY;
 
-        public void AddWord(String word)
+        private void AddWord(String word)
         {
             if(word.Any(ch => ! char.IsLetter(ch)))
             {
@@ -51,19 +52,39 @@ namespace PuzzleSolverProject
             sizeY = y;
         }
 
-        public List<String> GetListOfWords(String csvWords)
+        private List<String> GetListOfWords(String csvWords)
         {
-
-            String[] ssvWords = csvWords.Split(' ');
-            if (ssvWords.Length > 1)
+            String[] splittedCSVWords = csvWords.Split(',');
+            if(isWordStringFormatInvalid(splittedCSVWords))
             {
                 throw new FormatException();
             }
-
-            String[] splittedCSVWords = csvWords.Split(',');
             List<String> wordList = new List<string>(splittedCSVWords);
 
             return wordList;
+        }
+
+        private bool isWordStringFormatInvalid(String[] delimetedWords)
+        {
+            return delimetedWords.Length == 1 || delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, 0)));
+        }
+
+        private void AddAllWords(List<String> listOfWords)
+        {
+            if(listOfWords.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new ArgumentException();
+            }
+            foreach(String word in listOfWords)
+            {
+                AddWord(word);
+            }
+        }
+
+        public void ParseWordsIntoPuzzle(String rawWordString)
+        {
+            List<String> wordList = GetListOfWords(rawWordString);
+            AddAllWords(wordList);
         }
     }
 }

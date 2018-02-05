@@ -12,93 +12,15 @@ namespace PuzzleSolverUnitTest
     public class PuzzleSolverTest
     {
         private PuzzleSolver sut;
-        private List<String> validWordList;
-        private List<String> lowerCaseValidWordList;
+        private String validWordsString;
 
         [SetUp]
         public void init()
         {
             sut = new PuzzleSolver();
 
-            validWordList = new List<string>();
-            validWordList.Add("BONES");
-            validWordList.Add("KHAN");
-            validWordList.Add("KIRK");
-            validWordList.Add("SCOTTY");
-            validWordList.Add("SPOCK");
-            validWordList.Add("SULU");
-            validWordList.Add("UHURA");
-
-            lowerCaseValidWordList = new List<string>();
-            lowerCaseValidWordList.Add("bones");
-            lowerCaseValidWordList.Add("khan");
-            lowerCaseValidWordList.Add("kirk");
-            lowerCaseValidWordList.Add("scotty");
-            lowerCaseValidWordList.Add("spock");
-            lowerCaseValidWordList.Add("sulu");
-            lowerCaseValidWordList.Add("uhura");
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedALettersOnlyStringThenAddWordThrowsNoException()
-        {
-            sut.AddWord("BONES");
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedAnAlphanumericStringThenAddWordThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(AlphanumericWord));
-        }
-
-        private void AlphanumericWord()
-        {
-            sut.AddWord("B0N3S");
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedAStringWithSpacesThenAddWordThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(StringWordWithSpaces));
-        }
-
-        private void StringWordWithSpaces()
-        {
-            sut.AddWord("BONES KHAN");
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedAStringWithSpecialCharactersThenAddWordThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(StringWordWithSpecialCharacters));
-        }
-
-        private void StringWordWithSpecialCharacters()
-        {
-            sut.AddWord("BONE$");
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedAStringWithACommaThenAddWordThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(StringWordWithComma));
-        }
-
-        private void StringWordWithComma()
-        {
-            sut.AddWord("BONES,KHAN");
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedAStringWithAPunctuationThenAddWordThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(StringWordWithPunctiation));
-        }
-
-        private void StringWordWithPunctiation()
-        {
-            sut.AddWord("BONES!");
-        }
+            validWordsString = "BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA";
+        }        
 
         [Test]
         public void GivenPuzzleSolverWhenPassedLetterCharacterAtPosition00ThenAddLetterAtThrowsNoException()
@@ -317,42 +239,96 @@ namespace PuzzleSolverUnitTest
         private void SmallDimensionsOutOfRangeY()
         {
             sut.AddLetterAt('U', 0, 5);
+        }    
+
+        [Test]
+        public void GivenCSVStringOfValidWordsWhenPassingGivenStringToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowsNoException()
+        {
+            sut.ParseWordsIntoPuzzle(validWordsString);
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenPassedCSVStringOfValidWordsThenGetListOfWordsReturnsAListofStringsContainigValidWords()
+        public void GivenCSVStringWithAlphaNumericWordsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowArgumentException()
         {
-            List<String> result = sut.GetListOfWords("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA");
-            Assert.AreEqual(validWordList, result);
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseAlphaNumericWords));
+        }
+
+        private void ParseAlphaNumericWords()
+        {
+            String csvAlphaNumericWords = "B0NES,KH8N,K1RK,SCO77Y,5POCK,5ULU,UHUR8";
+            sut.ParseWordsIntoPuzzle(csvAlphaNumericWords);
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenPassedSSVStringOfValidWordsThenGetListOfWordsThrowsFormatException()
+        public void GivenCSVStringOfWordsWithSpacesWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowArgumentException()
         {
-            Assert.Throws<FormatException>(new TestDelegate(SSVStringOfWords));
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseWordsWithSpaces));
         }
 
-        private void SSVStringOfWords()
+        private void ParseWordsWithSpaces()
         {
-            sut.GetListOfWords("BONES KHAN KIRK SCOTTY SPOCK SULU UHURA");
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedCommaAndSpaceSeparatedValuesStringOfValidWordsThenGetListOfWordsThrowsFormatException()
-        {
-            Assert.Throws<FormatException>(new TestDelegate(CSSVStringOfWords));
-        }
-
-        private void CSSVStringOfWords()
-        {
-            sut.GetListOfWords("BONES, KHAN, KIRK, SCOTTY, SPOCK, SULU, UHURA");
+            String csvWordsWithSpaces = "B NES,KH N,K RK,SCO  Y,S POCK,SU LU,UHUR ";
+            sut.ParseWordsIntoPuzzle(csvWordsWithSpaces);
         }
 
         [Test]
-        public void GivenPuzzleSolverWhenPassedLowerCaseCSVStringOfValidWordsThenGetListOfWordsReturnsAListofStringsContainigLowerCaseValidWords()
+        public void GivenCSVStringOfWordsWithSymbolsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowArgumentException()
         {
-            List<String> result = sut.GetListOfWords("bones,khan,kirk,scotty,spock,sulu,uhura");
-            Assert.AreEqual(lowerCaseValidWordList, result);
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseWordsWithSymbols));
+        }
+
+        private void ParseWordsWithSymbols()
+        {
+            String csvWordsWithSymbols = "BONE$,KH@N,KIRK,SC*TTY,$POCK,$ULU,U#UR@";
+            sut.ParseWordsIntoPuzzle(csvWordsWithSymbols);
+        }
+
+        [Test]
+        public void GivenCSVStringOfWordsWithPunctuationsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseWordsWithPunctuations));
+        }
+
+        private void ParseWordsWithPunctuations()
+        {
+            String csvWordsWithPunctuations = "BONES.,KHAN?,K!RK,SCOTTY!,SPOCK?,SULU.,UHURA;";
+            sut.ParseWordsIntoPuzzle(csvWordsWithPunctuations);
+        }
+
+        [Test]
+        public void GivenSSVStringOfValidWordsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseSSVWords));
+        }
+
+        private void ParseSSVWords()
+        {
+            String csvWordsWithPunctuations = "BONES KHAN KIRK SCOTTY SPOCK SULU UHURA";
+            sut.ParseWordsIntoPuzzle(csvWordsWithPunctuations);
+        }
+
+        [Test]
+        public void GivenCSSVStringOfValidWordsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseCSSVWords));
+        }
+
+        private void ParseCSSVWords()
+        {
+            String cssvWords = "BONES, KHAN, KIRK, SCOTTY, SPOCK, SULU, UHURA";
+            sut.ParseWordsIntoPuzzle(cssvWords);
+        }
+
+        [Test]
+        public void GivenCSVStringOfWordsWithEmptyStringsThenPassingToParseWordsIntoPuzzleThenThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseCSVWordsWithEmptyStrings));
+        }
+
+        private void ParseCSVWordsWithEmptyStrings()
+        {
+            String csvWordsWithEmptyStrings = "BONES,,KIRK,,SPOCK,,UHURA";
+            sut.ParseWordsIntoPuzzle(csvWordsWithEmptyStrings);
         }
     }
 }
