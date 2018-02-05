@@ -494,5 +494,24 @@ namespace PuzzleSolverUnitTest
             alphaNumericList.Add("UHUR8");
             sut.addAllWords(alphaNumericList);
         }
+
+        [Test]
+        public void GivenListOfStringOfWordsWithSpacesWhenPassedToAddAllWordsThenAddAllWordsThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(AddAllWordsWithSpaces));
+        }
+
+        private void AddAllWordsWithSpaces()
+        {
+            List<String> wordsWithSpacesList = new List<String>();
+            wordsWithSpacesList.Add("B NES");
+            wordsWithSpacesList.Add("KH N");
+            wordsWithSpacesList.Add("K RK");
+            wordsWithSpacesList.Add("SC TTY");
+            wordsWithSpacesList.Add("SP CK");
+            wordsWithSpacesList.Add(" ULU");
+            wordsWithSpacesList.Add("UHUR ");
+            sut.addAllWords(wordsWithSpacesList);
+        }
     }
 }
