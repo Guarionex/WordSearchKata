@@ -124,5 +124,10 @@ namespace PuzzleSolverProject
         {
             return joinedLetters.Equals(csvLetterRow) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
         }
+
+        public void ParseLetters(String[] rawLetters)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

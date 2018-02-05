@@ -357,5 +357,11 @@ namespace PuzzleSolverUnitTest
             varyingLengthsLetters[3] = "N,C";
             sut.Get2DLetterArray(varyingLengthsLetters);
         }
+
+        [Test]
+        public void GivenStringArrayOfValidCSVLettersWhenPassedToParseLettersThenThrowNoException()
+        {
+            sut.ParseLetters(validCSVLetters);
+        }
     }
 }
