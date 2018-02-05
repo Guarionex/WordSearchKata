@@ -134,7 +134,11 @@ namespace PuzzleSolverProject
 
         public void ParseFile(String fileName)
         {
-            File.ReadAllLines(fileName);
+            String[] lines = File.ReadAllLines(fileName);
+            if(lines[0].Any(char.IsDigit))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
