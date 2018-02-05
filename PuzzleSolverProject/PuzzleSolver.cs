@@ -135,33 +135,7 @@ namespace PuzzleSolverProject
         public void ParseFile(String fileName)
         {
             String[] lines = File.ReadAllLines(fileName);
-            if(lines[0].Split(' ').Length > 1 && lines[0].Split(',').Length == 1)
-            {
-                throw new FormatException();
-            }
-            else if(Regex.Split(lines[0], ", ").Length > 1)
-            {
-                throw new FormatException();
-            }
-            if(lines[0].Any(char.IsDigit))
-            {
-                throw new ArgumentException();
-            }
-            if (lines[0].Any(char.IsWhiteSpace))
-            {
-                throw new ArgumentException();
-            }
-            else if (lines[0].Any(char.IsSymbol))
-            {
-                throw new ArgumentException();
-            }else if(lines[0].Split(',').Any(word => word.Any(char.IsPunctuation)))
-            {
-                throw new ArgumentException();
-            }
-            else if(lines[0].Split(',').Any(String.IsNullOrEmpty))
-            {
-                throw new ArgumentException();
-            }
+            ParseWordsIntoPuzzle(lines[0]);
         }
     }
 }
