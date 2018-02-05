@@ -137,6 +137,10 @@ namespace PuzzleSolverProject
             String[] lines = File.ReadAllLines(fileName);
             ParseWordsIntoPuzzle(lines[0]);
 
+            if(lines.Length == 1)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             if(lines[1].Any(char.IsWhiteSpace))
             {
                 throw new FormatException();
