@@ -296,5 +296,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile("meh.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithPuzzleContainingAlphaNumericWordsWhenPassedIntoParseFileThenParseFileThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileAlphaNumericWords));
+        }
+
+        private void ParseFileAlphaNumericWords()
+        {
+            sut.ParseFile(projectPath + "alphaNumeric4x4.txt");
+        }
     }
 }
