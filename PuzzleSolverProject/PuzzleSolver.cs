@@ -147,6 +147,10 @@ namespace PuzzleSolverProject
                 {
                     throw new FormatException();
                 }
+                else if(lines[row].Any(char.IsDigit))
+                {
+                    throw new ArgumentException();
+                }
             }
         }
     }
