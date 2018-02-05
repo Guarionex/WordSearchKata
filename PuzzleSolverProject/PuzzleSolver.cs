@@ -82,7 +82,7 @@ namespace PuzzleSolverProject
             }
         }
 
-        public void ParseWordsIntoPuzzle(String rawWordString)
+        private void ParseWordsIntoPuzzle(String rawWordString)
         {
             List<String> wordList = GetListOfWords(rawWordString);
             AddAllWords(wordList);
