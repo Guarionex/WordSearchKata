@@ -20,7 +20,7 @@ namespace PuzzleSolverProject
             }
         }
 
-        public void AddLetterAt(char letter, int x, int y)
+        private void AddLetterAt(char letter, int x, int y)
         {
             if(!char.IsLetter(letter))
             {
@@ -37,7 +37,7 @@ namespace PuzzleSolverProject
             return x < 0 || x > sizeX || y < 0 || y > sizeY;
         }
 
-        public void SetDimensions(int x, int y)
+        private void SetDimensions(int x, int y)
         {
             if(x < 2 && y < 2)
             {
@@ -85,6 +85,20 @@ namespace PuzzleSolverProject
         {
             List<String> wordList = GetListOfWords(rawWordString);
             AddAllWords(wordList);
+        }
+
+        public void AddAllLetters(char[,] multiArrayOfLetters)
+        {
+            int lengthX = multiArrayOfLetters.GetLength(0);
+            int lengthY = multiArrayOfLetters.GetLength(1);
+            SetDimensions(lengthX, lengthY);
+            for(int col = 0; col < lengthY; col++)
+            {
+                for(int row = 0; row < lengthX; row++)
+                {
+                    AddLetterAt(multiArrayOfLetters[row, col], row, col);
+                }
+            }
         }
     }
 }
