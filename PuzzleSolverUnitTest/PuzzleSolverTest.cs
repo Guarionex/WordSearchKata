@@ -2,6 +2,7 @@
 using PuzzleSolverProject;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -281,6 +282,17 @@ namespace PuzzleSolverUnitTest
         public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileThenParseFileThrowsNoException()
         {
             sut.ParseFile(validPuzzleFileName);
+        }
+
+        [Test]
+        public void GivenAInvalidStringFileNameWhenPassedIntoParseFileThenParseFileThrowsFileNotFoundException()
+        {
+            Assert.Throws<FileNotFoundException>(new TestDelegate(ParseFileInvalidFileName));
+        }
+
+        private void ParseFileInvalidFileName()
+        {
+            sut.ParseFile("meh.txt");
         }
     }
 }
