@@ -30,7 +30,7 @@ namespace PuzzleSolverUnitTest
             validCSVLetters[2] = "X,A,D,M";
             validCSVLetters[3] = "N,C,H,U";
 
-            validPuzzleFileName = "Valid4x4.txt";
+            validPuzzleFileName = @"C:\Users\chesp\source\repos\WordSearchKata\Valid4x4.txt";
         }
 
         [Test]
