@@ -103,6 +103,10 @@ namespace PuzzleSolverProject
                     {
                         throw new ArgumentException();
                     }
+                    else if(char.IsSymbol(multiArrayOfLetters[row, col]))
+                    {
+                        throw new ArgumentException();
+                    }
                 }
             }
         }
