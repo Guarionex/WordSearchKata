@@ -87,15 +87,15 @@ namespace PuzzleSolverProject
             AddAllWords(wordList);
         }
 
-        public void AddAllLetters(char[,] valid4x4Letters)
+        public void AddAllLetters(char[,] multiArrayOfLetters)
         {
-            int lengthX = valid4x4Letters.GetLength(0);
-            int lengthY = valid4x4Letters.GetLength(1);
+            int lengthX = multiArrayOfLetters.GetLength(0);
+            int lengthY = multiArrayOfLetters.GetLength(1);
             for(int col = 0; col < lengthX; col++)
             {
                 for(int row = 0; row < lengthY; row++)
                 {
-                    if(char.IsDigit(valid4x4Letters[row, col]))
+                    if(char.IsDigit(multiArrayOfLetters[row, col]))
                     {
                         throw new ArgumentException();
                     }
