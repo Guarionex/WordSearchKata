@@ -265,5 +265,34 @@ namespace PuzzleSolverUnitTest
             Char[,] result = sut.Get2DLetterArray(validCSVLetters);
             Assert.AreEqual(valid4x4Letters, result);
         }
+
+        [Test]
+        public void GivenValidStringArrayOfLowerCaseCSVLettersWhenPassedToGet2DLetterArrayThenGet2DLetterArrayReturnsAValid2DArrayOfLowerCaseCharacters()
+        {
+            String[] lowerCaseCSVLetters = new String[4];
+            for(int row = 0; row < validCSVLetters.Length; row++)
+            {
+                lowerCaseCSVLetters[row] = validCSVLetters[row].ToLower();
+            }
+            Char[,] valid4x4LowerCaseLetters = new Char[4, 4];
+            valid4x4LowerCaseLetters[0, 0] = 'k';
+            valid4x4LowerCaseLetters[0, 1] = 'e';
+            valid4x4LowerCaseLetters[0, 2] = 'x';
+            valid4x4LowerCaseLetters[0, 3] = 'n';
+            valid4x4LowerCaseLetters[1, 0] = 'r';
+            valid4x4LowerCaseLetters[1, 1] = 'm';
+            valid4x4LowerCaseLetters[1, 2] = 'a';
+            valid4x4LowerCaseLetters[1, 3] = 'c';
+            valid4x4LowerCaseLetters[2, 0] = 'i';
+            valid4x4LowerCaseLetters[2, 1] = 'h';
+            valid4x4LowerCaseLetters[2, 2] = 'd';
+            valid4x4LowerCaseLetters[2, 3] = 'h';
+            valid4x4LowerCaseLetters[3, 0] = 'k';
+            valid4x4LowerCaseLetters[3, 1] = 'p';
+            valid4x4LowerCaseLetters[3, 2] = 'm';
+            valid4x4LowerCaseLetters[3, 3] = 'u';
+            Char[,] result = sut.Get2DLetterArray(lowerCaseCSVLetters);
+            Assert.AreEqual(valid4x4LowerCaseLetters, result);
+        }
     }
 }
