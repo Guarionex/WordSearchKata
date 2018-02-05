@@ -374,5 +374,27 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "1x1.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWith1x1WithTrailingCommaPuzzleWhenPassedToParseFileThenParseFileThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile1x1Comma));
+        }
+
+        private void ParseFile1x1Comma()
+        {
+            sut.ParseFile(projectPath + "1x1Comma.txt");
+        }
+
+        [Test]
+        public void GivenValidFileNameWith0x0PuzzleWhenPassedToParseFileThenParseFileThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile0x0));
+        }
+
+        private void ParseFile0x0()
+        {
+            sut.ParseFile(projectPath + "0x0.txt");
+        }
     }
 }
