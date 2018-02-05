@@ -136,6 +136,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if (rawLetters.Any(row => Regex.IsMatch(row, @"[\p{P}\p{S}-[,]]")))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
