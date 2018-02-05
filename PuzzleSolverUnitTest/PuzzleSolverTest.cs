@@ -452,5 +452,17 @@ namespace PuzzleSolverUnitTest
             Array.Copy(valid4x4Letters, tooSmallLetters, 1);
             sut.AddAllLetters(tooSmallLetters);
         }
+
+        [Test]
+        public void Given2DCharacterArrayOfLettersWith0x0DimensionsWhenPassedToAddAllLettersThenAddAllLettersThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(AddAllLetters0x0));
+        }
+
+        private void AddAllLetters0x0()
+        {
+            Char[,] tooSmallLetters = new Char[0, 0];
+            sut.AddAllLetters(tooSmallLetters);
+        }
     }
 }
