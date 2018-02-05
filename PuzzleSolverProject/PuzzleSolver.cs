@@ -95,9 +95,9 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
-            for(int col = 0; col < lengthX; col++)
+            for(int col = 0; col < lengthY; col++)
             {
-                for(int row = 0; row < lengthY; row++)
+                for(int row = 0; row < lengthX; row++)
                 {
                     if(char.IsDigit(multiArrayOfLetters[row, col]))
                     {
