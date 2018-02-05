@@ -146,6 +146,9 @@ namespace PuzzleSolverProject
             else if (lines[0].Any(char.IsSymbol))
             {
                 throw new ArgumentException();
+            }else if(lines[0].Split(',').Any(word => word.Any(char.IsPunctuation)))
+            {
+                throw new ArgumentException();
             }
         }
     }
