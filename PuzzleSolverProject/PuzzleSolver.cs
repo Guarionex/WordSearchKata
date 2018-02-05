@@ -143,6 +143,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if (lines[0].Any(char.IsSymbol))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
