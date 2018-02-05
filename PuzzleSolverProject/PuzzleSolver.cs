@@ -100,5 +100,10 @@ namespace PuzzleSolverProject
                 }
             }
         }
+
+        public char[,] Get2DLetterArray(String[] csvLetters)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

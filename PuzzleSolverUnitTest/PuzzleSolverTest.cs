@@ -14,6 +14,7 @@ namespace PuzzleSolverUnitTest
         private PuzzleSolver sut;
         private String validWordsString;
         private Char[,] valid4x4Letters;
+        private String[] validCSVLetters;
 
         [SetUp]
         public void init()
@@ -24,22 +25,27 @@ namespace PuzzleSolverUnitTest
 
             valid4x4Letters = new Char[4, 4];
             valid4x4Letters[0, 0] = 'K';
-            valid4x4Letters[0, 1] = 'R';
-            valid4x4Letters[0, 2] = 'I';
-            valid4x4Letters[0, 3] = 'K';
-            valid4x4Letters[1, 0] = 'E';
+            valid4x4Letters[0, 1] = 'E';
+            valid4x4Letters[0, 2] = 'X';
+            valid4x4Letters[0, 3] = 'N';
+            valid4x4Letters[1, 0] = 'R';
             valid4x4Letters[1, 1] = 'M';
-            valid4x4Letters[1, 2] = 'H';
-            valid4x4Letters[1, 3] = 'P';
-            valid4x4Letters[2, 0] = 'X';
-            valid4x4Letters[2, 1] = 'A';
+            valid4x4Letters[1, 2] = 'A';
+            valid4x4Letters[1, 3] = 'C';
+            valid4x4Letters[2, 0] = 'I';
+            valid4x4Letters[2, 1] = 'H';
             valid4x4Letters[2, 2] = 'D';
-            valid4x4Letters[2, 3] = 'M';
-            valid4x4Letters[3, 0] = 'N';
-            valid4x4Letters[3, 1] = 'C';
-            valid4x4Letters[3, 2] = 'H';
+            valid4x4Letters[2, 3] = 'H';
+            valid4x4Letters[3, 0] = 'K';
+            valid4x4Letters[3, 1] = 'P';
+            valid4x4Letters[3, 2] = 'M';
             valid4x4Letters[3, 3] = 'U';
 
+            validCSVLetters = new String[4];
+            validCSVLetters[0] = "K,R,I,K";
+            validCSVLetters[1] = "E,M,H,P";
+            validCSVLetters[2] = "X,A,D,M";
+            validCSVLetters[3] = "N,C,H,U";
         }
 
         [Test]
@@ -244,6 +250,13 @@ namespace PuzzleSolverUnitTest
         {
             Char[,] tooSmallLetters = new Char[0, 0];
             sut.AddAllLetters(tooSmallLetters);
+        }
+
+        [Test]
+        public void GivenValidStringArrayOfCSVLettersWhenPassedToGet2DLetterArrayThenGet2DLetterArrayReturnsA2DArrayOfCharacters()
+        {
+            Char[,] result = sut.Get2DLetterArray(validCSVLetters);
+            Assert.IsInstanceOf(typeof(Char[,]), result);
         }
     }
 }
