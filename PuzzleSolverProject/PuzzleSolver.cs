@@ -92,11 +92,11 @@ namespace PuzzleSolverProject
             int lengthX = multiArrayOfLetters.GetLength(0);
             int lengthY = multiArrayOfLetters.GetLength(1);
             SetDimensions(lengthX, lengthY);
-            for(int col = 0; col < lengthY; col++)
+            for(int col = 0; col < lengthX; col++)
             {
-                for(int row = 0; row < lengthX; row++)
+                for(int row = 0; row < lengthY; row++)
                 {
-                    AddLetterAt(multiArrayOfLetters[row, col], row, col);
+                    AddLetterAt(multiArrayOfLetters[col, row], col, row);
                 }
             }
         }
