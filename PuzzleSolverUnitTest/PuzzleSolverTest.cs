@@ -13,7 +13,6 @@ namespace PuzzleSolverUnitTest
     {
         private PuzzleSolver sut;
         private String validWordsString;
-        private Char[,] valid4x4Letters;
         private String[] validCSVLetters;
 
         [SetUp]
@@ -22,24 +21,6 @@ namespace PuzzleSolverUnitTest
             sut = new PuzzleSolver();
 
             validWordsString = "BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA";
-
-            valid4x4Letters = new Char[4, 4];
-            valid4x4Letters[0, 0] = 'K';
-            valid4x4Letters[0, 1] = 'E';
-            valid4x4Letters[0, 2] = 'X';
-            valid4x4Letters[0, 3] = 'N';
-            valid4x4Letters[1, 0] = 'R';
-            valid4x4Letters[1, 1] = 'M';
-            valid4x4Letters[1, 2] = 'A';
-            valid4x4Letters[1, 3] = 'C';
-            valid4x4Letters[2, 0] = 'I';
-            valid4x4Letters[2, 1] = 'H';
-            valid4x4Letters[2, 2] = 'D';
-            valid4x4Letters[2, 3] = 'H';
-            valid4x4Letters[3, 0] = 'K';
-            valid4x4Letters[3, 1] = 'P';
-            valid4x4Letters[3, 2] = 'M';
-            valid4x4Letters[3, 3] = 'U';
 
             validCSVLetters = new String[4];
             validCSVLetters[0] = "K,R,I,K";
@@ -136,112 +117,6 @@ namespace PuzzleSolverUnitTest
         {
             String csvWordsWithEmptyStrings = "BONES,,KIRK,,SPOCK,,UHURA";
             sut.ParseWordsIntoPuzzle(csvWordsWithEmptyStrings);
-        }
-
-        [Test]
-        public void GivenValidStringArrayOfCSVLettersWhenPassedToGet2DLetterArrayThenGet2DLetterArrayReturnsA2DArrayOfCharacters()
-        {
-            Char[,] result = sut.Get2DLetterArray(validCSVLetters);
-            Assert.IsInstanceOf(typeof(Char[,]), result);
-        }
-
-        [Test]
-        public void GivenValidStringArrayOfCSVLettersWhenPassedToGet2DLetterArrayThenGet2DLetterArrayReturnsAValid2DArrayOfCharacters()
-        {
-            Char[,] result = sut.Get2DLetterArray(validCSVLetters);
-            Assert.AreEqual(valid4x4Letters, result);
-        }
-
-        [Test]
-        public void GivenValidStringArrayOfLowerCaseCSVLettersWhenPassedToGet2DLetterArrayThenGet2DLetterArrayReturnsAValid2DArrayOfLowerCaseCharacters()
-        {
-            String[] lowerCaseCSVLetters = new String[4];
-            for(int row = 0; row < validCSVLetters.Length; row++)
-            {
-                lowerCaseCSVLetters[row] = validCSVLetters[row].ToLower();
-            }
-            Char[,] valid4x4LowerCaseLetters = new Char[4, 4];
-            valid4x4LowerCaseLetters[0, 0] = 'k';
-            valid4x4LowerCaseLetters[0, 1] = 'e';
-            valid4x4LowerCaseLetters[0, 2] = 'x';
-            valid4x4LowerCaseLetters[0, 3] = 'n';
-            valid4x4LowerCaseLetters[1, 0] = 'r';
-            valid4x4LowerCaseLetters[1, 1] = 'm';
-            valid4x4LowerCaseLetters[1, 2] = 'a';
-            valid4x4LowerCaseLetters[1, 3] = 'c';
-            valid4x4LowerCaseLetters[2, 0] = 'i';
-            valid4x4LowerCaseLetters[2, 1] = 'h';
-            valid4x4LowerCaseLetters[2, 2] = 'd';
-            valid4x4LowerCaseLetters[2, 3] = 'h';
-            valid4x4LowerCaseLetters[3, 0] = 'k';
-            valid4x4LowerCaseLetters[3, 1] = 'p';
-            valid4x4LowerCaseLetters[3, 2] = 'm';
-            valid4x4LowerCaseLetters[3, 3] = 'u';
-            Char[,] result = sut.Get2DLetterArray(lowerCaseCSVLetters);
-            Assert.AreEqual(valid4x4LowerCaseLetters, result);
-        }
-
-        [Test]
-        public void GivenStringArrayOfSSVLettersWhenPassedToGet2DLetterArrayThenGet2DLetterArrayThrowsFormatException()
-        {
-            Assert.Throws<FormatException>(new TestDelegate(Get2DLetterArraySSV));
-        }
-
-        private void Get2DLetterArraySSV()
-        {
-            String[] ssvLetters = new String[4];
-            ssvLetters[0] = "K R I K";
-            ssvLetters[1] = "E M H P";
-            ssvLetters[2] = "X A D M";
-            ssvLetters[3] = "N C H U";
-            sut.Get2DLetterArray(ssvLetters);
-        }
-
-        [Test]
-        public void GivenStringArrayOfCSSVLettersWhenPassedToGet2DLetterArrayThenGet2DLetterArrayThrowsFormatException()
-        {
-            Assert.Throws<FormatException>(new TestDelegate(Get2DLetterArrayCSSV));
-        }
-
-        private void Get2DLetterArrayCSSV()
-        {
-            String[] ssvLetters = new String[4];
-            ssvLetters[0] = "K, R, I, K";
-            ssvLetters[1] = "E, M, H, P";
-            ssvLetters[2] = "X, A, D, M";
-            ssvLetters[3] = "N, C, H, U";
-            sut.Get2DLetterArray(ssvLetters);
-        }
-
-        [Test]
-        public void GivenStringArrayOfLettersWithUnequalDimensionsWhenPassedToGet2DLetterArrayThenGet2DLetterArrayThrowsFormatException()
-        {
-            Assert.Throws<FormatException>(new TestDelegate(Get2DLetterArrayUnequalDimensions));
-        }
-
-        private void Get2DLetterArrayUnequalDimensions()
-        {
-            String[] unequalDimensionsLetters = new String[3];
-            unequalDimensionsLetters[0] = "K,R,I,K";
-            unequalDimensionsLetters[1] = "E,M,H,P";
-            unequalDimensionsLetters[2] = "X,A,D,M";
-            sut.Get2DLetterArray(unequalDimensionsLetters);
-        }
-
-        [Test]
-        public void GivenStringArrayOfLettersWithVaryingLengthsWhenPassedToGet2DLetterArrayThenGet2DLetterArrayThrowsFormatException()
-        {
-            Assert.Throws<FormatException>(new TestDelegate(Get2DLetterArrayVaryingLengths));
-        }
-
-        private void Get2DLetterArrayVaryingLengths()
-        {
-            String[] varyingLengthsLetters = new String[4];
-            varyingLengthsLetters[0] = "K,R,I,K";
-            varyingLengthsLetters[1] = "E,M,H";
-            varyingLengthsLetters[2] = "X,A,D,M";
-            varyingLengthsLetters[3] = "N,C";
-            sut.Get2DLetterArray(varyingLengthsLetters);
         }
 
         [Test]

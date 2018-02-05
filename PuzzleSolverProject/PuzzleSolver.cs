@@ -101,7 +101,7 @@ namespace PuzzleSolverProject
             }
         }
 
-        public char[,] Get2DLetterArray(String[] csvLetters)
+        private char[,] Get2DLetterArray(String[] csvLetters)
         {
             Char[,] letters2dArray = new Char[csvLetters.Length, csvLetters.Length];
             for (int row = 0; row < csvLetters.Length; row++)
