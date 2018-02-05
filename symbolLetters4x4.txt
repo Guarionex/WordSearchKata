@@ -1,0 +1,5 @@
+KIRK,KHAN
+K,R,|,K
+E,M,#,P
+X,@,D,M
+N,C,#,U
