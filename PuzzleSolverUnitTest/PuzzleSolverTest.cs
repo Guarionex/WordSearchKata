@@ -431,5 +431,26 @@ namespace PuzzleSolverUnitTest
             unequalXY[3, 4] = 'z';
             sut.AddAllLetters(unequalXY);
         }
+
+        [Test]
+        public void GivenValid2DCharacterArrayOfLettersWith2x2DimensionsWhenPassedToAddAllLettersThenAddAllLettersThrowsNoException()
+        {
+            Char[,] smallestValidLetters = new Char[2, 2];
+            Array.Copy(valid4x4Letters, smallestValidLetters, 4);
+            sut.AddAllLetters(smallestValidLetters);
+        }
+
+        [Test]
+        public void Given2DCharacterArrayOfLettersWith1x1DimensionsWhenPassedToAddAllLettersThenAddAllLettersThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(AddAllLetters1x1));
+        }
+
+        private void AddAllLetters1x1()
+        {
+            Char[,] tooSmallLetters = new Char[1, 1];
+            Array.Copy(valid4x4Letters, tooSmallLetters, 2);
+            sut.AddAllLetters(tooSmallLetters);
+        }
     }
 }
