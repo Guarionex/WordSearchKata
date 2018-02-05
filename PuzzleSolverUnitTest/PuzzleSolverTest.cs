@@ -426,5 +426,18 @@ namespace PuzzleSolverUnitTest
             varyingLengthsLetters[3] = "N,C";
             sut.ParseLetters(varyingLengthsLetters);
         }
+
+        [Test]
+        public void GivenStringArrayOfLettersWithNumbersWhenPassedToParseLettersThenParseLettersThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseLettersNumbers));
+        }
+
+        private void ParseLettersNumbers()
+        {
+            String[] lettersWithNumbers4x4 = validCSVLetters;
+            lettersWithNumbers4x4[0].Replace('K', '6');
+            sut.ParseLetters(lettersWithNumbers4x4);
+        }
     }
 }
