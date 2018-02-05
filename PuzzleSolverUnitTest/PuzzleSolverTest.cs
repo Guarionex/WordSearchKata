@@ -16,6 +16,7 @@ namespace PuzzleSolverUnitTest
         private String validWordsString;
         private String[] validCSVLetters;
         private String validPuzzleFileName;
+        private String projectPath;
 
         [SetUp]
         public void init()
@@ -30,7 +31,8 @@ namespace PuzzleSolverUnitTest
             validCSVLetters[2] = "X,A,D,M";
             validCSVLetters[3] = "N,C,H,U";
 
-            validPuzzleFileName = @"C:\Users\chesp\source\repos\WordSearchKata\Valid4x4.txt";
+            validPuzzleFileName = "Valid4x4.txt";
+            projectPath = @"C:\Users\chesp\source\repos\WordSearchKata\";
         }
 
         [Test]
@@ -281,7 +283,7 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileThenParseFileThrowsNoException()
         {
-            sut.ParseFile(validPuzzleFileName);
+            sut.ParseFile(projectPath + validPuzzleFileName);
         }
 
         [Test]
