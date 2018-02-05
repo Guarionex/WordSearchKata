@@ -126,7 +126,7 @@ namespace PuzzleSolverProject
             return (joinedLetters.Equals(csvLetterRow) && expectedLength != 1) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
         }
 
-        public void ParseLetters(String[] rawLetters)
+        private void ParseLetters(String[] rawLetters)
         {
             Char[,] lettersGrid = Get2DLetterArray(rawLetters);
             AddAllLetters(lettersGrid);
