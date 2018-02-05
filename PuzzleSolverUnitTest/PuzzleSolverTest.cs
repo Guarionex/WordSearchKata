@@ -294,5 +294,21 @@ namespace PuzzleSolverUnitTest
             Char[,] result = sut.Get2DLetterArray(lowerCaseCSVLetters);
             Assert.AreEqual(valid4x4LowerCaseLetters, result);
         }
+
+        [Test]
+        public void GivenStringArrayOfSSVLettersWhenPassedToGet2DLetterArrayThenGet2DLetterArrayThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(Get2DLetterArraySSV));
+        }
+
+        private void Get2DLetterArraySSV()
+        {
+            String[] ssvLetters = new String[4];
+            ssvLetters[0] = "K R I K";
+            ssvLetters[1] = "E M H P";
+            ssvLetters[2] = "X A D M";
+            ssvLetters[3] = "N C H U";
+            sut.Get2DLetterArray(ssvLetters);
+        }
     }
 }
