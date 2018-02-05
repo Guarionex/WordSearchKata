@@ -135,6 +135,10 @@ namespace PuzzleSolverProject
         public void ParseFile(String fileName)
         {
             String[] lines = File.ReadAllLines(fileName);
+            if(lines[0].Split(' ').Length > 1 && lines[0].Split(',').Length == 1)
+            {
+                throw new FormatException();
+            }
             if(lines[0].Any(char.IsDigit))
             {
                 throw new ArgumentException();
