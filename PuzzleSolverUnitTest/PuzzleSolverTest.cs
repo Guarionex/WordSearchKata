@@ -340,5 +340,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "punctuation4x4.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithSSVWordsPuzzleWhenPassedIntoParseFileThenParseFileThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileSSV));
+        }
+
+        private void ParseFileSSV()
+        {
+            sut.ParseFile(projectPath + "ssv4x4.txt");
+        }
     }
 }
