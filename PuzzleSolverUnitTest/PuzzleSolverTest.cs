@@ -12,42 +12,12 @@ namespace PuzzleSolverUnitTest
     public class PuzzleSolverTest
     {
         private PuzzleSolver sut;
-        private List<String> validWordList;
-        private List<String> lowerCaseValidWordList;
-        private List<String> wordListWithEmptyStringElement;
         private String validWordsString;
 
         [SetUp]
         public void init()
         {
             sut = new PuzzleSolver();
-
-            validWordList = new List<string>();
-            validWordList.Add("BONES");
-            validWordList.Add("KHAN");
-            validWordList.Add("KIRK");
-            validWordList.Add("SCOTTY");
-            validWordList.Add("SPOCK");
-            validWordList.Add("SULU");
-            validWordList.Add("UHURA");
-
-            lowerCaseValidWordList = new List<string>();
-            lowerCaseValidWordList.Add("bones");
-            lowerCaseValidWordList.Add("khan");
-            lowerCaseValidWordList.Add("kirk");
-            lowerCaseValidWordList.Add("scotty");
-            lowerCaseValidWordList.Add("spock");
-            lowerCaseValidWordList.Add("sulu");
-            lowerCaseValidWordList.Add("uhura");
-
-            wordListWithEmptyStringElement = new List<string>();
-            wordListWithEmptyStringElement.Add("BONES");
-            wordListWithEmptyStringElement.Add("");
-            wordListWithEmptyStringElement.Add("KIRK");
-            wordListWithEmptyStringElement.Add("");
-            wordListWithEmptyStringElement.Add("SPOCK");
-            wordListWithEmptyStringElement.Add("");
-            wordListWithEmptyStringElement.Add("UHURA");
 
             validWordsString = "BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA";
         }        
