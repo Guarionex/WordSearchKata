@@ -310,5 +310,21 @@ namespace PuzzleSolverUnitTest
             ssvLetters[3] = "N C H U";
             sut.Get2DLetterArray(ssvLetters);
         }
+
+        [Test]
+        public void GivenStringArrayOfCSSVLettersWhenPassedToGet2DLetterArrayThenGet2DLetterArrayThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(Get2DLetterArrayCSSV));
+        }
+
+        private void Get2DLetterArrayCSSV()
+        {
+            String[] ssvLetters = new String[4];
+            ssvLetters[0] = "K, R, I, K";
+            ssvLetters[1] = "E, M, H, P";
+            ssvLetters[2] = "X, A, D, M";
+            ssvLetters[3] = "N, C, H, U";
+            sut.Get2DLetterArray(ssvLetters);
+        }
     }
 }
