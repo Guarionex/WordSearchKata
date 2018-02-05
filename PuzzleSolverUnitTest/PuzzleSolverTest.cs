@@ -326,5 +326,20 @@ namespace PuzzleSolverUnitTest
             ssvLetters[3] = "N, C, H, U";
             sut.Get2DLetterArray(ssvLetters);
         }
+
+        [Test]
+        public void GivenStringArrayOfLettersWithUnequalDimensionsWhenPassedToGet2DLetterArrayThenGet2DLetterArrayThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(Get2DLetterArrayUnequalDimensions));
+        }
+
+        private void Get2DLetterArrayUnequalDimensions()
+        {
+            String[] unequalDimensionsLetters = new String[3];
+            unequalDimensionsLetters[0] = "K,R,I,K";
+            unequalDimensionsLetters[1] = "E,M,H,P";
+            unequalDimensionsLetters[2] = "X,A,D,M";
+            sut.Get2DLetterArray(unequalDimensionsLetters);
+        }
     }
 }
