@@ -85,22 +85,6 @@ namespace PuzzleSolverProject
         {
             List<String> wordList = GetListOfWords(rawWordString);
             AddAllWords(wordList);
-            if(rawWordString.Any(char.IsDigit))
-            {
-                throw new ArgumentException();
-            }
-            else if(rawWordString.Any(char.IsWhiteSpace))
-            {
-                throw new ArgumentException();
-            }
-            else if(rawWordString.Any(char.IsSymbol))
-            {
-                throw new ArgumentException();
-            }
-            else if(Regex.IsMatch(rawWordString, @"[\p{P}-[,]]"))
-            {
-                throw new ArgumentException();
-            }
         }
     }
 }
