@@ -83,6 +83,11 @@ namespace PuzzleSolverProject
             }
             else if(rawWordString.Any(char.IsWhiteSpace))
             {
+                String[] cssvWords = Regex.Split(rawWordString, ", ");
+                if (cssvWords.Length > 1)
+                {
+                    throw new FormatException();
+                }
                 String[] csvWords = rawWordString.Split(',');
                 if (csvWords.Length > 1)
                 {
