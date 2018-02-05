@@ -13,7 +13,6 @@ namespace PuzzleSolverUnitTest
     public class PuzzleSolverTest
     {
         private PuzzleSolver sut;
-        private String validWordsString;
         private String[] validCSVLetters;
         private String validPuzzleFileName;
         private String projectPath;
@@ -22,8 +21,6 @@ namespace PuzzleSolverUnitTest
         public void init()
         {
             sut = new PuzzleSolver();
-
-            validWordsString = "BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA";
 
             validCSVLetters = new String[4];
             validCSVLetters[0] = "K,R,I,K";
