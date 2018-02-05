@@ -20,7 +20,7 @@ namespace PuzzleSolverProject
             }
         }
 
-        public void AddLetterAt(char letter, int x, int y)
+        private void AddLetterAt(char letter, int x, int y)
         {
             if(!char.IsLetter(letter))
             {
