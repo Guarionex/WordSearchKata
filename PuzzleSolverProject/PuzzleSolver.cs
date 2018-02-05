@@ -136,6 +136,11 @@ namespace PuzzleSolverProject
         {
             String[] lines = File.ReadAllLines(fileName);
             ParseWordsIntoPuzzle(lines[0]);
+
+            if(lines[1].Any(char.IsWhiteSpace))
+            {
+                throw new FormatException();
+            }
         }
     }
 }
