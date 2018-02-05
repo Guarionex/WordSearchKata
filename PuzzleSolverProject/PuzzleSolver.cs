@@ -89,6 +89,10 @@ namespace PuzzleSolverProject
                 {
                     throw new ArgumentException();
                 }
+                else if (word.Any(char.IsPunctuation))
+                {
+                    throw new ArgumentException();
+                }
             }
         }
 
