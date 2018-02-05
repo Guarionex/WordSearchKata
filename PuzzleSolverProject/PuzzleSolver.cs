@@ -127,20 +127,7 @@ namespace PuzzleSolverProject
 
         public void ParseLetters(String[] rawLetters)
         {
-            
-            if (rawLetters.Any(row => row.Any(char.IsWhiteSpace)))
-            {
-                throw new FormatException();
-            }
-            for(int row = 0; row < rawLetters.Length; row++)
-            {
-                String joinedRow = rawLetters[row].Replace(",", "");
-                if (joinedRow.Length != rawLetters.Length)
-                {
-                    throw new FormatException();
-                }
-            }
-            
+            Get2DLetterArray(rawLetters);
         }
     }
 }
