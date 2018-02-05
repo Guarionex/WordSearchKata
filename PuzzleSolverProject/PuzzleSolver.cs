@@ -132,6 +132,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if (rawLetters.Any(row => row.Any(char.IsSymbol)))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
