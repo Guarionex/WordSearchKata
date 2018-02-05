@@ -324,5 +324,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "varyingLetters4x4.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithPuzzleContainingNumbersWhenPassedToParseFileThenParseFileThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileNumberInLetters));
+        }
+
+        private void ParseFileNumberInLetters()
+        {
+            sut.ParseFile(projectPath + "numberLetters4x4.txt");
+        }
     }
 }
