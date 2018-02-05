@@ -532,5 +532,24 @@ namespace PuzzleSolverUnitTest
             wordsWithSymbolsList.Add("UHUR@");
             sut.AddAllWords(wordsWithSymbolsList);
         }
+
+        [Test]
+        public void GivenListOfStringOfWordsWithPunctuationsWhenPassedToAddAllWordsThenAddAllWordsThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(AddAllWordsWithPunctuations));
+        }
+
+        private void AddAllWordsWithPunctuations()
+        {
+            List<String> wordsWithPunctuationsList = new List<String>();
+            wordsWithPunctuationsList.Add("B.NES");
+            wordsWithPunctuationsList.Add("KH?N");
+            wordsWithPunctuationsList.Add("K!RK");
+            wordsWithPunctuationsList.Add("SC.TTY");
+            wordsWithPunctuationsList.Add("SP,CK");
+            wordsWithPunctuationsList.Add(".ULU");
+            wordsWithPunctuationsList.Add("UHUR!");
+            sut.AddAllWords(wordsWithPunctuationsList);
+        }
     }
 }
