@@ -436,7 +436,7 @@ namespace PuzzleSolverUnitTest
         private void ParseLettersNumbers()
         {
             String[] lettersWithNumbers4x4 = validCSVLetters;
-            lettersWithNumbers4x4[0].Replace('K', '6');
+            lettersWithNumbers4x4[0] = lettersWithNumbers4x4[0].Replace('K', '6');
             sut.ParseLetters(lettersWithNumbers4x4);
         }
     }

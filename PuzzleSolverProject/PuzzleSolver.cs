@@ -128,6 +128,10 @@ namespace PuzzleSolverProject
         public void ParseLetters(String[] rawLetters)
         {
             Get2DLetterArray(rawLetters);
+            if(rawLetters.Any(row => row.Any(char.IsDigit)))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
