@@ -127,7 +127,7 @@ namespace PuzzleSolverProject
 
         public void ParseLetters(String[] rawLetters)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
