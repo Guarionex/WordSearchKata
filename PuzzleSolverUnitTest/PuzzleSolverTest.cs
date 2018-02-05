@@ -408,5 +408,28 @@ namespace PuzzleSolverUnitTest
             lettersWithPunctuation4x4[0, 0] = '!';
             sut.AddAllLetters(lettersWithPunctuation4x4);
         }
+
+        [Test]
+        public void GivenValid2DCharacterArrayOfLettersWithEqualXYDimensionsWhenPassedToAddAllLettersThenAddAllLettersThrowsNoException()
+        {
+            sut.AddAllLetters(valid4x4Letters);
+        }
+
+        [Test]
+        public void Given2DCharacterArrayOfLettersWithUnequalXYDimensionsWhenPassedToAddAllLettersThenAddAllLettersThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(AddAllLettersUnequalXY));
+        }
+
+        private void AddAllLettersUnequalXY()
+        {
+            Char[,] unequalXY = new Char[4, 5];
+            Array.Copy(valid4x4Letters, unequalXY, 16);
+            unequalXY[3, 1] = 'w';
+            unequalXY[3, 2] = 'x';
+            unequalXY[3, 3] = 'y';
+            unequalXY[3, 4] = 'z';
+            sut.AddAllLetters(unequalXY);
+        }
     }
 }
