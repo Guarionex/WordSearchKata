@@ -382,5 +382,18 @@ namespace PuzzleSolverUnitTest
             lettersWithSpace4x4[0, 0] = ' ';
             sut.AddAllLetters(lettersWithSpace4x4);
         }
+
+        [Test]
+        public void Given2DCharacterArrayOfLettersWithSymbolWhenPassedToAddAllLettersThenAddAllLettersThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(AddAllLettersSymbol));
+        }
+
+        private void AddAllLettersSymbol()
+        {
+            Char[,] lettersWithSymbol4x4 = valid4x4Letters;
+            lettersWithSymbol4x4[0, 0] = '$';
+            sut.AddAllLetters(lettersWithSymbol4x4);
+        }
     }
 }
