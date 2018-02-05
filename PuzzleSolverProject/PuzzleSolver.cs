@@ -127,7 +127,10 @@ namespace PuzzleSolverProject
 
         public void ParseLetters(String[] rawLetters)
         {
-            
+            if(rawLetters.Any(row => row.Any(char.IsWhiteSpace)))
+            {
+                throw new FormatException();
+            }
         }
     }
 }
