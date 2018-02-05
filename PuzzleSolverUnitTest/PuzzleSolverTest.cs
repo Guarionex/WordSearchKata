@@ -379,5 +379,36 @@ namespace PuzzleSolverUnitTest
             ssvLetters[3] = "N C H U";
             sut.ParseLetters(ssvLetters);
         }
+
+        [Test]
+        public void GivenStringArrayOfCSSVLettersWhenPassedToParseLettersThenThrowFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseLetterArrayCSSV));
+        }
+
+        private void ParseLetterArrayCSSV()
+        {
+            String[] ssvLetters = new String[4];
+            ssvLetters[0] = "K, R, I, K";
+            ssvLetters[1] = "E, M, H, P";
+            ssvLetters[2] = "X, A, D, M";
+            ssvLetters[3] = "N, C, H, U";
+            sut.ParseLetters(ssvLetters);
+        }
+
+        [Test]
+        public void GivenStringArrayOfLettersWithUnequalDimensionsWhenPassedToParseLettersThenParseLettersThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseLettersUnequalDimensions));
+        }
+
+        private void ParseLettersUnequalDimensions()
+        {
+            String[] unequalDimensionsLetters = new String[3];
+            unequalDimensionsLetters[0] = "K,R,I,K";
+            unequalDimensionsLetters[1] = "E,M,H,P";
+            unequalDimensionsLetters[2] = "X,A,D,M";
+            sut.ParseLetters(unequalDimensionsLetters);
+        }
     }
 }
