@@ -357,5 +357,22 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "punctuationLetters4x4.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWith2x2PuzzleWhenPassedToParseFileThenParseFileThrowsNoException()
+        {
+            sut.ParseFile(projectPath + "valid2x2.txt");
+        }
+
+        [Test]
+        public void GivenValidFileNameWith1x1PuzzleWhenPassedToParseFileThenParseFileThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile1x1));
+        }
+
+        private void ParseFile1x1()
+        {
+            sut.ParseFile(projectPath + "1x1.txt");
+        }
     }
 }
