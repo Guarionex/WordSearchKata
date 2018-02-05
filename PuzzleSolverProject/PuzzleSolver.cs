@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -81,7 +82,7 @@ namespace PuzzleSolverProject
             }
         }
 
-        public void ParseWordsIntoPuzzle(String rawWordString)
+        private void ParseWordsIntoPuzzle(String rawWordString)
         {
             List<String> wordList = GetListOfWords(rawWordString);
             AddAllWords(wordList);
@@ -122,13 +123,22 @@ namespace PuzzleSolverProject
 
         private bool isLetterStringValid(String joinedLetters, String csvLetterRow, int expectedLength)
         {
-            return joinedLetters.Equals(csvLetterRow) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
+            return (joinedLetters.Equals(csvLetterRow) && expectedLength != 1) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
         }
 
-        public void ParseLetters(String[] rawLetters)
+        private void ParseLetters(String[] rawLetters)
         {
             Char[,] lettersGrid = Get2DLetterArray(rawLetters);
             AddAllLetters(lettersGrid);
+        }
+
+        public void ParseFile(String fileName)
+        {
+            String[] lines = File.ReadAllLines(fileName);
+            ParseWordsIntoPuzzle(lines[0]);
+            String[] rawLetters = new String[lines.Length - 1];
+            Array.Copy(lines, 1, rawLetters, 0, lines.Length - 1);
+            ParseLetters(rawLetters);
         }
     }
 }

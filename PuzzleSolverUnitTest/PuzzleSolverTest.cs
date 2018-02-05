@@ -2,6 +2,7 @@
 using PuzzleSolverProject;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,266 +13,226 @@ namespace PuzzleSolverUnitTest
     public class PuzzleSolverTest
     {
         private PuzzleSolver sut;
-        private String validWordsString;
-        private String[] validCSVLetters;
+        private String validPuzzleFileName;
+        private String projectPath;
 
         [SetUp]
         public void init()
         {
             sut = new PuzzleSolver();
 
-            validWordsString = "BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA";
-
-            validCSVLetters = new String[4];
-            validCSVLetters[0] = "K,R,I,K";
-            validCSVLetters[1] = "E,M,H,P";
-            validCSVLetters[2] = "X,A,D,M";
-            validCSVLetters[3] = "N,C,H,U";
+            validPuzzleFileName = "Valid4x4.txt";
+            projectPath = @"C:\Users\chesp\source\repos\WordSearchKata\";
         }
 
         [Test]
-        public void GivenCSVStringOfValidWordsWhenPassingGivenStringToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowsNoException()
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileThenParseFileThrowsNoException()
         {
-            sut.ParseWordsIntoPuzzle(validWordsString);
+            sut.ParseFile(projectPath + validPuzzleFileName);
         }
 
         [Test]
-        public void GivenCSVStringWithAlphaNumericWordsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowArgumentException()
+        public void GivenAInvalidStringFileNameWhenPassedIntoParseFileThenParseFileThrowsFileNotFoundException()
         {
-            Assert.Throws<ArgumentException>(new TestDelegate(ParseAlphaNumericWords));
+            Assert.Throws<FileNotFoundException>(new TestDelegate(ParseFileInvalidFileName));
         }
 
-        private void ParseAlphaNumericWords()
+        private void ParseFileInvalidFileName()
         {
-            String csvAlphaNumericWords = "B0NES,KH8N,K1RK,SCO77Y,5POCK,5ULU,UHUR8";
-            sut.ParseWordsIntoPuzzle(csvAlphaNumericWords);
-        }
-
-        [Test]
-        public void GivenCSVStringOfWordsWithSpacesWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(ParseWordsWithSpaces));
-        }
-
-        private void ParseWordsWithSpaces()
-        {
-            String csvWordsWithSpaces = "B NES,KH N,K RK,SCO  Y,S POCK,SU LU,UHUR ";
-            sut.ParseWordsIntoPuzzle(csvWordsWithSpaces);
+            sut.ParseFile("meh.txt");
         }
 
         [Test]
-        public void GivenCSVStringOfWordsWithSymbolsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingAlphaNumericWordsWhenPassedIntoParseFileThenParseFileThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(new TestDelegate(ParseWordsWithSymbols));
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileAlphaNumericWords));
         }
 
-        private void ParseWordsWithSymbols()
+        private void ParseFileAlphaNumericWords()
         {
-            String csvWordsWithSymbols = "BONE$,KH@N,KIRK,SC*TTY,$POCK,$ULU,U#UR@";
-            sut.ParseWordsIntoPuzzle(csvWordsWithSymbols);
-        }
-
-        [Test]
-        public void GivenCSVStringOfWordsWithPunctuationsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(ParseWordsWithPunctuations));
-        }
-
-        private void ParseWordsWithPunctuations()
-        {
-            String csvWordsWithPunctuations = "BONES.,KHAN?,K!RK,SCOTTY!,SPOCK?,SULU.,UHURA;";
-            sut.ParseWordsIntoPuzzle(csvWordsWithPunctuations);
+            sut.ParseFile(projectPath + "alphaNumeric4x4.txt");
         }
 
         [Test]
-        public void GivenSSVStringOfValidWordsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowFormatException()
+        public void GivenValidFileNameWithPuzzleContainingWordsWithSpacesWhenPassedIntoParseFileThenParseFileThrowsArgumentException()
         {
-            Assert.Throws<FormatException>(new TestDelegate(ParseSSVWords));
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsSpaces));
         }
 
-        private void ParseSSVWords()
+        private void ParseFileWordsSpaces()
         {
-            String csvWordsWithPunctuations = "BONES KHAN KIRK SCOTTY SPOCK SULU UHURA";
-            sut.ParseWordsIntoPuzzle(csvWordsWithPunctuations);
-        }
-
-        [Test]
-        public void GivenCSSVStringOfValidWordsWhenPassingToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowFormatException()
-        {
-            Assert.Throws<FormatException>(new TestDelegate(ParseCSSVWords));
-        }
-
-        private void ParseCSSVWords()
-        {
-            String cssvWords = "BONES, KHAN, KIRK, SCOTTY, SPOCK, SULU, UHURA";
-            sut.ParseWordsIntoPuzzle(cssvWords);
+            sut.ParseFile(projectPath + "spaces4x4.txt");
         }
 
         [Test]
-        public void GivenCSVStringOfWordsWithEmptyStringsThenPassingToParseWordsIntoPuzzleThenThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingWordsWithSymbolsWhenPassedIntoParseFileThenParseFileThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(new TestDelegate(ParseCSVWordsWithEmptyStrings));
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsSymbols));
         }
 
-        private void ParseCSVWordsWithEmptyStrings()
+        private void ParseFileWordsSymbols()
         {
-            String csvWordsWithEmptyStrings = "BONES,,KIRK,,SPOCK,,UHURA";
-            sut.ParseWordsIntoPuzzle(csvWordsWithEmptyStrings);
-        }
-
-        [Test]
-        public void GivenStringArrayOfValidCSVLettersWhenPassedToParseLettersThenThrowNoException()
-        {
-            sut.ParseLetters(validCSVLetters);
+            sut.ParseFile(projectPath + "symbols4x4.txt");
         }
 
         [Test]
-        public void GivenStringArrayOfSSVLettersWhenPassedToParseLettersThenThrowFormatException()
+        public void GivenValidFileNameWithPuzzleContainingWordsWithPunctuationsWhenPassedIntoParseFileThenParseFileThrowsArgumentException()
         {
-            Assert.Throws<FormatException>(new TestDelegate(ParseLetterArraySSV));
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsPunctuations));
         }
 
-        private void ParseLetterArraySSV()
+        private void ParseFileWordsPunctuations()
         {
-            String[] ssvLetters = new String[4];
-            ssvLetters[0] = "K R I K";
-            ssvLetters[1] = "E M H P";
-            ssvLetters[2] = "X A D M";
-            ssvLetters[3] = "N C H U";
-            sut.ParseLetters(ssvLetters);
+            sut.ParseFile(projectPath + "punctuation4x4.txt");
         }
 
         [Test]
-        public void GivenStringArrayOfCSSVLettersWhenPassedToParseLettersThenThrowFormatException()
+        public void GivenValidFileNameWithSSVWordsPuzzleWhenPassedIntoParseFileThenParseFileThrowsFormatException()
         {
-            Assert.Throws<FormatException>(new TestDelegate(ParseLetterArrayCSSV));
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileSSV));
         }
 
-        private void ParseLetterArrayCSSV()
+        private void ParseFileSSV()
         {
-            String[] ssvLetters = new String[4];
-            ssvLetters[0] = "K, R, I, K";
-            ssvLetters[1] = "E, M, H, P";
-            ssvLetters[2] = "X, A, D, M";
-            ssvLetters[3] = "N, C, H, U";
-            sut.ParseLetters(ssvLetters);
+            sut.ParseFile(projectPath + "ssv4x4.txt");
         }
 
         [Test]
-        public void GivenStringArrayOfLettersWithUnequalDimensionsWhenPassedToParseLettersThenParseLettersThrowsFormatException()
+        public void GivenValidFileNameWithCSSVWordsPuzzleWhenPassedIntoParseFileThenParseFileThrowsFormatException()
         {
-            Assert.Throws<FormatException>(new TestDelegate(ParseLettersUnequalDimensions));
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileCSSV));
         }
 
-        private void ParseLettersUnequalDimensions()
+        private void ParseFileCSSV()
         {
-            String[] unequalDimensionsLetters = new String[3];
-            unequalDimensionsLetters[0] = "K,R,I,K";
-            unequalDimensionsLetters[1] = "E,M,H,P";
-            unequalDimensionsLetters[2] = "X,A,D,M";
-            sut.ParseLetters(unequalDimensionsLetters);
+            sut.ParseFile(projectPath + "cssv4x4.txt");
         }
 
         [Test]
-        public void GivenStringArrayOfLettersWithVaryingLengthsWhenPassedToParseLettersThenParseLettersThrowsFormatException()
+        public void GivenValidFileNameWithEmptyWordPuzzleWhenPassedIntoParseFileThenParseFileThrowsArgumentException()
         {
-            Assert.Throws<FormatException>(new TestDelegate(ParseLettersVaryingLengths));
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileEmptyWord));
         }
 
-        private void ParseLettersVaryingLengths()
+        private void ParseFileEmptyWord()
         {
-            String[] varyingLengthsLetters = new String[4];
-            varyingLengthsLetters[0] = "K,R,I,K";
-            varyingLengthsLetters[1] = "E,M,H";
-            varyingLengthsLetters[2] = "X,A,D,M";
-            varyingLengthsLetters[3] = "N,C";
-            sut.ParseLetters(varyingLengthsLetters);
+            sut.ParseFile(projectPath + "empty4x4.txt");
         }
 
         [Test]
-        public void GivenStringArrayOfLettersWithNumbersWhenPassedToParseLettersThenParseLettersThrowsArgumentException()
+        public void GivenValidFileNameWithSSVLettersPuzzleWhenPassedToParseFileThenParseFileThrowsFormatException()
         {
-            Assert.Throws<ArgumentException>(new TestDelegate(ParseLettersNumbers));
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileSSVLetters));
         }
 
-        private void ParseLettersNumbers()
+        private void ParseFileSSVLetters()
         {
-            String[] lettersWithNumbers4x4 = validCSVLetters;
-            lettersWithNumbers4x4[0] = lettersWithNumbers4x4[0].Replace('K', '6');
-            sut.ParseLetters(lettersWithNumbers4x4);
-        }
-
-        [Test]
-        public void GivenStringArrayOfLettersWithSymbolWhenPassedToParseLettersThenParseLettersThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(ParseLettersSymbol));
-        }
-
-        private void ParseLettersSymbol()
-        {
-            String[] lettersWithSymbol4x4 = validCSVLetters;
-            lettersWithSymbol4x4[0] = lettersWithSymbol4x4[0].Replace('K', '$');
-            sut.ParseLetters(lettersWithSymbol4x4);
+            sut.ParseFile(projectPath + "ssvLetters4x4.txt");
         }
 
         [Test]
-        public void GivenStringArrayOfLettersWithPunctuationWhenPassedToParseLettersThenParseLettersThrowsArgumentException()
+        public void GivenValidFileNameWithCSSVLettersPuzzleWhenPassedToParseFileThenParseFileThrowsFormatException()
         {
-            Assert.Throws<ArgumentException>(new TestDelegate(ParseLettersPunctuation));
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileCSSVLetters));
         }
 
-        private void ParseLettersPunctuation()
+        private void ParseFileCSSVLetters()
         {
-            String[] lettersWithPunctuation4x4 = validCSVLetters;
-            lettersWithPunctuation4x4[0] = lettersWithPunctuation4x4[0].Replace('K', '!');
-            sut.ParseLetters(lettersWithPunctuation4x4);
-        }
-
-        [Test]
-        public void GivenValid2DCharacterArrayOfLettersWith2x2DimensionsWhenPassedToParseLetterThenParseLetterThrowsNoException()
-        {
-            String[] smallestValidLetters = new String[2];
-            smallestValidLetters[0] = "K,R";
-            smallestValidLetters[1] = "E,M";
-            sut.ParseLetters(smallestValidLetters);
+            sut.ParseFile(projectPath + "cssvLetters4x4.txt");
         }
 
         [Test]
-        public void GivenValid2DCharacterArrayOfLettersWith1x1DimensionsWhenPassedToParseLetterThenParseLetterThrowsFormatException()
+        public void GivenValidFileNameWithUnequalDimensionsPuzzleWhenPassedToParseFileThenParseFileThrowsFormatException()
         {
-            Assert.Throws<FormatException>(new TestDelegate(ParseLetters1x1));
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileUnequal));
         }
 
-        private void ParseLetters1x1()
+        private void ParseFileUnequal()
         {
-            String[] csvLetters1x1 = new String[1];
-            csvLetters1x1[0] = "K";
-            sut.ParseLetters(csvLetters1x1);
-        }
-
-        [Test]
-        public void GivenValid2DCharacterArrayOfLettersWith1x1DimensionsContainingATailingCommaWhenPassedToParseLetterThenParseLetterThrowsArgumentOutOfRangeException()
-        {
-            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseLetters1x1Comma));
-        }
-
-        private void ParseLetters1x1Comma()
-        {
-            String[] csvLetters1x1Comma = new String[1];
-            csvLetters1x1Comma[0] = "K,";
-            sut.ParseLetters(csvLetters1x1Comma);
+            sut.ParseFile(projectPath + "unequalLetters4x4.txt");
         }
 
         [Test]
-        public void GivenValid2DCharacterArrayOfLettersWith0x0DimensionsWhenPassedToParseLetterThenParseLetterThrowsArgumentOutOfRangeExceptionException()
+        public void GivenValidFileNameWithVaryingLengthsPuzzleWhenPassedToParseFileThenParseFileThrowsFormatException()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseLetters0x0));
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileVarying));
         }
 
-        private void ParseLetters0x0()
+        private void ParseFileVarying()
         {
-            String[] csvLetter0x0 = new String[0];
-            sut.ParseLetters(csvLetter0x0);
+            sut.ParseFile(projectPath + "varyingLetters4x4.txt");
+        }
+
+        [Test]
+        public void GivenValidFileNameWithPuzzleContainingNumbersWhenPassedToParseFileThenParseFileThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileNumberInLetters));
+        }
+
+        private void ParseFileNumberInLetters()
+        {
+            sut.ParseFile(projectPath + "numberLetters4x4.txt");
+        }
+
+        [Test]
+        public void GivenValidFileNameWithPuzzleContainingSymbolsWhenPassedToParseFileThenParseFileThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileSymbolsInLetters));
+        }
+
+        private void ParseFileSymbolsInLetters()
+        {
+            sut.ParseFile(projectPath + "symbolLetters4x4.txt");
+        }
+
+        [Test]
+        public void GivenValidFileNameWithPuzzleContainingPunctuationsWhenPassedToParseFileThenParseFileThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFilePunctuationsInLetters));
+        }
+
+        private void ParseFilePunctuationsInLetters()
+        {
+            sut.ParseFile(projectPath + "punctuationLetters4x4.txt");
+        }
+
+        [Test]
+        public void GivenValidFileNameWith2x2PuzzleWhenPassedToParseFileThenParseFileThrowsNoException()
+        {
+            sut.ParseFile(projectPath + "valid2x2.txt");
+        }
+
+        [Test]
+        public void GivenValidFileNameWith1x1PuzzleWhenPassedToParseFileThenParseFileThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile1x1));
+        }
+
+        private void ParseFile1x1()
+        {
+            sut.ParseFile(projectPath + "1x1.txt");
+        }
+
+        [Test]
+        public void GivenValidFileNameWith1x1WithTrailingCommaPuzzleWhenPassedToParseFileThenParseFileThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile1x1Comma));
+        }
+
+        private void ParseFile1x1Comma()
+        {
+            sut.ParseFile(projectPath + "1x1Comma.txt");
+        }
+
+        [Test]
+        public void GivenValidFileNameWith0x0PuzzleWhenPassedToParseFileThenParseFileThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile0x0));
+        }
+
+        private void ParseFile0x0()
+        {
+            sut.ParseFile(projectPath + "0x0.txt");
         }
     }
 }
