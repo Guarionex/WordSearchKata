@@ -13,6 +13,7 @@ namespace PuzzleSolverUnitTest
     {
         private PuzzleSolver sut;
         private String validWordsString;
+        private Char[,] valid4x4Letters;
 
         [SetUp]
         public void init()
@@ -20,6 +21,25 @@ namespace PuzzleSolverUnitTest
             sut = new PuzzleSolver();
 
             validWordsString = "BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA";
+
+            valid4x4Letters = new Char[4, 4];
+            valid4x4Letters[0, 0] = 'K';
+            valid4x4Letters[0, 1] = 'R';
+            valid4x4Letters[0, 2] = 'I';
+            valid4x4Letters[0, 3] = 'K';
+            valid4x4Letters[1, 0] = 'E';
+            valid4x4Letters[1, 1] = 'M';
+            valid4x4Letters[1, 2] = 'H';
+            valid4x4Letters[1, 3] = 'P';
+            valid4x4Letters[2, 0] = 'X';
+            valid4x4Letters[2, 1] = 'A';
+            valid4x4Letters[2, 2] = 'D';
+            valid4x4Letters[2, 3] = 'M';
+            valid4x4Letters[3, 0] = 'N';
+            valid4x4Letters[3, 1] = 'C';
+            valid4x4Letters[3, 2] = 'H';
+            valid4x4Letters[3, 3] = 'U';
+
         }        
 
         [Test]
@@ -329,6 +349,12 @@ namespace PuzzleSolverUnitTest
         {
             String csvWordsWithEmptyStrings = "BONES,,KIRK,,SPOCK,,UHURA";
             sut.ParseWordsIntoPuzzle(csvWordsWithEmptyStrings);
+        }
+
+        [Test]
+        public void GivenValid2DCharacterArrayOfLettersWhenPassedToAddAllLettersThenNoExceptionisThrown()
+        {
+            sut.AddAllLetters(valid4x4Letters);
         }
     }
 }

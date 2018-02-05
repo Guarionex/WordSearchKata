@@ -86,5 +86,10 @@ namespace PuzzleSolverProject
             List<String> wordList = GetListOfWords(rawWordString);
             AddAllWords(wordList);
         }
+
+        public void AddAllLetters(char[,] valid4x4Letters)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
