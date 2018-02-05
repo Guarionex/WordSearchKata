@@ -107,6 +107,10 @@ namespace PuzzleSolverProject
             for (int row = 0; row < csvLetters.Length; row++)
             {
                 String joinedRow = csvLetters[row].Replace(",", "");
+                if(joinedRow.Equals(csvLetters[row]))
+                {
+                    throw new FormatException();
+                }
                 for(int col = 0; col < joinedRow.Length; col++)
                 {
                     letters2dArray[col, row] = joinedRow[col];
