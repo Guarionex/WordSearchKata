@@ -513,5 +513,24 @@ namespace PuzzleSolverUnitTest
             wordsWithSpacesList.Add("UHUR ");
             sut.AddAllWords(wordsWithSpacesList);
         }
+
+        [Test]
+        public void GivenListOfStringOfWordsWithSymbolsWhenPassedToAddAllWordsThenAddAllWordsThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(AddAllWordsWithSymbols));
+        }
+
+        private void AddAllWordsWithSymbols()
+        {
+            List<String> wordsWithSymbolsList = new List<String>();
+            wordsWithSymbolsList.Add("B*NES");
+            wordsWithSymbolsList.Add("KH&N");
+            wordsWithSymbolsList.Add("K|RK");
+            wordsWithSymbolsList.Add("SC*TTY");
+            wordsWithSymbolsList.Add("SP*CK");
+            wordsWithSymbolsList.Add("$ULU");
+            wordsWithSymbolsList.Add("UHUR@");
+            sut.AddAllWords(wordsWithSymbolsList);
+        }
     }
 }
