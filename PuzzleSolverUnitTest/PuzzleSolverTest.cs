@@ -369,5 +369,18 @@ namespace PuzzleSolverUnitTest
             lettersWithNumbers4x4[0, 0] = '6';
             sut.AddAllLetters(lettersWithNumbers4x4);
         }
+
+        [Test]
+        public void Given2DCharacterArrayOfLettersWithSpaceWhenPassedToAddAllLettersThenAddAllLettersThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(AddAllLettersSpace));
+        }
+
+        private void AddAllLettersSpace()
+        {
+            Char[,] lettersWithSpace4x4 = valid4x4Letters;
+            lettersWithSpace4x4[0, 0] = ' ';
+            sut.AddAllLetters(lettersWithSpace4x4);
+        }
     }
 }
