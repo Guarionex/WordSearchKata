@@ -69,7 +69,7 @@ namespace PuzzleSolverProject
             return delimetedWords.Length == 1 || delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, 0)));
         }
 
-        public void addAllWords(List<String> listOfWords)
+        public void AddAllWords(List<String> listOfWords)
         {
             if(listOfWords.Any(string.IsNullOrWhiteSpace))
             {
@@ -91,7 +91,7 @@ namespace PuzzleSolverProject
         public void ParseWordsIntoPuzzle(String rawWordString)
         {
             List<String> wordList = GetListOfWords(rawWordString);
-            addAllWords(wordList);
+            AddAllWords(wordList);
             if(rawWordString.Any(char.IsDigit))
             {
                 throw new ArgumentException();

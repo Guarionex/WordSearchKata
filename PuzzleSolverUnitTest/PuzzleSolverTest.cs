@@ -372,7 +372,7 @@ namespace PuzzleSolverUnitTest
         public void GivenCSVStringOfValidWordsWhenAddingListOfValidWordsThenAddAllWordsThrowsNoException()
         {
             List<String> listOfWords = sut.GetListOfWords("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA");
-            sut.addAllWords(listOfWords);
+            sut.AddAllWords(listOfWords);
         }
 
         [Test]
@@ -383,7 +383,7 @@ namespace PuzzleSolverUnitTest
 
         private void addAllWordsWithEmptyStrings()
         {
-            sut.addAllWords(wordListWithEmptyStringElement);
+            sut.AddAllWords(wordListWithEmptyStringElement);
         }
 
         [Test]
@@ -492,7 +492,7 @@ namespace PuzzleSolverUnitTest
             alphaNumericList.Add("SP0CK");
             alphaNumericList.Add("5ULU");
             alphaNumericList.Add("UHUR8");
-            sut.addAllWords(alphaNumericList);
+            sut.AddAllWords(alphaNumericList);
         }
 
         [Test]
@@ -511,7 +511,7 @@ namespace PuzzleSolverUnitTest
             wordsWithSpacesList.Add("SP CK");
             wordsWithSpacesList.Add(" ULU");
             wordsWithSpacesList.Add("UHUR ");
-            sut.addAllWords(wordsWithSpacesList);
+            sut.AddAllWords(wordsWithSpacesList);
         }
     }
 }
