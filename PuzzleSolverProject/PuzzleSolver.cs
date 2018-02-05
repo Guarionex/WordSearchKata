@@ -91,6 +91,10 @@ namespace PuzzleSolverProject
         {
             int lengthX = multiArrayOfLetters.GetLength(0);
             int lengthY = multiArrayOfLetters.GetLength(1);
+            if(lengthX != lengthY)
+            {
+                throw new ArgumentException();
+            }
             for(int col = 0; col < lengthX; col++)
             {
                 for(int row = 0; row < lengthY; row++)
