@@ -362,5 +362,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "cssv4x4.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithEmptyWordPuzzleWhenPassedIntoParseFileThenParseFileThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileEmptyWord));
+        }
+
+        private void ParseFileEmptyWord()
+        {
+            sut.ParseFile(projectPath + "empty4x4.txt");
+        }
     }
 }
