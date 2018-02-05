@@ -14,6 +14,7 @@ namespace PuzzleSolverUnitTest
         private PuzzleSolver sut;
         private String validWordsString;
         private String[] validCSVLetters;
+        private String validPuzzleFileName;
 
         [SetUp]
         public void init()
@@ -27,6 +28,8 @@ namespace PuzzleSolverUnitTest
             validCSVLetters[1] = "E,M,H,P";
             validCSVLetters[2] = "X,A,D,M";
             validCSVLetters[3] = "N,C,H,U";
+
+            validPuzzleFileName = "Valid4x4.txt";
         }
 
         [Test]
@@ -272,6 +275,12 @@ namespace PuzzleSolverUnitTest
         {
             String[] csvLetter0x0 = new String[0];
             sut.ParseLetters(csvLetter0x0);
+        }
+
+        [Test]
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileThenParseFileThrowsNoException()
+        {
+            sut.ParseFile(validPuzzleFileName);
         }
     }
 }

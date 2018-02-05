@@ -130,5 +130,10 @@ namespace PuzzleSolverProject
             Char[,] lettersGrid = Get2DLetterArray(rawLetters);
             AddAllLetters(lettersGrid);
         }
+
+        public void ParseFile(String fileName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
