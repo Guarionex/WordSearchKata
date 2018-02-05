@@ -12,7 +12,7 @@ namespace PuzzleSolverProject
         private int sizeX;
         private int sizeY;
 
-        public void AddWord(String word)
+        private void AddWord(String word)
         {
             if(word.Any(ch => ! char.IsLetter(ch)))
             {
