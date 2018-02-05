@@ -107,11 +107,7 @@ namespace PuzzleSolverProject
             for (int row = 0; row < csvLetters.Length; row++)
             {
                 String joinedRow = csvLetters[row].Replace(",", "");
-                if(isLetterStringValid(joinedRow, csvLetters[row]))
-                {
-                    throw new FormatException();
-                }
-                else if(csvLetters.Length != joinedRow.Length)
+                if(isLetterStringValid(joinedRow, csvLetters[row], csvLetters.Length))
                 {
                     throw new FormatException();
                 }
@@ -124,9 +120,9 @@ namespace PuzzleSolverProject
             return letters2dArray;
         }
 
-        private bool isLetterStringValid(String joinedLetters, String csvLetterRow)
+        private bool isLetterStringValid(String joinedLetters, String csvLetterRow, int expectedLength)
         {
-            return joinedLetters.Equals(csvLetterRow) || joinedLetters.Any(char.IsWhiteSpace);
+            return joinedLetters.Equals(csvLetterRow) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
         }
     }
 }
