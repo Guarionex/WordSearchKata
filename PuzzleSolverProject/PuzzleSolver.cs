@@ -99,6 +99,10 @@ namespace PuzzleSolverProject
                     {
                         throw new ArgumentException();
                     }
+                    else if(char.IsWhiteSpace(multiArrayOfLetters[row, col]))
+                    {
+                        throw new ArgumentException();
+                    }
                 }
             }
         }
