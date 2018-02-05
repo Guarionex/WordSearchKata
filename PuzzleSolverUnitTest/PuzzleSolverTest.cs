@@ -449,7 +449,7 @@ namespace PuzzleSolverUnitTest
         private void AddAllLetters1x1()
         {
             Char[,] tooSmallLetters = new Char[1, 1];
-            Array.Copy(valid4x4Letters, tooSmallLetters, 2);
+            Array.Copy(valid4x4Letters, tooSmallLetters, 1);
             sut.AddAllLetters(tooSmallLetters);
         }
     }

@@ -95,6 +95,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if(lengthX == 1)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             for(int col = 0; col < lengthY; col++)
             {
                 for(int row = 0; row < lengthX; row++)
