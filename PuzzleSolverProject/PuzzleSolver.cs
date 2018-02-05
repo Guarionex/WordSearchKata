@@ -75,6 +75,13 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            foreach(String word in listOfWords)
+            {
+                if(word.Any(char.IsDigit))
+                {
+                    throw new ArgumentException();
+                }
+            }
         }
 
         public void ParseWordsIntoPuzzle(String rawWordString)
