@@ -92,13 +92,37 @@ namespace PuzzleSolverProject
             int lengthX = multiArrayOfLetters.GetLength(0);
             int lengthY = multiArrayOfLetters.GetLength(1);
             SetDimensions(lengthX, lengthY);
-            for(int col = 0; col < lengthY; col++)
+            for(int col = 0; col < lengthX; col++)
             {
-                for(int row = 0; row < lengthX; row++)
+                for(int row = 0; row < lengthY; row++)
                 {
-                    AddLetterAt(multiArrayOfLetters[row, col], row, col);
+                    AddLetterAt(multiArrayOfLetters[col, row], col, row);
                 }
             }
+        }
+
+        public char[,] Get2DLetterArray(String[] csvLetters)
+        {
+            Char[,] letters2dArray = new Char[csvLetters.Length, csvLetters.Length];
+            for (int row = 0; row < csvLetters.Length; row++)
+            {
+                String joinedRow = csvLetters[row].Replace(",", "");
+                if(isLetterStringValid(joinedRow, csvLetters[row], csvLetters.Length))
+                {
+                    throw new FormatException();
+                }
+                for(int col = 0; col < joinedRow.Length; col++)
+                {
+                    letters2dArray[col, row] = joinedRow[col];
+                }
+            }
+
+            return letters2dArray;
+        }
+
+        private bool isLetterStringValid(String joinedLetters, String csvLetterRow, int expectedLength)
+        {
+            return joinedLetters.Equals(csvLetterRow) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
         }
     }
 }
