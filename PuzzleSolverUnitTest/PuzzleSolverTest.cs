@@ -463,5 +463,17 @@ namespace PuzzleSolverUnitTest
             String cssvWords = "BONES, KHAN, KIRK, SCOTTY, SPOCK, SULU, UHURA";
             sut.ParseWordsIntoPuzzle(cssvWords);
         }
+
+        [Test]
+        private void GivenCSVStringOfWordsWithEmptyStringsThenPassingToParseWordsIntoPuzzleThenThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseCSVWordsWithEmptyStrings));
+        }
+
+        private void ParseCSVWordsWithEmptyStrings()
+        {
+            String csvWordsWithEmptyStrings = "BONES,,KIRK,,SPOCK,,UHURA";
+            sut.ParseWordsIntoPuzzle(csvWordsWithEmptyStrings);
+        }
     }
 }
