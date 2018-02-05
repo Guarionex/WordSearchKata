@@ -79,23 +79,14 @@ namespace PuzzleSolverProject
 
         public void ParseWordsIntoPuzzle(String rawWordString)
         {
+            List<String> wordList = GetListOfWords(rawWordString);
             if(rawWordString.Any(char.IsDigit))
             {
                 throw new ArgumentException();
             }
             else if(rawWordString.Any(char.IsWhiteSpace))
             {
-                String[] cssvWords = Regex.Split(rawWordString, ", ");
-                if (cssvWords.Length > 1)
-                {
-                    throw new FormatException();
-                }
-                String[] csvWords = rawWordString.Split(',');
-                if (csvWords.Length > 1)
-                {
-                    throw new ArgumentException();
-                }
-                throw new FormatException();
+                throw new ArgumentException();
             }
             else if(rawWordString.Any(char.IsSymbol))
             {
