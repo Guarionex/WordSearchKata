@@ -475,5 +475,24 @@ namespace PuzzleSolverUnitTest
             String csvWordsWithEmptyStrings = "BONES,,KIRK,,SPOCK,,UHURA";
             sut.ParseWordsIntoPuzzle(csvWordsWithEmptyStrings);
         }
+
+        [Test]
+        public void GivenListOfStringWithAlphaNumericWordsWhenPassedToAddAllWordsThenAddAllWordsThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(AddAllAlphaNumericWords));
+        }
+
+        private void AddAllAlphaNumericWords()
+        {
+            List<String> alphaNumericList = new List<String>();
+            alphaNumericList.Add("B0NES");
+            alphaNumericList.Add("KH8N");
+            alphaNumericList.Add("K1RK");
+            alphaNumericList.Add("SC0TTY");
+            alphaNumericList.Add("SP0CK");
+            alphaNumericList.Add("5ULU");
+            alphaNumericList.Add("UHUR8");
+            sut.addAllWords(alphaNumericList);
+        }
     }
 }
