@@ -85,6 +85,10 @@ namespace PuzzleSolverProject
                 {
                     throw new ArgumentException();
                 }
+                else if(word.Any(char.IsSymbol))
+                {
+                    throw new ArgumentException();
+                }
             }
         }
 
