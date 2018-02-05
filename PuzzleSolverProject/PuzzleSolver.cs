@@ -123,7 +123,7 @@ namespace PuzzleSolverProject
 
         private bool isLetterStringValid(String joinedLetters, String csvLetterRow, int expectedLength)
         {
-            return joinedLetters.Equals(csvLetterRow) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
+            return (joinedLetters.Equals(csvLetterRow) && expectedLength != 1) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
         }
 
         public void ParseLetters(String[] rawLetters)
@@ -136,38 +136,9 @@ namespace PuzzleSolverProject
         {
             String[] lines = File.ReadAllLines(fileName);
             ParseWordsIntoPuzzle(lines[0]);
-
-            if(lines.Length == 1)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-            if(lines[1].Any(char.IsWhiteSpace))
-            {
-                throw new FormatException();
-            }
-            for (int row = 1; row < lines.Length; row++)
-            { 
-                if (lines[row].Replace(",", "").Length != lines.Length - 1)
-                {
-                    throw new FormatException();
-                }
-                else if(lines[row].Any(char.IsDigit))
-                {
-                    throw new ArgumentException();
-                }
-                else if(lines[row].Any(char.IsSymbol))
-                {
-                    throw new ArgumentException();
-                }
-                else if(lines[row].Replace(",", "").Any(char.IsPunctuation))
-                {
-                    throw new ArgumentException();
-                }
-                if(lines.Length - 1 == 1)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-            }
+            String[] rawLetters = new String[lines.Length - 1];
+            Array.Copy(lines, 1, rawLetters, 0, lines.Length - 1);
+            ParseLetters(rawLetters);
         }
     }
 }

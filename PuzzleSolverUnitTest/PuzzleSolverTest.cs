@@ -150,9 +150,9 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValid2DCharacterArrayOfLettersWith1x1DimensionsWhenPassedToParseLetterThenParseLetterThrowsFormatException()
+        public void GivenValid2DCharacterArrayOfLettersWith1x1DimensionsWhenPassedToParseLetterThenParseLetterThrowsArgumentOutOfRangeExceptionException()
         {
-            Assert.Throws<FormatException>(new TestDelegate(ParseLetters1x1));
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseLetters1x1));
         }
 
         private void ParseLetters1x1()
