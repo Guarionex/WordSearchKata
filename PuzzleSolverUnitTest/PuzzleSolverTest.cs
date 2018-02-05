@@ -313,5 +313,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "unequalLetters4x4.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithVaryingLengthsPuzzleWhenPassedToParseFileThenParseFileThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileVarying));
+        }
+
+        private void ParseFileVarying()
+        {
+            sut.ParseFile(projectPath + "varyingLetters4x4.txt");
+        }
     }
 }
