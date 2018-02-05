@@ -155,6 +155,10 @@ namespace PuzzleSolverProject
                 {
                     throw new ArgumentException();
                 }
+                else if(lines[row].Replace(",", "").Any(char.IsPunctuation))
+                {
+                    throw new ArgumentException();
+                }
             }
         }
     }
