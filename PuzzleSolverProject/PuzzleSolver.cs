@@ -77,22 +77,7 @@ namespace PuzzleSolverProject
             }
             foreach(String word in listOfWords)
             {
-                if(word.Any(char.IsDigit))
-                {
-                    throw new ArgumentException();
-                }
-                else if(word.Any(char.IsWhiteSpace))
-                {
-                    throw new ArgumentException();
-                }
-                else if(word.Any(char.IsSymbol))
-                {
-                    throw new ArgumentException();
-                }
-                else if (word.Any(char.IsPunctuation))
-                {
-                    throw new ArgumentException();
-                }
+                AddWord(word);
             }
         }
 
