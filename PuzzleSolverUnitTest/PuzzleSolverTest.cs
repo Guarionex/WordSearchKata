@@ -465,5 +465,40 @@ namespace PuzzleSolverUnitTest
             lettersWithPunctuation4x4[0] = lettersWithPunctuation4x4[0].Replace('K', '!');
             sut.ParseLetters(lettersWithPunctuation4x4);
         }
+
+        [Test]
+        public void GivenValid2DCharacterArrayOfLettersWith2x2DimensionsWhenPassedToParseLetterThenParseLetterThrowsNoException()
+        {
+            String[] smallestValidLetters = new String[2];
+            smallestValidLetters[0] = "K,R";
+            smallestValidLetters[1] = "E,M";
+            sut.ParseLetters(smallestValidLetters);
+        }
+
+        [Test]
+        public void GivenValid2DCharacterArrayOfLettersWith1x1DimensionsWhenPassedToParseLetterThenParseLetterThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseLetters1x1));
+        }
+
+        private void ParseLetters1x1()
+        {
+            String[] smallestValidLetters = new String[1];
+            smallestValidLetters[0] = "K";
+            sut.ParseLetters(smallestValidLetters);
+        }
+
+        [Test]
+        public void GivenValid2DCharacterArrayOfLettersWith1x1DimensionsContainingATailingCommaWhenPassedToParseLetterThenParseLetterThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseLetters1x1Comma));
+        }
+
+        private void ParseLetters1x1Comma()
+        {
+            String[] smallestValidLetters = new String[1];
+            smallestValidLetters[0] = "K,";
+            sut.ParseLetters(smallestValidLetters);
+        }
     }
 }
