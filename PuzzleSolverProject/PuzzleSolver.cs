@@ -139,6 +139,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            if (lines[0].Any(char.IsWhiteSpace))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
