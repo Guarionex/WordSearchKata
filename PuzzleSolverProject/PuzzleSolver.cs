@@ -140,6 +140,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            if(rawLetters.Length == 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             String joinedRow = rawLetters[0].Replace(",", "");
             if(joinedRow.Length == 1)
             {

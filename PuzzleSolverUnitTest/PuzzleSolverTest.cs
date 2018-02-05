@@ -483,9 +483,9 @@ namespace PuzzleSolverUnitTest
 
         private void ParseLetters1x1()
         {
-            String[] smallestValidLetters = new String[1];
-            smallestValidLetters[0] = "K";
-            sut.ParseLetters(smallestValidLetters);
+            String[] csvLetters1x1 = new String[1];
+            csvLetters1x1[0] = "K";
+            sut.ParseLetters(csvLetters1x1);
         }
 
         [Test]
@@ -496,9 +496,9 @@ namespace PuzzleSolverUnitTest
 
         private void ParseLetters1x1Comma()
         {
-            String[] smallestValidLetters = new String[1];
-            smallestValidLetters[0] = "K,";
-            sut.ParseLetters(smallestValidLetters);
+            String[] csvLetters1x1Comma = new String[1];
+            csvLetters1x1Comma[0] = "K,";
+            sut.ParseLetters(csvLetters1x1Comma);
         }
 
         [Test]
