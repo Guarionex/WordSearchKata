@@ -158,6 +158,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if(lines[0].Split(',').Any(String.IsNullOrEmpty))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
