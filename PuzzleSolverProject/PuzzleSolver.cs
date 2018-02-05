@@ -107,6 +107,10 @@ namespace PuzzleSolverProject
                     {
                         throw new ArgumentException();
                     }
+                    else if (char.IsPunctuation(multiArrayOfLetters[row, col]))
+                    {
+                        throw new ArgumentException();
+                    }
                 }
             }
         }
