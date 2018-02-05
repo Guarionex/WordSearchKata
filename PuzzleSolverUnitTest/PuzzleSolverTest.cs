@@ -305,25 +305,7 @@ namespace PuzzleSolverUnitTest
         {
             List<String> result = sut.GetListOfWords("bones,khan,kirk,scotty,spock,sulu,uhura");
             Assert.AreEqual(lowerCaseValidWordList, result);
-        }
-
-        [Test]
-        public void GivenCSVStringOfValidWordsWhenAddingListOfValidWordsThenAddAllWordsThrowsNoException()
-        {
-            List<String> listOfWords = sut.GetListOfWords("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA");
-            sut.AddAllWords(listOfWords);
-        }
-
-        [Test]
-        public void GivenListOfStringsWithEmptyStringElementWhenAddingListOfValidWordsThenAddAllWordsThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(addAllWordsWithEmptyStrings));
-        }
-
-        private void addAllWordsWithEmptyStrings()
-        {
-            sut.AddAllWords(wordListWithEmptyStringElement);
-        }
+        }        
 
         [Test]
         public void GivenCSVStringOfValidWordsWhenPassingGivenStringToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowsNoException()
@@ -413,82 +395,6 @@ namespace PuzzleSolverUnitTest
         {
             String csvWordsWithEmptyStrings = "BONES,,KIRK,,SPOCK,,UHURA";
             sut.ParseWordsIntoPuzzle(csvWordsWithEmptyStrings);
-        }
-
-        [Test]
-        public void GivenListOfStringWithAlphaNumericWordsWhenPassedToAddAllWordsThenAddAllWordsThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(AddAllAlphaNumericWords));
-        }
-
-        private void AddAllAlphaNumericWords()
-        {
-            List<String> alphaNumericList = new List<String>();
-            alphaNumericList.Add("B0NES");
-            alphaNumericList.Add("KH8N");
-            alphaNumericList.Add("K1RK");
-            alphaNumericList.Add("SC0TTY");
-            alphaNumericList.Add("SP0CK");
-            alphaNumericList.Add("5ULU");
-            alphaNumericList.Add("UHUR8");
-            sut.AddAllWords(alphaNumericList);
-        }
-
-        [Test]
-        public void GivenListOfStringOfWordsWithSpacesWhenPassedToAddAllWordsThenAddAllWordsThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(AddAllWordsWithSpaces));
-        }
-
-        private void AddAllWordsWithSpaces()
-        {
-            List<String> wordsWithSpacesList = new List<String>();
-            wordsWithSpacesList.Add("B NES");
-            wordsWithSpacesList.Add("KH N");
-            wordsWithSpacesList.Add("K RK");
-            wordsWithSpacesList.Add("SC TTY");
-            wordsWithSpacesList.Add("SP CK");
-            wordsWithSpacesList.Add(" ULU");
-            wordsWithSpacesList.Add("UHUR ");
-            sut.AddAllWords(wordsWithSpacesList);
-        }
-
-        [Test]
-        public void GivenListOfStringOfWordsWithSymbolsWhenPassedToAddAllWordsThenAddAllWordsThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(AddAllWordsWithSymbols));
-        }
-
-        private void AddAllWordsWithSymbols()
-        {
-            List<String> wordsWithSymbolsList = new List<String>();
-            wordsWithSymbolsList.Add("B*NES");
-            wordsWithSymbolsList.Add("KH&N");
-            wordsWithSymbolsList.Add("K|RK");
-            wordsWithSymbolsList.Add("SC*TTY");
-            wordsWithSymbolsList.Add("SP*CK");
-            wordsWithSymbolsList.Add("$ULU");
-            wordsWithSymbolsList.Add("UHUR@");
-            sut.AddAllWords(wordsWithSymbolsList);
-        }
-
-        [Test]
-        public void GivenListOfStringOfWordsWithPunctuationsWhenPassedToAddAllWordsThenAddAllWordsThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(AddAllWordsWithPunctuations));
-        }
-
-        private void AddAllWordsWithPunctuations()
-        {
-            List<String> wordsWithPunctuationsList = new List<String>();
-            wordsWithPunctuationsList.Add("B.NES");
-            wordsWithPunctuationsList.Add("KH?N");
-            wordsWithPunctuationsList.Add("K!RK");
-            wordsWithPunctuationsList.Add("SC.TTY");
-            wordsWithPunctuationsList.Add("SP,CK");
-            wordsWithPunctuationsList.Add(".ULU");
-            wordsWithPunctuationsList.Add("UHUR!");
-            sut.AddAllWords(wordsWithPunctuationsList);
         }
     }
 }

@@ -69,7 +69,7 @@ namespace PuzzleSolverProject
             return delimetedWords.Length == 1 || delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, 0)));
         }
 
-        public void AddAllWords(List<String> listOfWords)
+        private void AddAllWords(List<String> listOfWords)
         {
             if(listOfWords.Any(string.IsNullOrWhiteSpace))
             {
