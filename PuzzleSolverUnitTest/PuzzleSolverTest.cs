@@ -291,5 +291,27 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "ssvLetters4x4.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithCSSVLettersPuzzleWhenPassedToParseFileThenParseFileThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileCSSVLetters));
+        }
+
+        private void ParseFileCSSVLetters()
+        {
+            sut.ParseFile(projectPath + "cssvLetters4x4.txt");
+        }
+
+        [Test]
+        public void GivenValidFileNameWithUnequalDimensionsPuzzleWhenPassedToParseFileThenParseFileThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileUnequal));
+        }
+
+        private void ParseFileUnequal()
+        {
+            sut.ParseFile(projectPath + "unequalLetters4x4.txt");
+        }
     }
 }
