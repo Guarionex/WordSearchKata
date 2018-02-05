@@ -351,5 +351,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "ssv4x4.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithCSSVWordsPuzzleWhenPassedIntoParseFileThenParseFileThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileCSSV));
+        }
+
+        private void ParseFileCSSV()
+        {
+            sut.ParseFile(projectPath + "cssv4x4.txt");
+        }
     }
 }
