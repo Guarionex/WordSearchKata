@@ -280,5 +280,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "empty4x4.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithSSVLettersPuzzleWhenPassedToParseFileThenParseFileThrowsFormatException()
+        {
+            Assert.Throws<FormatException>(new TestDelegate(ParseFileSSVLetters));
+        }
+
+        private void ParseFileSSVLetters()
+        {
+            sut.ParseFile(projectPath + "ssvLetters4x4.txt");
+        }
     }
 }
