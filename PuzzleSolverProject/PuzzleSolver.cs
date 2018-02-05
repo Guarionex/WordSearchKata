@@ -96,22 +96,7 @@ namespace PuzzleSolverProject
             {
                 for(int row = 0; row < lengthX; row++)
                 {
-                    if(char.IsDigit(multiArrayOfLetters[row, col]))
-                    {
-                        throw new ArgumentException();
-                    }
-                    else if(char.IsWhiteSpace(multiArrayOfLetters[row, col]))
-                    {
-                        throw new ArgumentException();
-                    }
-                    else if(char.IsSymbol(multiArrayOfLetters[row, col]))
-                    {
-                        throw new ArgumentException();
-                    }
-                    else if (char.IsPunctuation(multiArrayOfLetters[row, col]))
-                    {
-                        throw new ArgumentException();
-                    }
+                    AddLetterAt(multiArrayOfLetters[row, col], row, col);
                 }
             }
         }
