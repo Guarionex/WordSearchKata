@@ -318,5 +318,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "spaces4x4.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithPuzzleContainingWordsWithSymbolsWhenPassedIntoParseFileThenParseFileThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsSymbols));
+        }
+
+        private void ParseFileWordsSymbols()
+        {
+            sut.ParseFile(projectPath + "symbols4x4.txt");
+        }
     }
 }
