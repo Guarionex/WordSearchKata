@@ -258,5 +258,12 @@ namespace PuzzleSolverUnitTest
             Char[,] result = sut.Get2DLetterArray(validCSVLetters);
             Assert.IsInstanceOf(typeof(Char[,]), result);
         }
+
+        [Test]
+        public void GivenValidStringArrayOfCSVLettersWhenPassedToGet2DLetterArrayThenGet2DLetterArrayReturnsAValid2DArrayOfCharacters()
+        {
+            Char[,] result = sut.Get2DLetterArray(validCSVLetters);
+            Assert.AreEqual(valid4x4Letters, result);
+        }
     }
 }
