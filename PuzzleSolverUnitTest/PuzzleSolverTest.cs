@@ -500,5 +500,17 @@ namespace PuzzleSolverUnitTest
             smallestValidLetters[0] = "K,";
             sut.ParseLetters(smallestValidLetters);
         }
+
+        [Test]
+        public void GivenValid2DCharacterArrayOfLettersWith0x0DimensionsWhenPassedToParseLetterThenParseLetterThrowsArgumentOutOfRangeExceptionException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseLetters0x0));
+        }
+
+        private void ParseLetters0x0()
+        {
+            String[] csvLetter0x0 = new String[0];
+            sut.ParseLetters(csvLetter0x0);
+        }
     }
 }
