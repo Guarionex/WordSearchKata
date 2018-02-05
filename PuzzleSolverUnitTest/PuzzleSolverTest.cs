@@ -329,5 +329,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParseFile(projectPath + "symbols4x4.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithPuzzleContainingWordsWithPunctuationsWhenPassedIntoParseFileThenParseFileThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsPunctuations));
+        }
+
+        private void ParseFileWordsPunctuations()
+        {
+            sut.ParseFile(projectPath + "punctuation4x4.txt");
+        }
     }
 }
