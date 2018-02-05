@@ -127,28 +127,8 @@ namespace PuzzleSolverProject
 
         public void ParseLetters(String[] rawLetters)
         {
-            Get2DLetterArray(rawLetters);
-            if(rawLetters.Any(row => row.Any(char.IsDigit)))
-            {
-                throw new ArgumentException();
-            }
-            else if (rawLetters.Any(row => row.Any(char.IsSymbol)))
-            {
-                throw new ArgumentException();
-            }
-            else if (rawLetters.Any(row => Regex.IsMatch(row, @"[\p{P}\p{S}-[,]]")))
-            {
-                throw new ArgumentException();
-            }
-            if(rawLetters.Length == 0)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-            String joinedRow = rawLetters[0].Replace(",", "");
-            if(joinedRow.Length == 1)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
+            Char[,] lettersGrid = Get2DLetterArray(rawLetters);
+            AddAllLetters(lettersGrid);
         }
     }
 }
