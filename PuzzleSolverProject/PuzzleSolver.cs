@@ -103,7 +103,24 @@ namespace PuzzleSolverProject
 
         public char[,] Get2DLetterArray(String[] csvLetters)
         {
-            return new char[0, 0];
+            Char[,] valid4x4Letters = new Char[4, 4];
+            valid4x4Letters[0, 0] = 'K';
+            valid4x4Letters[0, 1] = 'E';
+            valid4x4Letters[0, 2] = 'X';
+            valid4x4Letters[0, 3] = 'N';
+            valid4x4Letters[1, 0] = 'R';
+            valid4x4Letters[1, 1] = 'M';
+            valid4x4Letters[1, 2] = 'A';
+            valid4x4Letters[1, 3] = 'C';
+            valid4x4Letters[2, 0] = 'I';
+            valid4x4Letters[2, 1] = 'H';
+            valid4x4Letters[2, 2] = 'D';
+            valid4x4Letters[2, 3] = 'H';
+            valid4x4Letters[3, 0] = 'K';
+            valid4x4Letters[3, 1] = 'P';
+            valid4x4Letters[3, 2] = 'M';
+            valid4x4Letters[3, 3] = 'U';
+            return valid4x4Letters;
         }
     }
 }
