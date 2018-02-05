@@ -141,10 +141,6 @@ namespace PuzzleSolverProject
             {
                 throw new FormatException();
             }
-            else if(lines[1].Length != lines.Length)
-            {
-                throw new FormatException();
-            }
         }
     }
 }
