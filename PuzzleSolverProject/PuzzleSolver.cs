@@ -91,18 +91,7 @@ namespace PuzzleSolverProject
         {
             int lengthX = multiArrayOfLetters.GetLength(0);
             int lengthY = multiArrayOfLetters.GetLength(1);
-            if(lengthX != lengthY)
-            {
-                throw new ArgumentException();
-            }
-            else if(lengthX == 1)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-            else if(lengthX == 0)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
+            SetDimensions(lengthX, lengthY);
             for(int col = 0; col < lengthY; col++)
             {
                 for(int row = 0; row < lengthX; row++)
