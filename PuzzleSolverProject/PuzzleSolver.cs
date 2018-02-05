@@ -103,7 +103,7 @@ namespace PuzzleSolverProject
 
         public char[,] Get2DLetterArray(String[] csvLetters)
         {
-            throw new NotImplementedException();
+            return new char[0, 0];
         }
     }
 }
