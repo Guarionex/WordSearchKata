@@ -89,7 +89,7 @@ namespace PuzzleSolverProject
 
         public void AddAllLetters(char[,] valid4x4Letters)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
