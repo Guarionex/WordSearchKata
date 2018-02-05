@@ -373,10 +373,10 @@ namespace PuzzleSolverUnitTest
         private void ParseLetterArraySSV()
         {
             String[] ssvLetters = new String[4];
-            ssvLetters[0] = "K, R, I, K";
-            ssvLetters[1] = "E, M, H, P";
-            ssvLetters[2] = "X, A, D, M";
-            ssvLetters[3] = "N, C, H, U";
+            ssvLetters[0] = "K R I K";
+            ssvLetters[1] = "E M H P";
+            ssvLetters[2] = "X A D M";
+            ssvLetters[3] = "N C H U";
             sut.ParseLetters(ssvLetters);
         }
     }
