@@ -269,43 +269,7 @@ namespace PuzzleSolverUnitTest
         private void SmallDimensionsOutOfRangeY()
         {
             sut.AddLetterAt('U', 0, 5);
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedCSVStringOfValidWordsThenGetListOfWordsReturnsAListofStringsContainigValidWords()
-        {
-            List<String> result = sut.GetListOfWords("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA");
-            Assert.AreEqual(validWordList, result);
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedSSVStringOfValidWordsThenGetListOfWordsThrowsFormatException()
-        {
-            Assert.Throws<FormatException>(new TestDelegate(SSVStringOfWords));
-        }
-
-        private void SSVStringOfWords()
-        {
-            sut.GetListOfWords("BONES KHAN KIRK SCOTTY SPOCK SULU UHURA");
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedCommaAndSpaceSeparatedValuesStringOfValidWordsThenGetListOfWordsThrowsFormatException()
-        {
-            Assert.Throws<FormatException>(new TestDelegate(CSSVStringOfWords));
-        }
-
-        private void CSSVStringOfWords()
-        {
-            sut.GetListOfWords("BONES, KHAN, KIRK, SCOTTY, SPOCK, SULU, UHURA");
-        }
-
-        [Test]
-        public void GivenPuzzleSolverWhenPassedLowerCaseCSVStringOfValidWordsThenGetListOfWordsReturnsAListofStringsContainigLowerCaseValidWords()
-        {
-            List<String> result = sut.GetListOfWords("bones,khan,kirk,scotty,spock,sulu,uhura");
-            Assert.AreEqual(lowerCaseValidWordList, result);
-        }        
+        }    
 
         [Test]
         public void GivenCSVStringOfValidWordsWhenPassingGivenStringToParseWordsIntoPuzzleThenParseWordsIntoPuzzleThrowsNoException()

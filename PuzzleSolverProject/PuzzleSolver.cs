@@ -52,7 +52,7 @@ namespace PuzzleSolverProject
             sizeY = y;
         }
 
-        public List<String> GetListOfWords(String csvWords)
+        private List<String> GetListOfWords(String csvWords)
         {
             String[] splittedCSVWords = csvWords.Split(',');
             if(isWordStringFormatInvalid(splittedCSVWords))
