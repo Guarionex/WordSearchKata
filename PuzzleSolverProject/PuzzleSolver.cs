@@ -37,7 +37,7 @@ namespace PuzzleSolverProject
             return x < 0 || x > sizeX || y < 0 || y > sizeY;
         }
 
-        public void SetDimensions(int x, int y)
+        private void SetDimensions(int x, int y)
         {
             if(x < 2 && y < 2)
             {
