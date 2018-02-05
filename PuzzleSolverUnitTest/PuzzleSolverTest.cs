@@ -439,5 +439,18 @@ namespace PuzzleSolverUnitTest
             lettersWithNumbers4x4[0] = lettersWithNumbers4x4[0].Replace('K', '6');
             sut.ParseLetters(lettersWithNumbers4x4);
         }
+
+        [Test]
+        public void GivenStringArrayOfLettersWithSymbolWhenPassedToParseLettersThenParseLettersThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(new TestDelegate(ParseLettersSymbol));
+        }
+
+        private void ParseLettersSymbol()
+        {
+            String[] lettersWithSymbol4x4 = validCSVLetters;
+            lettersWithSymbol4x4[0] = lettersWithSymbol4x4[0].Replace('K', '$');
+            sut.ParseLetters(lettersWithSymbol4x4);
+        }
     }
 }
