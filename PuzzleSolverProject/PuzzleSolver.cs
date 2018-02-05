@@ -141,7 +141,7 @@ namespace PuzzleSolverProject
             {
                 throw new FormatException();
             }
-            for (int row = 1; row < lines.Length - 1; row++)
+            for (int row = 1; row < lines.Length; row++)
             { 
                 if (lines[row].Replace(",", "").Length != lines.Length - 1)
                 {
@@ -158,6 +158,10 @@ namespace PuzzleSolverProject
                 else if(lines[row].Replace(",", "").Any(char.IsPunctuation))
                 {
                     throw new ArgumentException();
+                }
+                if(lines.Length - 1 == 1)
+                {
+                    throw new ArgumentOutOfRangeException();
                 }
             }
         }
