@@ -139,6 +139,10 @@ namespace PuzzleSolverProject
             {
                 throw new FormatException();
             }
+            else if(Regex.Split(lines[0], ", ").Length > 1)
+            {
+                throw new FormatException();
+            }
             if(lines[0].Any(char.IsDigit))
             {
                 throw new ArgumentException();
