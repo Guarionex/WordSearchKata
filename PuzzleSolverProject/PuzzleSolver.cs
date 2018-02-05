@@ -55,17 +55,18 @@ namespace PuzzleSolverProject
         public List<String> GetListOfWords(String csvWords)
         {
             String[] splittedCSVWords = csvWords.Split(',');
-            if(splittedCSVWords.Length == 1)
-            {
-                throw new FormatException();
-            }
-            else if(splittedCSVWords.Any(s => s.Any(ch => char.IsWhiteSpace(s, 0))))
+            if(isWordStringFormatInvalid(splittedCSVWords))
             {
                 throw new FormatException();
             }
             List<String> wordList = new List<string>(splittedCSVWords);
 
             return wordList;
+        }
+
+        private bool isWordStringFormatInvalid(String[] delimetedWords)
+        {
+            return delimetedWords.Length == 1 || delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, 0)));
         }
 
         public void addAllWords(List<String> listOfWords)
