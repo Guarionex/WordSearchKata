@@ -96,6 +96,10 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            else if (wordList.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }

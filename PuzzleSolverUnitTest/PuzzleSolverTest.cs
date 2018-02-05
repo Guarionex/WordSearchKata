@@ -465,7 +465,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        private void GivenCSVStringOfWordsWithEmptyStringsThenPassingToParseWordsIntoPuzzleThenThrowsArgumentException()
+        public void GivenCSVStringOfWordsWithEmptyStringsThenPassingToParseWordsIntoPuzzleThenThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseCSVWordsWithEmptyStrings));
         }
