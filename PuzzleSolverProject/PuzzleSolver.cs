@@ -87,7 +87,7 @@ namespace PuzzleSolverProject
             AddAllWords(wordList);
         }
 
-        public void AddAllLetters(char[,] multiArrayOfLetters)
+        private void AddAllLetters(char[,] multiArrayOfLetters)
         {
             int lengthX = multiArrayOfLetters.GetLength(0);
             int lengthY = multiArrayOfLetters.GetLength(1);
