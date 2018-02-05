@@ -80,6 +80,7 @@ namespace PuzzleSolverProject
         public void ParseWordsIntoPuzzle(String rawWordString)
         {
             List<String> wordList = GetListOfWords(rawWordString);
+            addAllWords(wordList);
             if(rawWordString.Any(char.IsDigit))
             {
                 throw new ArgumentException();
@@ -93,10 +94,6 @@ namespace PuzzleSolverProject
                 throw new ArgumentException();
             }
             else if(Regex.IsMatch(rawWordString, @"[\p{P}-[,]]"))
-            {
-                throw new ArgumentException();
-            }
-            else if (wordList.Any(string.IsNullOrWhiteSpace))
             {
                 throw new ArgumentException();
             }
