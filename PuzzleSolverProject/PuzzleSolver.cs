@@ -133,7 +133,7 @@ namespace PuzzleSolverProject
 
         public void ParseFile(String fileName)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
