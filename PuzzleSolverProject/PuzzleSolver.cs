@@ -111,6 +111,10 @@ namespace PuzzleSolverProject
                 {
                     throw new FormatException();
                 }
+                else if(joinedRow.Any(char.IsWhiteSpace))
+                {
+                    throw new FormatException();
+                }
                 for(int col = 0; col < joinedRow.Length; col++)
                 {
                     letters2dArray[col, row] = joinedRow[col];
