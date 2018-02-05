@@ -151,6 +151,10 @@ namespace PuzzleSolverProject
                 {
                     throw new ArgumentException();
                 }
+                else if(lines[row].Any(char.IsSymbol))
+                {
+                    throw new ArgumentException();
+                }
             }
         }
     }
