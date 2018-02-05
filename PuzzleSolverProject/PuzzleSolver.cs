@@ -141,9 +141,12 @@ namespace PuzzleSolverProject
             {
                 throw new FormatException();
             }
-            else if(lines[1].Replace(",", "").Length != lines.Length - 1)
-            {
-                throw new FormatException();
+            for (int row = 1; row < lines.Length - 1; row++)
+            { 
+                if (lines[row].Replace(",", "").Length != lines.Length - 1)
+                {
+                    throw new FormatException();
+                }
             }
         }
     }
