@@ -65,30 +65,6 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenWordSearchPuzzleWhenCallingDimensionsThenDimensionsReturnsAVector2()
-        {
-            Assert.IsInstanceOf(typeof(Vector2), sut.Dimensions);
-        }
-
-        [Test]
-        public void GivenWordSearchPuzzleWithSetDimensions4x4WhenCallingDimensionsThenDimensionsReturnsAVector2With4x4Value()
-        {
-            sut.SetDimensions(4, 4);
-            Vector2 result = sut.Dimensions;
-            Vector2 expected = new Vector2(4, 4);
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void GivenWordSearchPuzzleWithSetDimensions5x5WhenCallingDimensionsThenDimensionsReturnsAVector2With5x5Value()
-        {
-            sut.SetDimensions(5, 5);
-            Vector2 result = sut.Dimensions;
-            Vector2 expected = new Vector2(5, 5);
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
         public void GivenWordSearchPuzzleWhenCallingAddLetterAtWithCharXAt0x0ThenAddLetterAtThrowsNoException()
         {
             sut.AddLetterAt('X', 2, 2);
