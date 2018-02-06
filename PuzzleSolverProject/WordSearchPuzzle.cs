@@ -11,12 +11,13 @@ namespace PuzzleSolverProject
     {
         public List<String> Words { get; }
         public Vector2 Dimensions { get; private set; }
-        public object Letters { get;}
+        public Dictionary<Vector2, Char> Letters { get;}
 
         public WordSearchPuzzle()
         {
             Words = new List<String>();
             Dimensions = new Vector2();
+            Letters = new Dictionary<Vector2, Char>();
         }
         public void AddWord(String word)
         {
