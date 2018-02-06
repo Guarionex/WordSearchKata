@@ -18,5 +18,10 @@ namespace PuzzleSolverProject
         {
             return words;
         }
+
+        public void SetDimensions(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

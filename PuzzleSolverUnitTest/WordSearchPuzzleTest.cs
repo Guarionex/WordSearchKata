@@ -56,5 +56,11 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void GivenWordSearchPuzzleWhenCallingSetDimensionsAt4x4ThenSetDimensionsThrowNoException()
+        {
+            sut.SetDimensions(4, 4);
+        }
     }
 }
