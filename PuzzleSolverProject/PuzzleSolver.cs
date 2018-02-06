@@ -126,19 +126,19 @@ namespace PuzzleSolverProject
             return (joinedLetters.Equals(csvLetterRow) && expectedLength != 1) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
         }
 
-        private void ParseLetters(String[] rawLetters)
+        private void ParseLettersIntoPuzzle(String[] rawLetters)
         {
             Char[,] lettersGrid = Get2DLetterArray(rawLetters);
             AddAllLetters(lettersGrid);
         }
 
-        public void ParseFile(String fileName)
+        public void ParsePuzzleWordFile(String fileName)
         {
             String[] lines = File.ReadAllLines(fileName);
             ParseWordsIntoPuzzle(lines[0]);
             String[] rawLetters = new String[lines.Length - 1];
             Array.Copy(lines, 1, rawLetters, 0, lines.Length - 1);
-            ParseLetters(rawLetters);
+            ParseLettersIntoPuzzle(rawLetters);
         }
     }
 }
