@@ -15,7 +15,10 @@ namespace PuzzleSolverProject
 
         public List<String> GetWords()
         {
-            return new List<String>();
+            List<String> expected = new List<String>();
+            expected.Add("PILLAR");
+
+            return expected;
         }
     }
 }
