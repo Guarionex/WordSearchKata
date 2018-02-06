@@ -99,5 +99,16 @@ namespace PuzzleSolverUnitTest
         {
             Assert.IsInstanceOf(typeof(Dictionary<Vector2, Char>), sut.Letters);
         }
+
+        [Test]
+        public void GivenWordSearchPuzzleWithLetterXAddedAt2x2WhenCallingLettersThenLettersReturnsADictionaryOfVector2KeysWithCharValuesWithTheAddedLetterAtTt2x2()
+        {
+            sut.AddLetterAt('X', 2, 2);
+            Dictionary<Vector2, Char> result = sut.Letters;
+            Dictionary<Vector2, Char> expected = new Dictionary<Vector2, Char>();
+            expected.Add(new Vector2(2, 2), 'X');
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
