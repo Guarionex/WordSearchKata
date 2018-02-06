@@ -32,5 +32,16 @@ namespace PuzzleSolverUnitTest
         {
             Assert.IsInstanceOf(typeof(List<String>), sut.GetWords());
         }
+
+        [Test]
+        public void GivenWordSearchPuzzleWithAWordAddedWhenCallingGetWordThenGetWordReturnsAListOfStringWithTheAddedWord()
+        {
+            sut.AddWord("PILLAR");
+            List<String> result = sut.GetWords();
+            List<String> expected = new List<String>();
+            expected.Add("PILLAR");
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
