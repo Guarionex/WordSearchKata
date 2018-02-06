@@ -31,7 +31,7 @@ namespace PuzzleSolverProject
 
         public void AddLetterAt(Char letter, int x, int y)
         {
-            Letters.Add(new Vector2(2, 2), 'X');
+            Letters.Add(new Vector2(x, y), letter);
         }
     }
 }
