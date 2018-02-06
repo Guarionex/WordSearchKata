@@ -21,38 +21,6 @@ namespace PuzzleSolverProject
             }
         }
 
-        private void AddLetterAt(char letter, int x, int y)
-        {
-            if(!char.IsLetter(letter))
-            {
-                throw new ArgumentException();
-            }
-            else if(isPositionWithinDimensionRange(x, y))
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        private bool isPositionWithinDimensionRange(int x, int y)
-        {
-            return x < 0 || x > sizeX || y < 0 || y > sizeY;
-        }
-
-        private void SetDimensions(int x, int y)
-        {
-            if(x < 2 && y < 2)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-            else if(x != y)
-            {
-                throw new ArgumentException();
-            }
-
-            sizeX = x;
-            sizeY = y;
-        }
-
         private List<String> GetListOfWords(String csvWords)
         {
             String[] splittedCSVWords = csvWords.Split(',');
@@ -86,6 +54,38 @@ namespace PuzzleSolverProject
         {
             List<String> wordList = GetListOfWords(rawWordString);
             AddAllWords(wordList);
+        }
+
+        private void AddLetterAt(char letter, int x, int y)
+        {
+            if(!char.IsLetter(letter))
+            {
+                throw new ArgumentException();
+            }
+            else if(isPositionWithinDimensionRange(x, y))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private bool isPositionWithinDimensionRange(int x, int y)
+        {
+            return x < 0 || x > sizeX || y < 0 || y > sizeY;
+        }
+
+        private void SetDimensions(int x, int y)
+        {
+            if(x < 2 && y < 2)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            else if(x != y)
+            {
+                throw new ArgumentException();
+            }
+
+            sizeX = x;
+            sizeY = y;
         }
 
         private void AddAllLetters(char[,] multiArrayOfLetters)
