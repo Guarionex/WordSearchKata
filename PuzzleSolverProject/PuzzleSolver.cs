@@ -27,6 +27,7 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+
             foreach(String word in listOfWords)
             {
                 AddWord(word);
@@ -40,6 +41,7 @@ namespace PuzzleSolverProject
             {
                 throw new FormatException();
             }
+
             List<String> wordList = new List<string>(splittedCSVWords);
 
             return wordList;
@@ -136,6 +138,7 @@ namespace PuzzleSolverProject
         {
             String[] lines = File.ReadAllLines(fileName);
             ParseWordsIntoPuzzle(lines[0]);
+
             String[] rawLetters = new String[lines.Length - 1];
             Array.Copy(lines, 1, rawLetters, 0, lines.Length - 1);
             ParseLettersIntoPuzzle(rawLetters);
