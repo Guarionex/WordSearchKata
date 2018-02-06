@@ -69,5 +69,14 @@ namespace PuzzleSolverUnitTest
         {
             Assert.IsInstanceOf(typeof(Vector2), sut.Dimensions);
         }
+
+        [Test]
+        public void GivenWordSearchPuzzleWithSetDimensions4x4WhenCallingDimensionsThenDimensionsReturnsAVector2With4x4Value()
+        {
+            sut.SetDimensions(4, 4);
+            Vector2 result = sut.Dimensions;
+            Vector2 expected = new Vector2(4, 4);
+            Assert.AreEqual(expected, result);
+        }
     }
 }
