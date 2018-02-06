@@ -12,5 +12,10 @@ namespace PuzzleSolverProject
         {
             
         }
+
+        public List<String> GetWords()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
