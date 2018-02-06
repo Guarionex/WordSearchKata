@@ -78,5 +78,14 @@ namespace PuzzleSolverUnitTest
             Vector2 expected = new Vector2(4, 4);
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void GivenWordSearchPuzzleWithSetDimensions5x5WhenCallingDimensionsThenDimensionsReturnsAVector2With5x5Value()
+        {
+            sut.SetDimensions(5, 5);
+            Vector2 result = sut.Dimensions;
+            Vector2 expected = new Vector2(5, 5);
+            Assert.AreEqual(expected, result);
+        }
     }
 }
