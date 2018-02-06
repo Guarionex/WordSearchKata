@@ -22,6 +22,11 @@ namespace PuzzleSolverProject
             Words.Add(word);
         }
 
+        public void SetDimensions(int x, int y)
+        {
+            
+        }
+
         public void AddLetterAt(Char letter, int x, int y)
         {
             Letters.Add(new Vector2(x, y), letter);
