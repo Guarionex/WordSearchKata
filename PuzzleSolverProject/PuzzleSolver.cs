@@ -56,7 +56,7 @@ namespace PuzzleSolverProject
             AddAllWords(wordList);
         }
 
-        private void AddLetterAt(char letter, int x, int y)
+        private void AddLetterAt(Char letter, int x, int y)
         {
             if(!char.IsLetter(letter))
             {
@@ -88,7 +88,7 @@ namespace PuzzleSolverProject
             sizeY = y;
         }
 
-        private void AddAllLetters(char[,] multiArrayOfLetters)
+        private void AddAllLetters(Char[,] multiArrayOfLetters)
         {
             int lengthX = multiArrayOfLetters.GetLength(0);
             int lengthY = multiArrayOfLetters.GetLength(1);
@@ -102,7 +102,7 @@ namespace PuzzleSolverProject
             }
         }
 
-        private char[,] Get2DLetterArray(String[] csvLetters)
+        private Char[,] Get2DLetterArray(String[] csvLetters)
         {
             Char[,] letters2dArray = new Char[csvLetters.Length, csvLetters.Length];
             for (int row = 0; row < csvLetters.Length; row++)
