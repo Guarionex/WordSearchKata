@@ -29,7 +29,7 @@ namespace PuzzleSolverProject
 
         public void AddLetterAt(Char letter, int x, int y)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
