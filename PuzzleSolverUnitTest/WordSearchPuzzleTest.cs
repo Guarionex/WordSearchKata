@@ -93,5 +93,11 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddLetterAt('X', 2, 2);
         }
+
+        [Test]
+        public void GivenWordSearchPuzzleWhenCallingLettersThenLettersReturnsADictionaryOfVector2KeysWithCharValues()
+        {
+            Assert.IsInstanceOf(typeof(Dictionary<Vector2, Char>), sut.Letters);
+        }
     }
 }

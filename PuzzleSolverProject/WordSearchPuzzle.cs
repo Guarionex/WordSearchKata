@@ -11,6 +11,7 @@ namespace PuzzleSolverProject
     {
         public List<String> Words { get; }
         public Vector2 Dimensions { get; private set; }
+        public object Letters { get;}
 
         public WordSearchPuzzle()
         {
