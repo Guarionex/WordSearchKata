@@ -59,12 +59,6 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenWordSearchPuzzleWhenCallingSetDimensionsAt4x4ThenSetDimensionsThrowNoException()
-        {
-            sut.SetDimensions(4, 4);
-        }
-
-        [Test]
         public void GivenWordSearchPuzzleWhenCallingAddLetterAtWithCharXAt0x0ThenAddLetterAtThrowsNoException()
         {
             sut.AddLetterAt('X', 2, 2);
