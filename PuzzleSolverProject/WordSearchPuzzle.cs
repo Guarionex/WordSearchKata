@@ -24,7 +24,7 @@ namespace PuzzleSolverProject
 
         public void SetDimensions(int x, int y)
         {
-            Dimensions = new Vector2(4, 4);
+            Dimensions = new Vector2(x, y);
         }
     }
 }
