@@ -21,6 +21,18 @@ namespace PuzzleSolverProject
             }
         }
 
+        private void AddAllWords(List<String> listOfWords)
+        {
+            if(listOfWords.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new ArgumentException();
+            }
+            foreach(String word in listOfWords)
+            {
+                AddWord(word);
+            }
+        }
+
         private List<String> GetListOfWords(String csvWords)
         {
             String[] splittedCSVWords = csvWords.Split(',');
@@ -36,19 +48,7 @@ namespace PuzzleSolverProject
         private bool isWordStringFormatInvalid(String[] delimetedWords)
         {
             return delimetedWords.Length == 1 || delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, 0)));
-        }
-
-        private void AddAllWords(List<String> listOfWords)
-        {
-            if(listOfWords.Any(string.IsNullOrWhiteSpace))
-            {
-                throw new ArgumentException();
-            }
-            foreach(String word in listOfWords)
-            {
-                AddWord(word);
-            }
-        }
+        }        
 
         private void ParseWordsIntoPuzzle(String rawWordString)
         {
