@@ -43,5 +43,18 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void GivenWordSearchPuzzleWithMultipleWordsAddedWhenCallingGetWordThenGetWordReturnsAListOfStringWithTheAddedWords()
+        {
+            sut.AddWord("PILLAR");
+            sut.AddWord("TDD");
+            List<String> result = sut.GetWords();
+            List<String> expected = new List<String>();
+            expected.Add("PILLAR");
+            expected.Add("TDD");
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
