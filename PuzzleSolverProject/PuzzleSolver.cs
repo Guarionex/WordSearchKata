@@ -143,7 +143,7 @@ namespace PuzzleSolverProject
             Array.Copy(lines, 1, rawLetters, 0, lines.Length - 1);
             ParseLettersIntoPuzzle(rawLetters);
 
-            return null;
+            return new WordSearchPuzzle();
         }
     }
 }
