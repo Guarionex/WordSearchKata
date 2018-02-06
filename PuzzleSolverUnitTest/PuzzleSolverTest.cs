@@ -234,5 +234,11 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParsePuzzleWordFile(projectPath + "0x0.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWithValidPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWorldFileReturnsAWordSearchPuzzle()
+        {
+            Assert.IsInstanceOf(typeof(WordSearchPuzzle), sut.ParsePuzzleWordFile(projectPath + validPuzzleFileName));
+        }
     }
 }

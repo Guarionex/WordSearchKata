@@ -134,7 +134,7 @@ namespace PuzzleSolverProject
             AddAllLetters(lettersGrid);
         }
 
-        public void ParsePuzzleWordFile(String fileName)
+        public WordSearchPuzzle ParsePuzzleWordFile(String fileName)
         {
             String[] lines = File.ReadAllLines(fileName);
             ParseWordsIntoPuzzle(lines[0]);
@@ -142,6 +142,8 @@ namespace PuzzleSolverProject
             String[] rawLetters = new String[lines.Length - 1];
             Array.Copy(lines, 1, rawLetters, 0, lines.Length - 1);
             ParseLettersIntoPuzzle(rawLetters);
+
+            return null;
         }
     }
 }
