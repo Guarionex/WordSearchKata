@@ -110,5 +110,18 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void GivenWordSearchPuzzleWithMultipleLetterAddedWhenCallingLettersThenLettersReturnsADictionaryOfVector2KeysWithCharValuesWithTheAddedLetters()
+        {
+            sut.AddLetterAt('X', 2, 2);
+            sut.AddLetterAt('P', 0, 0);
+            Dictionary<Vector2, Char> result = sut.Letters;
+            Dictionary<Vector2, Char> expected = new Dictionary<Vector2, Char>();
+            expected.Add(new Vector2(2, 2), 'X');
+            expected.Add(new Vector2(0, 0), 'P');
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
