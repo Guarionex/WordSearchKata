@@ -21,7 +21,44 @@ namespace PuzzleSolverProject
             }
         }
 
-        private void AddLetterAt(char letter, int x, int y)
+        private void AddAllWords(List<String> listOfWords)
+        {
+            if(listOfWords.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new ArgumentException();
+            }
+
+            foreach(String word in listOfWords)
+            {
+                AddWord(word);
+            }
+        }
+
+        private List<String> GetListOfWords(String csvWords)
+        {
+            String[] splittedCSVWords = csvWords.Split(',');
+            if(isWordStringFormatInvalid(splittedCSVWords))
+            {
+                throw new FormatException();
+            }
+
+            List<String> wordList = new List<string>(splittedCSVWords);
+
+            return wordList;
+        }
+
+        private bool isWordStringFormatInvalid(String[] delimetedWords)
+        {
+            return delimetedWords.Length == 1 || delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, 0)));
+        }        
+
+        private void ParseWordsIntoPuzzle(String rawWordString)
+        {
+            List<String> wordList = GetListOfWords(rawWordString);
+            AddAllWords(wordList);
+        }
+
+        private void AddLetterAt(Char letter, int x, int y)
         {
             if(!char.IsLetter(letter))
             {
@@ -53,42 +90,7 @@ namespace PuzzleSolverProject
             sizeY = y;
         }
 
-        private List<String> GetListOfWords(String csvWords)
-        {
-            String[] splittedCSVWords = csvWords.Split(',');
-            if(isWordStringFormatInvalid(splittedCSVWords))
-            {
-                throw new FormatException();
-            }
-            List<String> wordList = new List<string>(splittedCSVWords);
-
-            return wordList;
-        }
-
-        private bool isWordStringFormatInvalid(String[] delimetedWords)
-        {
-            return delimetedWords.Length == 1 || delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, 0)));
-        }
-
-        private void AddAllWords(List<String> listOfWords)
-        {
-            if(listOfWords.Any(string.IsNullOrWhiteSpace))
-            {
-                throw new ArgumentException();
-            }
-            foreach(String word in listOfWords)
-            {
-                AddWord(word);
-            }
-        }
-
-        private void ParseWordsIntoPuzzle(String rawWordString)
-        {
-            List<String> wordList = GetListOfWords(rawWordString);
-            AddAllWords(wordList);
-        }
-
-        private void AddAllLetters(char[,] multiArrayOfLetters)
+        private void AddAllLetters(Char[,] multiArrayOfLetters)
         {
             int lengthX = multiArrayOfLetters.GetLength(0);
             int lengthY = multiArrayOfLetters.GetLength(1);
@@ -102,7 +104,7 @@ namespace PuzzleSolverProject
             }
         }
 
-        private char[,] Get2DLetterArray(String[] csvLetters)
+        private Char[,] Get2DLetterArray(String[] csvLetters)
         {
             Char[,] letters2dArray = new Char[csvLetters.Length, csvLetters.Length];
             for (int row = 0; row < csvLetters.Length; row++)
@@ -126,19 +128,20 @@ namespace PuzzleSolverProject
             return (joinedLetters.Equals(csvLetterRow) && expectedLength != 1) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
         }
 
-        private void ParseLetters(String[] rawLetters)
+        private void ParseLettersIntoPuzzle(String[] rawLetters)
         {
             Char[,] lettersGrid = Get2DLetterArray(rawLetters);
             AddAllLetters(lettersGrid);
         }
 
-        public void ParseFile(String fileName)
+        public void ParsePuzzleWordFile(String fileName)
         {
             String[] lines = File.ReadAllLines(fileName);
             ParseWordsIntoPuzzle(lines[0]);
+
             String[] rawLetters = new String[lines.Length - 1];
             Array.Copy(lines, 1, rawLetters, 0, lines.Length - 1);
-            ParseLetters(rawLetters);
+            ParseLettersIntoPuzzle(rawLetters);
         }
     }
 }
