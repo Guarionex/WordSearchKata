@@ -87,5 +87,11 @@ namespace PuzzleSolverUnitTest
             Vector2 expected = new Vector2(5, 5);
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void GivenWordSearchPuzzleWhenCallingAddLetterAtWithCharXAt0x0ThenAddLetterAtThrowsNoException()
+        {
+            sut.AddLetterAt('X', 2, 2);
+        }
     }
 }
