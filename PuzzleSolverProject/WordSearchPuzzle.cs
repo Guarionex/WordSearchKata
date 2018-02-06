@@ -10,11 +10,12 @@ namespace PuzzleSolverProject
     public class WordSearchPuzzle
     {
         public List<String> Words { get; }
-        public Vector2 Dimensions { get; }
+        public Vector2 Dimensions { get; private set; }
 
         public WordSearchPuzzle()
         {
             Words = new List<String>();
+            Dimensions = new Vector2();
         }
         public void AddWord(String word)
         {
@@ -23,7 +24,7 @@ namespace PuzzleSolverProject
 
         public void SetDimensions(int x, int y)
         {
-            
+            Dimensions = new Vector2(4, 4);
         }
     }
 }
