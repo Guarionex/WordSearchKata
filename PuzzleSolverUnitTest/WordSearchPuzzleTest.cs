@@ -93,5 +93,30 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void Given4x4WordPuzzleWhenCallingSearchHorizontalThenSearchHorizontalThrowsNoException()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddLetterAt('Q', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('X', 0, 1);
+            sut.AddLetterAt('U', 1, 1);
+            sut.AddLetterAt('A', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('L', 0, 2);
+            sut.AddLetterAt('H', 1, 2);
+            sut.AddLetterAt('G', 2, 2);
+            sut.AddLetterAt('J', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('I', 1, 3);
+            sut.AddLetterAt('R', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
+
+            sut.SearchHorizontal();
+        }
     }
 }

@@ -26,5 +26,10 @@ namespace PuzzleSolverProject
         {
             Letters.Add(new Vector2(x, y), letter);
         }
+
+        public void SearchHorizontal()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
