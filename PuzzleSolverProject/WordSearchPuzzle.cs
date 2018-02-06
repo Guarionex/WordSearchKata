@@ -10,7 +10,7 @@ namespace PuzzleSolverProject
     {
         public void AddWord(String word)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
