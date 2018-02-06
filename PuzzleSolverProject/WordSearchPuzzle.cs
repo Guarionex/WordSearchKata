@@ -8,15 +8,15 @@ namespace PuzzleSolverProject
 {
     public class WordSearchPuzzle
     {
-        private List<String> words = new List<string>();
+        public List<String> Words { get; }
+
+        public WordSearchPuzzle()
+        {
+            Words = new List<String>();
+        }
         public void AddWord(String word)
         {
-            words.Add(word);
-        }
-
-        public List<String> GetWords()
-        {
-            return words;
+            Words.Add(word);
         }
 
         public void SetDimensions(int x, int y)

@@ -28,16 +28,16 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenWordSearchPuzleWhenCallingGetWordsThenGetWordsReturnAListOfStrings()
+        public void GivenWordSearchPuzleWhenCallingWordsThenGetWordsReturnAListOfStrings()
         {
-            Assert.IsInstanceOf(typeof(List<String>), sut.GetWords());
+            Assert.IsInstanceOf(typeof(List<String>), sut.Words);
         }
 
         [Test]
         public void GivenWordSearchPuzzleWithAWordAddedWhenCallingGetWordThenGetWordReturnsAListOfStringWithTheAddedWord()
         {
             sut.AddWord("PILLAR");
-            List<String> result = sut.GetWords();
+            List<String> result = sut.Words;
             List<String> expected = new List<String>();
             expected.Add("PILLAR");
 
@@ -49,7 +49,7 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddWord("PILLAR");
             sut.AddWord("TDD");
-            List<String> result = sut.GetWords();
+            List<String> result = sut.Words;
             List<String> expected = new List<String>();
             expected.Add("PILLAR");
             expected.Add("TDD");
