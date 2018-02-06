@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace PuzzleSolverUnitTest
 {
@@ -61,6 +62,11 @@ namespace PuzzleSolverUnitTest
         public void GivenWordSearchPuzzleWhenCallingSetDimensionsAt4x4ThenSetDimensionsThrowNoException()
         {
             sut.SetDimensions(4, 4);
+        }
+
+        [Test] void GivenWordSearchPuzzleWhenCallingDimensionsThenDimensionsReturnsAVector2()
+        {
+            Assert.IsInstanceOf(typeof(Vector2), sut.Dimensions);
         }
     }
 }
