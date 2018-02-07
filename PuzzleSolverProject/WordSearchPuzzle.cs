@@ -39,10 +39,8 @@ namespace PuzzleSolverProject
 
         public List<Vector2> FindAllLetterPositions(char v)
         {
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 3));
-            expected.Add(new Vector2(3, 3));
-            return expected;
+            List<Vector2> positions = Letters.Where(kvp => kvp.Value == v).Select(kvp => kvp.Key).ToList();
+            return positions;
         }
     }
 }
