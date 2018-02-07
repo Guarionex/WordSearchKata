@@ -31,14 +31,13 @@ namespace PuzzleSolverProject
         {
             List<Vector2> wordPosition = new List<Vector2>();
             
-            List<Vector2> firstLetterPositions = FindAllLetterPositions('K');
+            List<Vector2> firstLetterPositions = FindAllLetterPositions(word[0]);
             foreach(Vector2 position in firstLetterPositions)
             {
-                Vector2 maxPosition = new Vector2(position.X + Words[0].Length - 1, position.Y);
-                List<Vector2> candidate = getRightNeighboorsOfBy(position, Words[0].Length - 1);
+                List<Vector2> candidate = getRightNeighboorsOfBy(position, word.Length - 1);
                 Char[] candidateLetters = candidate.Where(key => Letters.ContainsKey(key)).Select(key => Letters[key]).ToArray();
 
-                if(Words[0].Equals(new String(candidateLetters)))
+                if(word.Equals(new String(candidateLetters)))
                 {
                     wordPosition.AddRange(candidate);
                 }
