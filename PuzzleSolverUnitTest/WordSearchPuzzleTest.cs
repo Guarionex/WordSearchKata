@@ -191,7 +191,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('J', 3, 3);
 
             List<Vector2> result = sut.SearchHorizontal("KIRK");
-            List <Vector2> expected = new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(0, 2));
             expected.Add(new Vector2(1, 2));
             expected.Add(new Vector2(2, 2));
@@ -352,7 +352,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWhenCallingGetBottomNeighboorsOfByWith02By4ThenGetBottomNeighboorsOfByReturnsAListOfVector2()
+        public void Given4x4WordPuzzleWhenCallingGetBottomNeighborsOfByWith20By4ThenGetBottomNeighborsOfByReturnsAListOfVector2()
         {
             sut.AddLetterAt('K', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -371,9 +371,40 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('A', 2, 3);
             sut.AddLetterAt('N', 3, 3);
 
-            Vector2 startPosition = new Vector2(0, 2);
+            Vector2 startPosition = new Vector2(2, 0);
 
             Assert.IsInstanceOf(typeof(List<Vector2>), sut.GetBottomNeighborsOfBy(startPosition, 4));
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWhenCallingGetBottomNeighborsOfByWith20By4ThenGetBottomNeighborsOfByReturnsAListOfVector2From02GoingDownTo()
+        {
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('I', 0, 1);
+            sut.AddLetterAt('U', 1, 1);
+            sut.AddLetterAt('A', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('H', 1, 2);
+            sut.AddLetterAt('G', 2, 2);
+            sut.AddLetterAt('J', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            Vector2 startPosition = new Vector2(2, 0);
+            List<Vector2> result = sut.GetBottomNeighborsOfBy(startPosition, 4);
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(2, 0));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(2, 2));
+            expected.Add(new Vector2(2, 3));
+
+            Assert.AreEqual(expected, result);
         }
     }
 }
