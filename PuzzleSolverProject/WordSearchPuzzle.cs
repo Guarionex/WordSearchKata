@@ -79,7 +79,7 @@ namespace PuzzleSolverProject
             return wordPosition;
         }
 
-        public List<Vector2> GetBottomNeighborsOfBy(Vector2 startPosition, int length)
+        private List<Vector2> GetBottomNeighborsOfBy(Vector2 startPosition, int length)
         {
             Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y + length);
             List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == 0 && (maxPosition - key).Y >= 0).ToList();
