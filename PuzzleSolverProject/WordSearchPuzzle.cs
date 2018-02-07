@@ -94,6 +94,11 @@ namespace PuzzleSolverProject
             return positionsUpRightFromStartPosition;
         }
 
+        public List<Vector3> SearchUpRight(string word)
+        {
+            throw new NotImplementedException();
+        }
+
         private List<Vector2> GetUpNeighborsOfBy(Vector2 startPosition, int length)
         {
             Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y - (length - 1));

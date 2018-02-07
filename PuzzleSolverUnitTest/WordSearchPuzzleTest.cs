@@ -382,31 +382,6 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWhenCallingGetUpRightNeighboorsOfByWith03By4ThenGetUpRightNeighboorsOfByReturnsAListOfVector2()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('K', 3, 0);
-            sut.AddLetterAt('I', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('R', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('R', 0, 2);
-            sut.AddLetterAt('I', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            Vector2 startPosition = new Vector2(0, 3);
-
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.GetUpRightNeighborsOfBy(startPosition, 4));
-        }
-
-        [Test]
         public void Given4x4WordPuzzleWhenCallingSearchUPWithKIRKThenSearchUpReturnsAListOfVector2()
         {
             sut.AddLetterAt('K', 0, 0);
@@ -428,35 +403,6 @@ namespace PuzzleSolverUnitTest
 
             Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchUp("KIRK"));
         }
-
-        [Test]
-        public void Given4x4WordPuzzleWhenCallingGetUpRightNeighboorsOfByWith03By4ThenGetUpRightNeighboorsOfByReturnsAListOfVector2WithUpRightPositionsFromBottomLeftToTopRight()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('K', 3, 0);
-            sut.AddLetterAt('I', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('R', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('R', 0, 2);
-            sut.AddLetterAt('I', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            Vector2 startPosition = new Vector2(0, 3);
-            List<Vector2> result = sut.GetUpRightNeighborsOfBy(startPosition, 4);
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 3));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(3, 0));
-        }            
 
         [Test]
         public void Given4x4WordPuzzleWithUpwardsWordInFirstColumnWhenCallingSearchUpWithKIRKThenSearchUpReturnsAListOfVector2WithThePositionsForKIRK()
@@ -489,6 +435,90 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
+        public void Given4x4WordPuzzleWithUpwardsWordInSecondColumnWhenCallingSearchUpWithKIRKThenSearchUpReturnsAListOfVector2WithThePositionsForKIRK()
+        {
+            sut.AddLetterAt('G', 0, 0);
+            sut.AddLetterAt('K', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('A', 3, 0);
+            sut.AddLetterAt('U', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('W', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('S', 0, 2);
+            sut.AddLetterAt('I', 1, 2);
+            sut.AddLetterAt('G', 2, 2);
+            sut.AddLetterAt('J', 3, 2);
+            sut.AddLetterAt('J', 0, 3);
+            sut.AddLetterAt('K', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            List<Vector2> result = sut.SearchUp("KIRK");
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(1, 3));
+            expected.Add(new Vector2(1, 2));
+            expected.Add(new Vector2(1, 1));
+            expected.Add(new Vector2(1, 0));
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWhenCallingGetUpRightNeighboorsOfByWith03By4ThenGetUpRightNeighboorsOfByReturnsAListOfVector2()
+        {
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('I', 0, 1);
+            sut.AddLetterAt('U', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('I', 1, 2);
+            sut.AddLetterAt('G', 2, 2);
+            sut.AddLetterAt('J', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            Vector2 startPosition = new Vector2(0, 3);
+
+            Assert.IsInstanceOf(typeof(List<Vector2>), sut.GetUpRightNeighborsOfBy(startPosition, 4));
+        }
+        
+        [Test]
+        public void Given4x4WordPuzzleWhenCallingGetUpRightNeighboorsOfByWith03By4ThenGetUpRightNeighboorsOfByReturnsAListOfVector2WithUpRightPositionsFromBottomLeftToTopRight()
+        {
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('I', 0, 1);
+            sut.AddLetterAt('U', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('I', 1, 2);
+            sut.AddLetterAt('G', 2, 2);
+            sut.AddLetterAt('J', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            Vector2 startPosition = new Vector2(0, 3);
+            List<Vector2> result = sut.GetUpRightNeighborsOfBy(startPosition, 4);
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(0, 3));
+            expected.Add(new Vector2(1, 2));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(3, 0));
+        }            
+        
+        [Test]
         public void Given4x4WordPuzzleWhenCallingGetUpRightNeighboorsOfByWith02By3ThenGetUpRightNeighboorsOfByReturnsAListOfVector2WithUpRightPositionsFromBottomLeftToTopRight()
         {
             sut.AddLetterAt('K', 0, 0);
@@ -517,35 +547,28 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
-        
+
         [Test]
-        public void Given4x4WordPuzzleWithUpwardsWordInSecondColumnWhenCallingSearchUpWithKIRKThenSearchUpReturnsAListOfVector2WithThePositionsForKIRK()
+        public void Given4x4WordPuzzleWhenCallingSearchUpRightWithKIRKThenSearchUpReturnsAListOfVector2()
         {
-            sut.AddLetterAt('G', 0, 0);
-            sut.AddLetterAt('K', 1, 0);
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
             sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
-            sut.AddLetterAt('U', 0, 1);
-            sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('W', 2, 1);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('I', 0, 1);
+            sut.AddLetterAt('U', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
             sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('S', 0, 2);
+            sut.AddLetterAt('R', 0, 2);
             sut.AddLetterAt('I', 1, 2);
             sut.AddLetterAt('G', 2, 2);
             sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('J', 0, 3);
-            sut.AddLetterAt('K', 1, 3);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
             sut.AddLetterAt('A', 2, 3);
             sut.AddLetterAt('N', 3, 3);
 
-            List<Vector2> result = sut.SearchUp("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(1, 3));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(1, 1));
-            expected.Add(new Vector2(1, 0));
-
-            Assert.AreEqual(expected, result);
+            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchUpRight("KIRK"));
         }
     }
 }
