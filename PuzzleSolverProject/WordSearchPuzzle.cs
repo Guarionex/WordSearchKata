@@ -29,12 +29,22 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchHorizontal()
         {
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 3));
-            expected.Add(new Vector2(1, 3));
-            expected.Add(new Vector2(2, 3));
-            expected.Add(new Vector2(3, 3));
-            return expected;
+            List<Vector2> wordPosition = new List<Vector2>();
+            
+            List<Vector2> firstLetterPositions = FindAllLetterPositions('K');
+            foreach(Vector2 position in firstLetterPositions)
+            {
+                Vector2 maxPosition = new Vector2(position.X + Words[0].Length - 1, position.Y);
+                List<Vector2> candidate = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).Y == 0 && (maxPosition - key).X >= 0 && key.X >= position.X).ToList();
+                Char[] candidateLetters = candidate.Where(key => Letters.ContainsKey(key)).Select(key => Letters[key]).ToArray();
+
+                if(Words[0].Equals(new String(candidateLetters)))
+                {
+                    wordPosition.AddRange(candidate);
+                }
+            }
+
+            return wordPosition;
         }
 
         public List<Vector2> FindAllLetterPositions(Char letter)
