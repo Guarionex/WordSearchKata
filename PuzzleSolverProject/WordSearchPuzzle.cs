@@ -92,5 +92,10 @@ namespace PuzzleSolverProject
             positionsUpFromStartPosition.Reverse();
             return positionsUpFromStartPosition;
         }
+
+        public List<Vector2> SearchUp(String word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
