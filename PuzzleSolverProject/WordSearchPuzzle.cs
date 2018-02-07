@@ -30,11 +30,11 @@ namespace PuzzleSolverProject
         public List<Vector2> SearchHorizontal(String word)
         {
             List<Vector2> wordPosition = new List<Vector2>();
-            
             List<Vector2> firstLetterPositions = FindAllLetterPositions(word[0]);
+
             foreach(Vector2 position in firstLetterPositions)
             {
-                List<Vector2> candidate = GetRightNeighboorsOfBy(position, word.Length - 1);
+                List<Vector2> candidate = GetRightNeighborsOfBy(position, word.Length - 1);
                 Char[] candidateLetters = candidate.Where(key => Letters.ContainsKey(key)).Select(key => Letters[key]).ToArray();
 
                 if(word.Equals(new String(candidateLetters)))
@@ -46,7 +46,7 @@ namespace PuzzleSolverProject
             return wordPosition;
         }
 
-        private List<Vector2> GetRightNeighboorsOfBy(Vector2 startPosition, int length)
+        private List<Vector2> GetRightNeighborsOfBy(Vector2 startPosition, int length)
         {
             Vector2 maxPosition = new Vector2(startPosition.X + length, startPosition.Y);
             List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X >= 0 && (maxPosition - key).Y == 0).ToList();
@@ -64,6 +64,7 @@ namespace PuzzleSolverProject
         {
             List<Vector2> wordPosition = new List<Vector2>();
             List<Vector2> firstLetterPositions = FindAllLetterPositions(word[0]);
+
             foreach (Vector2 position in firstLetterPositions)
             {
                 List<Vector2> candidate = GetBottomNeighborsOfBy(position, word.Length - 1);
