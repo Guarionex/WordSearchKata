@@ -37,9 +37,9 @@ namespace PuzzleSolverProject
             return expected;
         }
 
-        public List<Vector2> FindAllLetterPositions(char v)
+        public List<Vector2> FindAllLetterPositions(Char letter)
         {
-            List<Vector2> positions = Letters.Where(kvp => kvp.Value == v).Select(kvp => kvp.Key).ToList();
+            List<Vector2> positions = Letters.Where(kvp => kvp.Value == letter).Select(kvp => kvp.Key).ToList();
             return positions;
         }
     }
