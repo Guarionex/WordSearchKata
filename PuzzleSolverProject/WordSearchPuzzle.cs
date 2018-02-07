@@ -73,7 +73,13 @@ namespace PuzzleSolverProject
 
         public List<Vector2> GetBottomNeighborsOfBy(Vector2 startPosition, int length)
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(2, 0));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(2, 2));
+            expected.Add(new Vector2(2, 3));
+
+            return expected;
         }
     }
 }
