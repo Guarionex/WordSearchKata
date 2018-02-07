@@ -175,5 +175,12 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void GivenALetterWhenPassedToFindAllLetterPositionsThenFinAllLetterPositionsReturnsAListOfVector2()
+        {
+            Assert.IsInstanceOf(typeof(List<Vector2>), sut.FindAllLetterPositions('K'));
+        }
+
     }
 }

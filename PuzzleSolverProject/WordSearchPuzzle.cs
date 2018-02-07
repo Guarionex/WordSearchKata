@@ -36,5 +36,10 @@ namespace PuzzleSolverProject
             expected.Add(new Vector2(3, 3));
             return expected;
         }
+
+        public List<Vector2> FindAllLetterPositions(char v)
+        {
+            return null;
+        }
     }
 }
