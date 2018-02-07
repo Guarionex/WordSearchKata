@@ -519,5 +519,35 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void Given4x4WordPuzzleWithUpwardsWordInSecondColumnWhenCallingSearchUpWithKIRKThenSearchUpReturnsAListOfVector2WithThePositionsForKIRK()
+        {
+            sut.AddLetterAt('G', 0, 0);
+            sut.AddLetterAt('K', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('A', 3, 0);
+            sut.AddLetterAt('U', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('W', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('S', 0, 2);
+            sut.AddLetterAt('I', 1, 2);
+            sut.AddLetterAt('G', 2, 2);
+            sut.AddLetterAt('J', 3, 2);
+            sut.AddLetterAt('J', 0, 3);
+            sut.AddLetterAt('K', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            List<Vector2> result = sut.SearchUp("KIRK");
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(1, 3));
+            expected.Add(new Vector2(1, 2));
+            expected.Add(new Vector2(1, 1));
+            expected.Add(new Vector2(1, 0));
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
