@@ -21,6 +21,7 @@ namespace PuzzleSolverProject
             searchDirection = new Dictionary<DirectionEnum, getNeighborsOfBy>();
             searchDirection.Add(DirectionEnum.Right, GetRightNeighborsOfBy);
             searchDirection.Add(DirectionEnum.Down, GetBottomNeighborsOfBy);
+            searchDirection.Add(DirectionEnum.Up, GetUpNeighboorsOfBy);
         }
 
         public void AddWord(String word)
@@ -40,7 +41,7 @@ namespace PuzzleSolverProject
 
         private List<Vector2> GetRightNeighborsOfBy(Vector2 startPosition, int length)
         {
-            Vector2 maxPosition = new Vector2(startPosition.X + length, startPosition.Y);
+            Vector2 maxPosition = new Vector2(startPosition.X + length - 1, startPosition.Y);
             List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X >= 0 && (maxPosition - key).Y == 0).ToList();
             List<Vector2> positionsRightOfStartingPoint = positionsWithinRange.Where(vector => vector.X >= startPosition.X).ToList();
            return positionsRightOfStartingPoint;
@@ -59,7 +60,7 @@ namespace PuzzleSolverProject
 
         private List<Vector2> GetBottomNeighborsOfBy(Vector2 startPosition, int length)
         {
-            Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y + length);
+            Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y + length - 1);
             List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == 0 && (maxPosition - key).Y >= 0).ToList();
             List<Vector2> positionsBottomOfStartPosition = positionsWithinRange.Where(vector => vector.Y >= startPosition.Y).ToList();
             return positionsBottomOfStartPosition;
@@ -72,7 +73,7 @@ namespace PuzzleSolverProject
 
             foreach (Vector2 position in firstLetterPositions)
             {
-                List<Vector2> candidate = searchDirection[direction](position, word.Length - 1);
+                List<Vector2> candidate = searchDirection[direction](position, word.Length);
                 Char[] candidateLetters = candidate.Where(key => Letters.ContainsKey(key)).Select(key => Letters[key]).ToArray();
 
                 if (word.Equals(new String(candidateLetters)))
@@ -95,13 +96,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchUp(String word)
         {
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 3));
-            expected.Add(new Vector2(0, 2));
-            expected.Add(new Vector2(0, 1));
-            expected.Add(new Vector2(0, 0));
-
-            return expected;
+            return SearchWordInDirection(word, DirectionEnum.Up);
         }
     }
 }
