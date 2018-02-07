@@ -96,7 +96,13 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchUpRight(string word)
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(0, 3));
+            expected.Add(new Vector2(1, 2));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(3, 0));
+
+            return expected;
         }
 
         private List<Vector2> GetUpNeighborsOfBy(Vector2 startPosition, int length)
