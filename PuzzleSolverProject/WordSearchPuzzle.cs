@@ -29,7 +29,12 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchHorizontal()
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(0, 3));
+            expected.Add(new Vector2(1, 3));
+            expected.Add(new Vector2(2, 3));
+            expected.Add(new Vector2(3, 3));
+            return expected;
         }
     }
 }
