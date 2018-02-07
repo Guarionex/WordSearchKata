@@ -209,6 +209,38 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
+        public void Given4x4WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchHorizontalWithKHANThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddLetterAt('Q', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('K', 0, 1);
+            sut.AddLetterAt('H', 1, 1);
+            sut.AddLetterAt('A', 2, 1);
+            sut.AddLetterAt('N', 3, 1);
+            sut.AddLetterAt('K', 0, 2);
+            sut.AddLetterAt('I', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('K', 3, 2);
+            sut.AddLetterAt('L', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('G', 2, 3);
+            sut.AddLetterAt('J', 3, 3);
+
+            List<Vector2> result = sut.SearchHorizontal("KHAN");
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(0, 1));
+            expected.Add(new Vector2(1, 1));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(3, 1));
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
         public void GivenALetterWhenPassedToFindAllLetterPositionsThenFinAllLetterPositionsReturnsAListOfVector2()
         {
             Assert.IsInstanceOf(typeof(List<Vector2>), sut.FindAllLetterPositions('K'));
