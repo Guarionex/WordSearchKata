@@ -54,7 +54,7 @@ namespace PuzzleSolverProject
            return positionsRightOfStartingPoint;
         }
 
-        public List<Vector2> FindAllLetterPositions(Char letter)
+        private List<Vector2> FindAllLetterPositions(Char letter)
         {
             List<Vector2> positions = Letters.Where(kvp => kvp.Value == letter).Select(kvp => kvp.Key).ToList();
             return positions;
