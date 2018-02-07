@@ -29,7 +29,7 @@ namespace PuzzleSolverProject
 
         public void SearchHorizontal()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
