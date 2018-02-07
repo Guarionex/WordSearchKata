@@ -39,7 +39,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> FindAllLetterPositions(char v)
         {
-            return null;
+            return new List<Vector2>(); ;
         }
     }
 }
