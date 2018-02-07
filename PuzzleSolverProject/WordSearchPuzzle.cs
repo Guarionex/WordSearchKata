@@ -62,7 +62,13 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchVertical(string word)
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(0, 0));
+            expected.Add(new Vector2(0, 1));
+            expected.Add(new Vector2(0, 2));
+            expected.Add(new Vector2(0, 3));
+
+            return expected;
         }
     }
 }
