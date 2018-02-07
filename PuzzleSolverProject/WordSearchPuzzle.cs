@@ -27,7 +27,7 @@ namespace PuzzleSolverProject
             Letters.Add(new Vector2(x, y), letter);
         }
 
-        public List<Vector2> SearchHorizontal()
+        public List<Vector2> SearchHorizontal(String word)
         {
             List<Vector2> wordPosition = new List<Vector2>();
             
