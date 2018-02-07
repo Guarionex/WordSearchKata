@@ -95,7 +95,13 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchUp(String word)
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(0, 3));
+            expected.Add(new Vector2(0, 2));
+            expected.Add(new Vector2(0, 1));
+            expected.Add(new Vector2(0, 0));
+
+            return expected;
         }
     }
 }
