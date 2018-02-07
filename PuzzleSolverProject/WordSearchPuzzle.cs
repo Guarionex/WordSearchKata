@@ -62,7 +62,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchVertical(string word)
         {
-            throw new NotImplementedException();
+            return new List<Vector2>();
         }
     }
 }
