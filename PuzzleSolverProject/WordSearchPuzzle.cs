@@ -95,7 +95,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchUp(String word)
         {
-            throw new NotImplementedException();
+            return new List<Vector2>();
         }
     }
 }
