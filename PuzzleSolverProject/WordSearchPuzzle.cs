@@ -83,5 +83,10 @@ namespace PuzzleSolverProject
 
             return wordPosition;
         }
+
+        public List<Vector2> GetUpRightNeighboorsOfBy(Vector2 startPosition, int length)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
