@@ -29,7 +29,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchHorizontal()
         {
-            return null;
+            return new List<Vector2>();
         }
     }
 }
