@@ -73,7 +73,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> GetBottomNeighborsOfBy(Vector2 startPosition, int length)
         {
-            throw new NotImplementedException();
+            return new List<Vector2>();
         }
     }
 }
