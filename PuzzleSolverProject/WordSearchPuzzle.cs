@@ -27,9 +27,9 @@ namespace PuzzleSolverProject
             Letters.Add(new Vector2(x, y), letter);
         }
 
-        public void SearchHorizontal()
+        public List<Vector2> SearchHorizontal()
         {
-            
+            return null;
         }
     }
 }
