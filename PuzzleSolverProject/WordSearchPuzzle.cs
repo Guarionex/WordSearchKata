@@ -73,13 +73,10 @@ namespace PuzzleSolverProject
 
         public List<Vector2> GetBottomNeighborsOfBy(Vector2 startPosition, int length)
         {
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(2, 0));
-            expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(2, 2));
-            expected.Add(new Vector2(2, 3));
-
-            return expected;
+            Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y + length);
+            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == 0 && (maxPosition - key).Y >= 0).ToList();
+            List<Vector2> positionsBottomOfStartPosition = positionsWithinRange.Where(vector => vector.Y >= startPosition.Y).ToList();
+            return positionsBottomOfStartPosition;
         }
     }
 }
