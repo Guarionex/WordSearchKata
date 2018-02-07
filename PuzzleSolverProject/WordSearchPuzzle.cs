@@ -94,9 +94,9 @@ namespace PuzzleSolverProject
             return positionsUpRightFromStartPosition;
         }
 
-        public List<Vector3> SearchUpRight(string word)
+        public List<Vector2> SearchUpRight(string word)
         {
-            throw new NotImplementedException();
+            return new List<Vector2>();
         }
 
         private List<Vector2> GetUpNeighborsOfBy(Vector2 startPosition, int length)
