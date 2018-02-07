@@ -35,7 +35,7 @@ namespace PuzzleSolverProject
             foreach(Vector2 position in firstLetterPositions)
             {
                 Vector2 maxPosition = new Vector2(position.X + Words[0].Length - 1, position.Y);
-                List<Vector2> candidate = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).Y == 0 && (maxPosition - key).X >= 0 && key.X >= position.X).ToList();
+                List<Vector2> candidate = getRightNeighboorsOfBy(position, Words[0].Length - 1);
                 Char[] candidateLetters = candidate.Where(key => Letters.ContainsKey(key)).Select(key => Letters[key]).ToArray();
 
                 if(Words[0].Equals(new String(candidateLetters)))
@@ -45,6 +45,14 @@ namespace PuzzleSolverProject
             }
 
             return wordPosition;
+        }
+
+        private List<Vector2> getRightNeighboorsOfBy(Vector2 startingPoint, int length)
+        {
+            Vector2 maxPosition = new Vector2(startingPoint.X + length, startingPoint.Y);
+            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X >= 0 && (maxPosition - key).Y == 0).ToList();
+            List<Vector2> positionsRightOfStartingPoint = positionsWithinRange.Where(vector => vector.X >= startingPoint.X).ToList();
+           return positionsRightOfStartingPoint;
         }
 
         public List<Vector2> FindAllLetterPositions(Char letter)
