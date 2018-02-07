@@ -12,15 +12,15 @@ namespace PuzzleSolverProject
         public List<String> Words { get; }
         public Dictionary<Vector2, Char> Letters { get;}
         private delegate List<Vector2> getNeighborsOfBy(Vector2 startPosition, int length);
-        private Dictionary<String, getNeighborsOfBy> searchDirection;
+        private Dictionary<DirectionEnum, getNeighborsOfBy> searchDirection;
 
         public WordSearchPuzzle()
         {
             Words = new List<String>();
             Letters = new Dictionary<Vector2, Char>();
-            searchDirection = new Dictionary<string, getNeighborsOfBy>();
-            searchDirection.Add("Right", GetRightNeighborsOfBy);
-            searchDirection.Add("Down", GetBottomNeighborsOfBy);
+            searchDirection = new Dictionary<DirectionEnum, getNeighborsOfBy>();
+            searchDirection.Add(DirectionEnum.Right, GetRightNeighborsOfBy);
+            searchDirection.Add(DirectionEnum.Down, GetBottomNeighborsOfBy);
         }
 
         public void AddWord(String word)
@@ -35,7 +35,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchHorizontal(String word)
         {
-            return SearchWordInDirection(word, "Right");
+            return SearchWordInDirection(word, DirectionEnum.Right);
         }
 
         private List<Vector2> GetRightNeighborsOfBy(Vector2 startPosition, int length)
@@ -54,7 +54,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchVertical(string word)
         {
-            return SearchWordInDirection(word, "Down");
+            return SearchWordInDirection(word, DirectionEnum.Down);
         }
 
         private List<Vector2> GetBottomNeighborsOfBy(Vector2 startPosition, int length)
@@ -65,7 +65,7 @@ namespace PuzzleSolverProject
             return positionsBottomOfStartPosition;
         }
 
-        private List<Vector2> SearchWordInDirection(String word, String direction)
+        private List<Vector2> SearchWordInDirection(String word, DirectionEnum direction)
         {
             List<Vector2> wordPosition = new List<Vector2>();
             List<Vector2> firstLetterPositions = FindAllLetterPositions(word[0]);
