@@ -432,7 +432,7 @@ namespace PuzzleSolverUnitTest
             expected.Add(new Vector2(0, 3));
             expected.Add(new Vector2(1, 2));
             expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(1, 0));
+            expected.Add(new Vector2(3, 0));
 
             Assert.AreEqual(expected, result);
         }
@@ -466,5 +466,6 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
     }
 }
