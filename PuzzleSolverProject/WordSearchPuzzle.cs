@@ -84,9 +84,15 @@ namespace PuzzleSolverProject
             return wordPosition;
         }
 
-        public List<Vector2> GetUpRightNeighboorsOfBy(Vector2 startPosition, int length)
+        public List<Vector2> GetUpRightNeighborsOfBy(Vector2 startPosition, int length)
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(0, 3));
+            expected.Add(new Vector2(1, 2));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(1, 0));
+
+            return expected;
         }
     }
 }
