@@ -59,5 +59,10 @@ namespace PuzzleSolverProject
             List<Vector2> positions = Letters.Where(kvp => kvp.Value == letter).Select(kvp => kvp.Key).ToList();
             return positions;
         }
+
+        public List<Vector2> SearchVertical(string word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

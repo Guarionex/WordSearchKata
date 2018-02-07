@@ -97,8 +97,6 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void Given4x4WordPuzzleWhenCallingSearchHorizontalWithKIRKThenSearchHorizontalThrowsNoException()
         {
-            sut.AddWord("KIRK");
-            sut.AddWord("KHAN");
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
             sut.AddLetterAt('J', 2, 0);
@@ -122,8 +120,6 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void Given4x4WordPuzzleWithAHorizontalWordWhenCallingSearchHorizontalWithKIRKThenSearchHorizontalReturnsAListOfVectors()
         {
-            sut.AddWord("KIRK");
-            sut.AddWord("KHAN");
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
             sut.AddLetterAt('J', 2, 0);
@@ -147,8 +143,6 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void Given4x4WordPuzzleWithAHorizontalWordInLastRowWhenCallingSearchHorizontalWithKIRKThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
         {
-            sut.AddWord("KIRK");
-            sut.AddWord("KHAN");
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
             sut.AddLetterAt('J', 2, 0);
@@ -179,8 +173,6 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void Given4x4WordPuzzleWithAHorizontalWordInThirdRowWhenCallingSearchHorizontalWithKIRKThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
         {
-            sut.AddWord("KIRK");
-            sut.AddWord("KHAN");
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
             sut.AddLetterAt('J', 2, 0);
@@ -211,8 +203,6 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void Given4x4WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchHorizontalWithKHANThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
         {
-            sut.AddWord("KIRK");
-            sut.AddWord("KHAN");
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
             sut.AddLetterAt('J', 2, 0);
@@ -236,6 +226,74 @@ namespace PuzzleSolverUnitTest
             expected.Add(new Vector2(1, 1));
             expected.Add(new Vector2(2, 1));
             expected.Add(new Vector2(3, 1));
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given5x5WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchHorizontalWithA4LetterWordThatStartsAtX1ThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
+        {
+            sut.AddLetterAt('Q', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('X', 4, 0);
+            sut.AddLetterAt('F', 0, 1);
+            sut.AddLetterAt('K', 1, 1);
+            sut.AddLetterAt('H', 2, 1);
+            sut.AddLetterAt('A', 3, 1);
+            sut.AddLetterAt('N', 4, 1);
+            sut.AddLetterAt('K', 0, 2);
+            sut.AddLetterAt('I', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('K', 3, 2);
+            sut.AddLetterAt('U', 4, 2);
+            sut.AddLetterAt('L', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('G', 2, 3);
+            sut.AddLetterAt('J', 3, 3);
+            sut.AddLetterAt('R', 4, 3);
+
+            List<Vector2> result = sut.SearchHorizontal("KHAN");
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(1, 1));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(3, 1));
+            expected.Add(new Vector2(4, 1));
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given5x5WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchHorizontalWithA4LetterWordThatStartsAtX0ThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
+        {
+            sut.AddLetterAt('Q', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('X', 4, 0);
+            sut.AddLetterAt('F', 0, 1);
+            sut.AddLetterAt('K', 1, 1);
+            sut.AddLetterAt('H', 2, 1);
+            sut.AddLetterAt('A', 3, 1);
+            sut.AddLetterAt('N', 4, 1);
+            sut.AddLetterAt('K', 0, 2);
+            sut.AddLetterAt('I', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('K', 3, 2);
+            sut.AddLetterAt('U', 4, 2);
+            sut.AddLetterAt('L', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('G', 2, 3);
+            sut.AddLetterAt('J', 3, 3);
+            sut.AddLetterAt('R', 4, 3);
+
+            List<Vector2> result = sut.SearchHorizontal("KIRK");
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(0, 2));
+            expected.Add(new Vector2(1, 2));
+            expected.Add(new Vector2(2, 2));
+            expected.Add(new Vector2(3, 2));
 
             Assert.AreEqual(expected, result);
         }
@@ -299,6 +357,29 @@ namespace PuzzleSolverUnitTest
             expected.Add(new Vector2(1, 2));
 
             Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWhenCallingSearchVerticalWithKIRKThenSearchVerticalReturnsAListOfVector2()
+        {
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('I', 0, 1);
+            sut.AddLetterAt('U', 1, 1);
+            sut.AddLetterAt('A', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('H', 1, 2);
+            sut.AddLetterAt('G', 2, 2);
+            sut.AddLetterAt('J', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchVertical("KIRK"));
         }
     }
 }
