@@ -11,11 +11,16 @@ namespace PuzzleSolverProject
     {
         public List<String> Words { get; }
         public Dictionary<Vector2, Char> Letters { get;}
+        private delegate List<Vector2> getNeighborsOfBy(Vector2 startPosition, int length);
+        private Dictionary<String, getNeighborsOfBy> searchDirection;
 
         public WordSearchPuzzle()
         {
             Words = new List<String>();
             Letters = new Dictionary<Vector2, Char>();
+            searchDirection = new Dictionary<string, getNeighborsOfBy>();
+            searchDirection.Add("Right", GetRightNeighborsOfBy);
+            searchDirection.Add("Down", GetBottomNeighborsOfBy);
         }
         public void AddWord(String word)
         {
@@ -34,7 +39,7 @@ namespace PuzzleSolverProject
 
             foreach(Vector2 position in firstLetterPositions)
             {
-                List<Vector2> candidate = GetRightNeighborsOfBy(position, word.Length - 1);
+                List<Vector2> candidate = searchDirection["Right"](position, word.Length - 1);
                 Char[] candidateLetters = candidate.Where(key => Letters.ContainsKey(key)).Select(key => Letters[key]).ToArray();
 
                 if(word.Equals(new String(candidateLetters)))
@@ -67,7 +72,7 @@ namespace PuzzleSolverProject
 
             foreach (Vector2 position in firstLetterPositions)
             {
-                List<Vector2> candidate = GetBottomNeighborsOfBy(position, word.Length - 1);
+                List<Vector2> candidate = searchDirection["Down"](position, word.Length - 1);
                 Char[] candidateLetters = candidate.Where(key => Letters.ContainsKey(key)).Select(key => Letters[key]).ToArray();
 
                 if (word.Equals(new String(candidateLetters)))
