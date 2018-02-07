@@ -62,13 +62,20 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchVertical(string word)
         {
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 0));
-            expected.Add(new Vector2(0, 1));
-            expected.Add(new Vector2(0, 2));
-            expected.Add(new Vector2(0, 3));
+            List<Vector2> wordPosition = new List<Vector2>();
+            List<Vector2> firstLetterPositions = FindAllLetterPositions(word[0]);
+            foreach (Vector2 position in firstLetterPositions)
+            {
+                List<Vector2> candidate = GetBottomNeighborsOfBy(position, word.Length - 1);
+                Char[] candidateLetters = candidate.Where(key => Letters.ContainsKey(key)).Select(key => Letters[key]).ToArray();
 
-            return expected;
+                if (word.Equals(new String(candidateLetters)))
+                {
+                    wordPosition.AddRange(candidate);
+                }
+            }
+
+            return wordPosition;
         }
 
         public List<Vector2> GetBottomNeighborsOfBy(Vector2 startPosition, int length)
