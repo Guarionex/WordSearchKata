@@ -40,6 +40,7 @@ namespace PuzzleSolverProject
         public void AddLetterAt(Char letter, int x, int y)
         {
             Letters.Add(new Vector2(x, y), letter);
+            hasChanged = true;
         }
 
         private List<Vector2> SearchUp(String word)
