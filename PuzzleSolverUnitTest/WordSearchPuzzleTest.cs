@@ -928,5 +928,29 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2Dictionary()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('R', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('A', 3, 1);
+            sut.AddLetterAt('I', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('M', 3, 3);
+            Assert.IsInstanceOf(typeof(Dictionary<String, Vector2>), sut.GetWordsLocation());
+        }
     }
 }

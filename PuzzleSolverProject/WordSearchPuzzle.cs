@@ -193,5 +193,10 @@ namespace PuzzleSolverProject
             }
             return positionsDownRightFromStartPosition;
         }
+
+        public Dictionary<String, Vector2> GetWordsLocation()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
