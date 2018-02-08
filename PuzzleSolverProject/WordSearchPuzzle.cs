@@ -197,10 +197,10 @@ namespace PuzzleSolverProject
         public Dictionary<String, List<Vector2>> GetWordsLocation()
         {
             List<Vector2> kirkLocation = new List<Vector2>();
-            kirkLocation.Add(new Vector2(0, 0));
-            kirkLocation.Add(new Vector2(0, 1));
-            kirkLocation.Add(new Vector2(0, 2));
             kirkLocation.Add(new Vector2(0, 3));
+            kirkLocation.Add(new Vector2(0, 2));
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(0, 0));
             Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
             expected.Add("KIRK", kirkLocation);
 
