@@ -38,6 +38,13 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenResultingWordSearchPuzzleHasChangedIsTrue()
+        {
+            WordSearchPuzzle puzzle = sut.ParsePuzzleWordFile(projectPath + validPuzzleFileName);
+            Assert.IsTrue(puzzle.HasChanged);
+        }
+
+        [Test]
         public void GivenAInvalidStringFileNameWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsFileNotFoundException()
         {
             Assert.Throws<FileNotFoundException>(new TestDelegate(ParseFileInvalidFileName));
