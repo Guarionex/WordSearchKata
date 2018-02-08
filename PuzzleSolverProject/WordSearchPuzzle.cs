@@ -121,7 +121,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> GetLeftNeighboorsStartingFrom(Vector2 startPosition, int length)
         {
-            return new List<Vector2>();
+            throw new NotImplementedException();
         }
     }
 }
