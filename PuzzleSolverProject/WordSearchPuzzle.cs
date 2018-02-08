@@ -218,5 +218,10 @@ namespace PuzzleSolverProject
 
             return foundWords;
         }
+
+        public bool IsValid()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
