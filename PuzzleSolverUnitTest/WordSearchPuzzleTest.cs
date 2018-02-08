@@ -870,33 +870,6 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWhenAddingAWordAfterCheckingIsValidThenHasChangeThowsNoException()
-        {
-            sut.AddWord("KIRK");
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('E', 1, 0);
-            sut.AddLetterAt('F', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('J', 2, 1);
-            sut.AddLetterAt('A', 3, 1);
-            sut.AddLetterAt('I', 0, 2);
-            sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('H', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('D', 1, 3);
-            sut.AddLetterAt('J', 2, 3);
-            sut.AddLetterAt('M', 3, 3);
-
-            sut.IsValid();
-            sut.AddWord("KHAN");
-
-            sut.HasChanged();
-        }
-
-        [Test]
         public void Given4x4WordPuzzleWhenAddingAWordAfterCheckingIsValidThenHasChangeReturnsTrue()
         {
             sut.AddWord("KIRK");
@@ -920,7 +893,7 @@ namespace PuzzleSolverUnitTest
             sut.IsValid();
             sut.AddWord("KHAN");
 
-            Assert.IsTrue(sut.HasChanged());
+            Assert.IsTrue(sut.HasChanged);
         }
 
         [Test]
@@ -946,7 +919,7 @@ namespace PuzzleSolverUnitTest
 
             sut.IsValid();
 
-            Assert.IsFalse(sut.HasChanged());
+            Assert.IsFalse(sut.HasChanged);
         }
 
         [Test]
@@ -973,7 +946,7 @@ namespace PuzzleSolverUnitTest
             sut.IsValid();
             sut.AddLetterAt('G', 4, 4);
 
-            Assert.IsTrue(sut.HasChanged());
+            Assert.IsTrue(sut.HasChanged);
         }
     }
 }
