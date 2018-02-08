@@ -954,10 +954,9 @@ namespace PuzzleSolverUnitTest
         }
         
         [Test]
-        public void Given4x4WordWithTwoDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
+        public void Given4x4WordWithOneUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
         {
             sut.AddWord("KIRK");
-            sut.AddWord("KHAN");
             sut.AddLetterAt('K', 0, 0);
             sut.AddLetterAt('E', 1, 0);
             sut.AddLetterAt('F', 2, 0);
@@ -977,10 +976,10 @@ namespace PuzzleSolverUnitTest
 
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
             List<Vector2> kirkLocation = new List<Vector2>();
-            kirkLocation.Add(new Vector2(0, 0));
-            kirkLocation.Add(new Vector2(0, 1));
-            kirkLocation.Add(new Vector2(0, 2));
             kirkLocation.Add(new Vector2(0, 3));
+            kirkLocation.Add(new Vector2(0, 2));
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(0, 0));
             Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
             expected.Add("KIRK", kirkLocation);
 
