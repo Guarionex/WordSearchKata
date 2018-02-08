@@ -100,7 +100,7 @@ namespace PuzzleSolverProject
             return positionsUpRightFromStartPosition;
         }
 
-        public List<Vector2> SearchUpRight(string word)
+        public List<Vector2> SearchUpRight(String word)
         {
             return SearchWordInDirection(word, DirectionEnum.UpRight);
         }
