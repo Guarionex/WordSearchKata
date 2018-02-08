@@ -150,7 +150,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchDownRight(String word)
         {
-            throw new NotImplementedException();
+            return new List<Vector2>();
         }
     }
 }
