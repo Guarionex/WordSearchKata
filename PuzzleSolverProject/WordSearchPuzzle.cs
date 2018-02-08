@@ -167,5 +167,10 @@ namespace PuzzleSolverProject
             }
             return positionsUpLeftFromStartPosition;
         }
+
+        public List<String> SearchUpLeft(string word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
