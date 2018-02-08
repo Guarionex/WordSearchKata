@@ -13,13 +13,11 @@ namespace PuzzleSolverUnitTest
     public class WordSearchPuzzleTest
     {
         private WordSearchPuzzle sut;
-        private PuzzleSolver solver;
 
         [SetUp]
         public void init()
         {
             sut = new WordSearchPuzzle();
-            solver = new PuzzleSolver();
         }
 
         [Test]
