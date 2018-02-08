@@ -1000,7 +1000,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('A', 3, 1);
             sut.AddLetterAt('I', 0, 2);
             sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('X', 2, 2);
             sut.AddLetterAt('H', 3, 2);
             sut.AddLetterAt('K', 0, 3);
             sut.AddLetterAt('D', 1, 3);
@@ -1116,7 +1116,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('A', 3, 1);
             sut.AddLetterAt('R', 0, 2);
             sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('X', 2, 2);
             sut.AddLetterAt('H', 3, 2);
             sut.AddLetterAt('K', 0, 3);
             sut.AddLetterAt('D', 1, 3);
@@ -1191,7 +1191,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('K', 3, 1);
             sut.AddLetterAt('R', 0, 2);
             sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('X', 2, 2);
             sut.AddLetterAt('H', 3, 2);
             sut.AddLetterAt('N', 0, 3);
             sut.AddLetterAt('A', 1, 3);
@@ -1300,12 +1300,12 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('F', 2, 0);
             sut.AddLetterAt('N', 3, 0);
             sut.AddLetterAt('X', 0, 1);
-            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('R', 1, 1);
             sut.AddLetterAt('E', 2, 1);
             sut.AddLetterAt('K', 3, 1);
             sut.AddLetterAt('R', 0, 2);
             sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('I', 2, 2);
             sut.AddLetterAt('H', 3, 2);
             sut.AddLetterAt('K', 0, 3);
             sut.AddLetterAt('D', 1, 3);
@@ -1314,10 +1314,10 @@ namespace PuzzleSolverUnitTest
 
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
             List<Vector2> kirkLocation = new List<Vector2>();
-            kirkLocation.Add(new Vector2(0, 0));
-            kirkLocation.Add(new Vector2(1, 1));
-            kirkLocation.Add(new Vector2(2, 2));
             kirkLocation.Add(new Vector2(3, 3));
+            kirkLocation.Add(new Vector2(2, 2));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(0, 0));
             Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
             expected.Add("KIRK", kirkLocation);
 
