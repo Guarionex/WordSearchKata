@@ -86,7 +86,7 @@ namespace PuzzleSolverProject
             return wordPosition;
         }
         
-        public List<Vector2> GetUpRightNeighborsOfBy(Vector2 startPosition, int length)
+        private List<Vector2> GetUpRightNeighborsOfBy(Vector2 startPosition, int length)
         {
             List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
             for (int x = 0, y = 0; x < 4 && y > -4; x++, y--)
