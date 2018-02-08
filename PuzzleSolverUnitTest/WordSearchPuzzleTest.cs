@@ -299,7 +299,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchVerticalWithKIRKThenSearchVerticalReturnsAListOfVector2()
+        public void Given4x4WordPuzzleWhenCallingSearchDownWithKIRKThenSearchDownReturnsAListOfVector2()
         {
             sut.AddLetterAt('K', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -318,11 +318,11 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('A', 2, 3);
             sut.AddLetterAt('N', 3, 3);
 
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchVertical("KIRK"));
+            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchDown("KIRK"));
         }
 
         [Test]
-        public void Given4x4WordPuzzleWithVerticalWordInFirstColumnWhenCallingSearchVerticalWithKIRKThenSearchVerticalReturnsAListOfVector2WithThePositionsForKIRK()
+        public void Given4x4WordPuzzleWithDownWordInFirstColumnWhenCallingSearchDownWithKIRKThenSearchVerticalReturnsAListOfVector2WithThePositionsForKIRK()
         {
             sut.AddLetterAt('K', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -341,7 +341,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('A', 2, 3);
             sut.AddLetterAt('N', 3, 3);
 
-            List<Vector2> result = sut.SearchVertical("KIRK");
+            List<Vector2> result = sut.SearchDown("KIRK");
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(0, 0));
             expected.Add(new Vector2(0, 1));
@@ -352,7 +352,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWithVerticalWordInSecondColumnWhenCallingSearchVerticalWithKIRKThenSearchVerticalReturnsAListOfVector2WithThePositionsForKIRK()
+        public void Given4x4WordPuzzleWithDownWordInSecondColumnWhenCallingSearchVerticalWithKIRKThenSearchDownReturnsAListOfVector2WithThePositionsForKIRK()
         {
             sut.AddLetterAt('E', 0, 0);
             sut.AddLetterAt('K', 1, 0);
@@ -371,7 +371,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('A', 2, 3);
             sut.AddLetterAt('N', 3, 3);
 
-            List<Vector2> result = sut.SearchVertical("KIRK");
+            List<Vector2> result = sut.SearchDown("KIRK");
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(1, 0));
             expected.Add(new Vector2(1, 1));
