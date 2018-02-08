@@ -232,5 +232,10 @@ namespace PuzzleSolverProject
             }
             return isValid;
         }
+
+        public bool HasChanged()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
