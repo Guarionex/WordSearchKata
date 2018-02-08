@@ -930,7 +930,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2Dictionary()
+        public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringListVector2Dictionary()
         {
             sut.AddWord("KIRK");
             sut.AddWord("KHAN");
@@ -950,7 +950,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('D', 1, 3);
             sut.AddLetterAt('J', 2, 3);
             sut.AddLetterAt('M', 3, 3);
-            Assert.IsInstanceOf(typeof(Dictionary<String, Vector2>), sut.GetWordsLocation());
+            Assert.IsInstanceOf(typeof(Dictionary<String, List<Vector2>>), sut.GetWordsLocation());
         }
     }
 }
