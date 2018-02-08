@@ -173,5 +173,10 @@ namespace PuzzleSolverProject
         {
             return SearchWordInDirection(word, DirectionEnum.UpLeft);
         }
+
+        public List<Vector2> GetDownLeftNeighborsStartingFrom(Vector2 startPosition, int length)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
