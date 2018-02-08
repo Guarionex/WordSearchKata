@@ -25,6 +25,7 @@ namespace PuzzleSolverProject
             searchDirection.Add(DirectionEnum.UpRight, GetUpRightNeighborsStartingFrom);
             searchDirection.Add(DirectionEnum.Left, GetLeftNeighborsStartingFrom);
             searchDirection.Add(DirectionEnum.DownRight, GetDownRightNeighborsStartingFrom);
+            searchDirection.Add(DirectionEnum.UpLeft, GetUpLeftNeighborsStartingFrom);
         }
 
         public void AddWord(String word)
@@ -137,21 +138,40 @@ namespace PuzzleSolverProject
 
         private List<Vector2> GetDownRightNeighborsStartingFrom(Vector2 startPosition, int length)
         {
-            List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
+            List<Vector2> positionsDownRightFromStartPosition = new List<Vector2>();
             for (int x = 0, y = 0; x < length && y < length; x++, y++)
             {
-                Vector2 upRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
-                if (Letters.ContainsKey(upRightNeighbor))
+                Vector2 downRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
+                if (Letters.ContainsKey(downRightNeighbor))
                 {
-                    positionsUpRightFromStartPosition.Add(upRightNeighbor);
+                    positionsDownRightFromStartPosition.Add(downRightNeighbor);
                 }
             }
-            return positionsUpRightFromStartPosition;
+            return positionsDownRightFromStartPosition;
         }
 
         public List<Vector2> SearchDownRight(String word)
         {
             return SearchWordInDirection(word, DirectionEnum.DownRight);
+        }
+
+        private List<Vector2> GetUpLeftNeighborsStartingFrom(Vector2 startPosition, int length)
+        {
+            List<Vector2> positionsUpLeftFromStartPosition = new List<Vector2>();
+            for (int x = 0, y = 0; x > -length && y > -length; x--, y--)
+            {
+                Vector2 UpLeftNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
+                if (Letters.ContainsKey(UpLeftNeighbor))
+                {
+                    positionsUpLeftFromStartPosition.Add(UpLeftNeighbor);
+                }
+            }
+            return positionsUpLeftFromStartPosition;
+        }
+
+        public List<Vector2> SearchUpLeft(string word)
+        {
+            return SearchWordInDirection(word, DirectionEnum.UpLeft);
         }
     }
 }
