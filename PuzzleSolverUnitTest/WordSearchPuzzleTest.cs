@@ -933,7 +933,6 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringListVector2Dictionary()
         {
             sut.AddWord("KIRK");
-            sut.AddWord("KHAN");
             sut.AddLetterAt('K', 0, 0);
             sut.AddLetterAt('E', 1, 0);
             sut.AddLetterAt('F', 2, 0);

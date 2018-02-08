@@ -200,8 +200,16 @@ namespace PuzzleSolverProject
 
             foreach(String word in Words)
             {
-                List<Vector2> wordLocation = SearchUp(word);
-                foundWords.Add(word, wordLocation);
+                List<Vector2> wordUpLocation = SearchUp(word);
+                List<Vector2> wordDownLocation = SearchDown(word);
+                List<List<Vector2>> wordDirections = new List<List<Vector2>>();
+                wordDirections.Add(wordUpLocation);
+                wordDirections.Add(wordDownLocation);
+                List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > 0);
+                if (foundWordLocation.Count > 0)
+                {
+                    foundWords.Add(word, foundWordLocation);
+                }
             }
 
             return foundWords;
