@@ -121,7 +121,13 @@ namespace PuzzleSolverProject
 
         public List<Vector2> GetLeftNeighboorsStartingFrom(Vector2 startPosition, int length)
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(3, 2));
+            expected.Add(new Vector2(2, 2));
+            expected.Add(new Vector2(1, 2));
+            expected.Add(new Vector2(0, 2));
+
+            return expected;
         }
     }
 }
