@@ -589,7 +589,7 @@ namespace PuzzleSolverUnitTest
 
             Vector2 startPosition = new Vector2(3, 2);
 
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.GetLeftNeighboorsStartingFrom(startPosition, 4));
+            Assert.IsInstanceOf(typeof(List<Vector2>), sut.GetLeftNeighborsStartingFrom(startPosition, 4));
         }
 
         [Test]
@@ -613,7 +613,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('N', 3, 3);
 
             Vector2 startPosition = new Vector2(3, 2);
-            List<Vector2> result = sut.GetLeftNeighboorsStartingFrom(startPosition, 4);
+            List<Vector2> result = sut.GetLeftNeighborsStartingFrom(startPosition, 4);
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(3, 2));
             expected.Add(new Vector2(2, 2));
@@ -644,7 +644,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('N', 3, 3);
 
             Vector2 startPosition = new Vector2(3, 1);
-            List<Vector2> result = sut.GetLeftNeighboorsStartingFrom(startPosition, 4);
+            List<Vector2> result = sut.GetLeftNeighborsStartingFrom(startPosition, 4);
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(3, 1));
             expected.Add(new Vector2(2, 1));

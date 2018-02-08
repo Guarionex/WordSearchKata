@@ -119,15 +119,13 @@ namespace PuzzleSolverProject
             return SearchWordInDirection(word, DirectionEnum.Up);
         }
 
-        public List<Vector2> GetLeftNeighboorsStartingFrom(Vector2 startPosition, int length)
+        public List<Vector2> GetLeftNeighborsStartingFrom(Vector2 startPosition, int length)
         {
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(3, 2));
-            expected.Add(new Vector2(2, 2));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(0, 2));
-
-            return expected;
+            Vector2 maxPosition = new Vector2(startPosition.X - (length - 1), startPosition.Y);
+            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X <= 0 && (maxPosition - key).Y == 0).ToList();
+            List<Vector2> positionsLeftFromStartingPoint = positionsWithinRange.Where(vector => vector.X <= startPosition.X).ToList();
+            positionsLeftFromStartingPoint.Reverse();
+            return positionsLeftFromStartingPoint;
         }
     }
 }
