@@ -190,7 +190,13 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchDownLeft(string v)
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(3, 0));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(1, 2));
+            expected.Add(new Vector2(0, 3));
+
+            return expected;
         }
     }
 }
