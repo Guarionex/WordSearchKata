@@ -194,9 +194,9 @@ namespace PuzzleSolverProject
             return positionsDownRightFromStartPosition;
         }
 
-        public Dictionary<String, Vector2> GetWordsLocation()
+        public Dictionary<String, List<Vector2>> GetWordsLocation()
         {
-            return new Dictionary<String, Vector2>();
+            return new Dictionary<String, List<Vector2>>();
         }
     }
 }
