@@ -196,7 +196,7 @@ namespace PuzzleSolverProject
 
         public Dictionary<String, Vector2> GetWordsLocation()
         {
-            throw new NotImplementedException();
+            return new Dictionary<String, Vector2>();
         }
     }
 }
