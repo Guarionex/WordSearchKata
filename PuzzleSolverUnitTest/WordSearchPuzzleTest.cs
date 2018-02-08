@@ -706,5 +706,35 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void Given4x4WordPuzzleWhenCallingGetDownRightNeighborsStartingFromWith10By3ThenGetGetDownRightNeighborsStartingFromReturnsAListOfVector2Startingfrom10()
+        {
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('A', 3, 0);
+            sut.AddLetterAt('X', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('W', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('J', 0, 2);
+            sut.AddLetterAt('D', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('B', 3, 2);
+            sut.AddLetterAt('T', 0, 3);
+            sut.AddLetterAt('J', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
+
+            Vector2 startPosition = new Vector2(1, 0);
+            List<Vector2> result = sut.GetDownRightNeighborsStartingFrom(startPosition, 3);
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(1, 0));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(3, 2));
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
