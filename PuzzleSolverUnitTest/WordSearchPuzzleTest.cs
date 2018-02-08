@@ -974,5 +974,47 @@ namespace PuzzleSolverUnitTest
             sut.IsValid();
             Assert.IsFalse(sut.IsValid());
         }
+
+        [Test]
+        public void GivenValid4x4WordPuzzleWhenCallingIsValidThenGetWordsLocationReturnsAllWordsLocations()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("HAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('X', 3, 0);
+            sut.AddLetterAt('H', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('I', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('A', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('X', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('N', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
+
+            sut.IsValid();
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 0));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(2, 2));
+            kirkLocation.Add(new Vector2(3, 3));
+
+            List<Vector2> hanLocation = new List<Vector2>();
+            hanLocation.Add(new Vector2(0, 1));
+            hanLocation.Add(new Vector2(1, 2));
+            hanLocation.Add(new Vector2(2, 3));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+            expected.Add("HAN", hanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
