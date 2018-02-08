@@ -127,5 +127,10 @@ namespace PuzzleSolverProject
             positionsLeftFromStartingPoint.Reverse();
             return positionsLeftFromStartingPoint;
         }
+
+        public List<String> SearchLeft(String word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
