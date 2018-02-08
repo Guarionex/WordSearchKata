@@ -95,7 +95,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchHorizontalWithKIRKThenSearchHorizontalThrowsNoException()
+        public void Given4x4WordPuzzleWhenCallingSearchRightWithKIRKThenSearchHorizontalThrowsNoException()
         {
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -114,11 +114,11 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('R', 2, 3);
             sut.AddLetterAt('K', 3, 3);
 
-            sut.SearchHorizontal("KIRK");
+            sut.SearchRight("KIRK");
         }
 
         [Test]
-        public void Given4x4WordPuzzleWithAHorizontalWordWhenCallingSearchHorizontalWithKIRKThenSearchHorizontalReturnsAListOfVectors()
+        public void Given4x4WordPuzzleWithAHorizontalWordWhenCallingSearchRightWithKIRKThenSearchRightReturnsAListOfVectors()
         {
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -137,11 +137,11 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('R', 2, 3);
             sut.AddLetterAt('K', 3, 3);
 
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchHorizontal("KIRK"));
+            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchRight("KIRK"));
         }
 
         [Test]
-        public void Given4x4WordPuzzleWithAHorizontalWordInLastRowWhenCallingSearchHorizontalWithKIRKThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
+        public void Given4x4WordPuzzleWithAHorizontalWordInLastRowWhenCallingSearchRightWithKIRKThenSearchRightReturnsAListOfVectorsWithTheHorizontalWordKeys()
         {
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -160,7 +160,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('R', 2, 3);
             sut.AddLetterAt('K', 3, 3);
 
-            List<Vector2> result = sut.SearchHorizontal("KIRK");
+            List<Vector2> result = sut.SearchRight("KIRK");
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(0, 3));
             expected.Add(new Vector2(1, 3));
@@ -171,7 +171,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWithAHorizontalWordInThirdRowWhenCallingSearchHorizontalWithKIRKThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
+        public void Given4x4WordPuzzleWithAHorizontalWordInThirdRowWhenCallingSearchRightWithKIRKThenSearchRightReturnsAListOfVectorsWithTheHorizontalWordKeys()
         {
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -190,7 +190,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('G', 2, 3);
             sut.AddLetterAt('J', 3, 3);
 
-            List<Vector2> result = sut.SearchHorizontal("KIRK");
+            List<Vector2> result = sut.SearchRight("KIRK");
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(0, 2));
             expected.Add(new Vector2(1, 2));
@@ -201,7 +201,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchHorizontalWithKHANThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
+        public void Given4x4WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchRightWithKHANThenSearchRightReturnsAListOfVectorsWithTheHorizontalWordKeys()
         {
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -220,7 +220,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('G', 2, 3);
             sut.AddLetterAt('J', 3, 3);
 
-            List<Vector2> result = sut.SearchHorizontal("KHAN");
+            List<Vector2> result = sut.SearchRight("KHAN");
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(0, 1));
             expected.Add(new Vector2(1, 1));
@@ -231,7 +231,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given5x5WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchHorizontalWithA4LetterWordThatStartsAtX1ThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
+        public void Given5x5WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchRightWithA4LetterWordThatStartsAtX1ThenSearchRightReturnsAListOfVectorsWithTheHorizontalWordKeys()
         {
             sut.AddLetterAt('Q', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -254,7 +254,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('J', 3, 3);
             sut.AddLetterAt('R', 4, 3);
 
-            List<Vector2> result = sut.SearchHorizontal("KHAN");
+            List<Vector2> result = sut.SearchRight("KHAN");
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(1, 1));
             expected.Add(new Vector2(2, 1));
@@ -288,7 +288,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('J', 3, 3);
             sut.AddLetterAt('R', 4, 3);
 
-            List<Vector2> result = sut.SearchHorizontal("KIRK");
+            List<Vector2> result = sut.SearchRight("KIRK");
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(0, 2));
             expected.Add(new Vector2(1, 2));
