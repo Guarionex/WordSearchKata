@@ -136,13 +136,16 @@ namespace PuzzleSolverProject
 
         public List<Vector2> GetDownRightNeighborsStartingFrom(Vector2 startPosition, int length)
         {
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 0));
-            expected.Add(new Vector2(1, 1));
-            expected.Add(new Vector2(2, 2));
-            expected.Add(new Vector2(3, 3));
-
-            return expected;
+            List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
+            for (int x = 0, y = 0; x < length && y < length; x++, y++)
+            {
+                Vector2 upRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
+                if (Letters.ContainsKey(upRightNeighbor))
+                {
+                    positionsUpRightFromStartPosition.Add(upRightNeighbor);
+                }
+            }
+            return positionsUpRightFromStartPosition;
         }
     }
 }
