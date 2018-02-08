@@ -15,6 +15,7 @@ namespace PuzzleSolverProject
         private Dictionary<DirectionEnum, getNeighborsOfBy> searchDirection;
         public bool HasChanged { get; private set; }
         private Dictionary<String, List<Vector2>> wordLocations;
+        private bool isValid;
 
         public WordSearchPuzzle()
         {
@@ -31,6 +32,7 @@ namespace PuzzleSolverProject
             searchDirection.Add(DirectionEnum.DownLeft, GetDownLeftNeighborsStartingFrom);
             HasChanged = false;
             wordLocations = new Dictionary<string, List<Vector2>>();
+            isValid = true;
         }
 
         public void AddWord(String word)
@@ -227,7 +229,6 @@ namespace PuzzleSolverProject
 
         public bool IsValid()
         {
-            bool isValid = true;
             try
             {
                 if (HasChanged)
