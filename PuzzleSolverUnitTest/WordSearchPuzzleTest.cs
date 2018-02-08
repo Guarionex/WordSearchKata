@@ -568,7 +568,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchLeftWithKIRKThenSearchVerticalReturnsAListOfVector2()
+        public void Given4x4WordPuzzleWhenCallingSearchLeftWithKIRKThenSearchLeftReturnsAListOfVector2()
         {
             sut.AddLetterAt('K', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -591,7 +591,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWithLeftHorizontalWordWhenCallingSearchLeftWithKIRKThenSearchVerticalReturnsAListOfVector2WithThePositionsForKIRK()
+        public void Given4x4WordPuzzleWithLeftHorizontalWordWhenCallingSearchLeftWithKIRKThenSearchLeftReturnsAListOfVector2WithThePositionsForKIRK()
         {
             sut.AddLetterAt('K', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -621,7 +621,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWithLeftHorizontalWordInLastRowWhenCallingSearchLeftWithKIRKThenSearchVerticalReturnsAListOfVector2WithThePositionsForKIRK()
+        public void Given4x4WordPuzzleWithLeftHorizontalWordInLastRowWhenCallingSearchLeftWithKIRKThenSearchLeftReturnsAListOfVector2WithThePositionsForKIRK()
         {
             sut.AddLetterAt('K', 0, 0);
             sut.AddLetterAt('G', 1, 0);
@@ -735,6 +735,29 @@ namespace PuzzleSolverUnitTest
             expected.Add(new Vector2(3, 2));
 
             Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWhenCallingSearchDownRightWithKIRKThenSearchDownRightReturnsAListOfVector2()
+        {
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('A', 3, 0);
+            sut.AddLetterAt('X', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('W', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('J', 0, 2);
+            sut.AddLetterAt('D', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('B', 3, 2);
+            sut.AddLetterAt('T', 0, 3);
+            sut.AddLetterAt('J', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
+
+            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchDownRight("KIRK"));
         }
     }
 }

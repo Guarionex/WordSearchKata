@@ -147,5 +147,10 @@ namespace PuzzleSolverProject
             }
             return positionsUpRightFromStartPosition;
         }
+
+        public List<Vector2> SearchDownRight(String word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
