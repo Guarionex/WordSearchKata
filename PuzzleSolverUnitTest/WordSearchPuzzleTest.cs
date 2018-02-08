@@ -891,6 +891,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('M', 3, 3);
 
             sut.IsValid();
+            sut.AddWord("KHAN");
 
             sut.HasChanged();
         }

@@ -235,7 +235,7 @@ namespace PuzzleSolverProject
 
         public bool HasChanged()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
