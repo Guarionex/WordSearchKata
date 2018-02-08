@@ -697,7 +697,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('A', 2, 3);
             sut.AddLetterAt('N', 3, 3);
 
-            List<Vector2> result = sut.SearchUp("KIRK");
+            List<Vector2> result = sut.SearchLeft("KIRK");
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(3, 1));
             expected.Add(new Vector2(2, 1));

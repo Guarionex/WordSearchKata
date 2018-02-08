@@ -130,7 +130,13 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchLeft(String word)
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(3, 1));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(1, 1));
+            expected.Add(new Vector2(0, 1));
+
+            return expected;
         }
     }
 }
