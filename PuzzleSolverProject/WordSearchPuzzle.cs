@@ -90,7 +90,7 @@ namespace PuzzleSolverProject
         private List<Vector2> GetUpRightNeighborsStartingFrom(Vector2 startPosition, int length)
         {
             List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
-            for (int x = 0, y = 0; x < 4 && y > -4; x++, y--)
+            for (int x = 0, y = 0; x < length && y > -length; x++, y--)
             {
                 Vector2 upRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
                 if(Letters.ContainsKey(upRightNeighbor))
