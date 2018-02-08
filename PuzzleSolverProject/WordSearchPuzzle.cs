@@ -221,7 +221,16 @@ namespace PuzzleSolverProject
 
         public bool IsValid()
         {
-            return true;
+            bool isValid = true;
+            try
+            {
+                GetWordsLocation();
+            }
+            catch(Exception e)
+            {
+                isValid = false;
+            }
+            return isValid;
         }
     }
 }
