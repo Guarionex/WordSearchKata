@@ -32,6 +32,12 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileReturnsAWordSearchPuzzle()
+        {
+            Assert.IsInstanceOf(typeof(WordSearchPuzzle), sut.ParsePuzzleWordFile(projectPath + validPuzzleFileName));
+        }
+
+        [Test]
         public void GivenAInvalidStringFileNameWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsFileNotFoundException()
         {
             Assert.Throws<FileNotFoundException>(new TestDelegate(ParseFileInvalidFileName));
