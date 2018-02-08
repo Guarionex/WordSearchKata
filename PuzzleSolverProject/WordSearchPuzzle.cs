@@ -22,6 +22,7 @@ namespace PuzzleSolverProject
             searchDirection.Add(DirectionEnum.Right, GetRightNeighborsOfBy);
             searchDirection.Add(DirectionEnum.Down, GetBottomNeighborsOfBy);
             searchDirection.Add(DirectionEnum.Up, GetUpNeighborsOfBy);
+            searchDirection.Add(DirectionEnum.UpRight, GetUpRightNeighborsOfBy);
         }
 
         public void AddWord(String word)
@@ -87,22 +88,21 @@ namespace PuzzleSolverProject
         
         public List<Vector2> GetUpRightNeighborsOfBy(Vector2 startPosition, int length)
         {
-            Vector2 maxPosition = new Vector2(startPosition.X + length - 1, startPosition.Y - (length - 1));
-            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X >= 0 && (maxPosition - key).Y <= 0).ToList();
-            List<Vector2> positionsUpRightFromStartPosition = positionsWithinRange.Where(vector => vector.X + Math.Abs(vector.Y) == (length - 1)).ToList();
-            positionsUpRightFromStartPosition.Reverse();
+            List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
+            for (int x = 0, y = 0; x < 4 && y > -4; x++, y--)
+            {
+                Vector2 upRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
+                if(Letters.ContainsKey(upRightNeighbor))
+                {
+                    positionsUpRightFromStartPosition.Add(upRightNeighbor);
+                }
+            }
             return positionsUpRightFromStartPosition;
         }
 
         public List<Vector2> SearchUpRight(string word)
         {
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 3));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(3, 0));
-
-            return expected;
+            return SearchWordInDirection(word, DirectionEnum.UpRight);
         }
 
         private List<Vector2> GetUpNeighborsOfBy(Vector2 startPosition, int length)
