@@ -59,7 +59,7 @@ namespace PuzzleSolverProject
             return SearchWordInDirection(word, DirectionEnum.Right);
         }
 
-        public List<Vector2> SearchUpLeft(string word)
+        private List<Vector2> SearchUpLeft(string word)
         {
             return SearchWordInDirection(word, DirectionEnum.UpLeft);
         }
