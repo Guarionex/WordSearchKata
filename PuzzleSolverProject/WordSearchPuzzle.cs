@@ -133,5 +133,10 @@ namespace PuzzleSolverProject
         {
             return SearchWordInDirection(word, DirectionEnum.Left);
         }
+
+        public List<Vector2> GetDownRightNeighborsStartingFrom(Vector2 startPosition, int length)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
