@@ -206,6 +206,7 @@ namespace PuzzleSolverProject
                 List<Vector2> wordRightLocation = SearchRight(word);
                 List<Vector2> wordUpLeftLocation = SearchUpLeft(word);
                 List<Vector2> wordUpRightLocation = SearchUpRight(word);
+                List<Vector2> wordDownLeftLocation = SearchDownLeft(word);
                 List<List<Vector2>> wordDirections = new List<List<Vector2>>();
                 wordDirections.Add(wordUpLocation);
                 wordDirections.Add(wordDownLocation);
@@ -213,6 +214,7 @@ namespace PuzzleSolverProject
                 wordDirections.Add(wordRightLocation);
                 wordDirections.Add(wordUpLeftLocation);
                 wordDirections.Add(wordUpRightLocation);
+                wordDirections.Add(wordDownLeftLocation);
                 List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > 0);
                 if (foundWordLocation.Count > 0)
                 {
