@@ -190,7 +190,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchDownLeft(string v)
         {
-            throw new NotImplementedException();
+            return new List<Vector2>();
         }
     }
 }
