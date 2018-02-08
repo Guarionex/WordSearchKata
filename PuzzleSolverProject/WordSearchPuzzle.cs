@@ -13,6 +13,7 @@ namespace PuzzleSolverProject
         public Dictionary<Vector2, Char> Letters { get;}
         private delegate List<Vector2> getNeighborsOfBy(Vector2 startPosition, int length);
         private Dictionary<DirectionEnum, getNeighborsOfBy> searchDirection;
+        private bool hasChanged;
 
         public WordSearchPuzzle()
         {
@@ -27,11 +28,13 @@ namespace PuzzleSolverProject
             searchDirection.Add(DirectionEnum.DownRight, GetDownRightNeighborsStartingFrom);
             searchDirection.Add(DirectionEnum.UpLeft, GetUpLeftNeighborsStartingFrom);
             searchDirection.Add(DirectionEnum.DownLeft, GetDownLeftNeighborsStartingFrom);
+            hasChanged = false;
         }
 
         public void AddWord(String word)
         {
             Words.Add(word);
+            hasChanged = true;
         }
 
         public void AddLetterAt(Char letter, int x, int y)
@@ -230,12 +233,15 @@ namespace PuzzleSolverProject
             {
                 isValid = false;
             }
+
+            hasChanged = false;
+
             return isValid;
         }
 
         public bool HasChanged()
         {
-            return true;
+            return hasChanged;
         }
     }
 }

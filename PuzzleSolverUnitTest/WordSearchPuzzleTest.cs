@@ -924,7 +924,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWhenCallingHasChangedThenHasChangeReturnsFalse()
+        public void Given4x4WordPuzzleWhenCallingIsValidThenHasChangeReturnsFalse()
         {
             sut.AddWord("KIRK");
             sut.AddLetterAt('K', 0, 0);
@@ -943,6 +943,8 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('D', 1, 3);
             sut.AddLetterAt('J', 2, 3);
             sut.AddLetterAt('M', 3, 3);
+
+            sut.IsValid();
 
             Assert.IsFalse(sut.HasChanged());
         }
