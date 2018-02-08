@@ -187,5 +187,10 @@ namespace PuzzleSolverProject
             }
             return positionsdownLeftFromStartPosition;
         }
+
+        public List<Vector2> SearchDownLeft(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

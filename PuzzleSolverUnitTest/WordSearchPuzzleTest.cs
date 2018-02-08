@@ -921,5 +921,28 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void Given4x4WordPuzzleWhenCallingSearchDownLeftWithKIRKThenSearchDownLeftReturnsAListOfVector2()
+        {
+            sut.AddLetterAt('T', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('V', 0, 1);
+            sut.AddLetterAt('J', 1, 1);
+            sut.AddLetterAt('I', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('K', 0, 2);
+            sut.AddLetterAt('R', 1, 2);
+            sut.AddLetterAt('D', 2, 2);
+            sut.AddLetterAt('K', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('J', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('W', 3, 3);
+
+            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchDownLeft("KIRK"));
+        }
     }
 }
