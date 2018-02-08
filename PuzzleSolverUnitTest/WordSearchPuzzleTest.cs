@@ -1004,7 +1004,7 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('K', 3, 4);
             sut.AddLetterAt('W', 4, 4);
 
-            List<Vector2> result = sut.SearchUpLeft("KIRK");
+            List<Vector2> result = sut.SearchDownLeft("KIRK");
             List<Vector2> expected = new List<Vector2>();
             expected.Add(new Vector2(4, 1));
             expected.Add(new Vector2(3, 2));
