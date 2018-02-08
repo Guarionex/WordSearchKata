@@ -39,7 +39,7 @@ namespace PuzzleSolverProject
             Letters.Add(new Vector2(x, y), letter);
         }
 
-        public List<Vector2> SearchUp(String word)
+        private List<Vector2> SearchUp(String word)
         {
             return SearchWordInDirection(word, DirectionEnum.Up);
         }
