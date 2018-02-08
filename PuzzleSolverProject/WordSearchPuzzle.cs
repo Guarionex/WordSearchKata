@@ -104,12 +104,13 @@ namespace PuzzleSolverProject
             return positions;
         }
 
-        private List<Vector2> GetRightNeighborsStartingFrom(Vector2 startPosition, int length)
+        private List<Vector2> GetUpNeighborsStartingFrom(Vector2 startPosition, int length)
         {
-            Vector2 maxPosition = new Vector2(startPosition.X + length - 1, startPosition.Y);
-            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X >= 0 && (maxPosition - key).Y == 0).ToList();
-            List<Vector2> positionsRightOfStartingPoint = positionsWithinRange.Where(vector => vector.X >= startPosition.X).ToList();
-           return positionsRightOfStartingPoint;
+            Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y - (length - 1));
+            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == 0 && (maxPosition - key).Y <= 0).ToList();
+            List<Vector2> positionsUpFromStartPosition = positionsWithinRange.Where(vector => vector.Y <= startPosition.Y).ToList();
+            positionsUpFromStartPosition.Reverse();
+            return positionsUpFromStartPosition;
         }
 
         private List<Vector2> GetDownNeighborsStartingFrom(Vector2 startPosition, int length)
@@ -118,29 +119,6 @@ namespace PuzzleSolverProject
             List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == 0 && (maxPosition - key).Y >= 0).ToList();
             List<Vector2> positionsBottomOfStartPosition = positionsWithinRange.Where(vector => vector.Y >= startPosition.Y).ToList();
             return positionsBottomOfStartPosition;
-        }
-
-        private List<Vector2> GetUpRightNeighborsStartingFrom(Vector2 startPosition, int length)
-        {
-            List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
-            for (int x = 0, y = 0; x < length && y > -length; x++, y--)
-            {
-                Vector2 upRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
-                if(Letters.ContainsKey(upRightNeighbor))
-                {
-                    positionsUpRightFromStartPosition.Add(upRightNeighbor);
-                }
-            }
-            return positionsUpRightFromStartPosition;
-        }
-
-        private List<Vector2> GetUpNeighborsStartingFrom(Vector2 startPosition, int length)
-        {
-            Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y - (length - 1));
-            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == 0 && (maxPosition - key).Y <= 0).ToList();
-            List<Vector2> positionsUpFromStartPosition = positionsWithinRange.Where(vector => vector.Y <= startPosition.Y).ToList();
-            positionsUpFromStartPosition.Reverse();
-            return positionsUpFromStartPosition;
         }
 
         private List<Vector2> GetLeftNeighborsStartingFrom(Vector2 startPosition, int length)
@@ -152,18 +130,12 @@ namespace PuzzleSolverProject
             return positionsLeftFromStartingPoint;
         }
 
-        private List<Vector2> GetDownRightNeighborsStartingFrom(Vector2 startPosition, int length)
+        private List<Vector2> GetRightNeighborsStartingFrom(Vector2 startPosition, int length)
         {
-            List<Vector2> positionsDownRightFromStartPosition = new List<Vector2>();
-            for (int x = 0, y = 0; x < length && y < length; x++, y++)
-            {
-                Vector2 downRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
-                if (Letters.ContainsKey(downRightNeighbor))
-                {
-                    positionsDownRightFromStartPosition.Add(downRightNeighbor);
-                }
-            }
-            return positionsDownRightFromStartPosition;
+            Vector2 maxPosition = new Vector2(startPosition.X + length - 1, startPosition.Y);
+            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X >= 0 && (maxPosition - key).Y == 0).ToList();
+            List<Vector2> positionsRightOfStartingPoint = positionsWithinRange.Where(vector => vector.X >= startPosition.X).ToList();
+           return positionsRightOfStartingPoint;
         }
 
         private List<Vector2> GetUpLeftNeighborsStartingFrom(Vector2 startPosition, int length)
@@ -180,6 +152,20 @@ namespace PuzzleSolverProject
             return positionsUpLeftFromStartPosition;
         }
 
+        private List<Vector2> GetUpRightNeighborsStartingFrom(Vector2 startPosition, int length)
+        {
+            List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
+            for (int x = 0, y = 0; x < length && y > -length; x++, y--)
+            {
+                Vector2 upRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
+                if(Letters.ContainsKey(upRightNeighbor))
+                {
+                    positionsUpRightFromStartPosition.Add(upRightNeighbor);
+                }
+            }
+            return positionsUpRightFromStartPosition;
+        }
+
         private List<Vector2> GetDownLeftNeighborsStartingFrom(Vector2 startPosition, int length)
         {
             List<Vector2> positionsdownLeftFromStartPosition = new List<Vector2>();
@@ -192,6 +178,20 @@ namespace PuzzleSolverProject
                 }
             }
             return positionsdownLeftFromStartPosition;
+        }
+
+        private List<Vector2> GetDownRightNeighborsStartingFrom(Vector2 startPosition, int length)
+        {
+            List<Vector2> positionsDownRightFromStartPosition = new List<Vector2>();
+            for (int x = 0, y = 0; x < length && y < length; x++, y++)
+            {
+                Vector2 downRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
+                if (Letters.ContainsKey(downRightNeighbor))
+                {
+                    positionsDownRightFromStartPosition.Add(downRightNeighbor);
+                }
+            }
+            return positionsDownRightFromStartPosition;
         }
     }
 }
