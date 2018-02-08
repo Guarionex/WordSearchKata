@@ -128,9 +128,9 @@ namespace PuzzleSolverProject
             return positionsLeftFromStartingPoint;
         }
 
-        public List<String> SearchLeft(String word)
+        public List<Vector2> SearchLeft(String word)
         {
-            throw new NotImplementedException();
+            return new List<Vector2>();
         }
     }
 }
