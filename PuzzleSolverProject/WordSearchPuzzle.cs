@@ -39,42 +39,42 @@ namespace PuzzleSolverProject
             Letters.Add(new Vector2(x, y), letter);
         }
 
-        public List<Vector2> SearchUp(String word)
+        private List<Vector2> SearchUp(String word)
         {
             return SearchWordInDirection(word, DirectionEnum.Up);
         }
 
-        public List<Vector2> SearchDown(string word)
+        private List<Vector2> SearchDown(string word)
         {
             return SearchWordInDirection(word, DirectionEnum.Down);
         }
 
-        public List<Vector2> SearchLeft(String word)
+        private List<Vector2> SearchLeft(String word)
         {
             return SearchWordInDirection(word, DirectionEnum.Left);
         }
 
-        public List<Vector2> SearchRight(String word)
+        private List<Vector2> SearchRight(String word)
         {
             return SearchWordInDirection(word, DirectionEnum.Right);
         }
 
-        public List<Vector2> SearchUpLeft(string word)
+        private List<Vector2> SearchUpLeft(string word)
         {
             return SearchWordInDirection(word, DirectionEnum.UpLeft);
         }
 
-        public List<Vector2> SearchUpRight(String word)
+        private List<Vector2> SearchUpRight(String word)
         {
             return SearchWordInDirection(word, DirectionEnum.UpRight);
         }
 
-        public List<Vector2> SearchDownLeft(String word)
+        private List<Vector2> SearchDownLeft(String word)
         {
             return SearchWordInDirection(word, DirectionEnum.DownLeft);
         }
 
-        public List<Vector2> SearchDownRight(String word)
+        private List<Vector2> SearchDownRight(String word)
         {
             return SearchWordInDirection(word, DirectionEnum.DownRight);
         }
@@ -192,6 +192,31 @@ namespace PuzzleSolverProject
                 }
             }
             return positionsDownRightFromStartPosition;
+        }
+
+        public Dictionary<String, List<Vector2>> GetWordsLocation()
+        {
+            Dictionary<String, List<Vector2>> foundWords = new Dictionary<String, List<Vector2>>();
+
+            foreach(String word in Words)
+            {
+                List<List<Vector2>> wordDirections = new List<List<Vector2>>();
+                wordDirections.Add(SearchUp(word));
+                wordDirections.Add(SearchDown(word));
+                wordDirections.Add(SearchLeft(word));
+                wordDirections.Add(SearchRight(word));
+                wordDirections.Add(SearchUpLeft(word));
+                wordDirections.Add(SearchUpRight(word));
+                wordDirections.Add(SearchDownLeft(word));
+                wordDirections.Add(SearchDownRight(word));
+                List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > 0);
+                if (foundWordLocation.Count > 0)
+                {
+                    foundWords.Add(word, foundWordLocation);
+                }
+            }
+
+            return foundWords;
         }
     }
 }

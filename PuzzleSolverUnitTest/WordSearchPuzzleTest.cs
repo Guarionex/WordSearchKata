@@ -95,836 +95,655 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchRightWithKIRKThenSearchHorizontalThrowsNoException()
+        public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringListVector2Dictionary()
         {
-            sut.AddLetterAt('Q', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('X', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('A', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('L', 0, 2);
-            sut.AddLetterAt('H', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('I', 1, 3);
-            sut.AddLetterAt('R', 2, 3);
-            sut.AddLetterAt('K', 3, 3);
-
-            sut.SearchRight("KIRK");
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithAHorizontalWordWhenCallingSearchRightWithKIRKThenSearchRightReturnsAListOfVectors()
-        {
-            sut.AddLetterAt('Q', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('X', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('A', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('L', 0, 2);
-            sut.AddLetterAt('H', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('I', 1, 3);
-            sut.AddLetterAt('R', 2, 3);
-            sut.AddLetterAt('K', 3, 3);
-
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchRight("KIRK"));
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithAHorizontalWordInLastRowWhenCallingSearchRightWithKIRKThenSearchRightReturnsAListOfVectorsWithTheHorizontalWordKeys()
-        {
-            sut.AddLetterAt('Q', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('X', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('A', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('L', 0, 2);
-            sut.AddLetterAt('H', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('I', 1, 3);
-            sut.AddLetterAt('R', 2, 3);
-            sut.AddLetterAt('K', 3, 3);
-
-            List<Vector2> result = sut.SearchRight("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 3));
-            expected.Add(new Vector2(1, 3));
-            expected.Add(new Vector2(2, 3));
-            expected.Add(new Vector2(3, 3));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithAHorizontalWordInThirdRowWhenCallingSearchRightWithKIRKThenSearchRightReturnsAListOfVectorsWithTheHorizontalWordKeys()
-        {
-            sut.AddLetterAt('Q', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('X', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('A', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('I', 1, 2);
-            sut.AddLetterAt('R', 2, 2);
-            sut.AddLetterAt('K', 3, 2);
-            sut.AddLetterAt('L', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('G', 2, 3);
-            sut.AddLetterAt('J', 3, 3);
-
-            List<Vector2> result = sut.SearchRight("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 2));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(2, 2));
-            expected.Add(new Vector2(3, 2));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchRightWithKHANThenSearchRightReturnsAListOfVectorsWithTheHorizontalWordKeys()
-        {
-            sut.AddLetterAt('Q', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('K', 0, 1);
-            sut.AddLetterAt('H', 1, 1);
-            sut.AddLetterAt('A', 2, 1);
-            sut.AddLetterAt('N', 3, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('I', 1, 2);
-            sut.AddLetterAt('R', 2, 2);
-            sut.AddLetterAt('K', 3, 2);
-            sut.AddLetterAt('L', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('G', 2, 3);
-            sut.AddLetterAt('J', 3, 3);
-
-            List<Vector2> result = sut.SearchRight("KHAN");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 1));
-            expected.Add(new Vector2(1, 1));
-            expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(3, 1));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given5x5WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchRightWithA4LetterWordThatStartsAtX1ThenSearchRightReturnsAListOfVectorsWithTheHorizontalWordKeys()
-        {
-            sut.AddLetterAt('Q', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('X', 4, 0);
-            sut.AddLetterAt('F', 0, 1);
-            sut.AddLetterAt('K', 1, 1);
-            sut.AddLetterAt('H', 2, 1);
-            sut.AddLetterAt('A', 3, 1);
-            sut.AddLetterAt('N', 4, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('I', 1, 2);
-            sut.AddLetterAt('R', 2, 2);
-            sut.AddLetterAt('K', 3, 2);
-            sut.AddLetterAt('U', 4, 2);
-            sut.AddLetterAt('L', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('G', 2, 3);
-            sut.AddLetterAt('J', 3, 3);
-            sut.AddLetterAt('R', 4, 3);
-
-            List<Vector2> result = sut.SearchRight("KHAN");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(1, 1));
-            expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(3, 1));
-            expected.Add(new Vector2(4, 1));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given5x5WordPuzzleWithAHorizontalWordInSecondRowWhenCallingSearchHorizontalWithA4LetterWordThatStartsAtX0ThenSearchHorizontalReturnsAListOfVectorsWithTheHorizontalWordKeys()
-        {
-            sut.AddLetterAt('Q', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('X', 4, 0);
-            sut.AddLetterAt('F', 0, 1);
-            sut.AddLetterAt('K', 1, 1);
-            sut.AddLetterAt('H', 2, 1);
-            sut.AddLetterAt('A', 3, 1);
-            sut.AddLetterAt('N', 4, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('I', 1, 2);
-            sut.AddLetterAt('R', 2, 2);
-            sut.AddLetterAt('K', 3, 2);
-            sut.AddLetterAt('U', 4, 2);
-            sut.AddLetterAt('L', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('G', 2, 3);
-            sut.AddLetterAt('J', 3, 3);
-            sut.AddLetterAt('R', 4, 3);
-
-            List<Vector2> result = sut.SearchRight("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 2));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(2, 2));
-            expected.Add(new Vector2(3, 2));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchDownWithKIRKThenSearchDownReturnsAListOfVector2()
-        {
+            sut.AddWord("KIRK");
             sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
             sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('I', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('A', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('R', 0, 2);
-            sut.AddLetterAt('H', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchDown("KIRK"));
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithDownWordInFirstColumnWhenCallingSearchDownWithKIRKThenSearchVerticalReturnsAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('I', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('A', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('R', 0, 2);
-            sut.AddLetterAt('H', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            List<Vector2> result = sut.SearchDown("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 0));
-            expected.Add(new Vector2(0, 1));
-            expected.Add(new Vector2(0, 2));
-            expected.Add(new Vector2(0, 3));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithDownWordInSecondColumnWhenCallingSearchVerticalWithKIRKThenSearchDownReturnsAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('E', 0, 0);
-            sut.AddLetterAt('K', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('U', 0, 1);
-            sut.AddLetterAt('I', 1, 1);
-            sut.AddLetterAt('A', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('H', 0, 2);
-            sut.AddLetterAt('R', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('H', 0, 3);
-            sut.AddLetterAt('K', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            List<Vector2> result = sut.SearchDown("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(1, 0));
-            expected.Add(new Vector2(1, 1));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(1, 3));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchUPWithKIRKThenSearchUpReturnsAListOfVector2()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
             sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('W', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('I', 0, 2);
-            sut.AddLetterAt('S', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchUp("KIRK"));
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithUpwardsWordInFirstColumnWhenCallingSearchUpWithKIRKThenSearchUpReturnsAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
-            sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('W', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('I', 0, 2);
-            sut.AddLetterAt('S', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            List<Vector2> result = sut.SearchUp("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 3));
-            expected.Add(new Vector2(0, 2));
-            expected.Add(new Vector2(0, 1));
-            expected.Add(new Vector2(0, 0));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithUpwardsWordInSecondColumnWhenCallingSearchUpWithKIRKThenSearchUpReturnsAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('G', 0, 0);
-            sut.AddLetterAt('K', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
-            sut.AddLetterAt('U', 0, 1);
             sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('W', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('S', 0, 2);
-            sut.AddLetterAt('I', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('J', 0, 3);
-            sut.AddLetterAt('K', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            List<Vector2> result = sut.SearchUp("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(1, 3));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(1, 1));
-            expected.Add(new Vector2(1, 0));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchUpRightWithKIRKThenSearchUpRightReturnsAListOfVector2()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('K', 3, 0);
-            sut.AddLetterAt('I', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('R', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('R', 0, 2);
-            sut.AddLetterAt('I', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('J', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchUpRight("KIRK"));
-        }
-
-        [Test]
-        public void Given5x5WordPuzzleWithDiagonalAscendingWordWhenCallingSearchUpRightWithKIRKThenSearchUpRightReturnsAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('P', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('K', 3, 0);
-            sut.AddLetterAt('G', 4, 0);
-            sut.AddLetterAt('I', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('A', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('K', 4, 1);
-            sut.AddLetterAt('R', 0, 2);
-            sut.AddLetterAt('X', 1, 2);
-            sut.AddLetterAt('G', 2, 2);
-            sut.AddLetterAt('R', 3, 2);
-            sut.AddLetterAt('O', 4, 2);
-            sut.AddLetterAt('Y', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('I', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-            sut.AddLetterAt('E', 4, 3);
-            sut.AddLetterAt('J', 0, 4);
-            sut.AddLetterAt('K', 1, 4);
-            sut.AddLetterAt('K', 2, 4);
-            sut.AddLetterAt('C', 3, 4);
-            sut.AddLetterAt('I', 4, 4);
-
-
-            List<Vector2> result = sut.SearchUpRight("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(1, 4));
-            expected.Add(new Vector2(2, 3));
-            expected.Add(new Vector2(3, 2));
-            expected.Add(new Vector2(4, 1));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given5x5WordPuzzleWithDiagonalAscendingWordAt03WhenCallingSearchUpRightWithKIRKThenSearchUpRightReturnsAListOfVector2WithThePositionsForKIRKStartomgAt03()
-        {
-            sut.AddLetterAt('P', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('K', 3, 0);
-            sut.AddLetterAt('L', 4, 0);
-            sut.AddLetterAt('I', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('J', 2, 1);
             sut.AddLetterAt('A', 3, 1);
-            sut.AddLetterAt('B', 4, 1);
-            sut.AddLetterAt('R', 0, 2);
-            sut.AddLetterAt('I', 1, 2);
-            sut.AddLetterAt('X', 2, 2);
-            sut.AddLetterAt('R', 3, 2);
-            sut.AddLetterAt('O', 4, 2);
+            sut.AddLetterAt('I', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
             sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('H', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-            sut.AddLetterAt('E', 4, 3);
-            sut.AddLetterAt('J', 0, 4);
-            sut.AddLetterAt('E', 1, 4);
-            sut.AddLetterAt('J', 2, 4);
-            sut.AddLetterAt('C', 3, 4);
-            sut.AddLetterAt('I', 4, 4);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('M', 3, 3);
+            Assert.IsInstanceOf(typeof(Dictionary<String, List<Vector2>>), sut.GetWordsLocation());
+        }
+        
+        [Test]
+        public void Given4x4WordWithOneUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
+        {
+            sut.AddWord("KIRK");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('R', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('A', 3, 1);
+            sut.AddLetterAt('I', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('M', 3, 3);
 
-
-            List<Vector2> result = sut.SearchUpRight("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 3));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(3, 0));
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 3));
+            kirkLocation.Add(new Vector2(0, 2));
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(0, 0));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
 
             Assert.AreEqual(expected, result);
         }
 
         [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchLeftWithKIRKThenSearchLeftReturnsAListOfVector2()
+        public void Given4x4WordWithTwoUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRKAndKHAN()
         {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
             sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
             sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('W', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('R', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('K', 3, 2);
-            sut.AddLetterAt('T', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('A', 3, 1);
+            sut.AddLetterAt('I', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('X', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
 
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchLeft("KIRK"));
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 3));
+            kirkLocation.Add(new Vector2(0, 2));
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(0, 0));
+
+            List<Vector2> khanLocation = new List<Vector2>();
+            khanLocation.Add(new Vector2(3, 3));
+            khanLocation.Add(new Vector2(3, 2));
+            khanLocation.Add(new Vector2(3, 1));
+            khanLocation.Add(new Vector2(3, 0));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+            expected.Add("KHAN", khanLocation);
+
+            Assert.AreEqual(expected, result);
         }
 
         [Test]
-        public void Given4x4WordPuzzleWithLeftHorizontalWordWhenCallingSearchLeftWithKIRKThenSearchLeftReturnsAListOfVector2WithThePositionsForKIRK()
+        public void Given4x4WordWithOneDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
         {
+            sut.AddWord("KIRK");
             sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('I', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('A', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('M', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 0));
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(0, 2));
+            kirkLocation.Add(new Vector2(0, 3));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithTwoDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('I', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('H', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('A', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 0));
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(0, 2));
+            kirkLocation.Add(new Vector2(0, 3));
+
+            List<Vector2> khanLocation = new List<Vector2>();
+            khanLocation.Add(new Vector2(3, 0));
+            khanLocation.Add(new Vector2(3, 1));
+            khanLocation.Add(new Vector2(3, 2));
+            khanLocation.Add(new Vector2(3, 3));
+
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+            expected.Add("KHAN", khanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithUpAndDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('I', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('A', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('X', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 0));
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(0, 2));
+            kirkLocation.Add(new Vector2(0, 3));
+
+            List<Vector2> khanLocation = new List<Vector2>();
+            khanLocation.Add(new Vector2(3, 3));
+            khanLocation.Add(new Vector2(3, 2));
+            khanLocation.Add(new Vector2(3, 1));
+            khanLocation.Add(new Vector2(3, 0));
+
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+            expected.Add("KHAN", khanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithOneLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
+        {
+            sut.AddWord("KIRK");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
             sut.AddLetterAt('K', 0, 1);
             sut.AddLetterAt('R', 1, 1);
             sut.AddLetterAt('I', 2, 1);
             sut.AddLetterAt('K', 3, 1);
-            sut.AddLetterAt('S', 0, 2);
-            sut.AddLetterAt('N', 1, 2);
-            sut.AddLetterAt('Y', 2, 2);
-            sut.AddLetterAt('W', 3, 2);
-            sut.AddLetterAt('T', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            List<Vector2> result = sut.SearchLeft("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(3, 1));
-            expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(1, 1));
-            expected.Add(new Vector2(0, 1));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithLeftHorizontalWordInLastRowWhenCallingSearchLeftWithKIRKThenSearchLeftReturnsAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
-            sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('U', 1, 1);
-            sut.AddLetterAt('W', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('R', 1, 2);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
             sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('K', 3, 2);
-            sut.AddLetterAt('T', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('N', 3, 3);
-
-            Vector2 startPosition = new Vector2(3, 2);
-            List<Vector2> result = sut.SearchLeft("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(3, 2));
-            expected.Add(new Vector2(2, 2));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(0, 2));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchDownRightWithKIRKThenSearchDownRightReturnsAListOfVector2()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
-            sut.AddLetterAt('X', 0, 1);
-            sut.AddLetterAt('I', 1, 1);
-            sut.AddLetterAt('W', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('J', 0, 2);
-            sut.AddLetterAt('D', 1, 2);
-            sut.AddLetterAt('R', 2, 2);
-            sut.AddLetterAt('B', 3, 2);
-            sut.AddLetterAt('T', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('K', 3, 3);
-
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchDownRight("KIRK"));
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithDownRightWordWhenCallingSearchDownRightWithKIRKThenSearchDownRightAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
-            sut.AddLetterAt('X', 0, 1);
-            sut.AddLetterAt('I', 1, 1);
-            sut.AddLetterAt('W', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('J', 0, 2);
-            sut.AddLetterAt('D', 1, 2);
-            sut.AddLetterAt('R', 2, 2);
-            sut.AddLetterAt('B', 3, 2);
-            sut.AddLetterAt('T', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('K', 3, 3);
-
-            List<Vector2> result = sut.SearchDownRight("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 0));
-            expected.Add(new Vector2(1, 1));
-            expected.Add(new Vector2(2, 2));
-            expected.Add(new Vector2(3, 3));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given5x5WordPuzzleWithDownRightWordWhenCallingSearchDownRightWithKIRKThenSearchDownRightAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('T', 0, 0);
-            sut.AddLetterAt('K', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
-            sut.AddLetterAt('G', 4, 0);
-            sut.AddLetterAt('X', 0, 1);
-            sut.AddLetterAt('V', 1, 1);
-            sut.AddLetterAt('I', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('L', 4, 1);
-            sut.AddLetterAt('J', 0, 2);
-            sut.AddLetterAt('D', 1, 2);
-            sut.AddLetterAt('Z', 2, 2);
-            sut.AddLetterAt('R', 3, 2);
-            sut.AddLetterAt('C', 4, 2);
-            sut.AddLetterAt('T', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('K', 3, 3);
-            sut.AddLetterAt('K', 4, 3);
-            sut.AddLetterAt('T', 0, 4);
-            sut.AddLetterAt('J', 1, 4);
-            sut.AddLetterAt('A', 2, 4);
-            sut.AddLetterAt('K', 3, 4);
-            sut.AddLetterAt('W', 4, 4);
-
-            List<Vector2> result = sut.SearchDownRight("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(1, 0));
-            expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(3, 2));
-            expected.Add(new Vector2(4, 3));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchUpLeftWithKIRKThenSearchUpLeftReturnsAListOfVector2()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
-            sut.AddLetterAt('V', 0, 1);
-            sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('W', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('R', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('K', 3, 2);
-            sut.AddLetterAt('T', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('K', 3, 3);
-
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchUpLeft("KIRK"));
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithUpLeftWordWhenCallingSearchUpLeftWithKIRKThenSearchUpLeftAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
-            sut.AddLetterAt('V', 0, 1);
-            sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('W', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('R', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('K', 3, 2);
-            sut.AddLetterAt('T', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('K', 3, 3);
-
-            List<Vector2> result = sut.SearchUpLeft("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(3, 3));
-            expected.Add(new Vector2(2, 2));
-            expected.Add(new Vector2(1, 1));
-            expected.Add(new Vector2(0, 0));
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given5x5WordPuzzleWithUpLeftWordWhenCallingSearchUpLeftWithKIRKThenSearchUpLeftAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('A', 0, 0);
-            sut.AddLetterAt('K', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('A', 3, 0);
-            sut.AddLetterAt('W', 4, 0);
-            sut.AddLetterAt('V', 0, 1);
-            sut.AddLetterAt('H', 1, 1);
-            sut.AddLetterAt('R', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('W', 4, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('R', 1, 2);
-            sut.AddLetterAt('S', 2, 2);
-            sut.AddLetterAt('I', 3, 2);
-            sut.AddLetterAt('W', 4, 2);
-            sut.AddLetterAt('T', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('G', 3, 3);
-            sut.AddLetterAt('K', 4, 3);
-            sut.AddLetterAt('T', 0, 4);
-            sut.AddLetterAt('J', 1, 4);
-            sut.AddLetterAt('A', 2, 4);
-            sut.AddLetterAt('K', 3, 4);
-            sut.AddLetterAt('W', 4, 4);
-
-            List<Vector2> result = sut.SearchUpLeft("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(4, 3));
-            expected.Add(new Vector2(3, 2));
-            expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(1, 0));
-
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWhenCallingSearchDownLeftWithKIRKThenSearchDownLeftReturnsAListOfVector2()
-        {
-            sut.AddLetterAt('T', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('K', 3, 0);
-            sut.AddLetterAt('V', 0, 1);
-            sut.AddLetterAt('J', 1, 1);
-            sut.AddLetterAt('I', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('R', 1, 2);
-            sut.AddLetterAt('D', 2, 2);
-            sut.AddLetterAt('K', 3, 2);
+            sut.AddLetterAt('H', 3, 2);
             sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('W', 3, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('M', 3, 3);
 
-            Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchDownLeft("KIRK"));
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWithDownLeftWordWhenCallingSearchDownLeftWithKIRKThenSearchDownLeftAListOfVector2WithThePositionsForKIRK()
-        {
-            sut.AddLetterAt('T', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('K', 3, 0);
-            sut.AddLetterAt('V', 0, 1);
-            sut.AddLetterAt('J', 1, 1);
-            sut.AddLetterAt('I', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('R', 1, 2);
-            sut.AddLetterAt('D', 2, 2);
-            sut.AddLetterAt('K', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('A', 2, 3);
-            sut.AddLetterAt('W', 3, 3);
-
-            List<Vector2> result = sut.SearchDownLeft("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(3, 0));
-            expected.Add(new Vector2(2, 1));
-            expected.Add(new Vector2(1, 2));
-            expected.Add(new Vector2(0, 3));
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(3, 1));
+            kirkLocation.Add(new Vector2(2, 1));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(0, 1));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
 
             Assert.AreEqual(expected, result);
         }
 
         [Test]
-        public void Given5x5WordPuzzleWithDownLeftWordWhenCallingSearchDownLeftWithKIRKThenSearchDownLeftAListOfVector2WithThePositionsForKIRK()
+        public void Given4x4WordWithTwoLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords()
         {
-            sut.AddLetterAt('T', 0, 0);
-            sut.AddLetterAt('G', 1, 0);
-            sut.AddLetterAt('J', 2, 0);
-            sut.AddLetterAt('G', 3, 0);
-            sut.AddLetterAt('W', 4, 0);
-            sut.AddLetterAt('V', 0, 1);
-            sut.AddLetterAt('J', 1, 1);
-            sut.AddLetterAt('J', 2, 1);
-            sut.AddLetterAt('F', 3, 1);
-            sut.AddLetterAt('K', 4, 1);
-            sut.AddLetterAt('K', 0, 2);
-            sut.AddLetterAt('D', 1, 2);
-            sut.AddLetterAt('D', 2, 2);
-            sut.AddLetterAt('I', 3, 2);
-            sut.AddLetterAt('W', 4, 2);
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('K', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('I', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('X', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
             sut.AddLetterAt('N', 0, 3);
-            sut.AddLetterAt('J', 1, 3);
-            sut.AddLetterAt('R', 2, 3);
-            sut.AddLetterAt('W', 3, 3);
-            sut.AddLetterAt('K', 4, 3);
-            sut.AddLetterAt('T', 0, 4);
-            sut.AddLetterAt('K', 1, 4);
-            sut.AddLetterAt('A', 2, 4);
-            sut.AddLetterAt('K', 3, 4);
-            sut.AddLetterAt('W', 4, 4);
+            sut.AddLetterAt('A', 1, 3);
+            sut.AddLetterAt('H', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
 
-            List<Vector2> result = sut.SearchDownLeft("KIRK");
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(4, 1));
-            expected.Add(new Vector2(3, 2));
-            expected.Add(new Vector2(2, 3));
-            expected.Add(new Vector2(1, 4));
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(3, 1));
+            kirkLocation.Add(new Vector2(2, 1));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(0, 1));
 
+            List<Vector2> khanLocation = new List<Vector2>();
+            khanLocation.Add(new Vector2(3, 3));
+            khanLocation.Add(new Vector2(2, 3));
+            khanLocation.Add(new Vector2(1, 3));
+            khanLocation.Add(new Vector2(0, 3));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+            expected.Add("KHAN", khanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithOneRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
+        {
+            sut.AddWord("KIRK");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('K', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('M', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(2, 1));
+            kirkLocation.Add(new Vector2(3, 1));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithTwoRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('K', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(2, 1));
+            kirkLocation.Add(new Vector2(3, 1));
+
+            List<Vector2> khanLocation = new List<Vector2>();
+            khanLocation.Add(new Vector2(0, 3));
+            khanLocation.Add(new Vector2(1, 3));
+            khanLocation.Add(new Vector2(2, 3));
+            khanLocation.Add(new Vector2(3, 3));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+            expected.Add("KHAN", khanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithOneUpLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
+        {
+            sut.AddWord("KIRK");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('X', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('E', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(3, 3));
+            kirkLocation.Add(new Vector2(2, 2));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(0, 0));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithTwoUpLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("HAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('N', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('E', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('A', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('H', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(3, 3));
+            kirkLocation.Add(new Vector2(2, 2));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(0, 0));
+
+            List<Vector2> hanLocation = new List<Vector2>();
+            hanLocation.Add(new Vector2(2, 3));
+            hanLocation.Add(new Vector2(1, 2));
+            hanLocation.Add(new Vector2(0, 1));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+            expected.Add("HAN", hanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithOneUpRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
+        {
+            sut.AddWord("KIRK");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('X', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('I', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('G', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 3));
+            kirkLocation.Add(new Vector2(1, 2));
+            kirkLocation.Add(new Vector2(2, 1));
+            kirkLocation.Add(new Vector2(3, 0));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithOneTwoUpRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("HAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('N', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('X', 0, 1);
+            sut.AddLetterAt('A', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('H', 0, 2);
+            sut.AddLetterAt('I', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('G', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 3));
+            kirkLocation.Add(new Vector2(1, 2));
+            kirkLocation.Add(new Vector2(2, 1));
+            kirkLocation.Add(new Vector2(3, 0));
+
+            List<Vector2> hanLocation = new List<Vector2>();
+            hanLocation.Add(new Vector2(0, 2));
+            hanLocation.Add(new Vector2(1, 1));
+            hanLocation.Add(new Vector2(2, 0));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+            expected.Add("HAN", hanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithOneDownLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
+        {
+            sut.AddWord("KIRK");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('X', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('I', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('R', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('G', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(3, 0));
+            kirkLocation.Add(new Vector2(2, 1));
+            kirkLocation.Add(new Vector2(1, 2));
+            kirkLocation.Add(new Vector2(0, 3));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithTwoDownLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("HAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('X', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('I', 2, 1);
+            sut.AddLetterAt('H', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('R', 1, 2);
+            sut.AddLetterAt('A', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('N', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('G', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(3, 0));
+            kirkLocation.Add(new Vector2(2, 1));
+            kirkLocation.Add(new Vector2(1, 2));
+            kirkLocation.Add(new Vector2(0, 3));
+
+            List<Vector2> hanLocation = new List<Vector2>();
+            hanLocation.Add(new Vector2(3, 1));
+            hanLocation.Add(new Vector2(2, 2));
+            hanLocation.Add(new Vector2(1, 3));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+            expected.Add("HAN", hanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithOneDownRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
+        {
+            sut.AddWord("KIRK");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('X', 3, 0);
+            sut.AddLetterAt('X', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('I', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('R', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('X', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 0));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(2, 2));
+            kirkLocation.Add(new Vector2(3, 3));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordWithTwoDownRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("HAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('X', 3, 0);
+            sut.AddLetterAt('H', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('I', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('A', 1, 2);
+            sut.AddLetterAt('R', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('X', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('N', 2, 3);
+            sut.AddLetterAt('K', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 0));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(2, 2));
+            kirkLocation.Add(new Vector2(3, 3));
+
+            List<Vector2> hanLocation = new List<Vector2>();
+            hanLocation.Add(new Vector2(0, 1));
+            hanLocation.Add(new Vector2(1, 2));
+            hanLocation.Add(new Vector2(2, 3));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+            expected.Add("HAN", hanLocation);
 
             Assert.AreEqual(expected, result);
         }
