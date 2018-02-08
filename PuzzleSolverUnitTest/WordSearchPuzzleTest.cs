@@ -677,5 +677,35 @@ namespace PuzzleSolverUnitTest
             Assert.IsInstanceOf(typeof(List<Vector2>), sut.SearchLeft("KIRK"));
         }
 
+        [Test]
+        public void Given4x4WordPuzzleWithLeftHorizontalWordWhenCallingSearchLeftWithKIRKThenSearchVerticalReturnsAListOfVector2WithThePositionsForKIRK()
+        {
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('G', 1, 0);
+            sut.AddLetterAt('J', 2, 0);
+            sut.AddLetterAt('A', 3, 0);
+            sut.AddLetterAt('R', 0, 1);
+            sut.AddLetterAt('U', 1, 1);
+            sut.AddLetterAt('W', 2, 1);
+            sut.AddLetterAt('F', 3, 1);
+            sut.AddLetterAt('K', 0, 2);
+            sut.AddLetterAt('R', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('K', 3, 2);
+            sut.AddLetterAt('T', 0, 3);
+            sut.AddLetterAt('J', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            List<Vector2> result = sut.SearchUp("KIRK");
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(3, 1));
+            expected.Add(new Vector2(2, 1));
+            expected.Add(new Vector2(1, 1));
+            expected.Add(new Vector2(0, 1));
+
+            Assert.AreEqual(expected, result);
+
+        }
     }
 }
