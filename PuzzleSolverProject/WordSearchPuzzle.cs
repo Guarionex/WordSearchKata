@@ -118,10 +118,5 @@ namespace PuzzleSolverProject
         {
             return SearchWordInDirection(word, DirectionEnum.Up);
         }
-
-        public List<Vector2> GetLeftNeighboorsStartingFrom(Vector2 startPosition, int length)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
