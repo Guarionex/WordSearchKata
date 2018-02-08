@@ -189,9 +189,9 @@ namespace PuzzleSolverProject
             return positionsdownLeftFromStartPosition;
         }
 
-        public List<Vector2> SearchDownLeft(string v)
+        public List<Vector2> SearchDownLeft(String word)
         {
-            return SearchWordInDirection(v, DirectionEnum.DownLeft);
+            return SearchWordInDirection(word, DirectionEnum.DownLeft);
         }
     }
 }
