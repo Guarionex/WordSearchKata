@@ -150,7 +150,13 @@ namespace PuzzleSolverProject
 
         public List<Vector2> SearchDownRight(String word)
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(0, 0));
+            expected.Add(new Vector2(1, 1));
+            expected.Add(new Vector2(2, 2));
+            expected.Add(new Vector2(3, 3));
+
+            return expected;
         }
     }
 }
