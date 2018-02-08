@@ -20,7 +20,7 @@ namespace PuzzleSolverProject
             Letters = new Dictionary<Vector2, Char>();
             searchDirection = new Dictionary<DirectionEnum, getNeighborsOfBy>();
             searchDirection.Add(DirectionEnum.Right, GetRightNeighborsOfBy);
-            searchDirection.Add(DirectionEnum.Down, GetBottomNeighborsOfBy);
+            searchDirection.Add(DirectionEnum.Down, GetDownNeighborsOfBy);
             searchDirection.Add(DirectionEnum.Up, GetUpNeighborsOfBy);
             searchDirection.Add(DirectionEnum.UpRight, GetUpRightNeighborsOfBy);
         }
@@ -59,7 +59,7 @@ namespace PuzzleSolverProject
             return SearchWordInDirection(word, DirectionEnum.Down);
         }
 
-        private List<Vector2> GetBottomNeighborsOfBy(Vector2 startPosition, int length)
+        private List<Vector2> GetDownNeighborsOfBy(Vector2 startPosition, int length)
         {
             Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y + length - 1);
             List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == 0 && (maxPosition - key).Y >= 0).ToList();
