@@ -13,7 +13,7 @@ namespace PuzzleSolverProject
         public Dictionary<Vector2, Char> Letters { get;}
         private delegate List<Vector2> getNeighborsOfBy(Vector2 startPosition, int length);
         private Dictionary<DirectionEnum, getNeighborsOfBy> searchDirection;
-        public bool HasChanged { get; private set; }
+        private bool HasChanged;
         private Dictionary<String, List<Vector2>> wordLocations;
         private bool isValid;
 

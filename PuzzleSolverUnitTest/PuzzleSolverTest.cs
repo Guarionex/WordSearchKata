@@ -39,13 +39,6 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenResultingWordSearchPuzzleHasChangedIsTrue()
-        {
-            WordSearchPuzzle puzzle = sut.ParsePuzzleWordFile(projectPath + validPuzzleFileName);
-            Assert.IsTrue(puzzle.HasChanged);
-        }
-
-        [Test]
         public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenResultingWordSearchPuzzleGetWordsListHasTheSolution()
         {
             WordSearchPuzzle puzzle = sut.ParsePuzzleWordFile(projectPath + "Example15x15.txt");
