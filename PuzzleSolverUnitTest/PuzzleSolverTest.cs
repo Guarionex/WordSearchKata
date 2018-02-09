@@ -307,5 +307,16 @@ namespace PuzzleSolverUnitTest
         {
             sut.ParsePuzzleWordFile(projectPath + "0x0.txt");
         }
+
+        [Test]
+        public void GivenValidFileNameWith4x4PuzzleWithInvalidWordSearchPuzzleWhenCallingParsePuzzleWordFileThenParsePuzzleWordFileThrowsInvalidDataException()
+        {
+            Assert.Throws<InvalidDataException>(new TestDelegate(ParseFileInvalidPuzzle));
+        }
+
+        private void ParseFileInvalidPuzzle()
+        {
+            sut.ParsePuzzleWordFile(projectPath + "wordMissing4x4.txt");
+        }
     }
 }

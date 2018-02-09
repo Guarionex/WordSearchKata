@@ -1,0 +1,5 @@
+KIRK,KHAN
+A,G,E,G
+U,D,W,E
+P,B,T,Z
+G,U,T,Y
