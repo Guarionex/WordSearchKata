@@ -79,7 +79,7 @@ namespace PuzzleSolverProject
             return x < 0 || x > sizeX || y < 0 || y > sizeY;
         }
 
-        private void SetDimensions(int x, int y)
+        private void SetValidDimensions(int x, int y)
         {
             if(x < 2 && y < 2)
             {
@@ -98,7 +98,7 @@ namespace PuzzleSolverProject
         {
             int lengthX = multiArrayOfLetters.GetLength(0);
             int lengthY = multiArrayOfLetters.GetLength(1);
-            SetDimensions(lengthX, lengthY);
+            SetValidDimensions(lengthX, lengthY);
             for(int col = 0; col < lengthX; col++)
             {
                 for(int row = 0; row < lengthY; row++)
