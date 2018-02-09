@@ -27,19 +27,19 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsNoException()
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsNoException()
         {
             sut.ParseFileToWordSearchPuzzle(projectPath + validPuzzleFileName);
         }
 
         [Test]
-        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileReturnsAWordSearchPuzzle()
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleReturnsAWordSearchPuzzle()
         {
             Assert.IsInstanceOf(typeof(WordSearchPuzzle), sut.ParseFileToWordSearchPuzzle(projectPath + validPuzzleFileName));
         }
 
         [Test]
-        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenResultingWordSearchPuzzleGetWordsListHasTheSolution()
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenResultingWordSearchPuzzleGetWordsListHasTheSolution()
         {
             WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(projectPath + "Example15x15.txt");
             Dictionary<String, List<Vector2>> result = puzzle.GetWordsLocation();
@@ -98,7 +98,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenAInvalidStringFileNameWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsFileNotFoundException()
+        public void GivenAInvalidStringFileNameWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFileNotFoundException()
         {
             Assert.Throws<FileNotFoundException>(new TestDelegate(ParseFileInvalidFileName));
         }
@@ -109,7 +109,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingAlphaNumericWordsWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingAlphaNumericWordsWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileAlphaNumericWords));
         }
@@ -120,7 +120,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingWordsWithSpacesWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingWordsWithSpacesWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsSpaces));
         }
@@ -131,7 +131,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingWordsWithSymbolsWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingWordsWithSymbolsWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsSymbols));
         }
@@ -142,7 +142,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingWordsWithPunctuationsWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingWordsWithPunctuationsWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsPunctuations));
         }
@@ -153,7 +153,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithSSVWordsPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithSSVWordsPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileSSV));
         }
@@ -164,7 +164,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithCSSVWordsPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithCSSVWordsPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileCSSV));
         }
@@ -175,7 +175,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithEmptyWordPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithEmptyWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileEmptyWord));
         }
@@ -186,7 +186,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithSSVLettersPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithSSVLettersPuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileSSVLetters));
         }
@@ -197,7 +197,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithCSSVLettersPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithCSSVLettersPuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileCSSVLetters));
         }
@@ -208,7 +208,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithUnequalDimensionsPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithUnequalDimensionsPuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileUnequal));
         }
@@ -219,7 +219,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithVaryingLengthsPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithVaryingLengthsPuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileVarying));
         }
@@ -230,7 +230,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingNumbersWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingNumbersWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileNumberInLetters));
         }
@@ -241,7 +241,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingSymbolsWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingSymbolsWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileSymbolsInLetters));
         }
@@ -252,7 +252,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingPunctuationsWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingPunctuationsWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFilePunctuationsInLetters));
         }
@@ -263,13 +263,13 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWith2x2PuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsNoException()
+        public void GivenValidFileNameWith2x2PuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsNoException()
         {
             sut.ParseFileToWordSearchPuzzle(projectPath + "valid2x2.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWith1x1PuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentOutOfRangeException()
+        public void GivenValidFileNameWith1x1PuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile1x1));
         }
@@ -280,7 +280,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWith1x1WithTrailingCommaPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentOutOfRangeException()
+        public void GivenValidFileNameWith1x1WithTrailingCommaPuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile1x1Comma));
         }
@@ -291,7 +291,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWith0x0PuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentOutOfRangeException()
+        public void GivenValidFileNameWith0x0PuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile0x0));
         }
@@ -302,7 +302,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenValidFileNameWith4x4PuzzleWithInvalidWordSearchPuzzleWhenCallingParsePuzzleWordFileThenParsePuzzleWordFileThrowsInvalidDataException()
+        public void GivenValidFileNameWith4x4PuzzleWithInvalidWordSearchPuzzleWhenCallingParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsInvalidDataException()
         {
             Assert.Throws<InvalidDataException>(new TestDelegate(ParseFileInvalidPuzzle));
         }
