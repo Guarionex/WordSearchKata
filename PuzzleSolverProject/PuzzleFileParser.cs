@@ -27,9 +27,22 @@ namespace PuzzleSolverProject
         private int sizeY;
         private WordSearchPuzzle puzzle;
 
-        private void AddWord(String word)
+        public WordSearchPuzzle ParseFileToWordSearchPuzzle(String fileName)
         {
-            puzzle.AddWord(word);
+            puzzle = new WordSearchPuzzle();
+            String[] lines = File.ReadAllLines(fileName);
+            ParseWordsIntoPuzzle(lines[WORD_ROW_INDEX]);
+
+            String[] rawLetters = new String[lines.Length - NUMBER_OF_WORD_ROWS];
+            Array.Copy(lines, LETTER_ROW_FIRST_INDEX, rawLetters, MIN_DIMENSION_INDEX, lines.Length - NUMBER_OF_WORD_ROWS);
+            ParseLettersIntoPuzzle(rawLetters);
+
+            if (!puzzle.IsValid())
+            {
+                throw new InvalidDataException();
+            }
+
+            return puzzle;
         }
 
         private void AddAllWords(List<String> listOfWords)
@@ -40,6 +53,11 @@ namespace PuzzleSolverProject
             {
                 AddWord(word);
             }
+        }
+
+        private void AddWord(String word)
+        {
+            puzzle.AddWord(word);
         }
 
         private void ValidateWords(List<String> listOfWords)
@@ -79,14 +97,18 @@ namespace PuzzleSolverProject
             AddAllWords(wordList);
         }
 
-        private void AddLetterAt(Char letter, int x, int y)
+        private void AddAllLetters(Char[,] multiArrayOfLetters)
         {
-            if(!char.IsLetter(letter))
+            int lengthX = multiArrayOfLetters.GetLength(DIMENSION_X);
+            int lengthY = multiArrayOfLetters.GetLength(DIMENSION_Y);
+            SetValidDimensions(lengthX, lengthY);
+            for(int col = MIN_DIMENSION_INDEX; col < lengthX; col++)
             {
-                throw new ArgumentException();
+                for(int row = MIN_DIMENSION_INDEX; row < lengthY; row++)
+                {
+                    AddLetterAt(multiArrayOfLetters[col, row], col, row);
+                }
             }
-
-            puzzle.AddLetterAt(letter, x, y);
         }
 
         private void SetValidDimensions(int x, int y)
@@ -109,18 +131,14 @@ namespace PuzzleSolverProject
             }
         }
 
-        private void AddAllLetters(Char[,] multiArrayOfLetters)
+        private void AddLetterAt(Char letter, int x, int y)
         {
-            int lengthX = multiArrayOfLetters.GetLength(DIMENSION_X);
-            int lengthY = multiArrayOfLetters.GetLength(DIMENSION_Y);
-            SetValidDimensions(lengthX, lengthY);
-            for(int col = MIN_DIMENSION_INDEX; col < lengthX; col++)
+            if (!char.IsLetter(letter))
             {
-                for(int row = MIN_DIMENSION_INDEX; row < lengthY; row++)
-                {
-                    AddLetterAt(multiArrayOfLetters[col, row], col, row);
-                }
+                throw new ArgumentException();
             }
+
+            puzzle.AddLetterAt(letter, x, y);
         }
 
         private Char[,] Get2DLetterArray(String[] csvLetters)
@@ -162,24 +180,6 @@ namespace PuzzleSolverProject
         {
             Char[,] lettersGrid = Get2DLetterArray(rawLetters);
             AddAllLetters(lettersGrid);
-        }
-
-        public WordSearchPuzzle ParseFileToWordSearchPuzzle(String fileName)
-        {
-            puzzle = new WordSearchPuzzle();
-            String[] lines = File.ReadAllLines(fileName);
-            ParseWordsIntoPuzzle(lines[WORD_ROW_INDEX]);
-
-            String[] rawLetters = new String[lines.Length - NUMBER_OF_WORD_ROWS];
-            Array.Copy(lines, LETTER_ROW_FIRST_INDEX, rawLetters, MIN_DIMENSION_INDEX, lines.Length - NUMBER_OF_WORD_ROWS);
-            ParseLettersIntoPuzzle(rawLetters);
-
-            if(!puzzle.IsValid())
-            {
-                throw new InvalidDataException();
-            }
-
-            return puzzle;
         }
     }
 }
