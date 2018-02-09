@@ -65,8 +65,13 @@ namespace PuzzleSolverProject
 
         private bool isWordStringFormatInvalid(String[] delimetedWords)
         {
-            return delimetedWords.Length == INVALID_WORD_COUNT || delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, FIRST_LETTER_OF_WORD_INDEX)));
-        }        
+            return delimetedWords.Length == INVALID_WORD_COUNT || isWordsListSpaceSeparatedValue(delimetedWords);
+        }
+
+        private bool isWordsListSpaceSeparatedValue(String[] delimetedWords)
+        {
+            return delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, FIRST_LETTER_OF_WORD_INDEX)));
+        }
 
         private void ParseWordsIntoPuzzle(String rawWordString)
         {
