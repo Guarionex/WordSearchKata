@@ -243,8 +243,6 @@ namespace PuzzleSolverProject
 
         public bool IsValid()
         {
-
-
             FindAllWordLocations();
 
             if (wordLocations.Count == 0)
