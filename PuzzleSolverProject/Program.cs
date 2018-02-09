@@ -11,7 +11,7 @@ namespace PuzzleSolverProject
         static void Main(string[] args)
         {
             PuzzleSolver solver = new PuzzleSolver();
-            WordSearchPuzzle puzzle = solver.ParsePuzzleWordFile(args[0]);
+            WordSearchPuzzle puzzle = solver.ParseFileToWordSearchPuzzle(args[0]);
             Console.WriteLine(puzzle.ToString());
         }
     }

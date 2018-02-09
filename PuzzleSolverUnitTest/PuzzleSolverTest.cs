@@ -29,19 +29,19 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsNoException()
         {
-            sut.ParsePuzzleWordFile(projectPath + validPuzzleFileName);
+            sut.ParseFileToWordSearchPuzzle(projectPath + validPuzzleFileName);
         }
 
         [Test]
         public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileReturnsAWordSearchPuzzle()
         {
-            Assert.IsInstanceOf(typeof(WordSearchPuzzle), sut.ParsePuzzleWordFile(projectPath + validPuzzleFileName));
+            Assert.IsInstanceOf(typeof(WordSearchPuzzle), sut.ParseFileToWordSearchPuzzle(projectPath + validPuzzleFileName));
         }
 
         [Test]
         public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenResultingWordSearchPuzzleGetWordsListHasTheSolution()
         {
-            WordSearchPuzzle puzzle = sut.ParsePuzzleWordFile(projectPath + "Example15x15.txt");
+            WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(projectPath + "Example15x15.txt");
             Dictionary<String, List<Vector2>> result = puzzle.GetWordsLocation();
 
             List<Vector2> bonesLocation = new List<Vector2>();
@@ -105,7 +105,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileInvalidFileName()
         {
-            sut.ParsePuzzleWordFile("meh.txt");
+            sut.ParseFileToWordSearchPuzzle("meh.txt");
         }
 
         [Test]
@@ -116,7 +116,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileAlphaNumericWords()
         {
-            sut.ParsePuzzleWordFile(projectPath + "alphaNumeric4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "alphaNumeric4x4.txt");
         }
 
         [Test]
@@ -127,7 +127,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileWordsSpaces()
         {
-            sut.ParsePuzzleWordFile(projectPath + "spaces4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "spaces4x4.txt");
         }
 
         [Test]
@@ -138,7 +138,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileWordsSymbols()
         {
-            sut.ParsePuzzleWordFile(projectPath + "symbols4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "symbols4x4.txt");
         }
 
         [Test]
@@ -149,7 +149,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileWordsPunctuations()
         {
-            sut.ParsePuzzleWordFile(projectPath + "punctuation4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "punctuation4x4.txt");
         }
 
         [Test]
@@ -160,7 +160,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileSSV()
         {
-            sut.ParsePuzzleWordFile(projectPath + "ssv4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "ssv4x4.txt");
         }
 
         [Test]
@@ -171,7 +171,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileCSSV()
         {
-            sut.ParsePuzzleWordFile(projectPath + "cssv4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "cssv4x4.txt");
         }
 
         [Test]
@@ -182,7 +182,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileEmptyWord()
         {
-            sut.ParsePuzzleWordFile(projectPath + "empty4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "empty4x4.txt");
         }
 
         [Test]
@@ -193,7 +193,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileSSVLetters()
         {
-            sut.ParsePuzzleWordFile(projectPath + "ssvLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "ssvLetters4x4.txt");
         }
 
         [Test]
@@ -204,7 +204,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileCSSVLetters()
         {
-            sut.ParsePuzzleWordFile(projectPath + "cssvLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "cssvLetters4x4.txt");
         }
 
         [Test]
@@ -215,7 +215,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileUnequal()
         {
-            sut.ParsePuzzleWordFile(projectPath + "unequalLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "unequalLetters4x4.txt");
         }
 
         [Test]
@@ -226,7 +226,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileVarying()
         {
-            sut.ParsePuzzleWordFile(projectPath + "varyingLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "varyingLetters4x4.txt");
         }
 
         [Test]
@@ -237,7 +237,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileNumberInLetters()
         {
-            sut.ParsePuzzleWordFile(projectPath + "numberLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "numberLetters4x4.txt");
         }
 
         [Test]
@@ -248,7 +248,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileSymbolsInLetters()
         {
-            sut.ParsePuzzleWordFile(projectPath + "symbolLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "symbolLetters4x4.txt");
         }
 
         [Test]
@@ -259,13 +259,13 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFilePunctuationsInLetters()
         {
-            sut.ParsePuzzleWordFile(projectPath + "punctuationLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "punctuationLetters4x4.txt");
         }
 
         [Test]
         public void GivenValidFileNameWith2x2PuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsNoException()
         {
-            sut.ParsePuzzleWordFile(projectPath + "valid2x2.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "valid2x2.txt");
         }
 
         [Test]
@@ -276,7 +276,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFile1x1()
         {
-            sut.ParsePuzzleWordFile(projectPath + "1x1.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "1x1.txt");
         }
 
         [Test]
@@ -287,7 +287,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFile1x1Comma()
         {
-            sut.ParsePuzzleWordFile(projectPath + "1x1Comma.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "1x1Comma.txt");
         }
 
         [Test]
@@ -298,7 +298,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFile0x0()
         {
-            sut.ParsePuzzleWordFile(projectPath + "0x0.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "0x0.txt");
         }
 
         [Test]
@@ -309,7 +309,7 @@ namespace PuzzleSolverUnitTest
 
         private void ParseFileInvalidPuzzle()
         {
-            sut.ParsePuzzleWordFile(projectPath + "wordMissing4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(projectPath + "wordMissing4x4.txt");
         }
     }
 }

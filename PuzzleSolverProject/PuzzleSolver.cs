@@ -159,7 +159,7 @@ namespace PuzzleSolverProject
             AddAllLetters(lettersGrid);
         }
 
-        public WordSearchPuzzle ParsePuzzleWordFile(String fileName)
+        public WordSearchPuzzle ParseFileToWordSearchPuzzle(String fileName)
         {
             puzzle = new WordSearchPuzzle();
             String[] lines = File.ReadAllLines(fileName);
