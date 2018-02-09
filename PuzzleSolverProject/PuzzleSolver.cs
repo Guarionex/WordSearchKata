@@ -137,10 +137,20 @@ namespace PuzzleSolverProject
 
         private void ValidateRow(String joinedLetters, String csvLetterRow, int expectedLength)
         {
-            if((joinedLetters.Equals(csvLetterRow) && expectedLength != INVALID_LETTERS_COUNT) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength)
+            if (isDelimitedLetterowInvalid(joinedLetters, csvLetterRow, expectedLength) || isThereEnoughLettersInRow(joinedLetters, expectedLength))
             {
                 throw new FormatException();
             }
+        }
+
+        private bool isDelimitedLetterowInvalid(String joinedLetters, String csvLetterRow, int expectedLength)
+        {
+            return joinedLetters.Equals(csvLetterRow) && expectedLength != INVALID_LETTERS_COUNT;
+        }
+
+        private bool isThereEnoughLettersInRow(String joinedLetters, int expectedLength)
+        {
+            return joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
         }
 
         private void ParseLettersIntoPuzzle(String[] rawLetters)
