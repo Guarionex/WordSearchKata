@@ -13,13 +13,11 @@ namespace PuzzleSolverUnitTest
     public class WordSearchPuzzleTest
     {
         private WordSearchPuzzle sut;
-        private PuzzleSolver solver;
 
         [SetUp]
         public void init()
         {
             sut = new WordSearchPuzzle();
-            solver = new PuzzleSolver();
         }
 
         [Test]
@@ -115,6 +113,57 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('J', 2, 3);
             sut.AddLetterAt('M', 3, 3);
             Assert.IsInstanceOf(typeof(Dictionary<String, List<Vector2>>), sut.GetWordsLocation());
+        }
+
+        [Test]
+        public void GivenInvalid4x4WordPuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsThrowsNoException()
+        {
+            sut.AddWord("KIRK");
+            sut.AddLetterAt('X', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('R', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('A', 3, 1);
+            sut.AddLetterAt('I', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('M', 3, 3);
+            sut.GetWordsLocation();
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWith2WordsTheFirstOfWhichIsNotInThePuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsReturnsAnEmptyDictionary()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddLetterAt('X', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('R', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('A', 3, 1);
+            sut.AddLetterAt('I', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            Dictionary<String, List<Vector2>> expected = new Dictionary<string, List<Vector2>>();
+
+            Assert.AreEqual(expected, result);
         }
 
         [Test]
@@ -870,86 +919,6 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void Given4x4WordPuzzleWhenAddingAWordAfterCheckingIsValidThenHasChangeReturnsTrue()
-        {
-            sut.AddWord("KIRK");
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('E', 1, 0);
-            sut.AddLetterAt('F', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('J', 2, 1);
-            sut.AddLetterAt('A', 3, 1);
-            sut.AddLetterAt('I', 0, 2);
-            sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('H', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('D', 1, 3);
-            sut.AddLetterAt('J', 2, 3);
-            sut.AddLetterAt('M', 3, 3);
-
-            sut.IsValid();
-            sut.AddWord("KHAN");
-
-            Assert.IsTrue(sut.HasChanged);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWhenCallingIsValidThenHasChangeReturnsFalse()
-        {
-            sut.AddWord("KIRK");
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('E', 1, 0);
-            sut.AddLetterAt('F', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('J', 2, 1);
-            sut.AddLetterAt('A', 3, 1);
-            sut.AddLetterAt('I', 0, 2);
-            sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('H', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('D', 1, 3);
-            sut.AddLetterAt('J', 2, 3);
-            sut.AddLetterAt('M', 3, 3);
-
-            sut.IsValid();
-
-            Assert.IsFalse(sut.HasChanged);
-        }
-
-        [Test]
-        public void Given4x4WordPuzzleWhenAddingALetterAfterCheckingIsValidThenHasChangeReturnsTrue()
-        {
-            sut.AddWord("KIRK");
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('E', 1, 0);
-            sut.AddLetterAt('F', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('J', 2, 1);
-            sut.AddLetterAt('A', 3, 1);
-            sut.AddLetterAt('I', 0, 2);
-            sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('H', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('D', 1, 3);
-            sut.AddLetterAt('J', 2, 3);
-            sut.AddLetterAt('M', 3, 3);
-
-            sut.IsValid();
-            sut.AddLetterAt('G', 4, 4);
-
-            Assert.IsTrue(sut.HasChanged);
-        }
-
-        [Test]
         public void GivenInvalid4x4WordPuzzleWhenCallingIsValidTwiceThenSecondIsValidReturnsFalse()
         {
             sut.AddWord("KIRK");
@@ -972,6 +941,29 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('X', 3, 3);
 
             sut.IsValid();
+            Assert.IsFalse(sut.IsValid());
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidThenIsValidReturnsFalse()
+        {
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('R', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('I', 3, 1);
+            sut.AddLetterAt('I', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('R', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('X', 3, 3);
+
             Assert.IsFalse(sut.IsValid());
         }
 
@@ -1013,6 +1005,120 @@ namespace PuzzleSolverUnitTest
             Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
             expected.Add("KIRK", kirkLocation);
             expected.Add("HAN", hanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWhenCallingToStringThenToStringReturnsAString()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('K', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            Assert.IsInstanceOf(typeof(String), sut.ToString());
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('N', 3, 0);
+            sut.AddLetterAt('K', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            String result = sut.ToString();
+            String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
+            expected += "KHAN: (0,3),(1,3),(2,3),(3,3)";
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWith3WordsWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddWord("SULU");
+            sut.AddLetterAt('S', 0, 0);
+            sut.AddLetterAt('U', 1, 0);
+            sut.AddLetterAt('L', 2, 0);
+            sut.AddLetterAt('U', 3, 0);
+            sut.AddLetterAt('K', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            String result = sut.ToString();
+            String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
+            expected += "KHAN: (0,3),(1,3),(2,3),(3,3)\n";
+            expected += "SULU: (0,0),(1,0),(2,0),(3,0)";
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWithAWordMissingWhenCallingToStringThenToStringReturnsAnEmptyString()
+        {
+            sut.AddWord("KIRK");
+            sut.AddWord("KHAN");
+            sut.AddWord("SULU");
+            sut.AddLetterAt('S', 0, 0);
+            sut.AddLetterAt('X', 1, 0);
+            sut.AddLetterAt('L', 2, 0);
+            sut.AddLetterAt('U', 3, 0);
+            sut.AddLetterAt('K', 0, 1);
+            sut.AddLetterAt('I', 1, 1);
+            sut.AddLetterAt('R', 2, 1);
+            sut.AddLetterAt('K', 3, 1);
+            sut.AddLetterAt('R', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('H', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('H', 1, 3);
+            sut.AddLetterAt('A', 2, 3);
+            sut.AddLetterAt('N', 3, 3);
+
+            String result = sut.ToString();
+            String expected = "";
 
             Assert.AreEqual(expected, result);
         }

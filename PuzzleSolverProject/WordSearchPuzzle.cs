@@ -13,7 +13,7 @@ namespace PuzzleSolverProject
         public Dictionary<Vector2, Char> Letters { get;}
         private delegate List<Vector2> getNeighborsOfBy(Vector2 startPosition, int length);
         private Dictionary<DirectionEnum, getNeighborsOfBy> searchDirection;
-        public bool HasChanged { get; private set; }
+        private bool isChanged;
         private Dictionary<String, List<Vector2>> wordLocations;
         private bool isValid;
 
@@ -30,7 +30,7 @@ namespace PuzzleSolverProject
             searchDirection.Add(DirectionEnum.DownRight, GetDownRightNeighborsStartingFrom);
             searchDirection.Add(DirectionEnum.UpLeft, GetUpLeftNeighborsStartingFrom);
             searchDirection.Add(DirectionEnum.DownLeft, GetDownLeftNeighborsStartingFrom);
-            HasChanged = false;
+            isChanged = false;
             wordLocations = new Dictionary<string, List<Vector2>>();
             isValid = true;
         }
@@ -38,13 +38,13 @@ namespace PuzzleSolverProject
         public void AddWord(String word)
         {
             Words.Add(word);
-            HasChanged = true;
+            isChanged = true;
         }
 
         public void AddLetterAt(Char letter, int x, int y)
         {
             Letters.Add(new Vector2(x, y), letter);
-            HasChanged = true;
+            isChanged = true;
         }
 
         private List<Vector2> SearchUp(String word)
@@ -204,48 +204,87 @@ namespace PuzzleSolverProject
 
         public Dictionary<String, List<Vector2>> GetWordsLocation()
         {
-            Dictionary<String, List<Vector2>> foundWords = wordLocations;
-            if (HasChanged)
+            FindAllWordLocations();
+            return wordLocations;
+        }
+
+        private void FindAllWordLocations()
+        {
+            
+            if (isChanged)
             {
-                foreach (String word in Words)
+                wordLocations.Clear();
+                try
                 {
-                    List<List<Vector2>> wordDirections = new List<List<Vector2>>();
-                    wordDirections.Add(SearchUp(word));
-                    wordDirections.Add(SearchDown(word));
-                    wordDirections.Add(SearchLeft(word));
-                    wordDirections.Add(SearchRight(word));
-                    wordDirections.Add(SearchUpLeft(word));
-                    wordDirections.Add(SearchUpRight(word));
-                    wordDirections.Add(SearchDownLeft(word));
-                    wordDirections.Add(SearchDownRight(word));
-                    List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > 0);
-                    if (foundWordLocation.Count > 0)
+                    foreach (String word in Words)
                     {
-                        foundWords.Add(word, foundWordLocation);
+                        List<List<Vector2>> wordDirections = new List<List<Vector2>>();
+                        wordDirections.Add(SearchUp(word));
+                        wordDirections.Add(SearchDown(word));
+                        wordDirections.Add(SearchLeft(word));
+                        wordDirections.Add(SearchRight(word));
+                        wordDirections.Add(SearchUpLeft(word));
+                        wordDirections.Add(SearchUpRight(word));
+                        wordDirections.Add(SearchDownLeft(word));
+                        wordDirections.Add(SearchDownRight(word));
+                        List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > 0);
+                        if (foundWordLocation.Count > 0)
+                        {
+                            wordLocations.Add(word, foundWordLocation);
+                        }
                     }
                 }
-            }
+                catch(Exception e)
+                {
+                    wordLocations.Clear();
+                }
 
-            return foundWords;
+                isChanged = false;
+            }
         }
 
         public bool IsValid()
         {
-            try
-            {
-                if (HasChanged)
-                {
-                    wordLocations = GetWordsLocation();
-                }
-            }
-            catch(Exception e)
+            FindAllWordLocations();
+
+            if (wordLocations.Count == 0)
             {
                 isValid = false;
             }
 
-            HasChanged = false;
-
             return isValid;
+        }
+
+        public override string ToString()
+        {
+            FindAllWordLocations();
+
+            String output = "";
+            if (wordLocations.Count > 0)
+            {
+                foreach (KeyValuePair<String, List<Vector2>> wordMap in wordLocations)
+                {
+                    output += wordMap.Key + ": ";
+                    output += letterLocationsToString(wordMap.Value);
+                }
+
+                output = output.Remove(output.LastIndexOf('\n'));
+            }
+            return output;
+        }
+
+        private String letterLocationsToString(List<Vector2> lettersLocations)
+        {
+            String lettersOutput = "";
+            foreach (Vector2 letterLocation in lettersLocations)
+            {
+                lettersOutput += "(" + letterLocation.X + "," + letterLocation.Y + "),";
+            }
+
+            lettersOutput = lettersOutput.Remove(lettersOutput.LastIndexOf(','));
+            lettersOutput += "\n";
+
+            return lettersOutput;
         }
     }
 }

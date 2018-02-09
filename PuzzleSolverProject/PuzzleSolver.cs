@@ -12,6 +12,7 @@ namespace PuzzleSolverProject
     {
         private int sizeX;
         private int sizeY;
+        private WordSearchPuzzle puzzle;
 
         private void AddWord(String word)
         {
@@ -19,6 +20,7 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+            puzzle.AddWord(word);
         }
 
         private void AddAllWords(List<String> listOfWords)
@@ -68,6 +70,8 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentOutOfRangeException();
             }
+
+            puzzle.AddLetterAt(letter, x, y);
         }
 
         private bool isPositionWithinDimensionRange(int x, int y)
@@ -134,14 +138,22 @@ namespace PuzzleSolverProject
             AddAllLetters(lettersGrid);
         }
 
-        public void ParsePuzzleWordFile(String fileName)
+        public WordSearchPuzzle ParsePuzzleWordFile(String fileName)
         {
+            puzzle = new WordSearchPuzzle();
             String[] lines = File.ReadAllLines(fileName);
             ParseWordsIntoPuzzle(lines[0]);
 
             String[] rawLetters = new String[lines.Length - 1];
             Array.Copy(lines, 1, rawLetters, 0, lines.Length - 1);
             ParseLettersIntoPuzzle(rawLetters);
+
+            if(!puzzle.IsValid())
+            {
+                throw new InvalidDataException();
+            }
+
+            return puzzle;
         }
     }
 }
