@@ -212,29 +212,29 @@ namespace PuzzleSolverProject
             Dictionary<String, List<Vector2>> foundWords = wordLocations;
             if (HasChanged)
             {
-                foreach (String word in Words)
+                try
                 {
-                    List<List<Vector2>> wordDirections = new List<List<Vector2>>();
-                    wordDirections.Add(SearchUp(word));
-                    wordDirections.Add(SearchDown(word));
-                    wordDirections.Add(SearchLeft(word));
-                    wordDirections.Add(SearchRight(word));
-                    wordDirections.Add(SearchUpLeft(word));
-                    wordDirections.Add(SearchUpRight(word));
-                    wordDirections.Add(SearchDownLeft(word));
-                    wordDirections.Add(SearchDownRight(word));
-                    try
+                    foreach (String word in Words)
                     {
+                        List<List<Vector2>> wordDirections = new List<List<Vector2>>();
+                        wordDirections.Add(SearchUp(word));
+                        wordDirections.Add(SearchDown(word));
+                        wordDirections.Add(SearchLeft(word));
+                        wordDirections.Add(SearchRight(word));
+                        wordDirections.Add(SearchUpLeft(word));
+                        wordDirections.Add(SearchUpRight(word));
+                        wordDirections.Add(SearchDownLeft(word));
+                        wordDirections.Add(SearchDownRight(word));
                         List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > 0);
                         if (foundWordLocation.Count > 0)
                         {
                             foundWords.Add(word, foundWordLocation);
                         }
                     }
-                    catch (Exception e)
-                    {
-
-                    }
+                }
+                catch(Exception e)
+                {
+                    foundWords = new Dictionary<string, List<Vector2>>();
                 }
             }
 
