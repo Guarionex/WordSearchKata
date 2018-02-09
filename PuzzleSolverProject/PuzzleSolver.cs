@@ -10,21 +10,22 @@ namespace PuzzleSolverProject
 {
     public class PuzzleSolver
     {
-        private int sizeX;
-        private int sizeY;
-        private WordSearchPuzzle puzzle;
         private const Char COMMA_CHAR = ',';
         private const String COMMA_STRING = ",";
         private const int FIRST_LETTER_OF_WORD_INDEX = 0;
         private const int INVALID_WORD_COUNT = 1;
+        private const int WORD_ROW_INDEX = 0;
+        private const int NUMBER_OF_WORD_ROWS = 1;
         private const int MIN_DIMENSION_INDEX = 0;
         private const int MIN_DIMENSIONS_SIZE = 2;
         private const int INVALID_LETTERS_COUNT = 1;
-        private const int WORD_ROW_INDEX = 0;
-        private const int NUMBER_OF_WORD_ROWS = 1;
         private const int LETTER_ROW_FIRST_INDEX = 1;
         private const int DIMENSION_X = 0;
         private const int DIMENSION_Y = 1;
+
+        private int sizeX;
+        private int sizeY;
+        private WordSearchPuzzle puzzle;
 
         private void AddWord(String word)
         {
