@@ -254,5 +254,13 @@ namespace PuzzleSolverProject
 
             return isValid;
         }
+
+        public override string ToString()
+        {
+            String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
+            expected += "KHAN: (0,3),(1,3),(2,3),(3,3)";
+
+            return expected;
+        }
     }
 }
