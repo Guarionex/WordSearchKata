@@ -86,17 +86,22 @@ namespace PuzzleSolverProject
 
         private void SetValidDimensions(int x, int y)
         {
-            if(x < MIN_DIMENSIONS_SIZE && y < MIN_DIMENSIONS_SIZE)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-            else if(x != y)
-            {
-                throw new ArgumentException();
-            }
+            ValidateDimensions(x, y);
 
             sizeX = x;
             sizeY = y;
+        }
+
+        private void ValidateDimensions(int x, int y)
+        {
+            if (x < MIN_DIMENSIONS_SIZE && y < MIN_DIMENSIONS_SIZE)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            else if (x != y)
+            {
+                throw new ArgumentException();
+            }
         }
 
         private void AddAllLetters(Char[,] multiArrayOfLetters)
