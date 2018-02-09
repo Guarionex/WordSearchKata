@@ -114,11 +114,9 @@ namespace PuzzleSolverProject
             for (int row = 0; row < csvLetters.Length; row++)
             {
                 String joinedRow = csvLetters[row].Replace(",", "");
-                if(isLetterStringValid(joinedRow, csvLetters[row], csvLetters.Length))
-                {
-                    throw new FormatException();
-                }
-                for(int col = 0; col < joinedRow.Length; col++)
+                ValidateRow(joinedRow, csvLetters[row], csvLetters.Length);
+
+                for (int col = 0; col < joinedRow.Length; col++)
                 {
                     letters2dArray[col, row] = joinedRow[col];
                 }
@@ -127,9 +125,12 @@ namespace PuzzleSolverProject
             return letters2dArray;
         }
 
-        private bool isLetterStringValid(String joinedLetters, String csvLetterRow, int expectedLength)
+        private void ValidateRow(String joinedLetters, String csvLetterRow, int expectedLength)
         {
-            return (joinedLetters.Equals(csvLetterRow) && expectedLength != 1) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
+            if((joinedLetters.Equals(csvLetterRow) && expectedLength != 1) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength)
+            {
+                throw new FormatException();
+            }
         }
 
         private void ParseLettersIntoPuzzle(String[] rawLetters)
