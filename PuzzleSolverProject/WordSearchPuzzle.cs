@@ -260,20 +260,22 @@ namespace PuzzleSolverProject
             FindAllWordLocations();
 
             String output = "";
-            foreach(KeyValuePair<String, List<Vector2>> wordMap in wordLocations)
+            if (wordLocations.Count > 0)
             {
-                output += wordMap.Key + ": ";
-                foreach(Vector2 letterLocation in wordMap.Value)
+                foreach (KeyValuePair<String, List<Vector2>> wordMap in wordLocations)
                 {
-                    output += "(" + letterLocation.X + "," + letterLocation.Y + "),";
+                    output += wordMap.Key + ": ";
+                    foreach (Vector2 letterLocation in wordMap.Value)
+                    {
+                        output += "(" + letterLocation.X + "," + letterLocation.Y + "),";
+                    }
+
+                    output = output.Remove(output.LastIndexOf(','));
+                    output += "\n";
                 }
 
-                output = output.Remove(output.LastIndexOf(','));
-                output += "\n";
+                output = output.Remove(output.LastIndexOf('\n'));
             }
-
-            output = output.Remove(output.LastIndexOf('\n'));
-
             return output;
         }
     }
