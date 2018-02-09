@@ -247,7 +247,7 @@ namespace PuzzleSolverProject
 
             FindAllWordLocations();
 
-            if (wordLocations.Count < Words.Count)
+            if (wordLocations.Count == 0)
             {
                 isValid = false;
             }
