@@ -13,6 +13,18 @@ namespace PuzzleSolverProject
         private int sizeX;
         private int sizeY;
         private WordSearchPuzzle puzzle;
+        private const Char COMMA_CHAR = ',';
+        private const String COMMA_STRING = ",";
+        private const int FIRST_LETTER_OF_WORD_INDEX = 0;
+        private const int INVALID_WORD_COUNT = 1;
+        private const int MIN_DIMENSION_INDEX = 0;
+        private const int MIN_DIMENSIONS_SIZE = 2;
+        private const int INVALID_LETTERS_COUNT = 1;
+        private const int WORD_ROW_INDEX = 0;
+        private const int NUMBER_OF_WORD_ROWS = 1;
+        private const int LETTER_ROW_FIRST_INDEX = 1;
+        private const int DIMENSION_X = 0;
+        private const int DIMENSION_Y = 1;
 
         private void AddWord(String word)
         {
@@ -38,7 +50,7 @@ namespace PuzzleSolverProject
 
         private List<String> GetListOfWords(String csvWords)
         {
-            String[] splittedCSVWords = csvWords.Split(',');
+            String[] splittedCSVWords = csvWords.Split(COMMA_CHAR);
             if(isWordStringFormatInvalid(splittedCSVWords))
             {
                 throw new FormatException();
@@ -51,7 +63,7 @@ namespace PuzzleSolverProject
 
         private bool isWordStringFormatInvalid(String[] delimetedWords)
         {
-            return delimetedWords.Length == 1 || delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, 0)));
+            return delimetedWords.Length == INVALID_WORD_COUNT || delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, FIRST_LETTER_OF_WORD_INDEX)));
         }        
 
         private void ParseWordsIntoPuzzle(String rawWordString)
@@ -76,12 +88,12 @@ namespace PuzzleSolverProject
 
         private bool isPositionWithinDimensionRange(int x, int y)
         {
-            return x < 0 || x > sizeX || y < 0 || y > sizeY;
+            return x < MIN_DIMENSION_INDEX || x > sizeX || y < MIN_DIMENSION_INDEX || y > sizeY;
         }
 
         private void SetValidDimensions(int x, int y)
         {
-            if(x < 2 && y < 2)
+            if(x < MIN_DIMENSIONS_SIZE && y < MIN_DIMENSIONS_SIZE)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -96,12 +108,12 @@ namespace PuzzleSolverProject
 
         private void AddAllLetters(Char[,] multiArrayOfLetters)
         {
-            int lengthX = multiArrayOfLetters.GetLength(0);
-            int lengthY = multiArrayOfLetters.GetLength(1);
+            int lengthX = multiArrayOfLetters.GetLength(DIMENSION_X);
+            int lengthY = multiArrayOfLetters.GetLength(DIMENSION_Y);
             SetValidDimensions(lengthX, lengthY);
-            for(int col = 0; col < lengthX; col++)
+            for(int col = MIN_DIMENSION_INDEX; col < lengthX; col++)
             {
-                for(int row = 0; row < lengthY; row++)
+                for(int row = MIN_DIMENSION_INDEX; row < lengthY; row++)
                 {
                     AddLetterAt(multiArrayOfLetters[col, row], col, row);
                 }
@@ -111,12 +123,12 @@ namespace PuzzleSolverProject
         private Char[,] Get2DLetterArray(String[] csvLetters)
         {
             Char[,] letters2dArray = new Char[csvLetters.Length, csvLetters.Length];
-            for (int row = 0; row < csvLetters.Length; row++)
+            for (int row = MIN_DIMENSION_INDEX; row < csvLetters.Length; row++)
             {
-                String joinedRow = csvLetters[row].Replace(",", "");
+                String joinedRow = csvLetters[row].Replace(COMMA_STRING, String.Empty);
                 ValidateRow(joinedRow, csvLetters[row], csvLetters.Length);
 
-                for (int col = 0; col < joinedRow.Length; col++)
+                for (int col = MIN_DIMENSION_INDEX; col < joinedRow.Length; col++)
                 {
                     letters2dArray[col, row] = joinedRow[col];
                 }
@@ -127,7 +139,7 @@ namespace PuzzleSolverProject
 
         private void ValidateRow(String joinedLetters, String csvLetterRow, int expectedLength)
         {
-            if((joinedLetters.Equals(csvLetterRow) && expectedLength != 1) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength)
+            if((joinedLetters.Equals(csvLetterRow) && expectedLength != INVALID_LETTERS_COUNT) || joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength)
             {
                 throw new FormatException();
             }
@@ -143,10 +155,10 @@ namespace PuzzleSolverProject
         {
             puzzle = new WordSearchPuzzle();
             String[] lines = File.ReadAllLines(fileName);
-            ParseWordsIntoPuzzle(lines[0]);
+            ParseWordsIntoPuzzle(lines[WORD_ROW_INDEX]);
 
-            String[] rawLetters = new String[lines.Length - 1];
-            Array.Copy(lines, 1, rawLetters, 0, lines.Length - 1);
+            String[] rawLetters = new String[lines.Length - NUMBER_OF_WORD_ROWS];
+            Array.Copy(lines, LETTER_ROW_FIRST_INDEX, rawLetters, MIN_DIMENSION_INDEX, lines.Length - NUMBER_OF_WORD_ROWS);
             ParseLettersIntoPuzzle(rawLetters);
 
             if(!puzzle.IsValid())
