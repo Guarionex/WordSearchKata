@@ -218,11 +218,19 @@ namespace PuzzleSolverProject
                     wordDirections.Add(SearchUpRight(word));
                     wordDirections.Add(SearchDownLeft(word));
                     wordDirections.Add(SearchDownRight(word));
-                    List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > 0);
-                    if (foundWordLocation.Count > 0)
+                    try
                     {
-                        foundWords.Add(word, foundWordLocation);
+                        List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > 0);
+                        if (foundWordLocation.Count > 0)
+                        {
+                            foundWords.Add(word, foundWordLocation);
+                        }
                     }
+                    catch (Exception e)
+                    {
+                        
+                    }
+                    
                 }
             }
 
@@ -231,14 +239,13 @@ namespace PuzzleSolverProject
 
         public bool IsValid()
         {
-            try
+            
+            if (HasChanged)
             {
-                if (HasChanged)
-                {
-                    wordLocations = GetWordsLocation();
-                }
+                wordLocations = GetWordsLocation();
             }
-            catch(Exception e)
+
+            if (wordLocations.Count < Words.Count)
             {
                 isValid = false;
             }
