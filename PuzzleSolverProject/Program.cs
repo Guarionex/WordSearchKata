@@ -10,7 +10,7 @@ namespace PuzzleSolverProject
     {
         static void Main(string[] args)
         {
-            PuzzleSolver solver = new PuzzleSolver();
+            PuzzleFileParser solver = new PuzzleFileParser();
             WordSearchPuzzle puzzle = solver.ParseFileToWordSearchPuzzle(args[0]);
             Console.WriteLine(puzzle.ToString());
         }

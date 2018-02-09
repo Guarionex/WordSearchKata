@@ -13,14 +13,14 @@ namespace PuzzleSolverUnitTest
     [TestFixture]
     public class PuzzleSolverTest
     {
-        private PuzzleSolver sut;
+        private PuzzleFileParser sut;
         private String validPuzzleFileName;
         private String projectPath;
 
         [SetUp]
         public void init()
         {
-            sut = new PuzzleSolver();
+            sut = new PuzzleFileParser();
 
             validPuzzleFileName = "Valid4x4.txt";
             projectPath = @"C:\Users\chesp\source\repos\WordSearchKata\";

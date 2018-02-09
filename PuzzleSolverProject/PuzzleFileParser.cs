@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolverProject
 {
-    public class PuzzleSolver
+    public class PuzzleFileParser
     {
         private const Char COMMA_CHAR = ',';
         private const String COMMA_STRING = ",";
