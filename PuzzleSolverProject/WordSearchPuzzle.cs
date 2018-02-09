@@ -257,10 +257,24 @@ namespace PuzzleSolverProject
 
         public override string ToString()
         {
-            String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
-            expected += "KHAN: (0,3),(1,3),(2,3),(3,3)";
+            FindAllWordLocations();
 
-            return expected;
+            String output = "";
+            foreach(KeyValuePair<String, List<Vector2>> wordMap in wordLocations)
+            {
+                output += wordMap.Key + ": ";
+                foreach(Vector2 letterLocation in wordMap.Value)
+                {
+                    output += "(" + letterLocation.X + "," + letterLocation.Y + "),";
+                }
+
+                output = output.Remove(output.LastIndexOf(','));
+                output += "\n";
+            }
+
+            output = output.Remove(output.LastIndexOf('\n'));
+
+            return output;
         }
     }
 }
