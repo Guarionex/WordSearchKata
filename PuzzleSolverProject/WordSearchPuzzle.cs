@@ -265,18 +265,26 @@ namespace PuzzleSolverProject
                 foreach (KeyValuePair<String, List<Vector2>> wordMap in wordLocations)
                 {
                     output += wordMap.Key + ": ";
-                    foreach (Vector2 letterLocation in wordMap.Value)
-                    {
-                        output += "(" + letterLocation.X + "," + letterLocation.Y + "),";
-                    }
-
-                    output = output.Remove(output.LastIndexOf(','));
-                    output += "\n";
+                    output += letterLocationsToString(wordMap.Value);
                 }
 
                 output = output.Remove(output.LastIndexOf('\n'));
             }
             return output;
+        }
+
+        private String letterLocationsToString(List<Vector2> lettersLocations)
+        {
+            String lettersOutput = "";
+            foreach (Vector2 letterLocation in lettersLocations)
+            {
+                lettersOutput += "(" + letterLocation.X + "," + letterLocation.Y + "),";
+            }
+
+            lettersOutput = lettersOutput.Remove(lettersOutput.LastIndexOf(','));
+            lettersOutput += "\n";
+
+            return lettersOutput;
         }
     }
 }
