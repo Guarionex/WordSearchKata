@@ -1025,6 +1025,29 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
+        public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidThenIsValidReturnsFalse()
+        {
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('R', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('I', 3, 1);
+            sut.AddLetterAt('I', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('R', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('X', 3, 3);
+
+            Assert.IsFalse(sut.IsValid());
+        }
+
+        [Test]
         public void GivenValid4x4WordPuzzleWhenCallingIsValidThenGetWordsLocationReturnsAllWordsLocations()
         {
             sut.AddWord("KIRK");
