@@ -238,6 +238,8 @@ namespace PuzzleSolverProject
                 {
                     wordLocations.Clear();
                 }
+
+                isChanged = false;
             }
         }
 
@@ -249,8 +251,6 @@ namespace PuzzleSolverProject
             {
                 isValid = false;
             }
-
-            isChanged = false;
 
             return isValid;
         }
