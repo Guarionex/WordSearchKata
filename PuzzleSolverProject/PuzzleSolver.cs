@@ -80,17 +80,8 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
-            else if(isPositionWithinDimensionRange(x, y))
-            {
-                throw new ArgumentOutOfRangeException();
-            }
 
             puzzle.AddLetterAt(letter, x, y);
-        }
-
-        private bool isPositionWithinDimensionRange(int x, int y)
-        {
-            return x < MIN_DIMENSION_INDEX || x > sizeX || y < MIN_DIMENSION_INDEX || y > sizeY;
         }
 
         private void SetValidDimensions(int x, int y)
