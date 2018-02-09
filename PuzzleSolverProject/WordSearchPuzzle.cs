@@ -243,11 +243,9 @@ namespace PuzzleSolverProject
 
         public bool IsValid()
         {
-            
-            if (HasChanged)
-            {
-                wordLocations = GetWordsLocation();
-            }
+
+
+            FindAllWordLocations();
 
             if (wordLocations.Count < Words.Count)
             {
