@@ -204,14 +204,16 @@ namespace PuzzleSolverProject
 
         public Dictionary<String, List<Vector2>> GetWordsLocation()
         {
-            return FindAllWordLocations();
+            FindAllWordLocations();
+            return wordLocations;
         }
 
-        private Dictionary<String, List<Vector2>> FindAllWordLocations()
+        private void FindAllWordLocations()
         {
-            Dictionary<String, List<Vector2>> foundWords = wordLocations;
+            
             if (HasChanged)
             {
+                wordLocations.Clear();
                 try
                 {
                     foreach (String word in Words)
@@ -228,17 +230,15 @@ namespace PuzzleSolverProject
                         List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > 0);
                         if (foundWordLocation.Count > 0)
                         {
-                            foundWords.Add(word, foundWordLocation);
+                            wordLocations.Add(word, foundWordLocation);
                         }
                     }
                 }
                 catch(Exception e)
                 {
-                    foundWords = new Dictionary<string, List<Vector2>>();
+                    wordLocations.Clear();
                 }
             }
-
-            return foundWords;
         }
 
         public bool IsValid()
