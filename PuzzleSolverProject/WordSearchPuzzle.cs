@@ -204,6 +204,11 @@ namespace PuzzleSolverProject
 
         public Dictionary<String, List<Vector2>> GetWordsLocation()
         {
+            return FindAllWordLocations();
+        }
+
+        private Dictionary<String, List<Vector2>> FindAllWordLocations()
+        {
             Dictionary<String, List<Vector2>> foundWords = wordLocations;
             if (HasChanged)
             {
@@ -228,9 +233,8 @@ namespace PuzzleSolverProject
                     }
                     catch (Exception e)
                     {
-                        
+
                     }
-                    
                 }
             }
 
