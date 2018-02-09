@@ -29,23 +29,24 @@ namespace PuzzleSolverProject
 
         private void AddWord(String word)
         {
-            if(word.Any(ch => ! char.IsLetter(ch)))
-            {
-                throw new ArgumentException();
-            }
             puzzle.AddWord(word);
         }
 
         private void AddAllWords(List<String> listOfWords)
         {
-            if(listOfWords.Any(string.IsNullOrWhiteSpace))
-            {
-                throw new ArgumentException();
-            }
+            ValidateWords(listOfWords);
 
             foreach(String word in listOfWords)
             {
                 AddWord(word);
+            }
+        }
+
+        private void ValidateWords(List<String> listOfWords)
+        {
+            if(listOfWords.Any(string.IsNullOrWhiteSpace) || listOfWords.Any(word => word.Any(ch => !char.IsLetter(ch))))
+            {
+                throw new ArgumentException();
             }
         }
 
