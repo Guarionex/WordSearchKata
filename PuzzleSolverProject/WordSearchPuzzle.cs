@@ -9,7 +9,6 @@ namespace PuzzleSolverProject
 {
     public class WordSearchPuzzle
     {
-        private const int FIRST_LETTER_OF_WORD_INDEX = 0;
         private const int INVALID_COUNT = 0;
 
         public List<String> Words { get; }
@@ -52,39 +51,6 @@ namespace PuzzleSolverProject
             isChanged = true;
         }
 
-        private List<Vector2> SearchWordInDirection(String word, IGetNeighborsFrom searchDirection)
-        {
-            List<Vector2> wordPosition = new List<Vector2>();
-            List<Vector2> firstLetterPositions = FindAllLetterPositions(word[FIRST_LETTER_OF_WORD_INDEX]);
-
-            foreach (Vector2 position in firstLetterPositions)
-            {
-                searchDirection.AddPositionToLettersDictionary(Letters);
-                List<Vector2> candidate = searchDirection.GetNeighborsFrom(position, word.Length);
-                String foundWord = FindWordFromPositions(candidate);
-
-                if (word.Equals(foundWord))
-                {
-                    wordPosition.AddRange(candidate);
-                }
-            }
-
-            return wordPosition;
-        }
-
-        private List<Vector2> FindAllLetterPositions(Char letter)
-        {
-            List<Vector2> positions = Letters.Where(kvp => kvp.Value == letter).Select(kvp => kvp.Key).ToList();
-            return positions;
-        }
-
-        private String FindWordFromPositions(List<Vector2> positions)
-        {
-            Char[] candidateLetters = positions.Select(key => Letters[key]).ToArray();
-
-            return new String(candidateLetters);
-        }
-
         public Dictionary<String, List<Vector2>> GetWordsLocation()
         {
             FindAllWordLocations();
@@ -118,10 +84,10 @@ namespace PuzzleSolverProject
         private List<List<Vector2>> SearchAllDirections(String word)
         {
             List<List<Vector2>> wordDirections = new List<List<Vector2>>();
-
+            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(Letters);
             foreach(DirectionEnum direction in Enum.GetValues(typeof(DirectionEnum)))
             {
-                wordDirections.Add(SearchWordInDirection(word, searchDirectionStrategy[direction]));
+                wordDirections.Add(algorithm.SearchWordInDirection(word, searchDirectionStrategy[direction]));
             }
 
             return wordDirections;

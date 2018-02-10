@@ -17,7 +17,7 @@ namespace PuzzleSolverProject
             LettersMap = lettersMap;
         }
 
-        private List<Vector2> SearchWordInDirection(String word, IGetNeighborsFrom searchDirection)
+        public List<Vector2> SearchWordInDirection(String word, IGetNeighborsFrom searchDirection)
         {
             List<Vector2> wordPosition = new List<Vector2>();
             List<Vector2> firstLetterPositions = FindAllLetterPositions(word[FIRST_LETTER_OF_WORD_INDEX]);

@@ -56,6 +56,7 @@
     <Compile Include="UpGetNeighborsFrom.cs" />
     <Compile Include="UpLeftGetNeighborsFrom.cs" />
     <Compile Include="UpRightGetNeighborsFrom.cs" />
+    <Compile Include="WordSeachAlgorithm.cs" />
     <Compile Include="WordSearchPuzzle.cs" />
   </ItemGroup>
   <ItemGroup>
