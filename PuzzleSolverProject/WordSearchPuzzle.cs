@@ -20,16 +20,18 @@ namespace PuzzleSolverProject
         public WordSearchPuzzle()
         {
             Words = new List<String>();
+
             Letters = new Dictionary<Vector2, Char>();
             searchDirection = new Dictionary<DirectionEnum, getNeighborsFrom>();
-            searchDirection.Add(DirectionEnum.Right, GetRightNeighborsFrom);
-            searchDirection.Add(DirectionEnum.Down, GetDownNeighborsFrom);
             searchDirection.Add(DirectionEnum.Up, GetUpNeighborsFrom);
-            searchDirection.Add(DirectionEnum.UpRight, GetUpRightFrom);
+            searchDirection.Add(DirectionEnum.Down, GetDownNeighborsFrom);
             searchDirection.Add(DirectionEnum.Left, GetLeftNeighborsFrom);
-            searchDirection.Add(DirectionEnum.DownRight, GetDownRightNeighborsFrom);
+            searchDirection.Add(DirectionEnum.Right, GetRightNeighborsFrom);
             searchDirection.Add(DirectionEnum.UpLeft, GetUpLeftNeighborsFrom);
+            searchDirection.Add(DirectionEnum.UpRight, GetUpRightNeighborsFrom);
             searchDirection.Add(DirectionEnum.DownLeft, GetDownLeftNeighborsFrom);
+            searchDirection.Add(DirectionEnum.DownRight, GetDownRightNeighborsFrom);
+            
             isChanged = false;
             wordLocations = new Dictionary<string, List<Vector2>>();
             isValid = true;
@@ -160,7 +162,7 @@ namespace PuzzleSolverProject
             return positionsUpLeftFromStartPosition;
         }
 
-        private List<Vector2> GetUpRightFrom(Vector2 startPosition, int length)
+        private List<Vector2> GetUpRightNeighborsFrom(Vector2 startPosition, int length)
         {
             List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
             for (int x = 0, y = 0; x < length && y > -length; x++, y--)
