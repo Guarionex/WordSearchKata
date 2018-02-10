@@ -97,9 +97,9 @@ namespace PuzzleSolverProject
             foreach (Vector2 position in firstLetterPositions)
             {
                 List<Vector2> candidate = searchDirection[direction](position, word.Length);
-                Char[] candidateLetters = candidate.Where(key => Letters.ContainsKey(key)).Select(key => Letters[key]).ToArray();
+                String foundWord = findWordFromPositions(candidate);
 
-                if (word.Equals(new String(candidateLetters)))
+                if (word.Equals(foundWord))
                 {
                     wordPosition.AddRange(candidate);
                 }
@@ -112,6 +112,13 @@ namespace PuzzleSolverProject
         {
             List<Vector2> positions = Letters.Where(kvp => kvp.Value == letter).Select(kvp => kvp.Key).ToList();
             return positions;
+        }
+
+        private String findWordFromPositions(List<Vector2> positions)
+        {
+            Char[] candidateLetters = positions.Select(key => Letters[key]).ToArray();
+
+            return new String(candidateLetters);
         }
 
         private List<Vector2> GetUpNeighborsFrom(Vector2 startPosition, int length)
