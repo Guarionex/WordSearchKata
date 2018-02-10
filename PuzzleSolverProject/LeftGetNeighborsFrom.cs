@@ -22,13 +22,13 @@ namespace PuzzleSolverProject
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
         {
             Vector2 maxPosition = new Vector2(startPosition.X - (length - ZERO_INDEX_OFFSET), startPosition.Y);
-            List<Vector2> positionsWithinRange = letters.Select(kvp => kvp.Key).Where(position => positionsWithinRangeWhereCondition(maxPosition, position)).ToList();
+            List<Vector2> positionsWithinRange = letters.Select(kvp => kvp.Key).Where(position => withinRangeWhereCondition(maxPosition, position)).ToList();
             List<Vector2> positionsLeftFromStartingPoint = positionsWithinRange.Where(vector => vector.X <= startPosition.X).ToList();
             positionsLeftFromStartingPoint.Reverse();
             return positionsLeftFromStartingPoint;
         }
 
-        private bool positionsWithinRangeWhereCondition(Vector2 maxPosition, Vector2 currentPosition)
+        private bool withinRangeWhereCondition(Vector2 maxPosition, Vector2 currentPosition)
         {
             return (maxPosition - currentPosition).X <= DIFFERENCE_THRESHOLD && (maxPosition - currentPosition).Y == DIFFERENCE_THRESHOLD;
         }
