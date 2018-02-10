@@ -126,7 +126,7 @@ namespace PuzzleSolverProject
 
         private void ValidateDimensions(int x, int y)
         {
-            if (x < MIN_DIMENSIONS_SIZE && y < MIN_DIMENSIONS_SIZE)
+            if (isDimensionsInRange(x, y))
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -134,6 +134,11 @@ namespace PuzzleSolverProject
             {
                 throw new ArgumentException();
             }
+        }
+
+        private bool isDimensionsInRange(int x, int y)
+        {
+            return x < MIN_DIMENSIONS_SIZE && y < MIN_DIMENSIONS_SIZE;
         }
 
         private void AddLetterAt(Char letter, int x, int y)
