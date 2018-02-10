@@ -9,6 +9,12 @@ namespace PuzzleSolverProject
 {
     public class WordSearchPuzzle
     {
+        private const int FIRST_LETTER_OF_WORD_INDEX = 0;
+        private const int ZERO_INDEX_OFFSET = 1;
+        private const int STARTING_OFFSET = 0;
+        private const int DIFFERENCE_THRESHOLD = 0;
+        private const int INVALID_COUNT = 0;
+
         public List<String> Words { get; }
         public Dictionary<Vector2, Char> Letters { get;}
         private delegate List<Vector2> getNeighborsFrom(Vector2 startPosition, int length);
@@ -92,7 +98,7 @@ namespace PuzzleSolverProject
         private List<Vector2> SearchWordInDirection(String word, DirectionEnum direction)
         {
             List<Vector2> wordPosition = new List<Vector2>();
-            List<Vector2> firstLetterPositions = FindAllLetterPositions(word[0]);
+            List<Vector2> firstLetterPositions = FindAllLetterPositions(word[FIRST_LETTER_OF_WORD_INDEX]);
 
             foreach (Vector2 position in firstLetterPositions)
             {
@@ -123,8 +129,8 @@ namespace PuzzleSolverProject
 
         private List<Vector2> GetUpNeighborsFrom(Vector2 startPosition, int length)
         {
-            Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y - (length - 1));
-            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == 0 && (maxPosition - key).Y <= 0).ToList();
+            Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y - (length - ZERO_INDEX_OFFSET));
+            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == DIFFERENCE_THRESHOLD && (maxPosition - key).Y <= DIFFERENCE_THRESHOLD).ToList();
             List<Vector2> positionsUpFromStartPosition = positionsWithinRange.Where(vector => vector.Y <= startPosition.Y).ToList();
             positionsUpFromStartPosition.Reverse();
             return positionsUpFromStartPosition;
@@ -132,16 +138,16 @@ namespace PuzzleSolverProject
 
         private List<Vector2> GetDownNeighborsFrom(Vector2 startPosition, int length)
         {
-            Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y + length - 1);
-            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == 0 && (maxPosition - key).Y >= 0).ToList();
+            Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y + length - ZERO_INDEX_OFFSET);
+            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == DIFFERENCE_THRESHOLD && (maxPosition - key).Y >= DIFFERENCE_THRESHOLD).ToList();
             List<Vector2> positionsDownFromStartPosition = positionsWithinRange.Where(vector => vector.Y >= startPosition.Y).ToList();
             return positionsDownFromStartPosition;
         }
 
         private List<Vector2> GetLeftNeighborsFrom(Vector2 startPosition, int length)
         {
-            Vector2 maxPosition = new Vector2(startPosition.X - (length - 1), startPosition.Y);
-            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X <= 0 && (maxPosition - key).Y == 0).ToList();
+            Vector2 maxPosition = new Vector2(startPosition.X - (length - ZERO_INDEX_OFFSET), startPosition.Y);
+            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X <= DIFFERENCE_THRESHOLD && (maxPosition - key).Y == DIFFERENCE_THRESHOLD).ToList();
             List<Vector2> positionsLeftFromStartingPoint = positionsWithinRange.Where(vector => vector.X <= startPosition.X).ToList();
             positionsLeftFromStartingPoint.Reverse();
             return positionsLeftFromStartingPoint;
@@ -149,8 +155,8 @@ namespace PuzzleSolverProject
 
         private List<Vector2> GetRightNeighborsFrom(Vector2 startPosition, int length)
         {
-            Vector2 maxPosition = new Vector2(startPosition.X + length - 1, startPosition.Y);
-            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X >= 0 && (maxPosition - key).Y == 0).ToList();
+            Vector2 maxPosition = new Vector2(startPosition.X + length - ZERO_INDEX_OFFSET, startPosition.Y);
+            List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X >= DIFFERENCE_THRESHOLD && (maxPosition - key).Y == DIFFERENCE_THRESHOLD).ToList();
             List<Vector2> positionsRightOfStartingPoint = positionsWithinRange.Where(vector => vector.X >= startPosition.X).ToList();
            return positionsRightOfStartingPoint;
         }
@@ -158,7 +164,7 @@ namespace PuzzleSolverProject
         private List<Vector2> GetUpLeftNeighborsFrom(Vector2 startPosition, int length)
         {
             List<Vector2> positionsUpLeftFromStartPosition = new List<Vector2>();
-            for (int x = 0, y = 0; x > -length && y > -length; x--, y--)
+            for (int x = STARTING_OFFSET, y = STARTING_OFFSET; x > -length && y > -length; x--, y--)
             {
                 Vector2 UpLeftNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
                 if (Letters.ContainsKey(UpLeftNeighbor))
@@ -172,7 +178,7 @@ namespace PuzzleSolverProject
         private List<Vector2> GetUpRightNeighborsFrom(Vector2 startPosition, int length)
         {
             List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
-            for (int x = 0, y = 0; x < length && y > -length; x++, y--)
+            for (int x = STARTING_OFFSET, y = STARTING_OFFSET; x < length && y > -length; x++, y--)
             {
                 Vector2 upRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
                 if(Letters.ContainsKey(upRightNeighbor))
@@ -186,7 +192,7 @@ namespace PuzzleSolverProject
         private List<Vector2> GetDownLeftNeighborsFrom(Vector2 startPosition, int length)
         {
             List<Vector2> positionsDownLeftFromStartPosition = new List<Vector2>();
-            for (int x = 0, y = 0; x > -length && y < length; x--, y++)
+            for (int x = STARTING_OFFSET, y = STARTING_OFFSET; x > -length && y < length; x--, y++)
             {
                 Vector2 downLeftNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
                 if (Letters.ContainsKey(downLeftNeighbor))
@@ -200,7 +206,7 @@ namespace PuzzleSolverProject
         private List<Vector2> GetDownRightNeighborsFrom(Vector2 startPosition, int length)
         {
             List<Vector2> positionsDownRightFromStartPosition = new List<Vector2>();
-            for (int x = 0, y = 0; x < length && y < length; x++, y++)
+            for (int x = STARTING_OFFSET, y = STARTING_OFFSET; x < length && y < length; x++, y++)
             {
                 Vector2 downRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
                 if (Letters.ContainsKey(downRightNeighbor))
@@ -236,8 +242,8 @@ namespace PuzzleSolverProject
                         wordDirections.Add(SearchUpRight(word));
                         wordDirections.Add(SearchDownLeft(word));
                         wordDirections.Add(SearchDownRight(word));
-                        List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > 0);
-                        if (foundWordLocation.Count > 0)
+                        List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > INVALID_COUNT);
+                        if (foundWordLocation.Count > INVALID_COUNT)
                         {
                             wordLocations.Add(word, foundWordLocation);
                         }
@@ -256,7 +262,7 @@ namespace PuzzleSolverProject
         {
             FindAllWordLocations();
 
-            if (wordLocations.Count == 0)
+            if (wordLocations.Count == INVALID_COUNT)
             {
                 isValid = false;
             }
@@ -269,7 +275,7 @@ namespace PuzzleSolverProject
             FindAllWordLocations();
 
             String output = "";
-            if (wordLocations.Count > 0)
+            if (wordLocations.Count > INVALID_COUNT)
             {
                 foreach (KeyValuePair<String, List<Vector2>> wordMap in wordLocations)
                 {
