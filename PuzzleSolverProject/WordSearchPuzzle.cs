@@ -97,7 +97,7 @@ namespace PuzzleSolverProject
             foreach (Vector2 position in firstLetterPositions)
             {
                 List<Vector2> candidate = searchDirection[direction](position, word.Length);
-                String foundWord = findWordFromPositions(candidate);
+                String foundWord = FindWordFromPositions(candidate);
 
                 if (word.Equals(foundWord))
                 {
@@ -114,7 +114,7 @@ namespace PuzzleSolverProject
             return positions;
         }
 
-        private String findWordFromPositions(List<Vector2> positions)
+        private String FindWordFromPositions(List<Vector2> positions)
         {
             Char[] candidateLetters = positions.Select(key => Letters[key]).ToArray();
 
