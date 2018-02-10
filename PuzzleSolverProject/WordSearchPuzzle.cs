@@ -11,37 +11,37 @@ namespace PuzzleSolverProject
     {
         private const int INVALID_COUNT = 0;
 
-        public List<String> Words { get; }
-        public Dictionary<Vector2, Char> Letters { get;}
+        public List<String> WordsList { get; }
+        public Dictionary<Vector2, Char> LettersMap { get;}
         private bool isChanged;
-        private Dictionary<String, List<Vector2>> wordLocations;
+        private Dictionary<String, List<Vector2>> wordMap;
         private bool isValid;
 
         public WordSearchPuzzle()
         {
-            Words = new List<String>();
-            Letters = new Dictionary<Vector2, Char>();
+            WordsList = new List<String>();
+            LettersMap = new Dictionary<Vector2, Char>();
             isChanged = false;
-            wordLocations = new Dictionary<string, List<Vector2>>();
+            wordMap = new Dictionary<string, List<Vector2>>();
             isValid = true;
         }
 
         public void AddWord(String word)
         {
-            Words.Add(word);
+            WordsList.Add(word);
             isChanged = true;
         }
 
         public void AddLetterAt(Char letter, int x, int y)
         {
-            Letters.Add(new Vector2(x, y), letter);
+            LettersMap.Add(new Vector2(x, y), letter);
             isChanged = true;
         }
 
         public Dictionary<String, List<Vector2>> GetWordsLocation()
         {
             FindAllWordLocations();
-            return wordLocations;
+            return wordMap;
         }
 
         private void FindAllWordLocations()
@@ -49,10 +49,10 @@ namespace PuzzleSolverProject
             
             if (isChanged)
             {
-                wordLocations.Clear();
+                wordMap.Clear();
 
-                WordSeachAlgorithm algorithm = new WordSeachAlgorithm(Letters);
-                wordLocations = algorithm.SearchEachWord(Words);
+                WordSeachAlgorithm algorithm = new WordSeachAlgorithm(LettersMap);
+                wordMap = algorithm.SearchEachWord(WordsList);
                 
                 isChanged = false;
             }
@@ -62,7 +62,7 @@ namespace PuzzleSolverProject
         {
             FindAllWordLocations();
 
-            if (wordLocations.Count == INVALID_COUNT)
+            if (wordMap.Count == INVALID_COUNT)
             {
                 isValid = false;
             }
@@ -75,9 +75,9 @@ namespace PuzzleSolverProject
             FindAllWordLocations();
 
             String output = "";
-            if (wordLocations.Count > INVALID_COUNT)
+            if (wordMap.Count > INVALID_COUNT)
             {
-                foreach (KeyValuePair<String, List<Vector2>> wordMap in wordLocations)
+                foreach (KeyValuePair<String, List<Vector2>> wordMap in wordMap)
                 {
                     output += wordMap.Key + ": ";
                     output += letterLocationsToString(wordMap.Value);
