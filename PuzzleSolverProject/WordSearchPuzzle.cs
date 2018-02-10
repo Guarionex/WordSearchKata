@@ -50,28 +50,21 @@ namespace PuzzleSolverProject
             if (isChanged)
             {
                 wordLocations.Clear();
-                try
-                {
-                    
-                    SearchEachWord();
-                }
-                catch(Exception e)
-                {
-                    wordLocations.Clear();
-                }
-
+                PerformSearch();
                 isChanged = false;
             }
         }
 
-        private void SearchEachWord()
+        private void PerformSearch()
         {
-            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(Letters);
-            foreach (String word in Words)
+            try
             {
-                List<List<Vector2>> wordDirections = algorithm.SearchAllDirections(word);
-                List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > INVALID_COUNT);
-                wordLocations.Add(word, foundWordLocation);
+                WordSeachAlgorithm algorithm = new WordSeachAlgorithm(Letters);
+                wordLocations = algorithm.SearchEachWord(Words);
+            }
+            catch (Exception e)
+            {
+                wordLocations.Clear();
             }
         }
 

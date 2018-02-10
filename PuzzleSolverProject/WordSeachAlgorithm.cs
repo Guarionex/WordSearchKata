@@ -9,6 +9,7 @@ namespace PuzzleSolverProject
 {
     class WordSeachAlgorithm
     {
+        private const int INVALID_COUNT = 0;
         private const int FIRST_LETTER_OF_WORD_INDEX = 0;
 
         private Dictionary<Vector2, Char> LettersMap;
@@ -29,7 +30,20 @@ namespace PuzzleSolverProject
             searchDirectionStrategy.Add(DirectionEnum.DownRight, new DownRightGetNeighborsFrom());
         }
 
-        public List<List<Vector2>> SearchAllDirections(String word)
+        public Dictionary<String, List<Vector2>> SearchEachWord(List<String> words)
+        {
+            Dictionary<String, List<Vector2>> wordMap = new Dictionary<string, List<Vector2>>();
+            foreach (String word in words)
+            {
+                List<List<Vector2>> wordDirections = SearchAllDirections(word);
+                List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > INVALID_COUNT);
+                wordMap.Add(word, foundWordLocation);
+            }
+
+            return wordMap;
+        }
+
+        private List<List<Vector2>> SearchAllDirections(String word)
         {
             List<List<Vector2>> wordDirections = new List<List<Vector2>>();
             foreach (DirectionEnum direction in Enum.GetValues(typeof(DirectionEnum)))
