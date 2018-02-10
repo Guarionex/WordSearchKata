@@ -52,6 +52,10 @@ namespace PuzzleSolverProject
             {
                 isValid = false;
             }
+            else
+            {
+                isValid = true;
+            }
 
             return isValid;
         }
