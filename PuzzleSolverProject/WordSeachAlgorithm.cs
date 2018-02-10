@@ -12,12 +12,35 @@ namespace PuzzleSolverProject
         private const int FIRST_LETTER_OF_WORD_INDEX = 0;
 
         private Dictionary<Vector2, Char> LettersMap;
+        private Dictionary<DirectionEnum, IGetNeighborsFrom> searchDirectionStrategy;
+
         public WordSeachAlgorithm(Dictionary<Vector2, Char> lettersMap)
         {
             LettersMap = lettersMap;
+
+            searchDirectionStrategy = new Dictionary<DirectionEnum, IGetNeighborsFrom>();
+            searchDirectionStrategy.Add(DirectionEnum.Up, new UpGetNeighborsFrom());
+            searchDirectionStrategy.Add(DirectionEnum.Down, new DownGetNeighborsFrom());
+            searchDirectionStrategy.Add(DirectionEnum.Left, new LeftGetNeighborsFrom());
+            searchDirectionStrategy.Add(DirectionEnum.Right, new RightGetNeighborsFrom());
+            searchDirectionStrategy.Add(DirectionEnum.UpLeft, new UpLeftGetNeighborsFrom());
+            searchDirectionStrategy.Add(DirectionEnum.UpRight, new UpRightGetNeighborsFrom());
+            searchDirectionStrategy.Add(DirectionEnum.DownLeft, new DownLeftGetNeighborsFrom());
+            searchDirectionStrategy.Add(DirectionEnum.DownRight, new DownRightGetNeighborsFrom());
         }
 
-        public List<Vector2> SearchWordInDirection(String word, IGetNeighborsFrom searchDirection)
+        public List<List<Vector2>> SearchAllDirections(String word)
+        {
+            List<List<Vector2>> wordDirections = new List<List<Vector2>>();
+            foreach (DirectionEnum direction in Enum.GetValues(typeof(DirectionEnum)))
+            {
+                wordDirections.Add(SearchWordInDirection(word, searchDirectionStrategy[direction]));
+            }
+
+            return wordDirections;
+        }
+
+        private List<Vector2> SearchWordInDirection(String word, IGetNeighborsFrom searchDirection)
         {
             List<Vector2> wordPosition = new List<Vector2>();
             List<Vector2> firstLetterPositions = FindAllLetterPositions(word[FIRST_LETTER_OF_WORD_INDEX]);

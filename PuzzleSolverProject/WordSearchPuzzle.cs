@@ -13,8 +13,6 @@ namespace PuzzleSolverProject
 
         public List<String> Words { get; }
         public Dictionary<Vector2, Char> Letters { get;}
-        private delegate List<Vector2> getNeighborsFrom(Vector2 startPosition, int length);
-        private Dictionary<DirectionEnum, IGetNeighborsFrom> searchDirectionStrategy;
         private bool isChanged;
         private Dictionary<String, List<Vector2>> wordLocations;
         private bool isValid;
@@ -23,17 +21,6 @@ namespace PuzzleSolverProject
         {
             Words = new List<String>();
             Letters = new Dictionary<Vector2, Char>();
-
-            searchDirectionStrategy = new Dictionary<DirectionEnum, IGetNeighborsFrom>();
-            searchDirectionStrategy.Add(DirectionEnum.Up, new UpGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.Down, new DownGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.Left, new LeftGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.Right, new RightGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.UpLeft, new UpLeftGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.UpRight, new UpRightGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.DownLeft, new DownLeftGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.DownRight, new DownRightGetNeighborsFrom());
-
             isChanged = false;
             wordLocations = new Dictionary<string, List<Vector2>>();
             isValid = true;
@@ -67,7 +54,8 @@ namespace PuzzleSolverProject
                 {
                     foreach (String word in Words)
                     {
-                        List<List<Vector2>> wordDirections = SearchAllDirections(word);
+                        WordSeachAlgorithm algorithm = new WordSeachAlgorithm(Letters);
+                        List<List<Vector2>> wordDirections = algorithm.SearchAllDirections(word);
                         List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > INVALID_COUNT);
                         wordLocations.Add(word, foundWordLocation);
                     }
@@ -79,18 +67,6 @@ namespace PuzzleSolverProject
 
                 isChanged = false;
             }
-        }
-
-        private List<List<Vector2>> SearchAllDirections(String word)
-        {
-            List<List<Vector2>> wordDirections = new List<List<Vector2>>();
-            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(Letters);
-            foreach(DirectionEnum direction in Enum.GetValues(typeof(DirectionEnum)))
-            {
-                wordDirections.Add(algorithm.SearchWordInDirection(word, searchDirectionStrategy[direction]));
-            }
-
-            return wordDirections;
         }
 
         public bool IsValid()
