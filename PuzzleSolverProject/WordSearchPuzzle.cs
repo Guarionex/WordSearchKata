@@ -44,20 +44,6 @@ namespace PuzzleSolverProject
             return wordMap;
         }
 
-        private void FindAllWordLocations()
-        {
-            
-            if (isChanged)
-            {
-                wordMap.Clear();
-
-                WordSeachAlgorithm algorithm = new WordSeachAlgorithm(LettersMap);
-                wordMap = algorithm.SearchEachWord(WordsList);
-                
-                isChanged = false;
-            }
-        }
-
         public bool IsValid()
         {
             FindAllWordLocations();
@@ -86,6 +72,20 @@ namespace PuzzleSolverProject
                 output = output.Remove(output.LastIndexOf('\n'));
             }
             return output;
+        }
+
+        private void FindAllWordLocations()
+        {
+            
+            if (isChanged)
+            {
+                wordMap.Clear();
+
+                WordSeachAlgorithm algorithm = new WordSeachAlgorithm(LettersMap);
+                wordMap = algorithm.SearchEachWord(WordsList);
+                
+                isChanged = false;
+            }
         }
 
         private String letterLocationsToString(List<Vector2> lettersLocations)
