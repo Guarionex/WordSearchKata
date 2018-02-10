@@ -13,35 +13,35 @@ namespace PuzzleSolverUnitTest
     [TestFixture]
     public class PuzzleSolverTest
     {
-        private PuzzleSolver sut;
+        private PuzzleFileParser sut;
         private String validPuzzleFileName;
-        private String projectPath;
+        private String testPuzzlePath;
 
         [SetUp]
         public void init()
         {
-            sut = new PuzzleSolver();
+            sut = new PuzzleFileParser();
 
             validPuzzleFileName = "Valid4x4.txt";
-            projectPath = @"C:\Users\chesp\source\repos\WordSearchKata\";
+            testPuzzlePath = @"C:\Users\chesp\source\repos\WordSearchKata\TestPuzzles\";
         }
 
         [Test]
-        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsNoException()
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsNoException()
         {
-            sut.ParsePuzzleWordFile(projectPath + validPuzzleFileName);
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + validPuzzleFileName);
         }
 
         [Test]
-        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileReturnsAWordSearchPuzzle()
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleReturnsAWordSearchPuzzle()
         {
-            Assert.IsInstanceOf(typeof(WordSearchPuzzle), sut.ParsePuzzleWordFile(projectPath + validPuzzleFileName));
+            Assert.IsInstanceOf(typeof(WordSearchPuzzle), sut.ParseFileToWordSearchPuzzle(testPuzzlePath + validPuzzleFileName));
         }
 
         [Test]
-        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParsePuzzleWordFileThenResultingWordSearchPuzzleGetWordsListHasTheSolution()
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenResultingWordSearchPuzzleGetWordsListHasTheSolution()
         {
-            WordSearchPuzzle puzzle = sut.ParsePuzzleWordFile(projectPath + "Example15x15.txt");
+            WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "Example15x15.txt");
             Dictionary<String, List<Vector2>> result = puzzle.GetWordsLocation();
 
             List<Vector2> bonesLocation = new List<Vector2>();
@@ -98,218 +98,218 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenAInvalidStringFileNameWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsFileNotFoundException()
+        public void GivenAInvalidStringFileNameWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFileNotFoundException()
         {
             Assert.Throws<FileNotFoundException>(new TestDelegate(ParseFileInvalidFileName));
         }
 
         private void ParseFileInvalidFileName()
         {
-            sut.ParsePuzzleWordFile("meh.txt");
+            sut.ParseFileToWordSearchPuzzle("meh.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingAlphaNumericWordsWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingAlphaNumericWordsWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileAlphaNumericWords));
         }
 
         private void ParseFileAlphaNumericWords()
         {
-            sut.ParsePuzzleWordFile(projectPath + "alphaNumeric4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "alphaNumeric4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingWordsWithSpacesWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingWordsWithSpacesWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsSpaces));
         }
 
         private void ParseFileWordsSpaces()
         {
-            sut.ParsePuzzleWordFile(projectPath + "spaces4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "spaces4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingWordsWithSymbolsWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingWordsWithSymbolsWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsSymbols));
         }
 
         private void ParseFileWordsSymbols()
         {
-            sut.ParsePuzzleWordFile(projectPath + "symbols4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "symbols4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingWordsWithPunctuationsWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingWordsWithPunctuationsWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileWordsPunctuations));
         }
 
         private void ParseFileWordsPunctuations()
         {
-            sut.ParsePuzzleWordFile(projectPath + "punctuation4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "punctuation4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithSSVWordsPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithSSVWordsPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileSSV));
         }
 
         private void ParseFileSSV()
         {
-            sut.ParsePuzzleWordFile(projectPath + "ssv4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "ssv4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithCSSVWordsPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithCSSVWordsPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileCSSV));
         }
 
         private void ParseFileCSSV()
         {
-            sut.ParsePuzzleWordFile(projectPath + "cssv4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "cssv4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithEmptyWordPuzzleWhenPassedIntoParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithEmptyWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileEmptyWord));
         }
 
         private void ParseFileEmptyWord()
         {
-            sut.ParsePuzzleWordFile(projectPath + "empty4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "empty4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithSSVLettersPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithSSVLettersPuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileSSVLetters));
         }
 
         private void ParseFileSSVLetters()
         {
-            sut.ParsePuzzleWordFile(projectPath + "ssvLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "ssvLetters4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithCSSVLettersPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithCSSVLettersPuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileCSSVLetters));
         }
 
         private void ParseFileCSSVLetters()
         {
-            sut.ParsePuzzleWordFile(projectPath + "cssvLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "cssvLetters4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithUnequalDimensionsPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithUnequalDimensionsPuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileUnequal));
         }
 
         private void ParseFileUnequal()
         {
-            sut.ParsePuzzleWordFile(projectPath + "unequalLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "unequalLetters4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithVaryingLengthsPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsFormatException()
+        public void GivenValidFileNameWithVaryingLengthsPuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFormatException()
         {
             Assert.Throws<FormatException>(new TestDelegate(ParseFileVarying));
         }
 
         private void ParseFileVarying()
         {
-            sut.ParsePuzzleWordFile(projectPath + "varyingLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "varyingLetters4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingNumbersWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingNumbersWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileNumberInLetters));
         }
 
         private void ParseFileNumberInLetters()
         {
-            sut.ParsePuzzleWordFile(projectPath + "numberLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "numberLetters4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingSymbolsWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingSymbolsWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFileSymbolsInLetters));
         }
 
         private void ParseFileSymbolsInLetters()
         {
-            sut.ParsePuzzleWordFile(projectPath + "symbolLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "symbolLetters4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWithPuzzleContainingPunctuationsWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentException()
+        public void GivenValidFileNameWithPuzzleContainingPunctuationsWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(new TestDelegate(ParseFilePunctuationsInLetters));
         }
 
         private void ParseFilePunctuationsInLetters()
         {
-            sut.ParsePuzzleWordFile(projectPath + "punctuationLetters4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "punctuationLetters4x4.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWith2x2PuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsNoException()
+        public void GivenValidFileNameWith2x2PuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsNoException()
         {
-            sut.ParsePuzzleWordFile(projectPath + "valid2x2.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "valid2x2.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWith1x1PuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentOutOfRangeException()
+        public void GivenValidFileNameWith1x1PuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile1x1));
         }
 
         private void ParseFile1x1()
         {
-            sut.ParsePuzzleWordFile(projectPath + "1x1.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "1x1.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWith1x1WithTrailingCommaPuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentOutOfRangeException()
+        public void GivenValidFileNameWith1x1WithTrailingCommaPuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile1x1Comma));
         }
 
         private void ParseFile1x1Comma()
         {
-            sut.ParsePuzzleWordFile(projectPath + "1x1Comma.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "1x1Comma.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWith0x0PuzzleWhenPassedToParsePuzzleWordFileThenParsePuzzleWordFileThrowsArgumentOutOfRangeException()
+        public void GivenValidFileNameWith0x0PuzzleWhenPassedToParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(ParseFile0x0));
         }
 
         private void ParseFile0x0()
         {
-            sut.ParsePuzzleWordFile(projectPath + "0x0.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "0x0.txt");
         }
 
         [Test]
-        public void GivenValidFileNameWith4x4PuzzleWithInvalidWordSearchPuzzleWhenCallingParsePuzzleWordFileThenParsePuzzleWordFileThrowsInvalidDataException()
+        public void GivenValidFileNameWith4x4PuzzleWithInvalidWordSearchPuzzleWhenCallingParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsInvalidDataException()
         {
             Assert.Throws<InvalidDataException>(new TestDelegate(ParseFileInvalidPuzzle));
         }
 
         private void ParseFileInvalidPuzzle()
         {
-            sut.ParsePuzzleWordFile(projectPath + "wordMissing4x4.txt");
+            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "wordMissing4x4.txt");
         }
     }
 }

@@ -29,14 +29,14 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenWordSearchPuzleWhenCallingWordsThenGetWordsReturnAListOfStrings()
         {
-            Assert.IsInstanceOf(typeof(List<String>), sut.Words);
+            Assert.IsInstanceOf(typeof(List<String>), sut.WordsList);
         }
 
         [Test]
         public void GivenWordSearchPuzzleWithAWordAddedWhenCallingGetWordThenGetWordReturnsAListOfStringWithTheAddedWord()
         {
             sut.AddWord("PILLAR");
-            List<String> result = sut.Words;
+            List<String> result = sut.WordsList;
             List<String> expected = new List<String>();
             expected.Add("PILLAR");
 
@@ -48,7 +48,7 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddWord("PILLAR");
             sut.AddWord("TDD");
-            List<String> result = sut.Words;
+            List<String> result = sut.WordsList;
             List<String> expected = new List<String>();
             expected.Add("PILLAR");
             expected.Add("TDD");
@@ -65,14 +65,14 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenWordSearchPuzzleWhenCallingLettersThenLettersReturnsADictionaryOfVector2KeysWithCharValues()
         {
-            Assert.IsInstanceOf(typeof(Dictionary<Vector2, Char>), sut.Letters);
+            Assert.IsInstanceOf(typeof(Dictionary<Vector2, Char>), sut.LettersMap);
         }
 
         [Test]
         public void GivenWordSearchPuzzleWithLetterXAddedAt2x2WhenCallingLettersThenLettersReturnsADictionaryOfVector2KeysWithCharValuesWithTheAddedLetterAtTt2x2()
         {
             sut.AddLetterAt('X', 2, 2);
-            Dictionary<Vector2, Char> result = sut.Letters;
+            Dictionary<Vector2, Char> result = sut.LettersMap;
             Dictionary<Vector2, Char> expected = new Dictionary<Vector2, Char>();
             expected.Add(new Vector2(2, 2), 'X');
 
@@ -84,7 +84,7 @@ namespace PuzzleSolverUnitTest
         {
             sut.AddLetterAt('X', 2, 2);
             sut.AddLetterAt('P', 0, 0);
-            Dictionary<Vector2, Char> result = sut.Letters;
+            Dictionary<Vector2, Char> result = sut.LettersMap;
             Dictionary<Vector2, Char> expected = new Dictionary<Vector2, Char>();
             expected.Add(new Vector2(2, 2), 'X');
             expected.Add(new Vector2(0, 0), 'P');
@@ -965,6 +965,33 @@ namespace PuzzleSolverUnitTest
             sut.AddLetterAt('X', 3, 3);
 
             Assert.IsFalse(sut.IsValid());
+        }
+
+        [Test]
+        public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidAddingAWordThenCallingIsValidAgainReturnsTrue()
+        {
+            sut.AddLetterAt('K', 0, 0);
+            sut.AddLetterAt('E', 1, 0);
+            sut.AddLetterAt('F', 2, 0);
+            sut.AddLetterAt('K', 3, 0);
+            sut.AddLetterAt('R', 0, 1);
+            sut.AddLetterAt('R', 1, 1);
+            sut.AddLetterAt('J', 2, 1);
+            sut.AddLetterAt('I', 3, 1);
+            sut.AddLetterAt('I', 0, 2);
+            sut.AddLetterAt('L', 1, 2);
+            sut.AddLetterAt('I', 2, 2);
+            sut.AddLetterAt('R', 3, 2);
+            sut.AddLetterAt('K', 0, 3);
+            sut.AddLetterAt('D', 1, 3);
+            sut.AddLetterAt('J', 2, 3);
+            sut.AddLetterAt('X', 3, 3);
+
+            sut.IsValid();
+
+            sut.AddWord("KIRK");
+
+            Assert.IsTrue(sut.IsValid());
         }
 
         [Test]

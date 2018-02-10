@@ -44,9 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DirectionEnum.cs" />
+    <Compile Include="DownLeftGetNeighborsFrom.cs" />
+    <Compile Include="DownRightGetNeighborsFrom.cs" />
+    <Compile Include="IGetNeighborsFrom.cs" />
+    <Compile Include="DownGetNeighborsFrom.cs" />
+    <Compile Include="LeftGetNeighborsFrom.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PuzzleSolver.cs" />
+    <Compile Include="PuzzleFileParser.cs" />
+    <Compile Include="RightGetNeighborsFrom.cs" />
+    <Compile Include="UpGetNeighborsFrom.cs" />
+    <Compile Include="UpLeftGetNeighborsFrom.cs" />
+    <Compile Include="UpRightGetNeighborsFrom.cs" />
+    <Compile Include="WordSeachAlgorithm.cs" />
     <Compile Include="WordSearchPuzzle.cs" />
   </ItemGroup>
   <ItemGroup>
