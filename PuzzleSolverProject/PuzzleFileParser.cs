@@ -62,16 +62,21 @@ namespace PuzzleSolverProject
 
         private void ValidateWords(List<String> listOfWords)
         {
-            if(listOfWords.Any(string.IsNullOrWhiteSpace) || listOfWords.Any(word => word.Any(ch => !char.IsLetter(ch))))
+            if(IsWordListValid(listOfWords))
             {
                 throw new ArgumentException();
             }
         }
 
+        private bool IsWordListValid(List<String> listOfWords)
+        {
+            return listOfWords.Any(string.IsNullOrWhiteSpace) || listOfWords.Any(word => word.Any(ch => !char.IsLetter(ch)));
+        }
+
         private List<String> GetListOfWords(String csvWords)
         {
             String[] splittedCSVWords = csvWords.Split(COMMA_CHAR);
-            if(isWordStringFormatInvalid(splittedCSVWords))
+            if(IsWordStringFormatInvalid(splittedCSVWords))
             {
                 throw new FormatException();
             }
@@ -81,12 +86,12 @@ namespace PuzzleSolverProject
             return wordList;
         }
 
-        private bool isWordStringFormatInvalid(String[] delimetedWords)
+        private bool IsWordStringFormatInvalid(String[] delimetedWords)
         {
-            return delimetedWords.Length == INVALID_WORD_COUNT || isWordsListSpaceSeparatedValue(delimetedWords);
+            return delimetedWords.Length == INVALID_WORD_COUNT || IsWordsListSpaceSeparatedValue(delimetedWords);
         }
 
-        private bool isWordsListSpaceSeparatedValue(String[] delimetedWords)
+        private bool IsWordsListSpaceSeparatedValue(String[] delimetedWords)
         {
             return delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, FIRST_LETTER_OF_WORD_INDEX)));
         }
@@ -160,18 +165,23 @@ namespace PuzzleSolverProject
 
         private void ValidateRow(String joinedLetters, String csvLetterRow, int expectedLength)
         {
-            if (isDelimitedLetterowInvalid(joinedLetters, csvLetterRow, expectedLength) || isThereEnoughLettersInRow(joinedLetters, expectedLength))
+            if (IsRowValid(joinedLetters, csvLetterRow, expectedLength))
             {
                 throw new FormatException();
             }
         }
 
-        private bool isDelimitedLetterowInvalid(String joinedLetters, String csvLetterRow, int expectedLength)
+        private bool IsRowValid(String joinedLetters, String csvLetterRow, int expectedLength)
+        {
+            return IsDelimitedLetterowInvalid(joinedLetters, csvLetterRow, expectedLength) || IsThereEnoughLettersInRow(joinedLetters, expectedLength);
+        }
+
+        private bool IsDelimitedLetterowInvalid(String joinedLetters, String csvLetterRow, int expectedLength)
         {
             return joinedLetters.Equals(csvLetterRow) && expectedLength != INVALID_LETTERS_COUNT;
         }
 
-        private bool isThereEnoughLettersInRow(String joinedLetters, int expectedLength)
+        private bool IsThereEnoughLettersInRow(String joinedLetters, int expectedLength)
         {
             return joinedLetters.Any(char.IsWhiteSpace) || joinedLetters.Length != expectedLength;
         }
