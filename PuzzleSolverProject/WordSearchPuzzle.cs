@@ -233,15 +233,7 @@ namespace PuzzleSolverProject
                 {
                     foreach (String word in Words)
                     {
-                        List<List<Vector2>> wordDirections = new List<List<Vector2>>();
-                        wordDirections.Add(SearchUp(word));
-                        wordDirections.Add(SearchDown(word));
-                        wordDirections.Add(SearchLeft(word));
-                        wordDirections.Add(SearchRight(word));
-                        wordDirections.Add(SearchUpLeft(word));
-                        wordDirections.Add(SearchUpRight(word));
-                        wordDirections.Add(SearchDownLeft(word));
-                        wordDirections.Add(SearchDownRight(word));
+                        List<List<Vector2>> wordDirections = SearchAllDirections(word);
                         List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > INVALID_COUNT);
                         wordLocations.Add(word, foundWordLocation);
                     }
@@ -253,6 +245,21 @@ namespace PuzzleSolverProject
 
                 isChanged = false;
             }
+        }
+
+        private List<List<Vector2>> SearchAllDirections(String word)
+        {
+            List<List<Vector2>> wordDirections = new List<List<Vector2>>();
+            wordDirections.Add(SearchUp(word));
+            wordDirections.Add(SearchDown(word));
+            wordDirections.Add(SearchLeft(word));
+            wordDirections.Add(SearchRight(word));
+            wordDirections.Add(SearchUpLeft(word));
+            wordDirections.Add(SearchUpRight(word));
+            wordDirections.Add(SearchDownLeft(word));
+            wordDirections.Add(SearchDownRight(word));
+
+            return wordDirections;
         }
 
         public bool IsValid()
