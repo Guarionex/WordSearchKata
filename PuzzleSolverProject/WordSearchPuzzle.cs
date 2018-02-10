@@ -134,8 +134,8 @@ namespace PuzzleSolverProject
         {
             Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y + length - 1);
             List<Vector2> positionsWithinRange = Letters.Select(kvp => kvp.Key).Where(key => (maxPosition - key).X == 0 && (maxPosition - key).Y >= 0).ToList();
-            List<Vector2> positionsBottomOfStartPosition = positionsWithinRange.Where(vector => vector.Y >= startPosition.Y).ToList();
-            return positionsBottomOfStartPosition;
+            List<Vector2> positionsDownFromStartPosition = positionsWithinRange.Where(vector => vector.Y >= startPosition.Y).ToList();
+            return positionsDownFromStartPosition;
         }
 
         private List<Vector2> GetLeftNeighborsFrom(Vector2 startPosition, int length)
@@ -185,16 +185,16 @@ namespace PuzzleSolverProject
 
         private List<Vector2> GetDownLeftNeighborsFrom(Vector2 startPosition, int length)
         {
-            List<Vector2> positionsdownLeftFromStartPosition = new List<Vector2>();
+            List<Vector2> positionsDownLeftFromStartPosition = new List<Vector2>();
             for (int x = 0, y = 0; x > -length && y < length; x--, y++)
             {
                 Vector2 downLeftNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
                 if (Letters.ContainsKey(downLeftNeighbor))
                 {
-                    positionsdownLeftFromStartPosition.Add(downLeftNeighbor);
+                    positionsDownLeftFromStartPosition.Add(downLeftNeighbor);
                 }
             }
-            return positionsdownLeftFromStartPosition;
+            return positionsDownLeftFromStartPosition;
         }
 
         private List<Vector2> GetDownRightNeighborsFrom(Vector2 startPosition, int length)
