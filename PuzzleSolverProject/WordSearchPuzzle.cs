@@ -243,10 +243,7 @@ namespace PuzzleSolverProject
                         wordDirections.Add(SearchDownLeft(word));
                         wordDirections.Add(SearchDownRight(word));
                         List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > INVALID_COUNT);
-                        if (foundWordLocation.Count > INVALID_COUNT)
-                        {
-                            wordLocations.Add(word, foundWordLocation);
-                        }
+                        wordLocations.Add(word, foundWordLocation);
                     }
                 }
                 catch(Exception e)
