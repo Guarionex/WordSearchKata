@@ -52,13 +52,8 @@ namespace PuzzleSolverProject
                 wordLocations.Clear();
                 try
                 {
-                    foreach (String word in Words)
-                    {
-                        WordSeachAlgorithm algorithm = new WordSeachAlgorithm(Letters);
-                        List<List<Vector2>> wordDirections = algorithm.SearchAllDirections(word);
-                        List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > INVALID_COUNT);
-                        wordLocations.Add(word, foundWordLocation);
-                    }
+                    
+                    SearchEachWord();
                 }
                 catch(Exception e)
                 {
@@ -66,6 +61,17 @@ namespace PuzzleSolverProject
                 }
 
                 isChanged = false;
+            }
+        }
+
+        private void SearchEachWord()
+        {
+            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(Letters);
+            foreach (String word in Words)
+            {
+                List<List<Vector2>> wordDirections = algorithm.SearchAllDirections(word);
+                List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > INVALID_COUNT);
+                wordLocations.Add(word, foundWordLocation);
             }
         }
 
