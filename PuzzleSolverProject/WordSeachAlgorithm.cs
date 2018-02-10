@@ -33,11 +33,18 @@ namespace PuzzleSolverProject
         public Dictionary<String, List<Vector2>> SearchEachWord(List<String> words)
         {
             Dictionary<String, List<Vector2>> wordMap = new Dictionary<string, List<Vector2>>();
-            foreach (String word in words)
+            try
             {
-                List<List<Vector2>> wordDirections = SearchAllDirections(word);
-                List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > INVALID_COUNT);
-                wordMap.Add(word, foundWordLocation);
+                foreach (String word in words)
+                {
+                    List<List<Vector2>> wordDirections = SearchAllDirections(word);
+                    List<Vector2> foundWordLocation = wordDirections.Single(dircetion => dircetion.Count > INVALID_COUNT);
+                    wordMap.Add(word, foundWordLocation);
+                }
+            }
+            catch(Exception e)
+            {
+                wordMap.Clear();
             }
 
             return wordMap;

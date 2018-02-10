@@ -50,21 +50,11 @@ namespace PuzzleSolverProject
             if (isChanged)
             {
                 wordLocations.Clear();
-                PerformSearch();
-                isChanged = false;
-            }
-        }
 
-        private void PerformSearch()
-        {
-            try
-            {
                 WordSeachAlgorithm algorithm = new WordSeachAlgorithm(Letters);
                 wordLocations = algorithm.SearchEachWord(Words);
-            }
-            catch (Exception e)
-            {
-                wordLocations.Clear();
+                
+                isChanged = false;
             }
         }
 
