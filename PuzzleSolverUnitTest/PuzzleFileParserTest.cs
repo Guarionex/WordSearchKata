@@ -13,6 +13,8 @@ namespace PuzzleSolverUnitTest
     [TestFixture]
     public class PuzzleFileParserTest
     {
+        private const String Example15x15TestCase = "Example15x15TestCase";
+
         private PuzzleFileParser sut;
         private String validPuzzleFileName;
         private String testPuzzlePath;
@@ -38,7 +40,7 @@ namespace PuzzleSolverUnitTest
             Assert.IsInstanceOf(typeof(WordSearchPuzzle), sut.ParseFileToWordSearchPuzzle(testPuzzlePath + validPuzzleFileName));
         }
 
-        [Test, TestCaseSource(typeof(PuzzleFileParserTestData), "Example15x15TestCase")]
+        [Test, TestCaseSource(typeof(PuzzleFileParserTestData), Example15x15TestCase)]
         public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenResultingWordSearchPuzzleGetWordsListHasTheSolution(Dictionary<String, List<Vector2>> expected)
         {
             WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "Example15x15.txt");
