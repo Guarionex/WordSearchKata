@@ -38,61 +38,11 @@ namespace PuzzleSolverUnitTest
             Assert.IsInstanceOf(typeof(WordSearchPuzzle), sut.ParseFileToWordSearchPuzzle(testPuzzlePath + validPuzzleFileName));
         }
 
-        [Test]
-        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenResultingWordSearchPuzzleGetWordsListHasTheSolution()
+        [Test, TestCaseSource(typeof(PuzzleFileParserTestData), "Example15x15TestCase")]
+        public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenResultingWordSearchPuzzleGetWordsListHasTheSolution(Dictionary<String, List<Vector2>> expected)
         {
             WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "Example15x15.txt");
             Dictionary<String, List<Vector2>> result = puzzle.GetWordsLocation();
-
-            List<Vector2> bonesLocation = new List<Vector2>();
-            bonesLocation.Add(new Vector2(0, 6));
-            bonesLocation.Add(new Vector2(0, 7));
-            bonesLocation.Add(new Vector2(0, 8));
-            bonesLocation.Add(new Vector2(0, 9));
-            bonesLocation.Add(new Vector2(0, 10));
-            List<Vector2> khanLocations = new List<Vector2>();
-            khanLocations.Add(new Vector2(5, 9));
-            khanLocations.Add(new Vector2(5, 8));
-            khanLocations.Add(new Vector2(5, 7));
-            khanLocations.Add(new Vector2(5, 6));
-            List<Vector2> kirkLocations = new List<Vector2>();
-            kirkLocations.Add(new Vector2(4, 7));
-            kirkLocations.Add(new Vector2(3, 7));
-            kirkLocations.Add(new Vector2(2, 7));
-            kirkLocations.Add(new Vector2(1, 7));
-            List<Vector2> scottyLocations = new List<Vector2>();
-            scottyLocations.Add(new Vector2(0, 5));
-            scottyLocations.Add(new Vector2(1, 5));
-            scottyLocations.Add(new Vector2(2, 5));
-            scottyLocations.Add(new Vector2(3, 5));
-            scottyLocations.Add(new Vector2(4, 5));
-            scottyLocations.Add(new Vector2(5, 5));
-            List<Vector2> spockLocations = new List<Vector2>();
-            spockLocations.Add(new Vector2(2, 1));
-            spockLocations.Add(new Vector2(3, 2));
-            spockLocations.Add(new Vector2(4, 3));
-            spockLocations.Add(new Vector2(5, 4));
-            spockLocations.Add(new Vector2(6, 5));
-            List<Vector2> suluLocations = new List<Vector2>();
-            suluLocations.Add(new Vector2(3, 3));
-            suluLocations.Add(new Vector2(2, 2));
-            suluLocations.Add(new Vector2(1, 1));
-            suluLocations.Add(new Vector2(0, 0));
-            List<Vector2> uhuraLocations = new List<Vector2>();
-            uhuraLocations.Add(new Vector2(4, 0));
-            uhuraLocations.Add(new Vector2(3, 1));
-            uhuraLocations.Add(new Vector2(2, 2));
-            uhuraLocations.Add(new Vector2(1, 3));
-            uhuraLocations.Add(new Vector2(0, 4));
-
-            Dictionary<String, List<Vector2>> expected = new Dictionary<string, List<Vector2>>();
-            expected.Add("BONES", bonesLocation);
-            expected.Add("KHAN", khanLocations);
-            expected.Add("KIRK", kirkLocations);
-            expected.Add("SCOTTY", scottyLocations);
-            expected.Add("SPOCK", spockLocations);
-            expected.Add("SULU", suluLocations);
-            expected.Add("UHURA", uhuraLocations);
 
             Assert.AreEqual(expected, result);
         }
