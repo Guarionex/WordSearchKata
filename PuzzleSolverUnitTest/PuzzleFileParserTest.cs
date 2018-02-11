@@ -13,7 +13,7 @@ namespace PuzzleSolverUnitTest
     [TestFixture]
     public class PuzzleFileParserTest
     {
-        private const String Example15x15TestCase = "Example15x15TestCase";
+        private const String Example15x15TestCase = nameof(PuzzleFileParserTestData.Example15x15TestCase);
 
         private PuzzleFileParser sut;
         private String validPuzzleFileName;
