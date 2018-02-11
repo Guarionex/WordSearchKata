@@ -63,6 +63,7 @@ namespace PuzzleSolverUnitTest
                 expectedFromExample15x15.Add("SCOTTY", scottyLocations);
                 expectedFromExample15x15.Add("SPOCK", spockLocations);
                 expectedFromExample15x15.Add("SULU", suluLocations);
+                expectedFromExample15x15.Add("UHURA", uhuraLocations);
 
                 yield return new TestCaseData(expectedFromExample15x15);
             }
