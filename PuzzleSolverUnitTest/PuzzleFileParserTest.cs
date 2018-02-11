@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace PuzzleSolverUnitTest
 {
     [TestFixture]
-    public class PuzzleSolverTest
+    public class PuzzleFileParserTest
     {
         private PuzzleFileParser sut;
         private String validPuzzleFileName;
