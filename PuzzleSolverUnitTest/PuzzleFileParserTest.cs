@@ -37,7 +37,8 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleReturnsAWordSearchPuzzle()
         {
-            Assert.IsInstanceOf(typeof(WordSearchPuzzle), sut.ParseFileToWordSearchPuzzle(testPuzzlePath + validPuzzleFileName));
+            WordSearchPuzzle result = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + validPuzzleFileName);
+            Assert.IsInstanceOf(typeof(WordSearchPuzzle), result);
         }
 
         [Test, TestCaseSource(typeof(PuzzleFileParserTestData), Example15x15TestCase)]
