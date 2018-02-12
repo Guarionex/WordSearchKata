@@ -377,54 +377,21 @@ namespace PuzzleSolverUnitTest
             Assert.IsFalse(sut.IsValid());
         }
 
-        [Test]
-        public void Given4x4WordPuzzleWithWordAddedTwiceWhenCallingIsValidThenIsValidReturnsFalse()
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), ValidOneWordPuzzleTestCase)]
+        public void Given4x4WordPuzzleWithWordAddedTwiceWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle setupSUT)
         {
+            sut = setupSUT;
             sut.AddWord("KIRK");
-            sut.AddWord("KIRK");
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('E', 1, 0);
-            sut.AddLetterAt('F', 2, 0);
-            sut.AddLetterAt('K', 3, 0);
-            sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('J', 2, 1);
-            sut.AddLetterAt('I', 3, 1);
-            sut.AddLetterAt('I', 0, 2);
-            sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('R', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('D', 1, 3);
-            sut.AddLetterAt('J', 2, 3);
-            sut.AddLetterAt('X', 3, 3);
 
             Assert.IsFalse(sut.IsValid());
         }
 
-        [Test]
-        public void GivenInvalid4x4WordPuzzleWhenCallingIsValidTwiceThenSecondIsValidReturnsFalse()
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), WordMissingInPuzzleTestCase)]
+        public void GivenInvalid4x4WordPuzzleWhenCallingIsValidTwiceThenSecondIsValidReturnsFalse(WordSearchPuzzle setupSUT)
         {
-            sut.AddWord("KIRK");
-            sut.AddWord("KIRK");
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('E', 1, 0);
-            sut.AddLetterAt('F', 2, 0);
-            sut.AddLetterAt('K', 3, 0);
-            sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('J', 2, 1);
-            sut.AddLetterAt('I', 3, 1);
-            sut.AddLetterAt('I', 0, 2);
-            sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('R', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('D', 1, 3);
-            sut.AddLetterAt('J', 2, 3);
-            sut.AddLetterAt('X', 3, 3);
-
+            sut = setupSUT;
             sut.IsValid();
+
             Assert.IsFalse(sut.IsValid());
         }
 
