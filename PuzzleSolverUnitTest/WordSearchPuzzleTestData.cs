@@ -203,30 +203,11 @@ namespace PuzzleSolverUnitTest
         {
             get
             {
-                WordSearchPuzzle setupSUT = new WordSearchPuzzle();
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordSearchPuzzle setupSUT = testData.LeftWordsPuzzle();
                 setupSUT.AddWord("KIRK");
-                setupSUT.AddLetterAt('K', 0, 0);
-                setupSUT.AddLetterAt('E', 1, 0);
-                setupSUT.AddLetterAt('F', 2, 0);
-                setupSUT.AddLetterAt('N', 3, 0);
-                setupSUT.AddLetterAt('K', 0, 1);
-                setupSUT.AddLetterAt('R', 1, 1);
-                setupSUT.AddLetterAt('I', 2, 1);
-                setupSUT.AddLetterAt('K', 3, 1);
-                setupSUT.AddLetterAt('R', 0, 2);
-                setupSUT.AddLetterAt('L', 1, 2);
-                setupSUT.AddLetterAt('I', 2, 2);
-                setupSUT.AddLetterAt('H', 3, 2);
-                setupSUT.AddLetterAt('K', 0, 3);
-                setupSUT.AddLetterAt('D', 1, 3);
-                setupSUT.AddLetterAt('J', 2, 3);
-                setupSUT.AddLetterAt('M', 3, 3);
 
-                List<Vector2> kirkLocation = new List<Vector2>();
-                kirkLocation.Add(new Vector2(3, 1));
-                kirkLocation.Add(new Vector2(2, 1));
-                kirkLocation.Add(new Vector2(1, 1));
-                kirkLocation.Add(new Vector2(0, 1));
+                List<Vector2> kirkLocation = testData.KIRKLeftSecondRowLocations();
                 Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
                 expected.Add("KIRK", kirkLocation);
 
@@ -238,32 +219,13 @@ namespace PuzzleSolverUnitTest
         {
             get
             {
-                WordSearchPuzzle setupSUT = new WordSearchPuzzle();
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordSearchPuzzle setupSUT = testData.LeftWordsPuzzle();
                 setupSUT.AddWord("KIRK");
                 setupSUT.AddWord("KHAN");
-                setupSUT.AddLetterAt('K', 0, 0);
-                setupSUT.AddLetterAt('E', 1, 0);
-                setupSUT.AddLetterAt('F', 2, 0);
-                setupSUT.AddLetterAt('N', 3, 0);
-                setupSUT.AddLetterAt('K', 0, 1);
-                setupSUT.AddLetterAt('R', 1, 1);
-                setupSUT.AddLetterAt('I', 2, 1);
-                setupSUT.AddLetterAt('K', 3, 1);
-                setupSUT.AddLetterAt('R', 0, 2);
-                setupSUT.AddLetterAt('L', 1, 2);
-                setupSUT.AddLetterAt('X', 2, 2);
-                setupSUT.AddLetterAt('H', 3, 2);
-                setupSUT.AddLetterAt('N', 0, 3);
-                setupSUT.AddLetterAt('A', 1, 3);
-                setupSUT.AddLetterAt('H', 2, 3);
-                setupSUT.AddLetterAt('K', 3, 3);
 
                 Dictionary<String, List<Vector2>> result = setupSUT.GetWordsLocation();
-                List<Vector2> kirkLocation = new List<Vector2>();
-                kirkLocation.Add(new Vector2(3, 1));
-                kirkLocation.Add(new Vector2(2, 1));
-                kirkLocation.Add(new Vector2(1, 1));
-                kirkLocation.Add(new Vector2(0, 1));
+                List<Vector2> kirkLocation = testData.KIRKLeftSecondRowLocations();
 
                 List<Vector2> khanLocation = new List<Vector2>();
                 khanLocation.Add(new Vector2(3, 3));
@@ -343,6 +305,40 @@ namespace PuzzleSolverUnitTest
             kirkLocation.Add(new Vector2(0, 1));
             kirkLocation.Add(new Vector2(0, 2));
             kirkLocation.Add(new Vector2(0, 3));
+
+            return kirkLocation;
+        }
+
+        private WordSearchPuzzle LeftWordsPuzzle()
+        {
+            WordSearchPuzzle setupSUT = new WordSearchPuzzle();
+            setupSUT.AddLetterAt('K', 0, 0);
+            setupSUT.AddLetterAt('E', 1, 0);
+            setupSUT.AddLetterAt('F', 2, 0);
+            setupSUT.AddLetterAt('N', 3, 0);
+            setupSUT.AddLetterAt('K', 0, 1);
+            setupSUT.AddLetterAt('R', 1, 1);
+            setupSUT.AddLetterAt('I', 2, 1);
+            setupSUT.AddLetterAt('K', 3, 1);
+            setupSUT.AddLetterAt('R', 0, 2);
+            setupSUT.AddLetterAt('L', 1, 2);
+            setupSUT.AddLetterAt('X', 2, 2);
+            setupSUT.AddLetterAt('H', 3, 2);
+            setupSUT.AddLetterAt('N', 0, 3);
+            setupSUT.AddLetterAt('A', 1, 3);
+            setupSUT.AddLetterAt('H', 2, 3);
+            setupSUT.AddLetterAt('K', 3, 3);
+
+            return setupSUT;
+        }
+
+        private List<Vector2> KIRKLeftSecondRowLocations()
+        {
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(3, 1));
+            kirkLocation.Add(new Vector2(2, 1));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(0, 1));
 
             return kirkLocation;
         }

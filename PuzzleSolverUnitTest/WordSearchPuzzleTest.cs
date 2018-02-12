@@ -182,7 +182,7 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), OneLeftWordTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), TwoLeftWordTestCase)]
         public void Given4x4WordWithTwoLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
             sut = setupSUT;
