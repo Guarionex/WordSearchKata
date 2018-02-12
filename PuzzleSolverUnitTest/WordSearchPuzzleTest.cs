@@ -364,7 +364,8 @@ namespace PuzzleSolverUnitTest
         {
             sut = setupSUT;
 
-            Assert.IsTrue(sut.IsValid());
+            bool result = sut.IsValid();
+            Assert.IsTrue(result);
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
@@ -373,7 +374,8 @@ namespace PuzzleSolverUnitTest
             sut = setupSUT;
             sut.AddWord("UHURA");
 
-            Assert.IsFalse(sut.IsValid());
+            bool result = sut.IsValid();
+            Assert.IsFalse(result);
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithWordTwiceTestCase)]
@@ -381,7 +383,8 @@ namespace PuzzleSolverUnitTest
         {
             sut = setupSUT;
 
-            Assert.IsFalse(sut.IsValid());
+            bool result = sut.IsValid();
+            Assert.IsFalse(result);
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), ValidOneWordPuzzleTestCase)]
@@ -390,7 +393,8 @@ namespace PuzzleSolverUnitTest
             sut = setupSUT;
             sut.AddWord("KIRK");
 
-            Assert.IsFalse(sut.IsValid());
+            bool result = sut.IsValid();
+            Assert.IsFalse(result);
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
@@ -400,7 +404,8 @@ namespace PuzzleSolverUnitTest
             sut.AddWord("UHURA");
             sut.IsValid();
 
-            Assert.IsFalse(sut.IsValid());
+            bool result = sut.IsValid();
+            Assert.IsFalse(result);
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
@@ -408,7 +413,8 @@ namespace PuzzleSolverUnitTest
         {
             sut = setupSUT;
 
-            Assert.IsFalse(sut.IsValid());
+            bool result = sut.IsValid();
+            Assert.IsFalse(result);
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
@@ -420,7 +426,8 @@ namespace PuzzleSolverUnitTest
 
             sut.AddWord("KIRK");
 
-            Assert.IsTrue(sut.IsValid());
+            bool result = sut.IsValid();
+            Assert.IsTrue(result);
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), DownRightWordTestCase)]
