@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PuzzleSolverProject
+namespace PuzzleSolverProject.GetNeighbors
 {
     class RightGetNeighborsFrom : IGetNeighborsFrom
     {
