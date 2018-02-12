@@ -17,8 +17,7 @@ namespace PuzzleSolverUnitTest
         private const String WordMissingInPuzzleTestCase = nameof(WordSearchPuzzleTestData.WordMissingInPuzzleTestCase);
         private const String OneOfTwoWordsMissingInPuzzleTestCase = nameof(WordSearchPuzzleTestData.OneOfTwoWordsMissingInPuzzleTestCase);
         private const String TwoWordsUpTestCase = nameof(WordSearchPuzzleTestData.TwoWordsUpTestCase);
-        private const String OneDownWordTestCase = nameof(WordSearchPuzzleTestData.OneDownWordTestCase);
-        private const String TwoDownWordTestCase = nameof(WordSearchPuzzleTestData.TwoDownWordTestCase);
+        private const String DownWordTestCase = nameof(WordSearchPuzzleTestData.DownWordTestCase);
         private const String OneUpOneDownWordTestCase = nameof(WordSearchPuzzleTestData.OneUpOneDownWordTestCase);
         private const String OneLeftWordTestCase = nameof(WordSearchPuzzleTestData.OneLeftWordTestCase);
         private const String TwoLeftWordTestCase = nameof(WordSearchPuzzleTestData.TwoLeftWordTestCase);
@@ -164,7 +163,7 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), OneDownWordTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), DownWordTestCase)]
         public void Given4x4WordWithOneDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
             sut = setupSUT;
@@ -173,7 +172,7 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), TwoDownWordTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), DownWordTestCase)]
         public void Given4x4WordWithTwoDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
             sut = setupSUT;
@@ -226,7 +225,7 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), TwoDownWordTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), TwoRightWordTestCase)]
         public void Given4x4WordWithTwoRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
             sut = setupSUT;

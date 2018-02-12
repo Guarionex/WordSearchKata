@@ -110,29 +110,29 @@ namespace PuzzleSolverUnitTest
             }
         }
 
-        public static IEnumerable OneDownWordTestCase
+        public static IEnumerable DownWordTestCase
         {
             get
             {
                 WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
-                WordSearchPuzzle setupSUT = testData.DownWordsPuzzle();
+                WordSearchPuzzle setupSUT = new WordSearchPuzzle();
                 setupSUT.AddWord("KIRK");
-
-                List<Vector2> kirkLocation = testData.KIRKDownInFirstColumnLocations();
-                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
-                expected.Add("KIRK", kirkLocation);
-
-                yield return new TestCaseData(setupSUT, expected);
-            }
-        }
-
-        public static IEnumerable TwoDownWordTestCase
-        {
-            get
-            {
-                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
-                WordSearchPuzzle setupSUT = testData.DownWordsPuzzle();
-                setupSUT.AddWord("KIRK");
+                setupSUT.AddLetterAt('K', 0, 0);
+                setupSUT.AddLetterAt('E', 1, 0);
+                setupSUT.AddLetterAt('F', 2, 0);
+                setupSUT.AddLetterAt('K', 3, 0);
+                setupSUT.AddLetterAt('I', 0, 1);
+                setupSUT.AddLetterAt('R', 1, 1);
+                setupSUT.AddLetterAt('J', 2, 1);
+                setupSUT.AddLetterAt('H', 3, 1);
+                setupSUT.AddLetterAt('R', 0, 2);
+                setupSUT.AddLetterAt('L', 1, 2);
+                setupSUT.AddLetterAt('I', 2, 2);
+                setupSUT.AddLetterAt('A', 3, 2);
+                setupSUT.AddLetterAt('K', 0, 3);
+                setupSUT.AddLetterAt('D', 1, 3);
+                setupSUT.AddLetterAt('J', 2, 3);
+                setupSUT.AddLetterAt('N', 3, 3);
 
                 List<Vector2> kirkLocation = testData.KIRKDownInFirstColumnLocations();
                 Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
@@ -448,29 +448,6 @@ namespace PuzzleSolverUnitTest
             kirkLocation.Add(new Vector2(0, 0));
 
             return kirkLocation;
-        }
-
-        private WordSearchPuzzle DownWordsPuzzle()
-        {
-            WordSearchPuzzle setupSUT = new WordSearchPuzzle();
-            setupSUT.AddLetterAt('K', 0, 0);
-            setupSUT.AddLetterAt('E', 1, 0);
-            setupSUT.AddLetterAt('F', 2, 0);
-            setupSUT.AddLetterAt('K', 3, 0);
-            setupSUT.AddLetterAt('I', 0, 1);
-            setupSUT.AddLetterAt('R', 1, 1);
-            setupSUT.AddLetterAt('J', 2, 1);
-            setupSUT.AddLetterAt('H', 3, 1);
-            setupSUT.AddLetterAt('R', 0, 2);
-            setupSUT.AddLetterAt('L', 1, 2);
-            setupSUT.AddLetterAt('I', 2, 2);
-            setupSUT.AddLetterAt('A', 3, 2);
-            setupSUT.AddLetterAt('K', 0, 3);
-            setupSUT.AddLetterAt('D', 1, 3);
-            setupSUT.AddLetterAt('J', 2, 3);
-            setupSUT.AddLetterAt('N', 3, 3);
-
-            return setupSUT;
         }
 
         private List<Vector2> KIRKDownInFirstColumnLocations()
