@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectionEnum.cs" />
+    <Compile Include="GetNeighbors\DirectionEnum.cs" />
     <Compile Include="GetNeighbors\DownLeftGetNeighborsFrom.cs" />
     <Compile Include="GetNeighbors\DownRightGetNeighborsFrom.cs" />
+    <Compile Include="GetNeighbors\GetNeighborsFactory.cs" />
     <Compile Include="GetNeighbors\IGetNeighborsFrom.cs" />
     <Compile Include="GetNeighbors\DownGetNeighborsFrom.cs" />
     <Compile Include="GetNeighbors\LeftGetNeighborsFrom.cs" />

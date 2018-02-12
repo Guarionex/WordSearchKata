@@ -20,15 +20,8 @@ namespace PuzzleSolverProject
         {
             LettersMap = lettersMap;
 
-            searchDirectionStrategy = new Dictionary<DirectionEnum, IGetNeighborsFrom>();
-            searchDirectionStrategy.Add(DirectionEnum.Up, new UpGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.Down, new DownGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.Left, new LeftGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.Right, new RightGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.UpLeft, new UpLeftGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.UpRight, new UpRightGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.DownLeft, new DownLeftGetNeighborsFrom());
-            searchDirectionStrategy.Add(DirectionEnum.DownRight, new DownRightGetNeighborsFrom());
+            GetNeighborsFactory getNeighborsFactory = new GetNeighborsFactory();
+            searchDirectionStrategy = getNeighborsFactory.GetNeighborStrategy;
         }
 
         public Dictionary<String, List<Vector2>> SearchEachWord(List<String> words)
