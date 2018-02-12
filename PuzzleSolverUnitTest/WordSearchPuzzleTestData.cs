@@ -84,7 +84,6 @@ namespace PuzzleSolverUnitTest
             {
                 WordSearchPuzzle setupSUT = new WordSearchPuzzle();
                 setupSUT.AddWord("KIRK");
-                setupSUT.AddWord("KHAN");
                 setupSUT.AddLetterAt('K', 0, 0);
                 setupSUT.AddLetterAt('E', 1, 0);
                 setupSUT.AddLetterAt('F', 2, 0);
@@ -104,15 +103,8 @@ namespace PuzzleSolverUnitTest
 
                 WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
                 List<Vector2> kirkLocation = testData.KIRKUpInFirstColumnLocations();
-
-                List<Vector2> khanLocation = new List<Vector2>();
-                khanLocation.Add(new Vector2(3, 3));
-                khanLocation.Add(new Vector2(3, 2));
-                khanLocation.Add(new Vector2(3, 1));
-                khanLocation.Add(new Vector2(3, 0));
                 Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
                 expected.Add("KIRK", kirkLocation);
-                expected.Add("KHAN", khanLocation);
 
                 yield return new TestCaseData(setupSUT, expected);
             }
@@ -141,18 +133,10 @@ namespace PuzzleSolverUnitTest
                 WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
                 WordSearchPuzzle setupSUT = testData.DownWordsPuzzle();
                 setupSUT.AddWord("KIRK");
-                setupSUT.AddWord("KHAN");
 
                 List<Vector2> kirkLocation = testData.KIRKDownInFirstColumnLocations();
-                List<Vector2> khanLocation = new List<Vector2>();
-                khanLocation.Add(new Vector2(3, 0));
-                khanLocation.Add(new Vector2(3, 1));
-                khanLocation.Add(new Vector2(3, 2));
-                khanLocation.Add(new Vector2(3, 3));
-
                 Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
                 expected.Add("KIRK", kirkLocation);
-                expected.Add("KHAN", khanLocation);
 
                 yield return new TestCaseData(setupSUT, expected);
             }

@@ -151,7 +151,15 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRKAndKHAN(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
             sut = setupSUT;
+            setupSUT.AddWord("KHAN");
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+
+            List<Vector2> khanLocation = new List<Vector2>();
+            khanLocation.Add(new Vector2(3, 3));
+            khanLocation.Add(new Vector2(3, 2));
+            khanLocation.Add(new Vector2(3, 1));
+            khanLocation.Add(new Vector2(3, 0));
+            expected.Add("KHAN", khanLocation);
 
             Assert.AreEqual(expected, result);
         }
@@ -169,7 +177,15 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
             sut = setupSUT;
+            setupSUT.AddWord("KHAN");
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+
+            List<Vector2> khanLocation = new List<Vector2>();
+            khanLocation.Add(new Vector2(3, 0));
+            khanLocation.Add(new Vector2(3, 1));
+            khanLocation.Add(new Vector2(3, 2));
+            khanLocation.Add(new Vector2(3, 3));
+            expected.Add("KHAN", khanLocation);
 
             Assert.AreEqual(expected, result);
         }
