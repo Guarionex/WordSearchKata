@@ -240,6 +240,45 @@ namespace PuzzleSolverUnitTest
             }
         }
 
+        public static IEnumerable OneRightWordTestCase
+        {
+            get
+            {
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordSearchPuzzle setupSUT = testData.RightWordsPuzzle();
+                setupSUT.AddWord("KIRK");
+
+                List<Vector2> kirkLocation = testData.KIRKRightSecondRowLocations();
+                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+                expected.Add("KIRK", kirkLocation);
+
+                yield return new TestCaseData(setupSUT, expected);
+            }
+        }
+
+        public static IEnumerable TwoRightWordTestCase
+        {
+            get
+            {
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordSearchPuzzle setupSUT = testData.RightWordsPuzzle();
+                setupSUT.AddWord("KIRK");
+                setupSUT.AddWord("KHAN");
+
+                List<Vector2> kirkLocation = testData.KIRKRightSecondRowLocations();
+                List<Vector2> khanLocation = new List<Vector2>();
+                khanLocation.Add(new Vector2(0, 3));
+                khanLocation.Add(new Vector2(1, 3));
+                khanLocation.Add(new Vector2(2, 3));
+                khanLocation.Add(new Vector2(3, 3));
+                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+                expected.Add("KIRK", kirkLocation);
+                expected.Add("KHAN", khanLocation);
+
+                yield return new TestCaseData(setupSUT, expected);
+            }
+        }
+
         private WordSearchPuzzle KIRKUpInFirstColumnPuzzle()
         {
             WordSearchPuzzle setupSUT = new WordSearchPuzzle();
@@ -339,6 +378,40 @@ namespace PuzzleSolverUnitTest
             kirkLocation.Add(new Vector2(2, 1));
             kirkLocation.Add(new Vector2(1, 1));
             kirkLocation.Add(new Vector2(0, 1));
+
+            return kirkLocation;
+        }
+
+        private WordSearchPuzzle RightWordsPuzzle()
+        {
+            WordSearchPuzzle setupSut = new WordSearchPuzzle();
+            setupSut.AddLetterAt('K', 0, 0);
+            setupSut.AddLetterAt('E', 1, 0);
+            setupSut.AddLetterAt('F', 2, 0);
+            setupSut.AddLetterAt('N', 3, 0);
+            setupSut.AddLetterAt('K', 0, 1);
+            setupSut.AddLetterAt('I', 1, 1);
+            setupSut.AddLetterAt('R', 2, 1);
+            setupSut.AddLetterAt('K', 3, 1);
+            setupSut.AddLetterAt('R', 0, 2);
+            setupSut.AddLetterAt('L', 1, 2);
+            setupSut.AddLetterAt('I', 2, 2);
+            setupSut.AddLetterAt('H', 3, 2);
+            setupSut.AddLetterAt('K', 0, 3);
+            setupSut.AddLetterAt('H', 1, 3);
+            setupSut.AddLetterAt('A', 2, 3);
+            setupSut.AddLetterAt('N', 3, 3);
+
+            return setupSut;
+        }
+
+        private List<Vector2> KIRKRightSecondRowLocations()
+        {
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(2, 1));
+            kirkLocation.Add(new Vector2(3, 1));
 
             return kirkLocation;
         }
