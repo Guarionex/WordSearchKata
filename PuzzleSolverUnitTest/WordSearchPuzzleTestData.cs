@@ -22,24 +22,6 @@ namespace PuzzleSolverUnitTest
             }
         }
 
-        public static IEnumerable KIRKUpInFirstColumnTestCase
-        {
-            get
-            {
-                WordSearchPuzzle setupSUT = KIRKUpInFirstColumn();
-
-                List<Vector2> kirkLocation = new List<Vector2>();
-                kirkLocation.Add(new Vector2(0, 3));
-                kirkLocation.Add(new Vector2(0, 2));
-                kirkLocation.Add(new Vector2(0, 1));
-                kirkLocation.Add(new Vector2(0, 0));
-                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
-                expected.Add("KIRK", kirkLocation);
-
-                yield return new TestCaseData(setupSUT, expected);
-            }
-        }
-
         public static IEnumerable WordMissingInPuzzleTestCase
         {
             get
@@ -75,6 +57,24 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddWord("KHAN");
 
                 yield return new TestCaseData(setupSUT);
+            }
+        }
+
+        public static IEnumerable KIRKUpInFirstColumnTestCase
+        {
+            get
+            {
+                WordSearchPuzzle setupSUT = KIRKUpInFirstColumn();
+
+                List<Vector2> kirkLocation = new List<Vector2>();
+                kirkLocation.Add(new Vector2(0, 3));
+                kirkLocation.Add(new Vector2(0, 2));
+                kirkLocation.Add(new Vector2(0, 1));
+                kirkLocation.Add(new Vector2(0, 0));
+                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+                expected.Add("KIRK", kirkLocation);
+
+                yield return new TestCaseData(setupSUT, expected);
             }
         }
 
