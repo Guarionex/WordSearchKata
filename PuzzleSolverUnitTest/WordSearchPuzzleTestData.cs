@@ -427,22 +427,22 @@ namespace PuzzleSolverUnitTest
             get
             {
                 WordSearchPuzzle setupSUT = new WordSearchPuzzle();
-                setupSUT.AddLetterAt('K', 0, 0);
-                setupSUT.AddLetterAt('E', 1, 0);
-                setupSUT.AddLetterAt('F', 2, 0);
-                setupSUT.AddLetterAt('K', 3, 0);
-                setupSUT.AddLetterAt('R', 0, 1);
-                setupSUT.AddLetterAt('R', 1, 1);
-                setupSUT.AddLetterAt('J', 2, 1);
-                setupSUT.AddLetterAt('I', 3, 1);
-                setupSUT.AddLetterAt('I', 0, 2);
+                setupSUT.AddLetterAt('S', 0, 0);
+                setupSUT.AddLetterAt('U', 1, 0);
+                setupSUT.AddLetterAt('L', 2, 0);
+                setupSUT.AddLetterAt('U', 3, 0);
+                setupSUT.AddLetterAt('K', 0, 1);
+                setupSUT.AddLetterAt('I', 1, 1);
+                setupSUT.AddLetterAt('R', 2, 1);
+                setupSUT.AddLetterAt('K', 3, 1);
+                setupSUT.AddLetterAt('R', 0, 2);
                 setupSUT.AddLetterAt('L', 1, 2);
                 setupSUT.AddLetterAt('I', 2, 2);
-                setupSUT.AddLetterAt('R', 3, 2);
+                setupSUT.AddLetterAt('H', 3, 2);
                 setupSUT.AddLetterAt('K', 0, 3);
-                setupSUT.AddLetterAt('D', 1, 3);
-                setupSUT.AddLetterAt('J', 2, 3);
-                setupSUT.AddLetterAt('X', 3, 3);
+                setupSUT.AddLetterAt('H', 1, 3);
+                setupSUT.AddLetterAt('A', 2, 3);
+                setupSUT.AddLetterAt('N', 3, 3);
 
                 yield return new TestCaseData(setupSUT);
             }
