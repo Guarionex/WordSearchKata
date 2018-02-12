@@ -103,7 +103,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
-        public void GivenInvalid4x4WordPuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsThrowsNoException()
+        public void Given4x4WordPuzzleWithWordNotInPuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsThrowsNoException()
         {
             sut.AddWord("KIRK");
             sut.AddLetterAt('X', 0, 0);
