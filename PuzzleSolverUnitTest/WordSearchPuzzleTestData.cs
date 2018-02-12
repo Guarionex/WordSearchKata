@@ -371,6 +371,28 @@ namespace PuzzleSolverUnitTest
             }
         }
 
+        public static IEnumerable TwoDownLeftWordTestCase
+        {
+            get
+            {
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordSearchPuzzle setupSUT = testData.DownLeftWordsPuzzle();
+                setupSUT.AddWord("KIRK");
+                setupSUT.AddWord("HAN");
+
+                List<Vector2> kirkLocation = testData.KIRKDownLeftLocations();
+                List<Vector2> hanLocation = new List<Vector2>();
+                hanLocation.Add(new Vector2(3, 1));
+                hanLocation.Add(new Vector2(2, 2));
+                hanLocation.Add(new Vector2(1, 3));
+                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+                expected.Add("KIRK", kirkLocation);
+                expected.Add("HAN", hanLocation);
+
+                yield return new TestCaseData(setupSUT, expected);
+            }
+        }
+
         private WordSearchPuzzle KIRKUpInFirstColumnPuzzle()
         {
             WordSearchPuzzle setupSUT = new WordSearchPuzzle();

@@ -29,6 +29,7 @@ namespace PuzzleSolverUnitTest
         private const String OneUpRightWordTestCase = nameof(WordSearchPuzzleTestData.OneUpRightWordTestCase);
         private const String TwoUpRightWordTestCase = nameof(WordSearchPuzzleTestData.TwoUpRightWordTestCase);
         private const String OneDownLeftWordTestCase = nameof(WordSearchPuzzleTestData.OneDownLeftWordTestCase);
+        private const String TwoDownLeftWordTestCase = nameof(WordSearchPuzzleTestData.TwoDownLeftWordTestCase);
 
         private WordSearchPuzzle sut;
 
@@ -257,45 +258,15 @@ namespace PuzzleSolverUnitTest
         {
             sut = setupSUT;
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+
             Assert.AreEqual(expected, result);
         }
 
-        [Test]
-        public void Given4x4WordWithTwoDownLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords()
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), TwoDownLeftWordTestCase)]
+        public void Given4x4WordWithTwoDownLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
-            sut.AddWord("KIRK");
-            sut.AddWord("HAN");
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('E', 1, 0);
-            sut.AddLetterAt('F', 2, 0);
-            sut.AddLetterAt('K', 3, 0);
-            sut.AddLetterAt('X', 0, 1);
-            sut.AddLetterAt('I', 1, 1);
-            sut.AddLetterAt('I', 2, 1);
-            sut.AddLetterAt('H', 3, 1);
-            sut.AddLetterAt('R', 0, 2);
-            sut.AddLetterAt('R', 1, 2);
-            sut.AddLetterAt('A', 2, 2);
-            sut.AddLetterAt('H', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('N', 1, 3);
-            sut.AddLetterAt('J', 2, 3);
-            sut.AddLetterAt('G', 3, 3);
-
+            sut = setupSUT;
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
-            List<Vector2> kirkLocation = new List<Vector2>();
-            kirkLocation.Add(new Vector2(3, 0));
-            kirkLocation.Add(new Vector2(2, 1));
-            kirkLocation.Add(new Vector2(1, 2));
-            kirkLocation.Add(new Vector2(0, 3));
-
-            List<Vector2> hanLocation = new List<Vector2>();
-            hanLocation.Add(new Vector2(3, 1));
-            hanLocation.Add(new Vector2(2, 2));
-            hanLocation.Add(new Vector2(1, 3));
-            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
-            expected.Add("KIRK", kirkLocation);
-            expected.Add("HAN", hanLocation);
 
             Assert.AreEqual(expected, result);
         }
