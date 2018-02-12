@@ -359,40 +359,38 @@ namespace PuzzleSolverUnitTest
                 yield return new TestCaseData(setupSUT, expected);
             }
         }
-
-        public static IEnumerable OneDownRightWordTestCase
+        
+        public static IEnumerable DownRightWordTestCase
         {
             get
             {
-                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
-                WordSearchPuzzle setupSUT = testData.DownRightWordsPuzzle();
+                
+                WordSearchPuzzle setupSUT = new WordSearchPuzzle();
                 setupSUT.AddWord("KIRK");
-
-                List<Vector2> kirkLocation = testData.KIRKDownRightLocations();
+                setupSUT.AddLetterAt('K', 0, 0);
+                setupSUT.AddLetterAt('E', 1, 0);
+                setupSUT.AddLetterAt('F', 2, 0);
+                setupSUT.AddLetterAt('X', 3, 0);
+                setupSUT.AddLetterAt('H', 0, 1);
+                setupSUT.AddLetterAt('I', 1, 1);
+                setupSUT.AddLetterAt('I', 2, 1);
+                setupSUT.AddLetterAt('K', 3, 1);
+                setupSUT.AddLetterAt('R', 0, 2);
+                setupSUT.AddLetterAt('A', 1, 2);
+                setupSUT.AddLetterAt('R', 2, 2);
+                setupSUT.AddLetterAt('H', 3, 2);
+                setupSUT.AddLetterAt('X', 0, 3);
+                setupSUT.AddLetterAt('D', 1, 3);
+                setupSUT.AddLetterAt('N', 2, 3);
+                setupSUT.AddLetterAt('K', 3, 3);
+                                
+                List<Vector2> kirkLocation = new List<Vector2>();
+                kirkLocation.Add(new Vector2(0, 0));
+                kirkLocation.Add(new Vector2(1, 1));
+                kirkLocation.Add(new Vector2(2, 2));
+                kirkLocation.Add(new Vector2(3, 3));
                 Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
                 expected.Add("KIRK", kirkLocation);
-
-                yield return new TestCaseData(setupSUT, expected);
-            }
-        }
-
-        public static IEnumerable TwoDownRightWordTestCase
-        {
-            get
-            {
-                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
-                WordSearchPuzzle setupSUT = testData.DownRightWordsPuzzle();
-                setupSUT.AddWord("KIRK");
-                setupSUT.AddWord("HAN");
-
-                List<Vector2> kirkLocation = testData.KIRKDownRightLocations();
-                List<Vector2> hanLocation = new List<Vector2>();
-                hanLocation.Add(new Vector2(0, 1));
-                hanLocation.Add(new Vector2(1, 2));
-                hanLocation.Add(new Vector2(2, 3));
-                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
-                expected.Add("KIRK", kirkLocation);
-                expected.Add("HAN", hanLocation);
 
                 yield return new TestCaseData(setupSUT, expected);
             }
@@ -440,40 +438,6 @@ namespace PuzzleSolverUnitTest
             kirkLocation.Add(new Vector2(0, 1));
             kirkLocation.Add(new Vector2(0, 2));
             kirkLocation.Add(new Vector2(0, 3));
-
-            return kirkLocation;
-        }
-
-        private WordSearchPuzzle DownRightWordsPuzzle()
-        {
-            WordSearchPuzzle setupSUT = new WordSearchPuzzle();
-            setupSUT.AddLetterAt('K', 0, 0);
-            setupSUT.AddLetterAt('E', 1, 0);
-            setupSUT.AddLetterAt('F', 2, 0);
-            setupSUT.AddLetterAt('X', 3, 0);
-            setupSUT.AddLetterAt('H', 0, 1);
-            setupSUT.AddLetterAt('I', 1, 1);
-            setupSUT.AddLetterAt('I', 2, 1);
-            setupSUT.AddLetterAt('K', 3, 1);
-            setupSUT.AddLetterAt('R', 0, 2);
-            setupSUT.AddLetterAt('A', 1, 2);
-            setupSUT.AddLetterAt('R', 2, 2);
-            setupSUT.AddLetterAt('H', 3, 2);
-            setupSUT.AddLetterAt('X', 0, 3);
-            setupSUT.AddLetterAt('D', 1, 3);
-            setupSUT.AddLetterAt('N', 2, 3);
-            setupSUT.AddLetterAt('K', 3, 3);
-
-            return setupSUT;
-        }
-
-        private List<Vector2> KIRKDownRightLocations()
-        {
-            List<Vector2> kirkLocation = new List<Vector2>();
-            kirkLocation.Add(new Vector2(0, 0));
-            kirkLocation.Add(new Vector2(1, 1));
-            kirkLocation.Add(new Vector2(2, 2));
-            kirkLocation.Add(new Vector2(3, 3));
 
             return kirkLocation;
         }

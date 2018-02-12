@@ -24,8 +24,7 @@ namespace PuzzleSolverUnitTest
         private const String UpLeftWordTestCase = nameof(WordSearchPuzzleTestData.UpLeftWordTestCase);
         private const String UpRightWordTestCase = nameof(WordSearchPuzzleTestData.UpRightWordTestCase);
         private const String DownLeftWordTestCase = nameof(WordSearchPuzzleTestData.DownLeftWordTestCase);
-        private const String OneDownRightWordTestCase = nameof(WordSearchPuzzleTestData.OneDownRightWordTestCase);
-        private const String TwoDownRightWordTestCase = nameof(WordSearchPuzzleTestData.TwoDownRightWordTestCase);
+        private const String DownRightWordTestCase = nameof(WordSearchPuzzleTestData.DownRightWordTestCase);
 
         private WordSearchPuzzle sut;
 
@@ -320,7 +319,7 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), OneDownRightWordTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), DownRightWordTestCase)]
         public void Given4x4WordWithOneDownRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
             sut = setupSUT;
@@ -329,11 +328,18 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), TwoDownRightWordTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), DownRightWordTestCase)]
         public void Given4x4WordWithTwoDownRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
             sut = setupSUT;
+            setupSUT.AddWord("HAN");
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+
+            List<Vector2> hanLocation = new List<Vector2>();
+            hanLocation.Add(new Vector2(0, 1));
+            hanLocation.Add(new Vector2(1, 2));
+            hanLocation.Add(new Vector2(2, 3));
+            expected.Add("HAN", hanLocation);
 
             Assert.AreEqual(expected, result);
         }
