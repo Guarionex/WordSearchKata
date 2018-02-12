@@ -87,9 +87,9 @@ namespace PuzzleSolverProject
             return wordList;
         }
 
-        private bool IsWordStringFormatInvalid(String[] delimetedWords)
+        private bool IsWordStringFormatInvalid(String[] delimitedWords)
         {
-            return IsWordListASingleWord(delimetedWords) || IsWordsListCommaSpaceSeparatedValue(delimetedWords);
+            return IsWordListASingleWord(delimitedWords) || IsWordsListCommaSpaceSeparatedValue(delimitedWords);
         }
 
         private bool IsWordListASingleWord(String[] delimitedWords)
