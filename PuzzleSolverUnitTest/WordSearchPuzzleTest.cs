@@ -43,7 +43,8 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenWordSearchPuzleWhenCallingWordsThenGetWordsReturnAListOfStrings()
         {
-            Assert.IsInstanceOf(typeof(List<String>), sut.WordsList);
+            List<String> result = sut.WordsList;
+            Assert.IsInstanceOf(typeof(List<String>), result);
         }
 
         [Test]
@@ -79,7 +80,8 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenWordSearchPuzzleWhenCallingLettersThenLettersReturnsADictionaryOfVector2KeysWithCharValues()
         {
-            Assert.IsInstanceOf(typeof(Dictionary<Vector2, Char>), sut.LettersMap);
+            Dictionary<Vector2, Char> result = sut.LettersMap;
+            Assert.IsInstanceOf(typeof(Dictionary<Vector2, Char>), result);
         }
 
         [Test]
@@ -110,7 +112,9 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringListVector2Dictionary(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;
-            Assert.IsInstanceOf(typeof(Dictionary<String, List<Vector2>>), sut.GetWordsLocation());
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
+            Assert.IsInstanceOf(typeof(Dictionary<String, List<Vector2>>), result);
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
@@ -438,7 +442,8 @@ namespace PuzzleSolverUnitTest
             sut.AddWord("KIRK");
             sut.AddWord("KHAN");
 
-            Assert.IsInstanceOf(typeof(String), sut.ToString());
+            String result = sut.ToString();
+            Assert.IsInstanceOf(typeof(String), result);
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
