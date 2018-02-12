@@ -53,7 +53,7 @@ namespace PuzzleSolverUnitTest
         [Test]
         public void GivenAValidStringFileNameContaingAPuzzleWithOneWordWhenPassedToParseFileToWordSearchPuzzleThenResultingWordSearchPuzzleGetWordsLocationHasTheSolution()
         {
-            WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "oneWord4x4");
+            WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "oneWord4x4.txt");
             Dictionary<String, List<Vector2>> result = puzzle.GetWordsLocation();
 
             List<Vector2> kirkLocation = new List<Vector2>();

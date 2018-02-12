@@ -1,4 +1,4 @@
-KIRK,KHAN
+KIRK
 K,R,I,K
 E,M,H,P
 X,A,D,M

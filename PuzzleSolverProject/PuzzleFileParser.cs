@@ -13,7 +13,8 @@ namespace PuzzleSolverProject
         private const Char COMMA_CHAR = ',';
         private const String COMMA_STRING = ",";
         private const int FIRST_LETTER_OF_WORD_INDEX = 0;
-        private const int INVALID_WORD_COUNT = 1;
+        private const int MIN_WORD_COUNT = 1;
+        private const int FIRST_WORD_INDEX = 0;
         private const int WORD_ROW_INDEX = 0;
         private const int NUMBER_OF_WORD_ROWS = 1;
         private const int MIN_DIMENSION_INDEX = 0;
@@ -88,7 +89,12 @@ namespace PuzzleSolverProject
 
         private bool IsWordStringFormatInvalid(String[] delimetedWords)
         {
-            return delimetedWords.Length == INVALID_WORD_COUNT || IsWordsListSpaceSeparatedValue(delimetedWords);
+            return IsWordListASingleWord(delimetedWords) || IsWordsListSpaceSeparatedValue(delimetedWords);
+        }
+
+        private bool IsWordListASingleWord(String[] delimitedWords)
+        {
+            return delimitedWords.Length == MIN_WORD_COUNT && delimitedWords[FIRST_WORD_INDEX].Any(ch => !char.IsLetter(ch));
         }
 
         private bool IsWordsListSpaceSeparatedValue(String[] delimetedWords)
