@@ -12,6 +12,8 @@ namespace PuzzleSolverUnitTest
     [TestFixture]
     public class WordSearchPuzzleTest
     {
+        private const String KIRKUpInFirstColumn = nameof(WordSearchPuzzleTestData.KIRKUpInFirstColumn);
+
         private WordSearchPuzzle sut;
 
         [SetUp]
@@ -92,26 +94,10 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test]
-        public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringListVector2Dictionary()
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), KIRKUpInFirstColumn)]
+        public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringListVector2Dictionary(WordSearchPuzzle setupSUT)
         {
-            sut.AddWord("KIRK");
-            sut.AddLetterAt('K', 0, 0);
-            sut.AddLetterAt('E', 1, 0);
-            sut.AddLetterAt('F', 2, 0);
-            sut.AddLetterAt('N', 3, 0);
-            sut.AddLetterAt('R', 0, 1);
-            sut.AddLetterAt('R', 1, 1);
-            sut.AddLetterAt('J', 2, 1);
-            sut.AddLetterAt('A', 3, 1);
-            sut.AddLetterAt('I', 0, 2);
-            sut.AddLetterAt('L', 1, 2);
-            sut.AddLetterAt('I', 2, 2);
-            sut.AddLetterAt('H', 3, 2);
-            sut.AddLetterAt('K', 0, 3);
-            sut.AddLetterAt('D', 1, 3);
-            sut.AddLetterAt('J', 2, 3);
-            sut.AddLetterAt('M', 3, 3);
+            sut = setupSUT;
             Assert.IsInstanceOf(typeof(Dictionary<String, List<Vector2>>), sut.GetWordsLocation());
         }
 
