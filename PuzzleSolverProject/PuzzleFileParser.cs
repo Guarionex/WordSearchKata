@@ -13,7 +13,8 @@ namespace PuzzleSolverProject
         private const Char COMMA_CHAR = ',';
         private const String COMMA_STRING = ",";
         private const int FIRST_LETTER_OF_WORD_INDEX = 0;
-        private const int INVALID_WORD_COUNT = 1;
+        private const int MIN_WORD_COUNT = 1;
+        private const int FIRST_WORD_INDEX = 0;
         private const int WORD_ROW_INDEX = 0;
         private const int NUMBER_OF_WORD_ROWS = 1;
         private const int MIN_DIMENSION_INDEX = 0;
@@ -86,12 +87,17 @@ namespace PuzzleSolverProject
             return wordList;
         }
 
-        private bool IsWordStringFormatInvalid(String[] delimetedWords)
+        private bool IsWordStringFormatInvalid(String[] delimitedWords)
         {
-            return delimetedWords.Length == INVALID_WORD_COUNT || IsWordsListSpaceSeparatedValue(delimetedWords);
+            return IsWordListASingleWord(delimitedWords) || IsWordsListCommaSpaceSeparatedValue(delimitedWords);
         }
 
-        private bool IsWordsListSpaceSeparatedValue(String[] delimetedWords)
+        private bool IsWordListASingleWord(String[] delimitedWords)
+        {
+            return delimitedWords.Length == MIN_WORD_COUNT && delimitedWords[FIRST_WORD_INDEX].Any(ch => !char.IsLetter(ch));
+        }
+
+        private bool IsWordsListCommaSpaceSeparatedValue(String[] delimetedWords)
         {
             return delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, FIRST_LETTER_OF_WORD_INDEX)));
         }
@@ -129,10 +135,6 @@ namespace PuzzleSolverProject
             if (isDimensionsInRange(x, y))
             {
                 throw new ArgumentOutOfRangeException();
-            }
-            else if (x != y)
-            {
-                throw new ArgumentException();
             }
         }
 

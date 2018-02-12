@@ -51,6 +51,23 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test]
+        public void GivenAValidStringFileNameContaingAPuzzleWithOneWordWhenPassedToParseFileToWordSearchPuzzleThenResultingWordSearchPuzzleGetWordsLocationHasTheSolution()
+        {
+            WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "oneWord4x4.txt");
+            Dictionary<String, List<Vector2>> result = puzzle.GetWordsLocation();
+
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(3, 0));
+            kirkLocation.Add(new Vector2(2, 0));
+            kirkLocation.Add(new Vector2(1, 0));
+            kirkLocation.Add(new Vector2(0, 0));
+            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+            expected.Add("KIRK", kirkLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
         public void GivenAInvalidStringFileNameWhenPassedIntoParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsFileNotFoundException()
         {
             Assert.Throws<FileNotFoundException>(new TestDelegate(ParseFileInvalidFileName));

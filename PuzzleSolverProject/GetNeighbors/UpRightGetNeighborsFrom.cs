@@ -5,9 +5,9 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PuzzleSolverProject
+namespace PuzzleSolverProject.GetNeighbors
 {
-    class DownLeftGetNeighborsFrom : IGetNeighborsFrom
+    class UpRightGetNeighborsFrom : IGetNeighborsFrom
     {
         private const int STARTING_OFFSET = 0;
 
@@ -20,16 +20,16 @@ namespace PuzzleSolverProject
 
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
         {
-            List<Vector2> positionsDownLeftFromStartPosition = new List<Vector2>();
-            for (int x = STARTING_OFFSET, y = STARTING_OFFSET; x > -length && y < length; x--, y++)
+            List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
+            for (int x = STARTING_OFFSET, y = STARTING_OFFSET; x < length && y > -length; x++, y--)
             {
-                Vector2 downLeftNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
-                if (letters.ContainsKey(downLeftNeighbor))
+                Vector2 upRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
+                if (letters.ContainsKey(upRightNeighbor))
                 {
-                    positionsDownLeftFromStartPosition.Add(downLeftNeighbor);
+                    positionsUpRightFromStartPosition.Add(upRightNeighbor);
                 }
             }
-            return positionsDownLeftFromStartPosition;
+            return positionsUpRightFromStartPosition;
         }
     }
 }
