@@ -67,6 +67,17 @@ namespace PuzzleSolverUnitTest
             }
         }
 
+        public static IEnumerable OneOfTwoWordsMissingInPuzzleTestCase
+        {
+            get
+            {
+                WordSearchPuzzle setupSUT = KIRKUpInFirstColumn();
+                setupSUT.AddWord("KHAN");
+
+                yield return new TestCaseData(setupSUT);
+            }
+        }
+
         private static WordSearchPuzzle KIRKUpInFirstColumn()
         {
             WordSearchPuzzle setupSUT = new WordSearchPuzzle();
