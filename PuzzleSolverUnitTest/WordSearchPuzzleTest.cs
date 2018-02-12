@@ -14,8 +14,6 @@ namespace PuzzleSolverUnitTest
     {
         private const String ValidOneWordPuzzleTestCase = nameof(WordSearchPuzzleTestData.ValidOneWordPuzzleTestCase);
         private const String OneUpWordTestCase = nameof(WordSearchPuzzleTestData.OneUpWordTestCase);
-        private const String WordMissingInPuzzleTestCase = nameof(WordSearchPuzzleTestData.WordMissingInPuzzleTestCase);
-        private const String OneOfTwoWordsMissingInPuzzleTestCase = nameof(WordSearchPuzzleTestData.OneOfTwoWordsMissingInPuzzleTestCase);
         private const String TwoWordsUpTestCase = nameof(WordSearchPuzzleTestData.TwoWordsUpTestCase);
         private const String DownWordTestCase = nameof(WordSearchPuzzleTestData.DownWordTestCase);
         private const String OneUpOneDownWordTestCase = nameof(WordSearchPuzzleTestData.OneUpOneDownWordTestCase);
@@ -115,17 +113,20 @@ namespace PuzzleSolverUnitTest
             Assert.IsInstanceOf(typeof(Dictionary<String, List<Vector2>>), sut.GetWordsLocation());
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), WordMissingInPuzzleTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
         public void Given4x4WordPuzzleWithWordNotInPuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsThrowsNoException(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;
+            sut.AddWord("UHURA");
+
             sut.GetWordsLocation();
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), OneOfTwoWordsMissingInPuzzleTestCase)]
-        public void Given4x4WordPuzzleWith2WordsTheFirstOfWhichIsNotInThePuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsReturnsAnEmptyDictionary(WordSearchPuzzle setupSUT)
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), ValidOneWordPuzzleTestCase)]
+        public void Given4x4WordPuzzleWith2WordsOneOfWhichIsNotInThePuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsReturnsAnEmptyDictionary(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;
+            sut.AddWord("KHAN");
 
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
             Dictionary<String, List<Vector2>> expected = new Dictionary<string, List<Vector2>>();
@@ -362,10 +363,11 @@ namespace PuzzleSolverUnitTest
             Assert.IsTrue(sut.IsValid());
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), WordMissingInPuzzleTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
         public void Given4x4WordPuzzleWithMissingWordWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;
+            sut.AddWord("UHURA");
 
             Assert.IsFalse(sut.IsValid());
         }
@@ -387,10 +389,11 @@ namespace PuzzleSolverUnitTest
             Assert.IsFalse(sut.IsValid());
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), WordMissingInPuzzleTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
         public void GivenInvalid4x4WordPuzzleWhenCallingIsValidTwiceThenSecondIsValidReturnsFalse(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;
+            sut.AddWord("UHURA");
             sut.IsValid();
 
             Assert.IsFalse(sut.IsValid());
