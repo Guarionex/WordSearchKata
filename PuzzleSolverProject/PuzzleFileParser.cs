@@ -89,7 +89,7 @@ namespace PuzzleSolverProject
 
         private bool IsWordStringFormatInvalid(String[] delimetedWords)
         {
-            return IsWordListASingleWord(delimetedWords) || IsWordsListSpaceSeparatedValue(delimetedWords);
+            return IsWordListASingleWord(delimetedWords) || IsWordsListCommaSpaceSeparatedValue(delimetedWords);
         }
 
         private bool IsWordListASingleWord(String[] delimitedWords)
@@ -97,7 +97,7 @@ namespace PuzzleSolverProject
             return delimitedWords.Length == MIN_WORD_COUNT && delimitedWords[FIRST_WORD_INDEX].Any(ch => !char.IsLetter(ch));
         }
 
-        private bool IsWordsListSpaceSeparatedValue(String[] delimetedWords)
+        private bool IsWordsListCommaSpaceSeparatedValue(String[] delimetedWords)
         {
             return delimetedWords.Any(word => word.Any(ch => char.IsWhiteSpace(word, FIRST_LETTER_OF_WORD_INDEX)));
         }
