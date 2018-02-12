@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PuzzleSolverTest.cs" />
+    <Compile Include="PuzzleFileParserTest.cs" />
+    <Compile Include="PuzzleFileParserTestData.cs" />
     <Compile Include="WordSearchPuzzleTest.cs" />
+    <Compile Include="WordSearchPuzzleTestData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PuzzleSolverProject\PuzzleSolverProject.csproj">
