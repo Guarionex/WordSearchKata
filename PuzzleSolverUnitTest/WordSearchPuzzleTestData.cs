@@ -141,11 +141,8 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('J', 2, 3);
                 setupSUT.AddLetterAt('M', 3, 3);
 
-                List<Vector2> kirkLocation = new List<Vector2>();
-                kirkLocation.Add(new Vector2(0, 0));
-                kirkLocation.Add(new Vector2(0, 1));
-                kirkLocation.Add(new Vector2(0, 2));
-                kirkLocation.Add(new Vector2(0, 3));
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                List<Vector2> kirkLocation = testData.KIRKDownInFirstColumnLocations();
                 Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
                 expected.Add("KIRK", kirkLocation);
 
@@ -177,11 +174,8 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('J', 2, 3);
                 setupSUT.AddLetterAt('N', 3, 3);
 
-                List<Vector2> kirkLocation = new List<Vector2>();
-                kirkLocation.Add(new Vector2(0, 0));
-                kirkLocation.Add(new Vector2(0, 1));
-                kirkLocation.Add(new Vector2(0, 2));
-                kirkLocation.Add(new Vector2(0, 3));
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                List<Vector2> kirkLocation = testData.KIRKDownInFirstColumnLocations();
 
                 List<Vector2> khanLocation = new List<Vector2>();
                 khanLocation.Add(new Vector2(3, 0));
@@ -228,6 +222,17 @@ namespace PuzzleSolverUnitTest
             kirkLocation.Add(new Vector2(0, 2));
             kirkLocation.Add(new Vector2(0, 1));
             kirkLocation.Add(new Vector2(0, 0));
+
+            return kirkLocation;
+        }
+
+        private List<Vector2> KIRKDownInFirstColumnLocations()
+        {
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 0));
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(0, 2));
+            kirkLocation.Add(new Vector2(0, 3));
 
             return kirkLocation;
         }
