@@ -12,7 +12,7 @@ namespace PuzzleSolverUnitTest
 {
     class WordSearchPuzzleTestData
     {
-        public static IEnumerable GetWordsLocationReturnTypeTestCase
+        public static IEnumerable ValidOneWordPuzzleTestCase
         {
             get
             {
@@ -114,7 +114,6 @@ namespace PuzzleSolverUnitTest
         {
             get
             {
-                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
                 WordSearchPuzzle setupSUT = new WordSearchPuzzle();
                 setupSUT.AddWord("KIRK");
                 setupSUT.AddLetterAt('K', 0, 0);
@@ -134,6 +133,7 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('J', 2, 3);
                 setupSUT.AddLetterAt('N', 3, 3);
 
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
                 List<Vector2> kirkLocation = testData.KIRKDownInFirstColumnLocations();
                 Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
                 expected.Add("KIRK", kirkLocation);
@@ -187,7 +187,6 @@ namespace PuzzleSolverUnitTest
         {
             get
             {
-                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
                 WordSearchPuzzle setupSUT = new WordSearchPuzzle();
                 setupSUT.AddWord("KIRK");
                 setupSUT.AddLetterAt('K', 0, 0);
