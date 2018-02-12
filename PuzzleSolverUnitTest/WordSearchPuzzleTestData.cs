@@ -16,7 +16,8 @@ namespace PuzzleSolverUnitTest
         {
             get
             {
-                WordSearchPuzzle setupSUT = KIRKUpInFirstColumnPuzzle();
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordSearchPuzzle setupSUT = testData.KIRKUpInFirstColumnPuzzle();
 
                 yield return new TestCaseData(setupSUT);
             }
@@ -53,7 +54,8 @@ namespace PuzzleSolverUnitTest
         {
             get
             {
-                WordSearchPuzzle setupSUT = KIRKUpInFirstColumnPuzzle();
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordSearchPuzzle setupSUT = testData.KIRKUpInFirstColumnPuzzle();
                 setupSUT.AddWord("KHAN");
 
                 yield return new TestCaseData(setupSUT);
@@ -64,9 +66,11 @@ namespace PuzzleSolverUnitTest
         {
             get
             {
-                WordSearchPuzzle setupSUT = KIRKUpInFirstColumnPuzzle();
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
 
-                List<Vector2> kirkLocation = KIRKUpInFirstColumnLocations();
+                WordSearchPuzzle setupSUT = testData.KIRKUpInFirstColumnPuzzle();
+
+                List<Vector2> kirkLocation = testData.KIRKUpInFirstColumnLocations();
                 Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
                 expected.Add("KIRK", kirkLocation);
 
@@ -98,7 +102,8 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('J', 2, 3);
                 setupSUT.AddLetterAt('K', 3, 3);
 
-                List<Vector2> kirkLocation = KIRKUpInFirstColumnLocations();
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                List<Vector2> kirkLocation = testData.KIRKUpInFirstColumnLocations();
 
                 List<Vector2> khanLocation = new List<Vector2>();
                 khanLocation.Add(new Vector2(3, 3));
@@ -192,7 +197,7 @@ namespace PuzzleSolverUnitTest
             }
         }
 
-        private static WordSearchPuzzle KIRKUpInFirstColumnPuzzle()
+        private WordSearchPuzzle KIRKUpInFirstColumnPuzzle()
         {
             WordSearchPuzzle setupSUT = new WordSearchPuzzle();
             setupSUT.AddWord("KIRK");
@@ -216,7 +221,7 @@ namespace PuzzleSolverUnitTest
             return setupSUT;
         }
 
-        private static List<Vector2> KIRKUpInFirstColumnLocations()
+        private List<Vector2> KIRKUpInFirstColumnLocations()
         {
             List<Vector2> kirkLocation = new List<Vector2>();
             kirkLocation.Add(new Vector2(0, 3));
