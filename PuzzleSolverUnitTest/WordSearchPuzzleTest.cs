@@ -13,7 +13,7 @@ namespace PuzzleSolverUnitTest
     public class WordSearchPuzzleTest
     {
         private const String GetWordsLocationReturnTypeTestCase = nameof(WordSearchPuzzleTestData.GetWordsLocationReturnTypeTestCase);
-        private const String KIRKUpInFirstColumnTestCase = nameof(WordSearchPuzzleTestData.KIRKUpInFirstColumnTestCase);
+        private const String OneUpWordTestCase = nameof(WordSearchPuzzleTestData.OneUpWordTestCase);
         private const String WordMissingInPuzzleTestCase = nameof(WordSearchPuzzleTestData.WordMissingInPuzzleTestCase);
         private const String OneOfTwoWordsMissingInPuzzleTestCase = nameof(WordSearchPuzzleTestData.OneOfTwoWordsMissingInPuzzleTestCase);
         private const String TwoWordsUpTestCase = nameof(WordSearchPuzzleTestData.TwoWordsUpTestCase);
@@ -126,7 +126,7 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), KIRKUpInFirstColumnTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), OneUpWordTestCase)]
         public void Given4x4WordWithOneUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
             sut = setupSUT;

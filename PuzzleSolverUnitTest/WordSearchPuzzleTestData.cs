@@ -62,7 +62,7 @@ namespace PuzzleSolverUnitTest
             }
         }
 
-        public static IEnumerable KIRKUpInFirstColumnTestCase
+        public static IEnumerable OneUpWordTestCase
         {
             get
             {
