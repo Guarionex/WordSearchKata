@@ -468,11 +468,10 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), WordMissingInPuzzleTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), ValidOneWordPuzzleTestCase)]
         public void Given4x4WordPuzzleWithAWordMissingWhenCallingToStringThenToStringReturnsAnEmptyString(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;
-            sut.AddWord("KIRK");
             sut.AddWord("KHAN");
             sut.AddWord("SULU");
 
