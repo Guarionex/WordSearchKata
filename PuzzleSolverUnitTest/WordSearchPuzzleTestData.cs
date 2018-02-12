@@ -279,6 +279,22 @@ namespace PuzzleSolverUnitTest
             }
         }
 
+        public static IEnumerable OneUpLeftWordTestCase
+        {
+            get
+            {
+                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordSearchPuzzle setupSUT = testData.UpLeftWordsPuzzle();
+                setupSUT.AddWord("KIRK");
+
+                List<Vector2> kirkLocation = testData.KIRKUpLeftLocations();
+                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+                expected.Add("KIRK", kirkLocation);
+
+                yield return new TestCaseData(setupSUT, expected);
+            }
+        }
+
         private WordSearchPuzzle KIRKUpInFirstColumnPuzzle()
         {
             WordSearchPuzzle setupSUT = new WordSearchPuzzle();
@@ -412,6 +428,40 @@ namespace PuzzleSolverUnitTest
             kirkLocation.Add(new Vector2(1, 1));
             kirkLocation.Add(new Vector2(2, 1));
             kirkLocation.Add(new Vector2(3, 1));
+
+            return kirkLocation;
+        }
+
+        private WordSearchPuzzle UpLeftWordsPuzzle()
+        {
+            WordSearchPuzzle setupSut = new WordSearchPuzzle();
+            setupSut.AddLetterAt('K', 0, 0);
+            setupSut.AddLetterAt('E', 1, 0);
+            setupSut.AddLetterAt('F', 2, 0);
+            setupSut.AddLetterAt('N', 3, 0);
+            setupSut.AddLetterAt('N', 0, 1);
+            setupSut.AddLetterAt('R', 1, 1);
+            setupSut.AddLetterAt('E', 2, 1);
+            setupSut.AddLetterAt('K', 3, 1);
+            setupSut.AddLetterAt('R', 0, 2);
+            setupSut.AddLetterAt('A', 1, 2);
+            setupSut.AddLetterAt('I', 2, 2);
+            setupSut.AddLetterAt('H', 3, 2);
+            setupSut.AddLetterAt('K', 0, 3);
+            setupSut.AddLetterAt('D', 1, 3);
+            setupSut.AddLetterAt('H', 2, 3);
+            setupSut.AddLetterAt('K', 3, 3);
+
+            return setupSut;
+        }
+
+        private List<Vector2> KIRKUpLeftLocations()
+        {
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(3, 3));
+            kirkLocation.Add(new Vector2(2, 2));
+            kirkLocation.Add(new Vector2(1, 1));
+            kirkLocation.Add(new Vector2(0, 0));
 
             return kirkLocation;
         }
