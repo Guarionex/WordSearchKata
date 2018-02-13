@@ -23,9 +23,11 @@ namespace PuzzleSolverUnitTest
         public void init()
         {
             sut = new PuzzleFileParser();
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+            Directory.SetCurrentDirectory(@"../../../TestPuzzles/");
+            testPuzzlePath = Directory.GetCurrentDirectory() + "\\";
 
             validPuzzleFileName = "Valid4x4.txt";
-            testPuzzlePath = @"C:\Users\chesp\source\repos\WordSearchKata\TestPuzzles\";
         }
 
         [Test]
