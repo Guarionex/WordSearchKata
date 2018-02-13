@@ -7,11 +7,35 @@ It then searches for all the words in eight directions, horizontal, vertical, di
 
 Github's official .gitignore for Visual Studios was used.
 
+# Build
+There is a Makefile provided to build and test the solution.
+
+## Windows
+To use the Makefile in Windows, you must have Visual Studios installed. Load up the Developer Command Prompt for VS.
+Navigate to the folder where the solution folder that contains the Makefile. The following commands are available from the Makefile:
+
+|Command|Action performed|
+|-------|----------------|
+|nmake -f Makefile| Builds production project and unit test project|
+|nmake -f Makefile all| Builds production project and unit test project|
+|nmake -f Makefile build-test| Builds all and runs the unit test|
+
+## OSX and Linux
+Open a console and navigate to the project folder where Makefile is located. The following commands are available from Makefile:
+
+|Command|Action performed|
+|-------|----------------|
+|Makefile| Builds production project and unit test project|
+|Makefile all| Builds production project and unit test project|
+|Makefile build-test| Builds all and runs the unit test|
+
 # Input
 Program name is a command line program called PuzzleSolverProject.exe. It takes in a single input, which is a text file.
 
 ## Usage
-PuzzleSolverProject.exe [filePath+fileName]
+With the production project build through Makefile, in the console or command prompt, navigate to the Executables folder. Run the following command:
+
+PuzzleSolverProject [filePath+fileName]
 
 ## Example Input File
 ```
