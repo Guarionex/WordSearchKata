@@ -5,12 +5,10 @@ build-test: clean-build test
 clean-build : cleanup restore build
  
 cleanup:
-	dotnet clean PuzzleSolverProject/PuzzleSolverProject.csproj
-	dotnet clean PuzzleSolverUnitTest/PuzzleSolverUnitTest.csproj
+	dotnet clean WordSearchKata.sln
  
 restore:
-	dotnet restore PuzzleSolverProject/PuzzleSolverProject.csproj
-	dotnet restore PuzzleSolverUnitTest/PuzzleSolverUnitTest.csproj
+	nuget restore WordSearchKata.sln
  
 build:
 	dotnet build PuzzleSolverProject/PuzzleSolverProject.csproj -o ../Executables
