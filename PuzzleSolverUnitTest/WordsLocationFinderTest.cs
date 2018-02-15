@@ -280,14 +280,6 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
-        public void Given4x4WordPuzzleWithWordsWhenCallingIsValidThenIsValidThrowsNoException(WordSearchPuzzle puzzle)
-        {
-            sut = new WordsLocationFinder(puzzle);
-
-            sut.GetWordsLocation();
-        }
-
-        [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
         public void GivenValid4x4WordPuzzleWithWordsWhenCallingIsValidThenIsValidReturnsTrue(WordSearchPuzzle puzzle)
         {
             sut = new WordsLocationFinder(puzzle);
