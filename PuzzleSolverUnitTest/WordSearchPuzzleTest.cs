@@ -158,21 +158,5 @@ namespace PuzzleSolverUnitTest
             
             Assert.AreEqual(expected, result);
         }
-
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4LettersWithKIRKInSecondRowWhenPassingListOfVector2ForSecondRowToGetStringFromLocationListThenGetStringFromLocationListReturnsKIRK(WordSearchPuzzle setupSUT)
-        {
-            sut = setupSUT;
-            List<Vector2> firstRow = new List<Vector2>();
-            firstRow.Add(new Vector2(0, 1));
-            firstRow.Add(new Vector2(1, 1));
-            firstRow.Add(new Vector2(2, 1));
-            firstRow.Add(new Vector2(3, 1));
-
-            String result = sut.GetStringFromLocationList(firstRow);
-            String expected = "KIRK";
-
-            Assert.AreEqual(expected, result);
-        }
     }
 }
