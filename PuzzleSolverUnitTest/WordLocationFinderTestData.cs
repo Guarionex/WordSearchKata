@@ -65,6 +65,38 @@ namespace PuzzleSolverUnitTest
             }
         }
 
+        public static IEnumerable TwoWordsUpTestCase
+        {
+            get
+            {
+                WordSearchPuzzle setupSUT = new WordSearchPuzzle();
+                setupSUT.AddWord("KIRK");
+                setupSUT.AddLetterAt('K', 0, 0);
+                setupSUT.AddLetterAt('E', 1, 0);
+                setupSUT.AddLetterAt('F', 2, 0);
+                setupSUT.AddLetterAt('N', 3, 0);
+                setupSUT.AddLetterAt('R', 0, 1);
+                setupSUT.AddLetterAt('R', 1, 1);
+                setupSUT.AddLetterAt('J', 2, 1);
+                setupSUT.AddLetterAt('A', 3, 1);
+                setupSUT.AddLetterAt('I', 0, 2);
+                setupSUT.AddLetterAt('L', 1, 2);
+                setupSUT.AddLetterAt('X', 2, 2);
+                setupSUT.AddLetterAt('H', 3, 2);
+                setupSUT.AddLetterAt('K', 0, 3);
+                setupSUT.AddLetterAt('D', 1, 3);
+                setupSUT.AddLetterAt('J', 2, 3);
+                setupSUT.AddLetterAt('K', 3, 3);
+
+                WordLocationFinderTestData testData = new WordLocationFinderTestData();
+                List<Vector2> kirkLocation = testData.KIRKUpInFirstColumnLocations();
+                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+                expected.Add("KIRK", kirkLocation);
+
+                yield return new TestCaseData(setupSUT, expected);
+            }
+        }
+
         private WordSearchPuzzle KIRKUpInFirstColumnPuzzle()
         {
             WordSearchPuzzle puzzle = new WordSearchPuzzle();
