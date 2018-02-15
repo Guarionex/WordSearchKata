@@ -13,6 +13,7 @@ namespace PuzzleSolverUnitTest
     public class WordsLocationFinderTest
     {
         private const String ValidOneWordPuzzleTestCase = nameof(WordLocationFinderTestData.ValidOneWordPuzzleTestCase);
+        private const String PuzzleWithNoWordsAddedTestCase = nameof(WordLocationFinderTestData.PuzzleWithNoWordsAddedTestCase);
 
         private WordsLocationFinder sut;
 
@@ -27,6 +28,15 @@ namespace PuzzleSolverUnitTest
         {
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
             Assert.IsInstanceOf(typeof(Dictionary<String, List<Vector2>>), result);
+        }
+
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void Given4x4WordPuzzleWithWordNotInPuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsThrowsNoException(WordSearchPuzzle puzzle)
+        {
+            puzzle.AddWord("UHURA");
+
+            sut.GetWordsLocation(puzzle);
         }
     }
 }
