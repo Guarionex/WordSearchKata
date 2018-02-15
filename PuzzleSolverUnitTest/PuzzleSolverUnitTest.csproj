@@ -44,7 +44,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuzzleFileParserTest.cs" />
     <Compile Include="PuzzleFileParserTestData.cs" />
-    <Compile Include="WordSearchPuzzleTestData.cs" />
     <Compile Include="WordsMapDecoratorTest.cs" />
     <Compile Include="WordLocationFinderTestData.cs" />
     <Compile Include="WordSearchPuzzleTest.cs" />

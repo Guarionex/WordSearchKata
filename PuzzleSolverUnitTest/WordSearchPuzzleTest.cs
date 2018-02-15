@@ -11,9 +11,7 @@ namespace PuzzleSolverUnitTest
 {
     [TestFixture]
     public class WordSearchPuzzleTest
-    {
-        private const String PuzzleWithNoWordsAddedTestCase = nameof(WordSearchPuzzleTestData.PuzzleWithNoWordsAddedTestCase);
-
+    {        
         private WordSearchPuzzle sut;
 
         [SetUp]
@@ -94,14 +92,6 @@ namespace PuzzleSolverUnitTest
             expected.Add(new Vector2(0, 0), 'P');
 
             Assert.AreEqual(expected, result);
-        }
-
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4LettersWhenPassingKToFindAllLocationsOfLetterThenFinallAllLocationsOfLetterDoesntReturnNull(WordSearchPuzzle setupSUT)
-        {
-            sut = setupSUT;
-
-            sut.GetAllLocationsOfLetter('K');
         }
     }
 }
