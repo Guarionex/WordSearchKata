@@ -40,6 +40,28 @@ namespace PuzzleSolverUnitTest
             }
         }
 
+        public static IEnumerable ValidThreeWordWordsMapTestCase
+        {
+            get
+            {
+                WordsMapDecoratorTestData testData = new WordsMapDecoratorTestData();
+                List<Vector2> kirkLocation = testData.KIRKUpInSecondRowLocations();
+                List<Vector2> khanLocation = testData.KHANDownInFourthRowLocations();
+                List<Vector2> suluLocation = new List<Vector2>();
+                suluLocation.Add(new Vector2(0, 0));
+                suluLocation.Add(new Vector2(1, 0));
+                suluLocation.Add(new Vector2(2, 0));
+                suluLocation.Add(new Vector2(3, 0));
+
+                Dictionary<String, List<Vector2>> wordsMap = new Dictionary<String, List<Vector2>>();
+                wordsMap.Add("KIRK", kirkLocation);
+                wordsMap.Add("KHAN", khanLocation);
+                wordsMap.Add("SULU", suluLocation);
+
+                yield return new TestCaseData(wordsMap);
+            }
+        }
+
         private List<Vector2> KIRKUpInSecondRowLocations()
         {
             List<Vector2> kirkLocation = new List<Vector2>();

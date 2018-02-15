@@ -14,6 +14,7 @@ namespace PuzzleSolverUnitTest
     {
         private const String ValidOneWordWordsMapTestCase = nameof(WordsMapDecoratorTestData.ValidOneWordWordsMapTestCase);
         private const String ValidTwoWordWordsMapTestCase = nameof(WordsMapDecoratorTestData.ValidTwoWordWordsMapTestCase);
+        private const String ValidThreeWordWordsMapTestCase = nameof(WordsMapDecoratorTestData.ValidThreeWordWordsMapTestCase);
 
         private WordsMapDecorator sut;
 
@@ -65,7 +66,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordsMapDecoratorTestData), ValidOneWordWordsMapTestCase)]
-        public void Given4x4WordPuzzleWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(Dictionary<String, List<Vector2>> wordsMap)
+        public void GivenValidOneWordWordsMapDictionaryWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(Dictionary<String, List<Vector2>> wordsMap)
         {
             sut = new WordsMapDecorator(wordsMap);
 
@@ -76,13 +77,38 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordsMapDecoratorTestData), ValidTwoWordWordsMapTestCase)]
-        public void Given4x4WordPuzzleWith3WordsWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(Dictionary<String, List<Vector2>> wordsMap)
+        public void GivenValidTwoWordWordsMapDictionaryWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(Dictionary<String, List<Vector2>> wordsMap)
         {
             sut = new WordsMapDecorator(wordsMap);
 
             String result = sut.ToString();
             String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
             expected += "KHAN: (0,3),(1,3),(2,3),(3,3)";
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test, TestCaseSource(typeof(WordsMapDecoratorTestData), ValidThreeWordWordsMapTestCase)]
+        public void GivenValidThreeWordWordsMapDictionaryWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(Dictionary<String, List<Vector2>> wordsMap)
+        {
+            sut = new WordsMapDecorator(wordsMap);
+
+            String result = sut.ToString();
+            String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
+            expected += "KHAN: (0,3),(1,3),(2,3),(3,3)\n";
+            expected += "SULU: (0,0),(1,0),(2,0),(3,0)";
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void GivenEmptyWordsMapDictionaryWhenCallingToStringThenToStringReturnsAnEmptyString()
+        {
+            Dictionary<String, List<Vector2>> wordsMap = new Dictionary<string, List<Vector2>>();
+            sut = new WordsMapDecorator(wordsMap);
+
+            String result = sut.ToString();
+            String expected = "";
 
             Assert.AreEqual(expected, result);
         }
