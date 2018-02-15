@@ -38,7 +38,7 @@ namespace PuzzleSolverProject
 
         public String GetStringFromLocationList(List<Vector2> locations)
         {
-            throw new NotImplementedException();
+            return "";
         }
     }
 }
