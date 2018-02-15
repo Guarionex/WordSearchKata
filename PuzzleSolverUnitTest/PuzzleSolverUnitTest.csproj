@@ -46,7 +46,6 @@
     <Compile Include="PuzzleFileParserTestData.cs" />
     <Compile Include="WordLocationFinderTestData.cs" />
     <Compile Include="WordSearchPuzzleTest.cs" />
-    <Compile Include="WordSearchPuzzleTestData.cs" />
     <Compile Include="WordsLocationFinderTest.cs" />
   </ItemGroup>
   <ItemGroup>
