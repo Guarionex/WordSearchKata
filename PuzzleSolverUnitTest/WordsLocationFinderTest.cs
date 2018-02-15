@@ -240,5 +240,20 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownRightWordTestCase)]
+        public void Given4x4WordWithTwoDownRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        {
+            puzzle.AddWord("HAN");
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+
+            List<Vector2> hanLocation = new List<Vector2>();
+            hanLocation.Add(new Vector2(0, 1));
+            hanLocation.Add(new Vector2(1, 2));
+            hanLocation.Add(new Vector2(2, 3));
+            expected.Add("HAN", hanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
