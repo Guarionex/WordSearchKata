@@ -107,18 +107,5 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
-
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), ValidOneWordPuzzleTestCase)]
-        public void Given4x4WordPuzzleWithAWordMissingWhenCallingToStringThenToStringReturnsAnEmptyString(WordSearchPuzzle setupSUT)
-        {
-            sut = setupSUT;
-            sut.AddWord("KHAN");
-            sut.AddWord("SULU");
-
-            String result = sut.ToString();
-            String expected = "";
-
-            Assert.AreEqual(expected, result);
-        }
     }
 }

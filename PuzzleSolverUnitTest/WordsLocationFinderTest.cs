@@ -371,5 +371,18 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
+        public void Given4x4WordPuzzleWithAWordMissingWhenCallingToStringThenToStringReturnsAnEmptyString(WordSearchPuzzle puzzle)
+        {
+            puzzle.AddWord("KHAN");
+            puzzle.AddWord("SULU");
+
+            sut = new WordsLocationFinder(puzzle);
+            String result = sut.ToString();
+            String expected = "";
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
