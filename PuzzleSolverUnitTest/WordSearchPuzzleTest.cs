@@ -109,17 +109,6 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWhenCallingToStringThenToStringReturnsAString(WordSearchPuzzle setupSUT)
-        {
-            sut = setupSUT;
-            sut.AddWord("KIRK");
-            sut.AddWord("KHAN");
-
-            String result = sut.ToString();
-            Assert.IsInstanceOf(typeof(String), result);
-        }
-
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
         public void Given4x4WordPuzzleWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;

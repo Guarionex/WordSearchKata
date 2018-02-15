@@ -331,5 +331,15 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void Given4x4WordPuzzleWhenCallingToStringThenToStringReturnsAString(WordSearchPuzzle puzzle)
+        {
+            puzzle.AddWord("KIRK");
+            puzzle.AddWord("KHAN");
+
+            String result = sut.ToString();
+            Assert.IsInstanceOf(typeof(String), result);
+        }
     }
 }
