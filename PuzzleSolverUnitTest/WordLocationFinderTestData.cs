@@ -24,26 +24,26 @@ namespace PuzzleSolverUnitTest
 
         private WordSearchPuzzle KIRKUpInFirstColumnPuzzle()
         {
-            WordSearchPuzzle setupSUT = new WordSearchPuzzle();
-            setupSUT.AddWord("KIRK");
-            setupSUT.AddLetterAt('K', 0, 0);
-            setupSUT.AddLetterAt('E', 1, 0);
-            setupSUT.AddLetterAt('F', 2, 0);
-            setupSUT.AddLetterAt('N', 3, 0);
-            setupSUT.AddLetterAt('R', 0, 1);
-            setupSUT.AddLetterAt('R', 1, 1);
-            setupSUT.AddLetterAt('J', 2, 1);
-            setupSUT.AddLetterAt('A', 3, 1);
-            setupSUT.AddLetterAt('I', 0, 2);
-            setupSUT.AddLetterAt('L', 1, 2);
-            setupSUT.AddLetterAt('I', 2, 2);
-            setupSUT.AddLetterAt('H', 3, 2);
-            setupSUT.AddLetterAt('K', 0, 3);
-            setupSUT.AddLetterAt('D', 1, 3);
-            setupSUT.AddLetterAt('J', 2, 3);
-            setupSUT.AddLetterAt('M', 3, 3);
+            WordSearchPuzzle puzzle = new WordSearchPuzzle();
+            puzzle.AddWord("KIRK");
+            puzzle.AddLetterAt('K', 0, 0);
+            puzzle.AddLetterAt('E', 1, 0);
+            puzzle.AddLetterAt('F', 2, 0);
+            puzzle.AddLetterAt('N', 3, 0);
+            puzzle.AddLetterAt('R', 0, 1);
+            puzzle.AddLetterAt('R', 1, 1);
+            puzzle.AddLetterAt('J', 2, 1);
+            puzzle.AddLetterAt('A', 3, 1);
+            puzzle.AddLetterAt('I', 0, 2);
+            puzzle.AddLetterAt('L', 1, 2);
+            puzzle.AddLetterAt('I', 2, 2);
+            puzzle.AddLetterAt('H', 3, 2);
+            puzzle.AddLetterAt('K', 0, 3);
+            puzzle.AddLetterAt('D', 1, 3);
+            puzzle.AddLetterAt('J', 2, 3);
+            puzzle.AddLetterAt('M', 3, 3);
 
-            return setupSUT;
+            return puzzle;
         }
     }
 }
