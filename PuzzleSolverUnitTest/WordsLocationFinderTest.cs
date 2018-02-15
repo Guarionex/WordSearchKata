@@ -332,7 +332,7 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
         public void Given4x4WordPuzzleWhenCallingToStringThenToStringReturnsAString(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("KIRK");
@@ -340,6 +340,19 @@ namespace PuzzleSolverUnitTest
 
             String result = sut.ToString();
             Assert.IsInstanceOf(typeof(String), result);
+        }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void Given4x4WordPuzzleWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(WordSearchPuzzle puzzle)
+        {
+            puzzle.AddWord("KIRK");
+            puzzle.AddWord("KHAN");
+
+            String result = sut.ToString();
+            String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
+            expected += "KHAN: (0,3),(1,3),(2,3),(3,3)";
+
+            Assert.AreEqual(expected, result);
         }
     }
 }
