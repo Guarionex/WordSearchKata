@@ -10,16 +10,42 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolverUnitTest
 {
-    class WordSearchPuzzleTestData
+    class WordLocationFinderTestData
     {
         public static IEnumerable ValidOneWordPuzzleTestCase
         {
             get
             {
-                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordLocationFinderTestData testData = new WordLocationFinderTestData();
                 WordSearchPuzzle setupSUT = testData.KIRKUpInFirstColumnPuzzle();
 
                 yield return new TestCaseData(setupSUT);
+            }
+        }
+
+        public static IEnumerable PuzzleWithNoWordsAddedTestCase
+        {
+            get
+            {
+                WordSearchPuzzle puzzle = new WordSearchPuzzle();
+                puzzle.AddLetterAt('S', 0, 0);
+                puzzle.AddLetterAt('U', 1, 0);
+                puzzle.AddLetterAt('L', 2, 0);
+                puzzle.AddLetterAt('U', 3, 0);
+                puzzle.AddLetterAt('K', 0, 1);
+                puzzle.AddLetterAt('I', 1, 1);
+                puzzle.AddLetterAt('R', 2, 1);
+                puzzle.AddLetterAt('K', 3, 1);
+                puzzle.AddLetterAt('R', 0, 2);
+                puzzle.AddLetterAt('L', 1, 2);
+                puzzle.AddLetterAt('I', 2, 2);
+                puzzle.AddLetterAt('H', 3, 2);
+                puzzle.AddLetterAt('K', 0, 3);
+                puzzle.AddLetterAt('H', 1, 3);
+                puzzle.AddLetterAt('A', 2, 3);
+                puzzle.AddLetterAt('N', 3, 3);
+
+                yield return new TestCaseData(puzzle);
             }
         }
 
@@ -27,7 +53,7 @@ namespace PuzzleSolverUnitTest
         {
             get
             {
-                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordLocationFinderTestData testData = new WordLocationFinderTestData();
 
                 WordSearchPuzzle setupSUT = testData.KIRKUpInFirstColumnPuzzle();
 
@@ -62,7 +88,7 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('J', 2, 3);
                 setupSUT.AddLetterAt('K', 3, 3);
 
-                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordLocationFinderTestData testData = new WordLocationFinderTestData();
                 List<Vector2> kirkLocation = testData.KIRKUpInFirstColumnLocations();
                 Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
                 expected.Add("KIRK", kirkLocation);
@@ -94,7 +120,7 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('J', 2, 3);
                 setupSUT.AddLetterAt('N', 3, 3);
 
-                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordLocationFinderTestData testData = new WordLocationFinderTestData();
                 List<Vector2> kirkLocation = testData.KIRKDownInFirstColumnLocations();
                 Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
                 expected.Add("KIRK", kirkLocation);
@@ -127,7 +153,7 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('J', 2, 3);
                 setupSUT.AddLetterAt('K', 3, 3);
 
-                WordSearchPuzzleTestData testData = new WordSearchPuzzleTestData();
+                WordLocationFinderTestData testData = new WordLocationFinderTestData();
                 List<Vector2> kirkLocation = testData.KIRKDownInFirstColumnLocations();
 
                 List<Vector2> khanLocation = new List<Vector2>();
@@ -166,7 +192,7 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('A', 1, 3);
                 setupSUT.AddLetterAt('H', 2, 3);
                 setupSUT.AddLetterAt('K', 3, 3);
-                
+
                 List<Vector2> kirkLocation = new List<Vector2>();
                 kirkLocation.Add(new Vector2(3, 1));
                 kirkLocation.Add(new Vector2(2, 1));
@@ -183,7 +209,7 @@ namespace PuzzleSolverUnitTest
         {
             get
             {
-                
+
                 WordSearchPuzzle setupSUT = new WordSearchPuzzle();
                 setupSUT.AddWord("KIRK");
                 setupSUT.AddLetterAt('K', 0, 0);
@@ -202,7 +228,7 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('H', 1, 3);
                 setupSUT.AddLetterAt('A', 2, 3);
                 setupSUT.AddLetterAt('N', 3, 3);
-                
+
                 List<Vector2> kirkLocation = new List<Vector2>();
                 kirkLocation.Add(new Vector2(0, 1));
                 kirkLocation.Add(new Vector2(1, 1));
@@ -237,7 +263,7 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('D', 1, 3);
                 setupSUT.AddLetterAt('H', 2, 3);
                 setupSUT.AddLetterAt('K', 3, 3);
-                
+
                 List<Vector2> kirkLocation = new List<Vector2>();
                 kirkLocation.Add(new Vector2(3, 3));
                 kirkLocation.Add(new Vector2(2, 2));
@@ -319,12 +345,12 @@ namespace PuzzleSolverUnitTest
                 yield return new TestCaseData(setupSUT, expected);
             }
         }
-        
+
         public static IEnumerable DownRightWordTestCase
         {
             get
             {
-                
+
                 WordSearchPuzzle setupSUT = new WordSearchPuzzle();
                 setupSUT.AddWord("KIRK");
                 setupSUT.AddLetterAt('K', 0, 0);
@@ -343,7 +369,7 @@ namespace PuzzleSolverUnitTest
                 setupSUT.AddLetterAt('D', 1, 3);
                 setupSUT.AddLetterAt('N', 2, 3);
                 setupSUT.AddLetterAt('K', 3, 3);
-                                
+
                 List<Vector2> kirkLocation = new List<Vector2>();
                 kirkLocation.Add(new Vector2(0, 0));
                 kirkLocation.Add(new Vector2(1, 1));
@@ -383,54 +409,28 @@ namespace PuzzleSolverUnitTest
             }
         }
 
-        public static IEnumerable PuzzleWithNoWordsAddedTestCase
-        {
-            get
-            {
-                WordSearchPuzzle setupSUT = new WordSearchPuzzle();
-                setupSUT.AddLetterAt('S', 0, 0);
-                setupSUT.AddLetterAt('U', 1, 0);
-                setupSUT.AddLetterAt('L', 2, 0);
-                setupSUT.AddLetterAt('U', 3, 0);
-                setupSUT.AddLetterAt('K', 0, 1);
-                setupSUT.AddLetterAt('I', 1, 1);
-                setupSUT.AddLetterAt('R', 2, 1);
-                setupSUT.AddLetterAt('K', 3, 1);
-                setupSUT.AddLetterAt('R', 0, 2);
-                setupSUT.AddLetterAt('L', 1, 2);
-                setupSUT.AddLetterAt('I', 2, 2);
-                setupSUT.AddLetterAt('H', 3, 2);
-                setupSUT.AddLetterAt('K', 0, 3);
-                setupSUT.AddLetterAt('H', 1, 3);
-                setupSUT.AddLetterAt('A', 2, 3);
-                setupSUT.AddLetterAt('N', 3, 3);
-
-                yield return new TestCaseData(setupSUT);
-            }
-        }
-
         private WordSearchPuzzle KIRKUpInFirstColumnPuzzle()
         {
-            WordSearchPuzzle setupSUT = new WordSearchPuzzle();
-            setupSUT.AddWord("KIRK");
-            setupSUT.AddLetterAt('K', 0, 0);
-            setupSUT.AddLetterAt('E', 1, 0);
-            setupSUT.AddLetterAt('F', 2, 0);
-            setupSUT.AddLetterAt('N', 3, 0);
-            setupSUT.AddLetterAt('R', 0, 1);
-            setupSUT.AddLetterAt('R', 1, 1);
-            setupSUT.AddLetterAt('J', 2, 1);
-            setupSUT.AddLetterAt('A', 3, 1);
-            setupSUT.AddLetterAt('I', 0, 2);
-            setupSUT.AddLetterAt('L', 1, 2);
-            setupSUT.AddLetterAt('I', 2, 2);
-            setupSUT.AddLetterAt('H', 3, 2);
-            setupSUT.AddLetterAt('K', 0, 3);
-            setupSUT.AddLetterAt('D', 1, 3);
-            setupSUT.AddLetterAt('J', 2, 3);
-            setupSUT.AddLetterAt('M', 3, 3);
+            WordSearchPuzzle puzzle = new WordSearchPuzzle();
+            puzzle.AddWord("KIRK");
+            puzzle.AddLetterAt('K', 0, 0);
+            puzzle.AddLetterAt('E', 1, 0);
+            puzzle.AddLetterAt('F', 2, 0);
+            puzzle.AddLetterAt('N', 3, 0);
+            puzzle.AddLetterAt('R', 0, 1);
+            puzzle.AddLetterAt('R', 1, 1);
+            puzzle.AddLetterAt('J', 2, 1);
+            puzzle.AddLetterAt('A', 3, 1);
+            puzzle.AddLetterAt('I', 0, 2);
+            puzzle.AddLetterAt('L', 1, 2);
+            puzzle.AddLetterAt('I', 2, 2);
+            puzzle.AddLetterAt('H', 3, 2);
+            puzzle.AddLetterAt('K', 0, 3);
+            puzzle.AddLetterAt('D', 1, 3);
+            puzzle.AddLetterAt('J', 2, 3);
+            puzzle.AddLetterAt('M', 3, 3);
 
-            return setupSUT;
+            return puzzle;
         }
 
         private List<Vector2> KIRKUpInFirstColumnLocations()

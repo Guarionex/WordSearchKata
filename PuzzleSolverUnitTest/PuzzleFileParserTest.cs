@@ -47,7 +47,8 @@ namespace PuzzleSolverUnitTest
         public void GivenAValidStringFileNameContainingAValidWordPuzzleWhenPassedIntoParseFileToWordSearchPuzzleThenResultingWordSearchPuzzleGetWordsListHasTheSolution(Dictionary<String, List<Vector2>> expected)
         {
             WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "Example15x15.txt");
-            Dictionary<String, List<Vector2>> result = puzzle.GetWordsLocation();
+            WordsLocationFinder wordsFinder = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = wordsFinder.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
@@ -56,7 +57,8 @@ namespace PuzzleSolverUnitTest
         public void GivenAValidStringFileNameContaingAPuzzleWithOneWordWhenPassedToParseFileToWordSearchPuzzleThenResultingWordSearchPuzzleGetWordsLocationHasTheSolution()
         {
             WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "oneWord4x4.txt");
-            Dictionary<String, List<Vector2>> result = puzzle.GetWordsLocation();
+            WordsLocationFinder wordsFinder = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = wordsFinder.GetWordsLocation();
 
             List<Vector2> kirkLocation = new List<Vector2>();
             kirkLocation.Add(new Vector2(3, 0));
