@@ -72,6 +72,7 @@
     <Compile Include="GetNeighbors\UpGetNeighborsFrom.cs" />
     <Compile Include="GetNeighbors\UpLeftGetNeighborsFrom.cs" />
     <Compile Include="GetNeighbors\UpRightGetNeighborsFrom.cs" />
+    <Compile Include="WordsMapDecorator.cs" />
     <Compile Include="WordSeachAlgorithm.cs" />
     <Compile Include="WordSearchPuzzle.cs" />
     <Compile Include="WordsLocationFinder.cs" />

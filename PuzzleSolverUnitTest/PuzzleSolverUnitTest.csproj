@@ -44,9 +44,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuzzleFileParserTest.cs" />
     <Compile Include="PuzzleFileParserTestData.cs" />
+    <Compile Include="WordsMapDecoratorTest.cs" />
     <Compile Include="WordLocationFinderTestData.cs" />
     <Compile Include="WordSearchPuzzleTest.cs" />
     <Compile Include="WordsLocationFinderTest.cs" />
+    <Compile Include="WordsMapDecoratorTestData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PuzzleSolverProject\PuzzleSolverProject.csproj">
