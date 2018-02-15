@@ -284,7 +284,7 @@ namespace PuzzleSolverUnitTest
         {
             sut = new WordsLocationFinder(puzzle);
 
-            sut.IsValid();
+            sut.GetWordsLocation();
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
@@ -292,9 +292,9 @@ namespace PuzzleSolverUnitTest
         {
             sut = new WordsLocationFinder(puzzle);
 
-            bool result = sut.IsValid();
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
-            Assert.IsTrue(result);
+            Assert.IsNotEmpty(result);
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
@@ -304,9 +304,9 @@ namespace PuzzleSolverUnitTest
 
             sut = new WordsLocationFinder(puzzle);
 
-            bool result = sut.IsValid();
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
-            Assert.IsFalse(result);
+            Assert.IsEmpty(result);
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithWordTwiceTestCase)]
@@ -314,9 +314,9 @@ namespace PuzzleSolverUnitTest
         {
             sut = new WordsLocationFinder(puzzle);
 
-            bool result = sut.IsValid();
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
-            Assert.IsFalse(result);
+            Assert.IsEmpty(result);
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
@@ -326,9 +326,9 @@ namespace PuzzleSolverUnitTest
 
             sut = new WordsLocationFinder(puzzle);
 
-            bool result = sut.IsValid();
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
-            Assert.IsFalse(result);
+            Assert.IsEmpty(result);
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
@@ -337,11 +337,11 @@ namespace PuzzleSolverUnitTest
             puzzle.AddWord("UHURA");
 
             sut = new WordsLocationFinder(puzzle);
-            sut.IsValid();
+            sut.GetWordsLocation();
 
-            bool result = sut.IsValid();
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
-            Assert.IsFalse(result);
+            Assert.IsEmpty(result);
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
@@ -349,28 +349,28 @@ namespace PuzzleSolverUnitTest
         {
             sut = new WordsLocationFinder(puzzle);
 
-            bool result = sut.IsValid();
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
-            Assert.IsFalse(result);
+            Assert.IsEmpty(result);
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
         public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidAddingAWordThenCallingIsValidAgainReturnsTrue(WordSearchPuzzle puzzle)
         {
             sut = new WordsLocationFinder(puzzle);
-            sut.IsValid();
+            sut.GetWordsLocation();
             puzzle.AddWord("KIRK");
 
-            bool result = sut.IsValid();
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
-            Assert.IsTrue(result);
+            Assert.IsNotEmpty(result);
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownRightWordTestCase)]
         public void GivenValid4x4WordPuzzleWhenCallingIsValidThenGetWordsLocationReturnsAllWordsLocations(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             sut = new WordsLocationFinder(puzzle);
-            sut.IsValid();
+            sut.GetWordsLocation();
 
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
