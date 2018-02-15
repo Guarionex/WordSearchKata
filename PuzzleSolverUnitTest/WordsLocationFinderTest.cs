@@ -280,7 +280,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
-        public void GivenValid4x4WordPuzzleWithWordsWhenCallingIsValidThenIsValidReturnsTrue(WordSearchPuzzle puzzle)
+        public void GivenValid4x4WordPuzzleWithWordsWhenCallingGetWordsLocationThenGetWordsLocationReturnsDictionaryWithElements(WordSearchPuzzle puzzle)
         {
             sut = new WordsLocationFinder(puzzle);
 
@@ -290,7 +290,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWithMissingWordWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithMissingWordWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("UHURA");
 
@@ -302,7 +302,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithWordTwiceTestCase)]
-        public void Given4x4WordPuzzleWithWordTwiceWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithWordTwiceWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             sut = new WordsLocationFinder(puzzle);
 
@@ -312,7 +312,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
-        public void Given4x4WordPuzzleWithWordAddedTwiceWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithWordAddedTwiceWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("KIRK");
 
@@ -324,7 +324,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void GivenInvalid4x4WordPuzzleWhenCallingIsValidTwiceThenSecondIsValidReturnsFalse(WordSearchPuzzle puzzle)
+        public void GivenInvalid4x4WordPuzzleWhenCallingGetWordsLocationTwiceThenSecondGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("UHURA");
 
@@ -337,7 +337,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithoutWordsWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             sut = new WordsLocationFinder(puzzle);
 
@@ -347,7 +347,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidAddingAWordThenCallingIsValidAgainReturnsTrue(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithoutWordsWhenCallingGetWordsLocationAddingAWordThenCallingGetWordsLocationAgainReturnsDictionaryWithElements(WordSearchPuzzle puzzle)
         {
             sut = new WordsLocationFinder(puzzle);
             sut.GetWordsLocation();
@@ -359,7 +359,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownRightWordTestCase)]
-        public void GivenValid4x4WordPuzzleWhenCallingIsValidThenGetWordsLocationReturnsAllWordsLocations(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void GivenValid4x4WordPuzzleWhenCallingGetWordsLocationThenGetWordsLocationReturnsAllWordsLocations(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             sut = new WordsLocationFinder(puzzle);
             sut.GetWordsLocation();
