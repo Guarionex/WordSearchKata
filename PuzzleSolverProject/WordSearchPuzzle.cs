@@ -11,7 +11,6 @@ namespace PuzzleSolverProject
     {
         public List<String> WordsList { get; }
         public Dictionary<Vector2, Char> LettersMap { get;}
-        private bool isChanged;
         private Dictionary<String, List<Vector2>> wordMap;
 
         public WordSearchPuzzle()
@@ -32,20 +31,6 @@ namespace PuzzleSolverProject
         {
             LettersMap.Add(new Vector2(x, y), letter);
             isChanged = true;
-        }
-
-        private void FindAllWordLocations()
-        {
-            
-            if (isChanged)
-            {
-                wordMap.Clear();
-
-                WordSeachAlgorithm algorithm = new WordSeachAlgorithm(LettersMap);
-                wordMap = algorithm.SearchEachWord(WordsList);
-                
-                isChanged = false;
-            }
         }
     }
 }
