@@ -101,7 +101,9 @@ namespace PuzzleSolverUnitTest
         {
             sut = setupSUT;
 
-            sut.GetAllLocationsOfLetter('K');
+            List<Vector2> result = sut.GetAllLocationsOfLetter('K');
+
+            Assert.IsNotNull(result);
         }
     }
 }
