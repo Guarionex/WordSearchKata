@@ -18,7 +18,7 @@ namespace PuzzleSolverProject
 
         public bool IsValid()
         {
-            return false;
+            return true;
         }
     }
 }
