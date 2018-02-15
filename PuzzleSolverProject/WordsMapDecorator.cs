@@ -9,11 +9,11 @@ namespace PuzzleSolverProject
 {
     public class WordsMapDecorator : Dictionary<String, List<Vector2>>
     {
-        private WordsLocationFinder wordsFinder;
+        private Dictionary<String, List<Vector2>> wordsMap;
 
-        public WordsMapDecorator(WordsLocationFinder wordsLocationFinder)
+        public WordsMapDecorator(Dictionary<String, List<Vector2>> wordsMap)
         {
-            this.wordsFinder = wordsLocationFinder;
+            this.wordsMap = wordsMap;
         }
     }
 }

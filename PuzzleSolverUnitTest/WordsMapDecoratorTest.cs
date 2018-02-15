@@ -3,6 +3,7 @@ using PuzzleSolverProject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,13 +13,13 @@ namespace PuzzleSolverUnitTest
     public class WordsMapDecoratorTest
     {
         private WordsMapDecorator sut;
-        [Test]
-        public void GivenWordsLocationFinderWhenPassToWordsMapDecoratorConstructorThenThrowNoException()
-        {
-            WordSearchPuzzle puzzle = new WordSearchPuzzle();
-            WordsLocationFinder wordsFinder = new WordsLocationFinder(puzzle);
 
-            sut = new WordsMapDecorator(wordsFinder);
+        [Test]
+        public void GivenWordsMapDictionaryFinderWhenPassToWordsMapDecoratorConstructorThenThrowNoException()
+        {
+            Dictionary<String, List<Vector2>> wordsMap = new Dictionary<string, List<Vector2>>();
+
+            sut = new WordsMapDecorator(wordsMap);
         }
     }
 }
