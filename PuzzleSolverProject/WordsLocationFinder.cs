@@ -16,5 +16,10 @@ namespace PuzzleSolverProject
 
             return wordMap;
         }
+
+        public bool IsValid(WordSearchPuzzle puzzle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
