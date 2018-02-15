@@ -13,6 +13,7 @@ namespace PuzzleSolverUnitTest
     public class WordsMapDecoratorTest
     {
         private const String ValidOneWordWordsMapTestCase = nameof(WordsMapDecoratorTestData.ValidOneWordWordsMapTestCase);
+        private const String ValidTwoWordWordsMapTestCase = nameof(WordsMapDecoratorTestData.ValidTwoWordWordsMapTestCase);
 
         private WordsMapDecorator sut;
 
@@ -70,6 +71,18 @@ namespace PuzzleSolverUnitTest
 
             String result = sut.ToString();
             String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)";
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test, TestCaseSource(typeof(WordsMapDecoratorTestData), ValidTwoWordWordsMapTestCase)]
+        public void Given4x4WordPuzzleWith3WordsWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(Dictionary<String, List<Vector2>> wordsMap)
+        {
+            sut = new WordsMapDecorator(wordsMap);
+
+            String result = sut.ToString();
+            String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
+            expected += "KHAN: (0,3),(1,3),(2,3),(3,3)";
 
             Assert.AreEqual(expected, result);
         }
