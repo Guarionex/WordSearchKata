@@ -29,5 +29,10 @@ namespace PuzzleSolverProject
         {
             LettersMap.Add(new Vector2(x, y), letter);
         }
+
+        public List<Vector2> GetAllLocationsOfLetter(Char v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
