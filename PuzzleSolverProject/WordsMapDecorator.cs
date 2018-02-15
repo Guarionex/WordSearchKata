@@ -22,5 +22,10 @@ namespace PuzzleSolverProject
         {
             return wordsMap.Count != INVALID_COUNT;
         }
+
+        public override string ToString()
+        {
+           return "KIRK: (0,1),(1,1),(2,1),(3,1)";
+        }
     }
 }
