@@ -31,7 +31,7 @@ namespace PuzzleSolverUnitTest
         [SetUp]
         public void init()
         {
-            sut = new WordsLocationFinder();
+            sut = new WordsLocationFinder(new WordSearchPuzzle());
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
@@ -348,6 +348,7 @@ namespace PuzzleSolverUnitTest
             puzzle.AddWord("KIRK");
             puzzle.AddWord("KHAN");
 
+            sut = new WordsLocationFinder(puzzle);
             String result = sut.ToString();
             String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
             expected += "KHAN: (0,3),(1,3),(2,3),(3,3)";
