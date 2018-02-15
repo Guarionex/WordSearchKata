@@ -17,20 +17,17 @@ namespace PuzzleSolverProject
         {
             WordsList = new List<String>();
             LettersMap = new Dictionary<Vector2, Char>();
-            isChanged = false;
             wordMap = new Dictionary<string, List<Vector2>>();
         }
 
         public void AddWord(String word)
         {
             WordsList.Add(word);
-            isChanged = true;
         }
 
         public void AddLetterAt(Char letter, int x, int y)
         {
             LettersMap.Add(new Vector2(x, y), letter);
-            isChanged = true;
         }
     }
 }
