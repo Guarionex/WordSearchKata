@@ -24,6 +24,7 @@ namespace PuzzleSolverUnitTest
         private const String UpRightWordTestCase = nameof(WordLocationFinderTestData.UpRightWordTestCase);
         private const String DownLeftWordTestCase = nameof(WordLocationFinderTestData.DownLeftWordTestCase);
         private const String DownRightWordTestCase = nameof(WordLocationFinderTestData.DownRightWordTestCase);
+        private const String PuzzleWithWordTwiceTestCase = nameof(WordLocationFinderTestData.PuzzleWithWordTwiceTestCase);
 
         private WordsLocationFinder sut;
 
@@ -274,6 +275,13 @@ namespace PuzzleSolverUnitTest
         {
             puzzle.AddWord("UHURA");
 
+            bool result = sut.IsValid(puzzle);
+            Assert.IsFalse(result);
+        }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithWordTwiceTestCase)]
+        public void Given4x4WordPuzzleWithWordTwiceWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle puzzle)
+        {
             bool result = sut.IsValid(puzzle);
             Assert.IsFalse(result);
         }
