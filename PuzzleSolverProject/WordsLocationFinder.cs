@@ -11,7 +11,10 @@ namespace PuzzleSolverProject
     {
         public Dictionary<String, List<Vector2>> GetWordsLocation(WordSearchPuzzle puzzle)
         {
-            throw new NotImplementedException();
+            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(puzzle.LettersMap);
+            Dictionary<String, List<Vector2>>  wordMap = algorithm.SearchEachWord(puzzle.WordsList);
+
+            return wordMap;
         }
     }
 }
