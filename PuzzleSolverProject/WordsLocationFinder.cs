@@ -22,9 +22,9 @@ namespace PuzzleSolverProject
             wsPuzzle = puzzle;
         }
 
-        public Dictionary<String, List<Vector2>> GetWordsLocation(WordSearchPuzzle puzzle)
+        public Dictionary<String, List<Vector2>> GetWordsLocation()
         {
-            return FindAllWordLocations(puzzle);
+            return FindAllWordLocations(wsPuzzle);
         }
 
         public bool IsValid(WordSearchPuzzle puzzle)

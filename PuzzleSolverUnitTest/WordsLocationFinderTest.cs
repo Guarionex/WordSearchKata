@@ -37,7 +37,8 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
         public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringListVector2Dictionary(WordSearchPuzzle puzzle)
         {
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
             Assert.IsInstanceOf(typeof(Dictionary<String, List<Vector2>>), result);
         }
 
@@ -47,7 +48,8 @@ namespace PuzzleSolverUnitTest
         {
             puzzle.AddWord("UHURA");
 
-            sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            sut.GetWordsLocation();
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
@@ -55,7 +57,8 @@ namespace PuzzleSolverUnitTest
         {
             puzzle.AddWord("KHAN");
 
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
             Dictionary<String, List<Vector2>> expected = new Dictionary<string, List<Vector2>>();
 
             Assert.AreEqual(expected, result);
@@ -64,7 +67,8 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), OneUpWordTestCase)]
         public void Given4x4WordWithOneUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
@@ -73,7 +77,9 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRKAndKHAN(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("KHAN");
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             List<Vector2> khanLocation = new List<Vector2>();
             khanLocation.Add(new Vector2(3, 3));
@@ -88,7 +94,8 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownWordTestCase)]
         public void Given4x4WordWithOneDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
@@ -97,7 +104,9 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("KHAN");
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             List<Vector2> khanLocation = new List<Vector2>();
             khanLocation.Add(new Vector2(3, 0));
@@ -112,7 +121,8 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), OneUpOneDownWordTestCase)]
         public void Given4x4WordWithUpAndDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
@@ -120,7 +130,8 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), LeftWordTestCase)]
         public void Given4x4WordWithOneLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
@@ -129,7 +140,9 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("KHAN");
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             List<Vector2> khanLocation = new List<Vector2>();
             khanLocation.Add(new Vector2(3, 3));
@@ -144,7 +157,8 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), RightWordTestCase)]
         public void Given4x4WordWithOneRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
@@ -153,7 +167,9 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("KHAN");
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             List<Vector2> khanLocation = new List<Vector2>();
             khanLocation.Add(new Vector2(0, 3));
@@ -168,7 +184,8 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), UpLeftWordTestCase)]
         public void Given4x4WordWithOneUpLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
@@ -177,7 +194,9 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoUpLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("HAN");
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             List<Vector2> hanLocation = new List<Vector2>();
             hanLocation.Add(new Vector2(2, 3));
@@ -191,7 +210,8 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), UpRightWordTestCase)]
         public void Given4x4WordWithOneUpRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
@@ -200,7 +220,9 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithOneTwoUpRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("HAN");
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             List<Vector2> hanLocation = new List<Vector2>();
             hanLocation.Add(new Vector2(0, 2));
@@ -214,7 +236,8 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownLeftWordTestCase)]
         public void Given4x4WordWithOneDownLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
@@ -223,7 +246,9 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoDownLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("HAN");
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             List<Vector2> hanLocation = new List<Vector2>();
             hanLocation.Add(new Vector2(3, 1));
@@ -237,7 +262,8 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownRightWordTestCase)]
         public void Given4x4WordWithOneDownRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
@@ -246,7 +272,9 @@ namespace PuzzleSolverUnitTest
         public void Given4x4WordWithTwoDownRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("HAN");
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+
+            sut = new WordsLocationFinder(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             List<Vector2> hanLocation = new List<Vector2>();
             hanLocation.Add(new Vector2(0, 1));
@@ -325,9 +353,10 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownRightWordTestCase)]
         public void GivenValid4x4WordPuzzleWhenCallingIsValidThenGetWordsLocationReturnsAllWordsLocations(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
+            sut = new WordsLocationFinder(puzzle);
             sut.IsValid(puzzle);
 
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 
             Assert.AreEqual(expected, result);
         }
