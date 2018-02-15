@@ -261,5 +261,12 @@ namespace PuzzleSolverUnitTest
         {
             sut.IsValid(puzzle);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
+        public void GivenValid4x4WordPuzzleWithWordsWhenCallingIsValidThenIsValidReturnsTrue(WordSearchPuzzle puzzle)
+        {
+            bool result = sut.IsValid(puzzle);
+            Assert.IsTrue(result);
+        }
     }
 }
