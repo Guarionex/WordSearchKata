@@ -28,12 +28,6 @@ namespace PuzzleSolverUnitTest
 
         private WordsLocationFinder sut;
 
-        [SetUp]
-        public void init()
-        {
-            sut = new WordsLocationFinder(new WordSearchPuzzle());
-        }
-
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
         public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringListVector2Dictionary(WordSearchPuzzle puzzle)
         {
@@ -389,7 +383,10 @@ namespace PuzzleSolverUnitTest
             puzzle.AddWord("KIRK");
             puzzle.AddWord("KHAN");
 
+            sut = new WordsLocationFinder(puzzle);
+
             String result = sut.ToString();
+
             Assert.IsInstanceOf(typeof(String), result);
         }
 
