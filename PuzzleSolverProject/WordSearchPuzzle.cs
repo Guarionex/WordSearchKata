@@ -32,7 +32,7 @@ namespace PuzzleSolverProject
 
         public List<Vector2> GetAllLocationsOfLetter(Char v)
         {
-            return new List<Vector2>();
+            throw new NotImplementedException();
         }
     }
 }
