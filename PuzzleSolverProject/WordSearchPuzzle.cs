@@ -42,12 +42,6 @@ namespace PuzzleSolverProject
             isChanged = true;
         }
 
-        public Dictionary<String, List<Vector2>> GetWordsLocation()
-        {
-            FindAllWordLocations();
-            return wordMap;
-        }
-
         public bool IsValid()
         {
             FindAllWordLocations();
