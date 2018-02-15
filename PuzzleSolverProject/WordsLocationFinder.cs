@@ -9,6 +9,8 @@ namespace PuzzleSolverProject
 {
     public class WordsLocationFinder
     {
+        private const int INVALID_COUNT = 0;
+
         public Dictionary<String, List<Vector2>> GetWordsLocation(WordSearchPuzzle puzzle)
         {
             WordSeachAlgorithm algorithm = new WordSeachAlgorithm(puzzle.LettersMap);
@@ -19,7 +21,10 @@ namespace PuzzleSolverProject
 
         public bool IsValid(WordSearchPuzzle puzzle)
         {
-            throw new NotImplementedException();
+            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(puzzle.LettersMap);
+            Dictionary<String, List<Vector2>> wordMap = algorithm.SearchEachWord(puzzle.WordsList);
+
+            return wordMap.Count != INVALID_COUNT;
         }
     }
 }
