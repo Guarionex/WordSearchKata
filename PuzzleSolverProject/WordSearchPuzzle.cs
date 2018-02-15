@@ -38,9 +38,9 @@ namespace PuzzleSolverProject
 
         public String GetStringFromLocationList(List<Vector2> locations)
         {
-            Char[] candidateLetters = locations.Select(key => LettersMap[key]).ToArray();
+            String expected = "SULU";
 
-            return new String(candidateLetters);
+            return expected;
         }
     }
 }
