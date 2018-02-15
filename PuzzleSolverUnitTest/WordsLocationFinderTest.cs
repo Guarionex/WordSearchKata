@@ -321,5 +321,15 @@ namespace PuzzleSolverUnitTest
             bool result = sut.IsValid(puzzle);
             Assert.IsTrue(result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownRightWordTestCase)]
+        public void GivenValid4x4WordPuzzleWhenCallingIsValidThenGetWordsLocationReturnsAllWordsLocations(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        {
+            sut.IsValid(puzzle);
+
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
