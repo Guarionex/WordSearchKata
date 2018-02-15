@@ -19,7 +19,6 @@ namespace PuzzleSolverProject
         public Dictionary<Vector2, Char> LettersMap { get;}
         private bool isChanged;
         private Dictionary<String, List<Vector2>> wordMap;
-        private bool isValid;
 
         public WordSearchPuzzle()
         {
@@ -27,7 +26,6 @@ namespace PuzzleSolverProject
             LettersMap = new Dictionary<Vector2, Char>();
             isChanged = false;
             wordMap = new Dictionary<string, List<Vector2>>();
-            isValid = true;
         }
 
         public void AddWord(String word)
@@ -40,22 +38,6 @@ namespace PuzzleSolverProject
         {
             LettersMap.Add(new Vector2(x, y), letter);
             isChanged = true;
-        }
-
-        public bool IsValid()
-        {
-            FindAllWordLocations();
-
-            if (wordMap.Count == INVALID_COUNT)
-            {
-                isValid = false;
-            }
-            else
-            {
-                isValid = true;
-            }
-
-            return isValid;
         }
 
         private void FindAllWordLocations()

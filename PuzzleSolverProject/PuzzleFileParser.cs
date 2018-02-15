@@ -38,7 +38,8 @@ namespace PuzzleSolverProject
             Array.Copy(lines, LETTER_ROW_FIRST_INDEX, rawLetters, MIN_DIMENSION_INDEX, lines.Length - NUMBER_OF_WORD_ROWS);
             ParseLettersIntoPuzzle(rawLetters);
 
-            if (!puzzle.IsValid())
+            WordsLocationFinder wordsFinder = new WordsLocationFinder(puzzle);
+            if (!wordsFinder.IsValid())
             {
                 throw new InvalidDataException();
             }
