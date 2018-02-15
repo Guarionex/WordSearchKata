@@ -16,9 +16,9 @@ namespace PuzzleSolverProject
             this.wordsMap = wordsMap;
         }
 
-        public void IsValid()
+        public bool IsValid()
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 }
