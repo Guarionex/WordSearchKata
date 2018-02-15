@@ -108,16 +108,6 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWithMissingWordWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle setupSUT)
-        {
-            sut = setupSUT;
-            sut.AddWord("UHURA");
-
-            bool result = sut.IsValid();
-            Assert.IsFalse(result);
-        }
-
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithWordTwiceTestCase)]
         public void Given4x4WordPuzzleWithWordTwiceWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle setupSUT)
         {

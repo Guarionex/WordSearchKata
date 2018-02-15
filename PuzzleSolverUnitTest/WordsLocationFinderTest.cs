@@ -268,5 +268,14 @@ namespace PuzzleSolverUnitTest
             bool result = sut.IsValid(puzzle);
             Assert.IsTrue(result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void Given4x4WordPuzzleWithMissingWordWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle puzzle)
+        {
+            puzzle.AddWord("UHURA");
+
+            bool result = sut.IsValid(puzzle);
+            Assert.IsFalse(result);
+        }
     }
 }
