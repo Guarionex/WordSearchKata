@@ -39,7 +39,8 @@ namespace PuzzleSolverProject
             ParseLettersIntoPuzzle(rawLetters);
 
             WordsLocationFinder wordsFinder = new WordsLocationFinder(puzzle);
-            if (!wordsFinder.IsValid())
+            WordsMapDecorator wordsMap = new WordsMapDecorator(wordsFinder.GetWordsLocation());
+            if (!wordsMap.IsValid())
             {
                 throw new InvalidDataException();
             }

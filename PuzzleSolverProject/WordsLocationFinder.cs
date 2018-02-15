@@ -23,13 +23,6 @@ namespace PuzzleSolverProject
             return FindAllWordLocations(wsPuzzle);
         }
 
-        public bool IsValid()
-        {
-            Dictionary<String, List<Vector2>> wordMap = FindAllWordLocations(wsPuzzle);
-
-            return wordMap.Count != INVALID_COUNT;
-        }
-
         private Dictionary<String, List<Vector2>> FindAllWordLocations(WordSearchPuzzle puzzle)
         {
             WordSeachAlgorithm algorithm = new WordSeachAlgorithm(puzzle.LettersMap);
