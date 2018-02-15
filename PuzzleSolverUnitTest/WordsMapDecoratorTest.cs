@@ -31,5 +31,15 @@ namespace PuzzleSolverUnitTest
 
             sut.IsValid();
         }
+
+        [Test, TestCaseSource(typeof(WordsMapDecoratorTestData), ValidOneWordWordsMapTestCase)]
+        public void GivenValid4x4WordPuzzleWithWordsWhenCallingIsValidThenIsValidReturnsTrue(Dictionary<String, List<Vector2>> wordsMap)
+        {
+            sut = new WordsMapDecorator(wordsMap);
+
+            bool result = sut.IsValid();
+
+            Assert.IsTrue(result);
+        }
     }
 }
