@@ -33,13 +33,24 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordsMapDecoratorTestData), ValidOneWordWordsMapTestCase)]
-        public void GivenValid4x4WordPuzzleWithWordsWhenCallingIsValidThenIsValidReturnsTrue(Dictionary<String, List<Vector2>> wordsMap)
+        public void GivenValidOneWordWordsMapDictionaryWhenCallingIsValidThenIsValidReturnsTrue(Dictionary<String, List<Vector2>> wordsMap)
         {
             sut = new WordsMapDecorator(wordsMap);
 
             bool result = sut.IsValid();
 
             Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void GivenEmptyWordsMapDictionaryWhenCallingIsValidThenIsValidReturnsFalse()
+        {
+            Dictionary<String, List<Vector2>> wordsMap = new Dictionary<string, List<Vector2>>();
+            sut = new WordsMapDecorator(wordsMap);
+
+            bool result = sut.IsValid();
+
+            Assert.IsFalse(result);
         }
     }
 }
