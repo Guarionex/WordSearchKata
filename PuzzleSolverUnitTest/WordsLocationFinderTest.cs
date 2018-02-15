@@ -285,5 +285,14 @@ namespace PuzzleSolverUnitTest
             bool result = sut.IsValid(puzzle);
             Assert.IsFalse(result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
+        public void Given4x4WordPuzzleWithWordAddedTwiceWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle puzzle)
+        {
+            puzzle.AddWord("KIRK");
+
+            bool result = sut.IsValid(puzzle);
+            Assert.IsFalse(result);
+        }
     }
 }
