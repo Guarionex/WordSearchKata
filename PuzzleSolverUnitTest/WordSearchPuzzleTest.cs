@@ -97,7 +97,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4LettersWhenPassingKToGetAllLocationsOfLetterThenGetAllLocationsOfLetterDoesntReturnNull(WordSearchPuzzle setupSUT)
+        public void Given4x4LettersWhenPassingKToFindAllLocationsOfLetterThenFinallAllLocationsOfLetterDoesntReturnNull(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;
 
@@ -107,7 +107,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4LettersWithThreeKsWhenPassingKToGetAllLocationsOfLetterThenGetAllLocationsOfLetterReturnListOfLocationOfTheThreeKs(WordSearchPuzzle setupSUT)
+        public void Given4x4LettersWithThreeKsWhenPassingKToFindAllLocationsOfLetterThenFinallAllLocationsOfLetterReturnListOfLocationOfTheThreeKs(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;
 
@@ -121,7 +121,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4LettersWhenPassingSToGetAllLocationsOfLetterThenGetAllLocationsOfLetterReturnListOfLocationOfS(WordSearchPuzzle setupSUT)
+        public void Given4x4LettersWhenPassingSToFindAllLocationsOfLetterThenFinallAllLocationsOfLetterReturnListOfLocationOfS(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;
 
@@ -130,17 +130,6 @@ namespace PuzzleSolverUnitTest
             expected.Add(new Vector2(0, 0));
 
             Assert.AreEqual(expected, result);
-        }
-
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4LettersWhenPassingListOfVector2ToGetStringFromLocationListThenGetStringFromLocationListDoesntReturnNull(WordSearchPuzzle setupSUT)
-        {
-            sut = setupSUT;
-
-            List<Vector2> locations = new List<Vector2>();
-            String result = sut.GetStringFromLocationList(locations);
-
-            Assert.IsNotNull(result);
         }
     }
 }

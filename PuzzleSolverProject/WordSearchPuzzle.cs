@@ -35,10 +35,5 @@ namespace PuzzleSolverProject
             List<Vector2> positions = LettersMap.Where(kvp => kvp.Value == letter).Select(kvp => kvp.Key).ToList();
             return positions;
         }
-
-        public String GetStringFromLocationList(List<Vector2> locations)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
