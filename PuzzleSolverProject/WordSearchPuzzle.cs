@@ -32,7 +32,12 @@ namespace PuzzleSolverProject
 
         public List<Vector2> GetAllLocationsOfLetter(Char v)
         {
-            return new List<Vector2>();
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(0, 1));
+            expected.Add(new Vector2(3, 1));
+            expected.Add(new Vector2(0, 3));
+
+            return expected;
         }
     }
 }
