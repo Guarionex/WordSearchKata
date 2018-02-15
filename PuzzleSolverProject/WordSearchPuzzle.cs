@@ -58,24 +58,6 @@ namespace PuzzleSolverProject
             return isValid;
         }
 
-        public override string ToString()
-        {
-            FindAllWordLocations();
-
-            String output = "";
-            if (wordMap.Count > INVALID_COUNT)
-            {
-                foreach (KeyValuePair<String, List<Vector2>> wordMap in wordMap)
-                {
-                    output += wordMap.Key + ": ";
-                    output += LetterLocationsToString(wordMap.Value);
-                }
-
-                output = output.Remove(output.LastIndexOf('\n'));
-            }
-            return output;
-        }
-
         private void FindAllWordLocations()
         {
             
@@ -88,20 +70,6 @@ namespace PuzzleSolverProject
                 
                 isChanged = false;
             }
-        }
-
-        private String LetterLocationsToString(List<Vector2> lettersLocations)
-        {
-            String lettersOutput = String.Empty;
-            foreach (Vector2 letterLocation in lettersLocations)
-            {
-                lettersOutput += OPEN_PARANTHESIS + letterLocation.X + COMMA + letterLocation.Y + CLOSE_PARANTHESIS + COMMA;
-            }
-
-            lettersOutput = lettersOutput.Remove(lettersOutput.LastIndexOf(COMMA));
-            lettersOutput += NEW_LINE;
-
-            return lettersOutput;
         }
     }
 }
