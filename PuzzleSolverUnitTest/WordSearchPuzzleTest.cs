@@ -142,5 +142,21 @@ namespace PuzzleSolverUnitTest
 
             Assert.IsNotNull(result);
         }
+
+        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void Given4x4LettersWithSULUInFirstRowWhenPassingListOfVector2ForFirstRowToGetStringFromLocationListThenGetStringFromLocationListReturnsSULU(WordSearchPuzzle setupSUT)
+        {
+            sut = setupSUT;
+            List<Vector2> firstRow = new List<Vector2>();
+            firstRow.Add(new Vector2(0, 0));
+            firstRow.Add(new Vector2(1, 0));
+            firstRow.Add(new Vector2(2, 0));
+            firstRow.Add(new Vector2(3, 0));
+
+            String result = sut.GetStringFromLocationList(firstRow);
+            String expected = "SULU";
+            
+            Assert.AreEqual(expected, result);
+        }
     }
 }

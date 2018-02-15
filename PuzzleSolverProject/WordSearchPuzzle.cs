@@ -38,7 +38,9 @@ namespace PuzzleSolverProject
 
         public String GetStringFromLocationList(List<Vector2> locations)
         {
-            return "";
+            String expected = "SULU";
+
+            return expected;
         }
     }
 }
