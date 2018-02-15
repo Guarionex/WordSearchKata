@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,6 +49,22 @@ namespace PuzzleSolverUnitTest
             }
         }
 
+        public static IEnumerable OneUpWordTestCase
+        {
+            get
+            {
+                WordLocationFinderTestData testData = new WordLocationFinderTestData();
+
+                WordSearchPuzzle setupSUT = testData.KIRKUpInFirstColumnPuzzle();
+
+                List<Vector2> kirkLocation = testData.KIRKUpInFirstColumnLocations();
+                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
+                expected.Add("KIRK", kirkLocation);
+
+                yield return new TestCaseData(setupSUT, expected);
+            }
+        }
+
         private WordSearchPuzzle KIRKUpInFirstColumnPuzzle()
         {
             WordSearchPuzzle puzzle = new WordSearchPuzzle();
@@ -70,6 +87,17 @@ namespace PuzzleSolverUnitTest
             puzzle.AddLetterAt('M', 3, 3);
 
             return puzzle;
+        }
+
+        private List<Vector2> KIRKUpInFirstColumnLocations()
+        {
+            List<Vector2> kirkLocation = new List<Vector2>();
+            kirkLocation.Add(new Vector2(0, 3));
+            kirkLocation.Add(new Vector2(0, 2));
+            kirkLocation.Add(new Vector2(0, 1));
+            kirkLocation.Add(new Vector2(0, 0));
+
+            return kirkLocation;
         }
     }
 }

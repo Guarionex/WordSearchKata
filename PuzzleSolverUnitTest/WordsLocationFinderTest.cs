@@ -14,6 +14,7 @@ namespace PuzzleSolverUnitTest
     {
         private const String ValidOneWordPuzzleTestCase = nameof(WordLocationFinderTestData.ValidOneWordPuzzleTestCase);
         private const String PuzzleWithNoWordsAddedTestCase = nameof(WordLocationFinderTestData.PuzzleWithNoWordsAddedTestCase);
+        private const String OneUpWordTestCase = nameof(WordLocationFinderTestData.OneUpWordTestCase);
 
         private WordsLocationFinder sut;
 
@@ -39,13 +40,21 @@ namespace PuzzleSolverUnitTest
             sut.GetWordsLocation(puzzle);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), ValidOneWordPuzzleTestCase)]
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
         public void Given4x4WordPuzzleWith2WordsOneOfWhichIsNotInThePuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsReturnsAnEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("KHAN");
 
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
             Dictionary<String, List<Vector2>> expected = new Dictionary<string, List<Vector2>>();
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), OneUpWordTestCase)]
+        public void Given4x4WordWithOneUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        {
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
 
             Assert.AreEqual(expected, result);
         }
