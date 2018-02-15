@@ -288,13 +288,18 @@ namespace PuzzleSolverUnitTest
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
         public void Given4x4WordPuzzleWithWordsWhenCallingIsValidThenIsValidThrowsNoException(WordSearchPuzzle puzzle)
         {
-            sut.IsValid(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+
+            sut.IsValid();
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
         public void GivenValid4x4WordPuzzleWithWordsWhenCallingIsValidThenIsValidReturnsTrue(WordSearchPuzzle puzzle)
         {
-            bool result = sut.IsValid(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+
+            bool result = sut.IsValid();
+
             Assert.IsTrue(result);
         }
 
@@ -303,14 +308,20 @@ namespace PuzzleSolverUnitTest
         {
             puzzle.AddWord("UHURA");
 
-            bool result = sut.IsValid(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+
+            bool result = sut.IsValid();
+
             Assert.IsFalse(result);
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithWordTwiceTestCase)]
         public void Given4x4WordPuzzleWithWordTwiceWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle puzzle)
         {
-            bool result = sut.IsValid(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+
+            bool result = sut.IsValid();
+
             Assert.IsFalse(result);
         }
 
@@ -319,7 +330,10 @@ namespace PuzzleSolverUnitTest
         {
             puzzle.AddWord("KIRK");
 
-            bool result = sut.IsValid(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+
+            bool result = sut.IsValid();
+
             Assert.IsFalse(result);
         }
 
@@ -327,26 +341,34 @@ namespace PuzzleSolverUnitTest
         public void GivenInvalid4x4WordPuzzleWhenCallingIsValidTwiceThenSecondIsValidReturnsFalse(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("UHURA");
-            sut.IsValid(puzzle);
 
-            bool result = sut.IsValid(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            sut.IsValid();
+
+            bool result = sut.IsValid();
+
             Assert.IsFalse(result);
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
         public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle puzzle)
         {
-            bool result = sut.IsValid(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+
+            bool result = sut.IsValid();
+
             Assert.IsFalse(result);
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
         public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidAddingAWordThenCallingIsValidAgainReturnsTrue(WordSearchPuzzle puzzle)
         {
-            sut.IsValid(puzzle);
+            sut = new WordsLocationFinder(puzzle);
+            sut.IsValid();
             puzzle.AddWord("KIRK");
 
-            bool result = sut.IsValid(puzzle);
+            bool result = sut.IsValid();
+
             Assert.IsTrue(result);
         }
 
@@ -354,7 +376,7 @@ namespace PuzzleSolverUnitTest
         public void GivenValid4x4WordPuzzleWhenCallingIsValidThenGetWordsLocationReturnsAllWordsLocations(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             sut = new WordsLocationFinder(puzzle);
-            sut.IsValid(puzzle);
+            sut.IsValid();
 
             Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
 

@@ -27,9 +27,9 @@ namespace PuzzleSolverProject
             return FindAllWordLocations(wsPuzzle);
         }
 
-        public bool IsValid(WordSearchPuzzle puzzle)
+        public bool IsValid()
         {
-            Dictionary<String, List<Vector2>> wordMap = FindAllWordLocations(puzzle);
+            Dictionary<String, List<Vector2>> wordMap = FindAllWordLocations(wsPuzzle);
 
             return wordMap.Count != INVALID_COUNT;
         }
