@@ -108,19 +108,6 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidAddingAWordThenCallingIsValidAgainReturnsTrue(WordSearchPuzzle setupSUT)
-        {
-            sut = setupSUT;
-
-            sut.IsValid();
-
-            sut.AddWord("KIRK");
-
-            bool result = sut.IsValid();
-            Assert.IsTrue(result);
-        }
-
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), DownRightWordTestCase)]
         public void GivenValid4x4WordPuzzleWhenCallingIsValidThenGetWordsLocationReturnsAllWordsLocations(WordSearchPuzzle setupSUT, Dictionary<String, List<Vector2>> expected)
         {
