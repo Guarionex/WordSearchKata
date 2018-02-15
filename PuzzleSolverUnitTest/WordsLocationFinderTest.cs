@@ -16,6 +16,7 @@ namespace PuzzleSolverUnitTest
         private const String PuzzleWithNoWordsAddedTestCase = nameof(WordLocationFinderTestData.PuzzleWithNoWordsAddedTestCase);
         private const String OneUpWordTestCase = nameof(WordLocationFinderTestData.OneUpWordTestCase);
         private const String TwoWordsUpTestCase = nameof(WordLocationFinderTestData.TwoWordsUpTestCase);
+        private const String DownWordTestCase = nameof(WordLocationFinderTestData.DownWordTestCase);
 
         private WordsLocationFinder sut;
 
@@ -72,6 +73,14 @@ namespace PuzzleSolverUnitTest
             khanLocation.Add(new Vector2(3, 1));
             khanLocation.Add(new Vector2(3, 0));
             expected.Add("KHAN", khanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownWordTestCase)]
+        public void Given4x4WordWithOneDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        {
+            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation(puzzle);
 
             Assert.AreEqual(expected, result);
         }
