@@ -355,5 +355,21 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void Given4x4WordPuzzleWith3WordsWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(WordSearchPuzzle puzzle)
+        {
+            puzzle.AddWord("KIRK");
+            puzzle.AddWord("KHAN");
+            puzzle.AddWord("SULU");
+
+            sut = new WordsLocationFinder(puzzle);
+            String result = sut.ToString();
+            String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
+            expected += "KHAN: (0,3),(1,3),(2,3),(3,3)\n";
+            expected += "SULU: (0,0),(1,0),(2,0),(3,0)";
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }

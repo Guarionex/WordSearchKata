@@ -108,22 +108,6 @@ namespace PuzzleSolverUnitTest
             Assert.AreEqual(expected, result);
         }
 
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWith3WordsWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(WordSearchPuzzle setupSUT)
-        {
-            sut = setupSUT;
-            sut.AddWord("KIRK");
-            sut.AddWord("KHAN");
-            sut.AddWord("SULU");
-
-            String result = sut.ToString();
-            String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)\n";
-            expected += "KHAN: (0,3),(1,3),(2,3),(3,3)\n";
-            expected += "SULU: (0,0),(1,0),(2,0),(3,0)";
-
-            Assert.AreEqual(expected, result);
-        }
-
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), ValidOneWordPuzzleTestCase)]
         public void Given4x4WordPuzzleWithAWordMissingWhenCallingToStringThenToStringReturnsAnEmptyString(WordSearchPuzzle setupSUT)
         {
