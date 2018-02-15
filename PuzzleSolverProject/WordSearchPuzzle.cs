@@ -9,12 +9,6 @@ namespace PuzzleSolverProject
 {
     public class WordSearchPuzzle
     {
-        private const int INVALID_COUNT = 0;
-        private const String OPEN_PARANTHESIS = "(";
-        private const String CLOSE_PARANTHESIS = ")";
-        private const String COMMA = ",";
-        private const String NEW_LINE = "\n";
-
         public List<String> WordsList { get; }
         public Dictionary<Vector2, Char> LettersMap { get;}
         private bool isChanged;
