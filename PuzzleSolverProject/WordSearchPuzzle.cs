@@ -30,14 +30,10 @@ namespace PuzzleSolverProject
             LettersMap.Add(new Vector2(x, y), letter);
         }
 
-        public List<Vector2> GetAllLocationsOfLetter(Char v)
+        public List<Vector2> GetAllLocationsOfLetter(Char letter)
         {
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 1));
-            expected.Add(new Vector2(3, 1));
-            expected.Add(new Vector2(0, 3));
-
-            return expected;
+            List<Vector2> positions = LettersMap.Where(kvp => kvp.Value == letter).Select(kvp => kvp.Key).ToList();
+            return positions;
         }
     }
 }
