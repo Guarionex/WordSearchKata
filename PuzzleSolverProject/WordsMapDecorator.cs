@@ -9,6 +9,8 @@ namespace PuzzleSolverProject
 {
     public class WordsMapDecorator : Dictionary<String, List<Vector2>>
     {
+        private const int INVALID_COUNT = 0;
+
         private Dictionary<String, List<Vector2>> wordsMap;
 
         public WordsMapDecorator(Dictionary<String, List<Vector2>> wordsMap)
@@ -18,7 +20,7 @@ namespace PuzzleSolverProject
 
         public bool IsValid()
         {
-            return true;
+            return wordsMap.Count != INVALID_COUNT;
         }
     }
 }
