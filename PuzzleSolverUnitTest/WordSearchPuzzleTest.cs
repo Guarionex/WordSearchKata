@@ -119,17 +119,5 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
-
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4LettersWhenPassingSToFindAllLocationsOfLetterThenFinallAllLocationsOfLetterReturnListOfLocationOfS(WordSearchPuzzle setupSUT)
-        {
-            sut = setupSUT;
-
-            List<Vector2> result = sut.GetAllLocationsOfLetter('S');
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 0));
-
-            Assert.AreEqual(expected, result);
-        }
     }
 }
