@@ -11,21 +11,7 @@ namespace PuzzleSolverUnitTest
 {
     [TestFixture]
     public class WordSearchPuzzleTest
-    {
-        private const String ValidOneWordPuzzleTestCase = nameof(WordSearchPuzzleTestData.ValidOneWordPuzzleTestCase);
-        private const String OneUpWordTestCase = nameof(WordSearchPuzzleTestData.OneUpWordTestCase);
-        private const String TwoWordsUpTestCase = nameof(WordSearchPuzzleTestData.TwoWordsUpTestCase);
-        private const String DownWordTestCase = nameof(WordSearchPuzzleTestData.DownWordTestCase);
-        private const String OneUpOneDownWordTestCase = nameof(WordSearchPuzzleTestData.OneUpOneDownWordTestCase);
-        private const String LeftWordTestCase = nameof(WordSearchPuzzleTestData.LeftWordTestCase);
-        private const String RightWordTestCase = nameof(WordSearchPuzzleTestData.RightWordTestCase);
-        private const String UpLeftWordTestCase = nameof(WordSearchPuzzleTestData.UpLeftWordTestCase);
-        private const String UpRightWordTestCase = nameof(WordSearchPuzzleTestData.UpRightWordTestCase);
-        private const String DownLeftWordTestCase = nameof(WordSearchPuzzleTestData.DownLeftWordTestCase);
-        private const String DownRightWordTestCase = nameof(WordSearchPuzzleTestData.DownRightWordTestCase);
-        private const String PuzzleWithWordTwiceTestCase = nameof(WordSearchPuzzleTestData.PuzzleWithWordTwiceTestCase);
-        private const String PuzzleWithNoWordsAddedTestCase = nameof(WordSearchPuzzleTestData.PuzzleWithNoWordsAddedTestCase);
-
+    {        
         private WordSearchPuzzle sut;
 
         [SetUp]
