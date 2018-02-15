@@ -304,5 +304,12 @@ namespace PuzzleSolverUnitTest
             bool result = sut.IsValid(puzzle);
             Assert.IsFalse(result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle puzzle)
+        {
+            bool result = sut.IsValid(puzzle);
+            Assert.IsFalse(result);
+        }
     }
 }

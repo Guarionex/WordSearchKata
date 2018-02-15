@@ -109,15 +109,6 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidThenIsValidReturnsFalse(WordSearchPuzzle setupSUT)
-        {
-            sut = setupSUT;
-
-            bool result = sut.IsValid();
-            Assert.IsFalse(result);
-        }
-
-        [Test, TestCaseSource(typeof(WordSearchPuzzleTestData), PuzzleWithNoWordsAddedTestCase)]
         public void Given4x4WordPuzzleWithoutWordsWhenCallingIsValidAddingAWordThenCallingIsValidAgainReturnsTrue(WordSearchPuzzle setupSUT)
         {
             sut = setupSUT;
