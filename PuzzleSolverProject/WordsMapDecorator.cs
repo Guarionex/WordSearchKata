@@ -15,5 +15,10 @@ namespace PuzzleSolverProject
         {
             this.wordsMap = wordsMap;
         }
+
+        public void IsValid()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

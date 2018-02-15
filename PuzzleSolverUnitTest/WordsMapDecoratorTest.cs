@@ -12,6 +12,8 @@ namespace PuzzleSolverUnitTest
     [TestFixture]
     public class WordsMapDecoratorTest
     {
+        private const String ValidOneWordWordsMapTestCase = nameof(WordsMapDecoratorTestData.ValidOneWordWordsMapTestCase);
+
         private WordsMapDecorator sut;
 
         [Test]
@@ -20,6 +22,14 @@ namespace PuzzleSolverUnitTest
             Dictionary<String, List<Vector2>> wordsMap = new Dictionary<string, List<Vector2>>();
 
             sut = new WordsMapDecorator(wordsMap);
+        }
+
+        [Test, TestCaseSource(typeof(WordsMapDecoratorTestData), ValidOneWordWordsMapTestCase)]
+        public void GivenValidOneWordWordsMapDictionaryWhenCallingIsValidThenIsValidThrowsNoException(Dictionary<String, List<Vector2>> wordsMap)
+        {
+            sut = new WordsMapDecorator(wordsMap);
+
+            sut.IsValid();
         }
     }
 }
