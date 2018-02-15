@@ -52,5 +52,26 @@ namespace PuzzleSolverUnitTest
 
             Assert.IsFalse(result);
         }
+
+        [Test, TestCaseSource(typeof(WordsMapDecoratorTestData), ValidOneWordWordsMapTestCase)]
+        public void GivenValidOneWordWordsMapDictionaryWhenCallingToStringThenToStringReturnsAString(Dictionary<String, List<Vector2>> wordsMap)
+        {
+            sut = new WordsMapDecorator(wordsMap);
+
+            String result = sut.ToString();
+
+            Assert.IsInstanceOf(typeof(String), result);
+        }
+
+        [Test, TestCaseSource(typeof(WordsMapDecoratorTestData), ValidOneWordWordsMapTestCase)]
+        public void Given4x4WordPuzzleWhenCallingToStringThenToStringReturnsAStringWithWordsAndTheirLetterLocations(Dictionary<String, List<Vector2>> wordsMap)
+        {
+            sut = new WordsMapDecorator(wordsMap);
+
+            String result = sut.ToString();
+            String expected = "KIRK: (0,1),(1,1),(2,1),(3,1)";
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
