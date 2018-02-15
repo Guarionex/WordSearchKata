@@ -9,8 +9,6 @@ namespace PuzzleSolverProject
 {
     public class WordsLocationFinder
     {
-        private const int INVALID_COUNT = 0;
-
         private WordSearchPuzzle wsPuzzle;
 
         public WordsLocationFinder(WordSearchPuzzle puzzle)
