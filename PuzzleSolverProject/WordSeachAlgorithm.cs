@@ -55,15 +55,15 @@ namespace PuzzleSolverProject
             return wordDirections;
         }
 
-        private List<Vector2> SearchWordInDirection(String word, IDirectionSearchStrategy searchDirection)
+        private List<Vector2> SearchWordInDirection(String word, IDirectionSearchStrategy directionSearchStrategy)
         {
             List<Vector2> wordPosition = new List<Vector2>();
-            List<Vector2> firstLetterPositions = FindAllLetterPositions(word[FIRST_LETTER_OF_WORD_INDEX]);
+            List<Vector2> firstLetterLocations = directionSearchStrategy.GetAllLocationsOfLetter(word[FIRST_LETTER_OF_WORD_INDEX]);
 
-            foreach (Vector2 position in firstLetterPositions)
+            foreach (Vector2 location in firstLetterLocations)
             {
-                List<Vector2> candidate = searchDirection.GetNeighborsFrom(position, word.Length);
-                String foundWord = FindWordFromPositions(candidate);
+                List<Vector2> candidate = directionSearchStrategy.GetNeighborsFrom(location, word.Length);
+                String foundWord = directionSearchStrategy.GetStringFromLocations(candidate);
 
                 if (word.Equals(foundWord))
                 {
@@ -72,19 +72,6 @@ namespace PuzzleSolverProject
             }
 
             return wordPosition;
-        }
-
-        private List<Vector2> FindAllLetterPositions(Char letter)
-        {
-            List<Vector2> positions = LettersMap.Where(kvp => kvp.Value == letter).Select(kvp => kvp.Key).ToList();
-            return positions;
-        }
-
-        private String FindWordFromPositions(List<Vector2> positions)
-        {
-            Char[] candidateLetters = positions.Select(key => LettersMap[key]).ToArray();
-
-            return new String(candidateLetters);
         }
     }
 }
