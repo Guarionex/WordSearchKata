@@ -26,7 +26,7 @@ namespace PuzzleSolverProject
         {
             DirectionSearchFactory getNeighborsFactory = new DirectionSearchFactory(puzzle);
             Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies = getNeighborsFactory.CreateStrategies();
-            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(directionSearchStrategies);
+            WordSearchAlgorithm algorithm = new WordSearchAlgorithm(directionSearchStrategies);
 
             return algorithm.SearchEachWord(puzzle.WordsList);
         }

@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolverProject
 {
-    class WordSeachAlgorithm
+    public class WordSearchAlgorithm
     {
         private const int INVALID_COUNT = 0;
         private const int FIRST_LETTER_OF_WORD_INDEX = 0;
 
         private Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies;
 
-        public WordSeachAlgorithm(Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies)
+        public WordSearchAlgorithm(Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies)
         {
             this.directionSearchStrategies = directionSearchStrategies;
         }
