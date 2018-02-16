@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolverProject.GetNeighbors
 {
-    class DownRightGetNeighborsFrom : IGetNeighborsFrom
+    class UpLeftDirectionSearchStrategy : IDirectionSearchStrategy
     {
         private const int STARTING_OFFSET = 0;
 
@@ -20,16 +20,16 @@ namespace PuzzleSolverProject.GetNeighbors
 
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
         {
-            List<Vector2> positionsDownRightFromStartPosition = new List<Vector2>();
-            for (int x = STARTING_OFFSET, y = STARTING_OFFSET; x < length && y < length; x++, y++)
+            List<Vector2> positionsUpLeftFromStartPosition = new List<Vector2>();
+            for (int x = STARTING_OFFSET, y = STARTING_OFFSET; x > -length && y > -length; x--, y--)
             {
-                Vector2 downRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
-                if (letters.ContainsKey(downRightNeighbor))
+                Vector2 UpLeftNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
+                if (letters.ContainsKey(UpLeftNeighbor))
                 {
-                    positionsDownRightFromStartPosition.Add(downRightNeighbor);
+                    positionsUpLeftFromStartPosition.Add(UpLeftNeighbor);
                 }
             }
-            return positionsDownRightFromStartPosition;
+            return positionsUpLeftFromStartPosition;
         }
     }
 }

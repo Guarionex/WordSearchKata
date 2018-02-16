@@ -14,13 +14,13 @@ namespace PuzzleSolverProject
         private const int FIRST_LETTER_OF_WORD_INDEX = 0;
 
         private Dictionary<Vector2, Char> LettersMap;
-        private Dictionary<DirectionEnum, IGetNeighborsFrom> searchDirectionStrategy;
+        private Dictionary<DirectionEnum, IDirectionSearchStrategy> searchDirectionStrategy;
 
         public WordSeachAlgorithm(Dictionary<Vector2, Char> lettersMap)
         {
             LettersMap = lettersMap;
 
-            GetNeighborsFactory getNeighborsFactory = new GetNeighborsFactory();
+            DirectionSearchFactory getNeighborsFactory = new DirectionSearchFactory();
             searchDirectionStrategy = getNeighborsFactory.GetNeighborStrategy;
         }
 
@@ -55,7 +55,7 @@ namespace PuzzleSolverProject
             return wordDirections;
         }
 
-        private List<Vector2> SearchWordInDirection(String word, IGetNeighborsFrom searchDirection)
+        private List<Vector2> SearchWordInDirection(String word, IDirectionSearchStrategy searchDirection)
         {
             List<Vector2> wordPosition = new List<Vector2>();
             List<Vector2> firstLetterPositions = FindAllLetterPositions(word[FIRST_LETTER_OF_WORD_INDEX]);
