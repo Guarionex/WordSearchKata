@@ -13,7 +13,7 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
     [TestFixture]
     public abstract class DirectionSearchStrategyBaseTest
     {
-        private const String BasePuzzleTestCase = nameof(DirectionSearchStrategyTestData.BasePuzzleTestCase);
+        protected const String BasePuzzleTestCase = nameof(DirectionSearchStrategyTestData.BasePuzzleTestCase);
 
         protected abstract IDirectionSearchStrategy CreateInstance(WordSearchPuzzle puzzle);
 
