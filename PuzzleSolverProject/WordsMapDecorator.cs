@@ -15,6 +15,7 @@ namespace PuzzleSolverProject
         private const String CLOSE_PARANTHESIS = ")";
         private const String COMMA = ",";
         private const String NEW_LINE = "\n";
+        private const String COLON_SPACE = ": ";
 
         private Dictionary<String, List<Vector2>> wordsMap;
 
@@ -30,16 +31,16 @@ namespace PuzzleSolverProject
 
         public override string ToString()
         {
-            String output = "";
+            String output = String.Empty;
             if (wordsMap.Count > INVALID_COUNT)
             {
                 foreach (KeyValuePair<String, List<Vector2>> wordLocation in wordsMap)
                 {
-                    output += wordLocation.Key + ": ";
+                    output += wordLocation.Key + COLON_SPACE;
                     output += LetterLocationsToString(wordLocation.Value);
                 }
 
-                output = output.Remove(output.LastIndexOf('\n'));
+                output = output.Remove(output.LastIndexOf(NEW_LINE));
             }
             return output;
         }
