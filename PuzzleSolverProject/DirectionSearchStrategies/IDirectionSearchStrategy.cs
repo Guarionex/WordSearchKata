@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PuzzleSolverProject.GetNeighbors
+namespace PuzzleSolverProject.DirectionSearchStrategies
 {
     public interface IDirectionSearchStrategy
     {

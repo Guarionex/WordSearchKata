@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using PuzzleSolverProject;
-using PuzzleSolverProject.GetNeighbors;
+using PuzzleSolverProject.DirectionSearchStrategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;

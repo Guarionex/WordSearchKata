@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PuzzleSolverProject.GetNeighbors
+namespace PuzzleSolverProject.DirectionSearchStrategies
 {
     sealed class DirectionSearchFactory
     {

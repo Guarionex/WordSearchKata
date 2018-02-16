@@ -5,15 +5,15 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PuzzleSolverProject.GetNeighbors
+namespace PuzzleSolverProject.DirectionSearchStrategies
 {
-    public class DownRightDirectionSearchStrategy : IDirectionSearchStrategy
+    public class UpRightDirectionSearchStrategy : IDirectionSearchStrategy
     {
         private const int STARTING_OFFSET = 0;
-
+        
         private WordSearchPuzzle puzzle;
 
-        public DownRightDirectionSearchStrategy(WordSearchPuzzle wordSearchPuzzle)
+        public UpRightDirectionSearchStrategy(WordSearchPuzzle wordSearchPuzzle)
         {
             puzzle = wordSearchPuzzle;
         }
@@ -26,16 +26,16 @@ namespace PuzzleSolverProject.GetNeighbors
 
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
         {
-            List<Vector2> positionsDownRightFromStartPosition = new List<Vector2>();
-            for (int x = STARTING_OFFSET, y = STARTING_OFFSET; x < length && y < length; x++, y++)
+            List<Vector2> positionsUpRightFromStartPosition = new List<Vector2>();
+            for (int x = STARTING_OFFSET, y = STARTING_OFFSET; x < length && y > -length; x++, y--)
             {
-                Vector2 downRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
-                if (puzzle.LettersMap.ContainsKey(downRightNeighbor))
+                Vector2 upRightNeighbor = new Vector2(startPosition.X + x, startPosition.Y + y);
+                if (puzzle.LettersMap.ContainsKey(upRightNeighbor))
                 {
-                    positionsDownRightFromStartPosition.Add(downRightNeighbor);
+                    positionsUpRightFromStartPosition.Add(upRightNeighbor);
                 }
             }
-            return positionsDownRightFromStartPosition;
+            return positionsUpRightFromStartPosition;
         }
 
         public String GetStringFromLocations(List<Vector2> locations)

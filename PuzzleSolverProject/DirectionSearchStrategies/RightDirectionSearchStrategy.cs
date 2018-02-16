@@ -5,16 +5,16 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PuzzleSolverProject.GetNeighbors
+namespace PuzzleSolverProject.DirectionSearchStrategies
 {
-    public class LeftDirectionSearchStrategy : IDirectionSearchStrategy
+    public class RightDirectionSearchStrategy : IDirectionSearchStrategy
     {
         private const int ZERO_INDEX_OFFSET = 1;
         private const int DIFFERENCE_THRESHOLD = 0;
         
         private WordSearchPuzzle puzzle;
 
-        public LeftDirectionSearchStrategy(WordSearchPuzzle wordSearchPuzzle)
+        public RightDirectionSearchStrategy(WordSearchPuzzle wordSearchPuzzle)
         {
             puzzle = wordSearchPuzzle;
         }
@@ -27,11 +27,10 @@ namespace PuzzleSolverProject.GetNeighbors
 
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
         {
-            Vector2 maxPosition = new Vector2(startPosition.X - (length - ZERO_INDEX_OFFSET), startPosition.Y);
+            Vector2 maxPosition = new Vector2(startPosition.X + length - ZERO_INDEX_OFFSET, startPosition.Y);
             List<Vector2> positionsWithinRange = puzzle.LettersMap.Select(kvp => kvp.Key).Where(position => withinRangeWhereCondition(maxPosition, position)).ToList();
-            List<Vector2> positionsLeftFromStartingPoint = positionsWithinRange.Where(vector => vector.X <= startPosition.X).ToList();
-            positionsLeftFromStartingPoint.Reverse();
-            return positionsLeftFromStartingPoint;
+            List<Vector2> positionsRightOfStartingPoint = positionsWithinRange.Where(vector => vector.X >= startPosition.X).ToList();
+            return positionsRightOfStartingPoint;
         }
 
         public String GetStringFromLocations(List<Vector2> locations)
@@ -42,7 +41,7 @@ namespace PuzzleSolverProject.GetNeighbors
 
         private bool withinRangeWhereCondition(Vector2 maxPosition, Vector2 currentPosition)
         {
-            return (maxPosition - currentPosition).X <= DIFFERENCE_THRESHOLD && (maxPosition - currentPosition).Y == DIFFERENCE_THRESHOLD;
+            return (maxPosition - currentPosition).X >= DIFFERENCE_THRESHOLD && (maxPosition - currentPosition).Y == DIFFERENCE_THRESHOLD;
         }
     }
 }
