@@ -25,7 +25,7 @@ namespace PuzzleSolverProject.DirectionSearchStrategies
 
         public Dictionary<DirectionEnum, IDirectionSearchStrategy> CreateStrategies()
         {
-            throw new NotImplementedException();
+            return new Dictionary<DirectionEnum, IDirectionSearchStrategy>();
         }
     }
 }
