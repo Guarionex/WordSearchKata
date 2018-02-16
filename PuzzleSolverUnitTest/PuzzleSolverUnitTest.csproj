@@ -48,6 +48,7 @@
     <Compile Include="DirectionSearchStrategyTests\RightDirectionSearchStrategyTest.cs" />
     <Compile Include="DirectionSearchStrategyTests\UpDirectionSearchStrategyTest.cs" />
     <Compile Include="DirectionSearchStrategyTests\UpLeftDirectionSearchStrategyTest.cs" />
+    <Compile Include="DirectionSearchStrategyTests\UpRightDirectionSearchStrategyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuzzleFileParserTest.cs" />
     <Compile Include="PuzzleFileParserTestData.cs" />

@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolverProject.GetNeighbors
 {
-    class UpRightDirectionSearchStrategy : IDirectionSearchStrategy
+    public class UpRightDirectionSearchStrategy : IDirectionSearchStrategy
     {
         private const int STARTING_OFFSET = 0;
 
         private Dictionary<Vector2, Char> letters;
+        private WordSearchPuzzle puzzle;
+
+        public UpRightDirectionSearchStrategy(WordSearchPuzzle wordSearchPuzzle)
+        {
+            puzzle = wordSearchPuzzle;
+        }
 
         public void AddPositionToLettersDictionary(Dictionary<Vector2, char> positionsToLetters)
         {
