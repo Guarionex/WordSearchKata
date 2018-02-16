@@ -25,7 +25,7 @@ namespace PuzzleSolverProject
         private Dictionary<String, List<Vector2>> FindAllWordLocations(WordSearchPuzzle puzzle)
         {
             DirectionSearchFactory getNeighborsFactory = new DirectionSearchFactory(puzzle);
-            Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies = getNeighborsFactory.GetNeighborStrategy;
+            Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies = getNeighborsFactory.CreateStrategies();
             WordSeachAlgorithm algorithm = new WordSeachAlgorithm(directionSearchStrategies);
 
             return algorithm.SearchEachWord(puzzle.WordsList);
