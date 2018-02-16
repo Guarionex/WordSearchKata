@@ -80,5 +80,20 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base4x4PuzzleTestCase)]
+        public void Given4x4WordSearchPuzzleWhenFirstRowLocationListToGetStringFromLocationsThenGetStringFromLocationsDoesNotReturnNull(WordSearchPuzzle puzzle)
+        {
+            IDirectionSearchStrategy sut = CreateInstance(puzzle);
+            List<Vector2> firstRow = new List<Vector2>();
+            firstRow.Add(new Vector2(0, 0));
+            firstRow.Add(new Vector2(1, 0));
+            firstRow.Add(new Vector2(2, 0));
+            firstRow.Add(new Vector2(3, 0));
+
+            String result = sut.GetStringFromLocations(firstRow);
+
+            Assert.IsNotNull(result);
+        }
     }
 }

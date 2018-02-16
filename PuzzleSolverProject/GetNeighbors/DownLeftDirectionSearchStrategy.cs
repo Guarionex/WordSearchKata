@@ -36,5 +36,10 @@ namespace PuzzleSolverProject.GetNeighbors
             }
             return positionsDownLeftFromStartPosition;
         }
+
+        public String GetStringFromLocations(List<Vector2> locations)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

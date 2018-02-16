@@ -33,6 +33,11 @@ namespace PuzzleSolverProject.GetNeighbors
             return positionsLeftFromStartingPoint;
         }
 
+        public String GetStringFromLocations(List<Vector2> locations)
+        {
+            throw new NotImplementedException();
+        }
+
         private bool withinRangeWhereCondition(Vector2 maxPosition, Vector2 currentPosition)
         {
             return (maxPosition - currentPosition).X <= DIFFERENCE_THRESHOLD && (maxPosition - currentPosition).Y == DIFFERENCE_THRESHOLD;
