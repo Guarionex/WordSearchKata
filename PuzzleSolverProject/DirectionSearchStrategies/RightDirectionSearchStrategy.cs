@@ -25,9 +25,9 @@ namespace PuzzleSolverProject.DirectionSearchStrategies
             return positions;
         }
 
-        public List<string> GetAllWords()
+        public List<String> GetAllWords()
         {
-            throw new NotImplementedException();
+            return new List<String>();
         }
 
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
