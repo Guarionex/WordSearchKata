@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PuzzleSolverProject.DirectionSearchStrategies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -23,7 +24,10 @@ namespace PuzzleSolverProject
 
         private Dictionary<String, List<Vector2>> FindAllWordLocations(WordSearchPuzzle puzzle)
         {
-            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(puzzle);
+            DirectionSearchFactory getNeighborsFactory = new DirectionSearchFactory(puzzle);
+            Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies = getNeighborsFactory.GetNeighborStrategy;
+            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(directionSearchStrategies);
+
             return algorithm.SearchEachWord(puzzle.WordsList);
         }
     }

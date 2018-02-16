@@ -13,12 +13,11 @@ namespace PuzzleSolverProject
         private const int INVALID_COUNT = 0;
         private const int FIRST_LETTER_OF_WORD_INDEX = 0;
 
-        private Dictionary<DirectionEnum, IDirectionSearchStrategy> searchDirectionStrategy;
+        private Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies;
 
-        public WordSeachAlgorithm(WordSearchPuzzle puzzle)
+        public WordSeachAlgorithm(Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies)
         {
-            DirectionSearchFactory getNeighborsFactory = new DirectionSearchFactory(puzzle);
-            searchDirectionStrategy = getNeighborsFactory.GetNeighborStrategy;
+            this.directionSearchStrategies = directionSearchStrategies;
         }
 
         public Dictionary<String, List<Vector2>> SearchEachWord(List<String> words)
@@ -46,7 +45,7 @@ namespace PuzzleSolverProject
             List<List<Vector2>> wordDirections = new List<List<Vector2>>();
             foreach (DirectionEnum direction in Enum.GetValues(typeof(DirectionEnum)))
             {
-                wordDirections.Add(SearchWordInDirection(word, searchDirectionStrategy[direction]));
+                wordDirections.Add(SearchWordInDirection(word, directionSearchStrategies[direction]));
             }
 
             return wordDirections;
