@@ -43,7 +43,6 @@ namespace PuzzleSolverProject.GetNeighbors
         public String GetStringFromLocations(List<Vector2> locations)
         {
             Char[] candidateLetters = locations.Select(key => puzzle.LettersMap[key]).ToArray();
-
             return new String(candidateLetters);
         }
 
