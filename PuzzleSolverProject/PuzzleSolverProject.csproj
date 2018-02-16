@@ -72,8 +72,8 @@
     <Compile Include="DirectionSearchStrategies\UpDirectionSearchStrategy.cs" />
     <Compile Include="DirectionSearchStrategies\UpLeftDirectionSearchStrategy.cs" />
     <Compile Include="DirectionSearchStrategies\UpRightDirectionSearchStrategy.cs" />
+    <Compile Include="WordSearchAlgorithm.cs" />
     <Compile Include="WordsMapDecorator.cs" />
-    <Compile Include="WordSeachAlgorithm.cs" />
     <Compile Include="WordSearchPuzzle.cs" />
     <Compile Include="WordsLocationFinder.cs" />
   </ItemGroup>
