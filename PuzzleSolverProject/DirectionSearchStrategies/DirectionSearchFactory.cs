@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolverProject.DirectionSearchStrategies
 {
-    sealed class DirectionSearchFactory
+    public sealed class DirectionSearchFactory
     {
         public Dictionary<DirectionEnum, IDirectionSearchStrategy> GetNeighborStrategy { get; }
 
@@ -21,6 +21,11 @@ namespace PuzzleSolverProject.DirectionSearchStrategies
             GetNeighborStrategy.Add(DirectionEnum.UpRight, new UpRightDirectionSearchStrategy(puzzle));
             GetNeighborStrategy.Add(DirectionEnum.DownLeft, new DownLeftDirectionSearchStrategy(puzzle));
             GetNeighborStrategy.Add(DirectionEnum.DownRight, new DownRightDirectionSearchStrategy(puzzle));
+        }
+
+        public Dictionary<DirectionEnum, IDirectionSearchStrategy> CreateStrategies()
+        {
+            throw new NotImplementedException();
         }
     }
 }
