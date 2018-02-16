@@ -62,7 +62,6 @@ namespace PuzzleSolverProject
 
             foreach (Vector2 position in firstLetterPositions)
             {
-                searchDirection.AddPositionToLettersDictionary(LettersMap);
                 List<Vector2> candidate = searchDirection.GetNeighborsFrom(position, word.Length);
                 String foundWord = FindWordFromPositions(candidate);
 

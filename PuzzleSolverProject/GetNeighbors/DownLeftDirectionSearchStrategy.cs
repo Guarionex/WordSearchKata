@@ -10,18 +10,12 @@ namespace PuzzleSolverProject.GetNeighbors
     public class DownLeftDirectionSearchStrategy : IDirectionSearchStrategy
     {
         private const int STARTING_OFFSET = 0;
-
-        private Dictionary<Vector2, Char> letters;
+        
         private WordSearchPuzzle puzzle;
 
         public DownLeftDirectionSearchStrategy(WordSearchPuzzle wordSearchPuzzle)
         {
             puzzle = wordSearchPuzzle;
-        }
-
-        public void AddPositionToLettersDictionary(Dictionary<Vector2, char> positionsToLetters)
-        {
-            letters = positionsToLetters;
         }
 
         public List<Vector2> GetAllLocationsOfLetter(Char letter)

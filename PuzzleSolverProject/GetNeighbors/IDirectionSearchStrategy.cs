@@ -9,7 +9,6 @@ namespace PuzzleSolverProject.GetNeighbors
 {
     public interface IDirectionSearchStrategy
     {
-        void AddPositionToLettersDictionary(Dictionary<Vector2, Char> positionsToLetters);
         List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length);
         List<Vector2> GetAllLocationsOfLetter(Char v);
         String GetStringFromLocations(List<Vector2> locations);

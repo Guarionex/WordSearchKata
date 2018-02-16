@@ -11,17 +11,11 @@ namespace PuzzleSolverProject.GetNeighbors
     {
         private const int STARTING_OFFSET = 0;
 
-        private Dictionary<Vector2, Char> letters;
         private WordSearchPuzzle puzzle;
 
         public DownRightDirectionSearchStrategy(WordSearchPuzzle wordSearchPuzzle)
         {
             puzzle = wordSearchPuzzle;
-        }
-
-        public void AddPositionToLettersDictionary(Dictionary<Vector2, char> positionsToLetters)
-        {
-            letters = positionsToLetters;
         }
 
         public List<Vector2> GetAllLocationsOfLetter(Char letter)
