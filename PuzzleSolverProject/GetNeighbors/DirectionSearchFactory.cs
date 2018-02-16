@@ -15,7 +15,7 @@ namespace PuzzleSolverProject.GetNeighbors
             GetNeighborStrategy = new Dictionary<DirectionEnum, IDirectionSearchStrategy>();
             GetNeighborStrategy.Add(DirectionEnum.Up, new UpDirectionSearchStrategy(puzzle));
             GetNeighborStrategy.Add(DirectionEnum.Down, new DownDirectionSearchStrategy(puzzle));
-            GetNeighborStrategy.Add(DirectionEnum.Left, new LeftDirectionSearchStrategy());
+            GetNeighborStrategy.Add(DirectionEnum.Left, new LeftDirectionSearchStrategy(puzzle));
             GetNeighborStrategy.Add(DirectionEnum.Right, new RightDirectionSearchStrategy());
             GetNeighborStrategy.Add(DirectionEnum.UpLeft, new UpLeftDirectionSearchStrategy());
             GetNeighborStrategy.Add(DirectionEnum.UpRight, new UpRightDirectionSearchStrategy());
