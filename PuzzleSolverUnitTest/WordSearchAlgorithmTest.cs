@@ -383,7 +383,7 @@ namespace PuzzleSolverUnitTest
             Assert.IsEmpty(result);
         }
 
-        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithNoWordsAddedTestCase)]
         public void Given4x4WordPuzzleWithoutWordsWhenCallingGetWordsLocationAddingAWordThenCallingGetWordsLocationAgainReturnsDictionaryWithElements(WordSearchPuzzle puzzle)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
@@ -394,6 +394,18 @@ namespace PuzzleSolverUnitTest
             Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
 
             Assert.IsNotEmpty(result);
+        }
+
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), DownRightWordTestCase)]
+        public void GivenValid4x4WordPuzzleWhenCallingGetWordsLocationThenGetWordsLocationReturnsAllWordsLocations(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        {
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+            sut.SearchEachWord(puzzle.WordsList);
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
+
+            Assert.AreEqual(expected, result);
         }
     }
 }

@@ -27,16 +27,5 @@ namespace PuzzleSolverUnitTest
         private const String PuzzleWithWordTwiceTestCase = nameof(WordLocationFinderTestData.PuzzleWithWordTwiceTestCase);
 
         private WordsLocationFinder sut;
-
-        [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownRightWordTestCase)]
-        public void GivenValid4x4WordPuzzleWhenCallingGetWordsLocationThenGetWordsLocationReturnsAllWordsLocations(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
-        {
-            sut = new WordsLocationFinder(puzzle);
-            sut.GetWordsLocation();
-
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
-
-            Assert.AreEqual(expected, result);
-        }
     }
 }
