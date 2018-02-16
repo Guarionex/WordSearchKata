@@ -19,6 +19,7 @@ namespace PuzzleSolverUnitTest
         private const String TwoWordsUpTestCase = nameof(WordSearchAlgorithmTestData.TwoWordsUpTestCase);
         private const String DownWordTestCase = nameof(WordSearchAlgorithmTestData.DownWordTestCase);
         private const String OneUpOneDownWordTestCase = nameof(WordSearchAlgorithmTestData.OneUpOneDownWordTestCase);
+        private const String LeftWordTestCase = nameof(WordSearchAlgorithmTestData.LeftWordTestCase);
 
         private WordSearchAlgorithm sut;
 
@@ -120,6 +121,17 @@ namespace PuzzleSolverUnitTest
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), OneUpOneDownWordTestCase)]
         public void Given4x4WordWithUpAndDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        {
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), LeftWordTestCase)]
+        public void Given4x4WordWithOneLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
