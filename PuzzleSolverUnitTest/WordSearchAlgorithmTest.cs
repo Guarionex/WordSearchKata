@@ -96,5 +96,25 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), DownWordTestCase)]
+        public void Given4x4WordWithTwoDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        {
+            puzzle.AddWord("KHAN");
+
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
+
+            List<Vector2> khanLocation = new List<Vector2>();
+            khanLocation.Add(new Vector2(3, 0));
+            khanLocation.Add(new Vector2(3, 1));
+            khanLocation.Add(new Vector2(3, 2));
+            khanLocation.Add(new Vector2(3, 3));
+            expected.Add("KHAN", khanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
