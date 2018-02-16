@@ -2,6 +2,7 @@
 using PuzzleSolverProject;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -64,6 +65,19 @@ namespace PuzzleSolverUnitTest
             WordsMapDecorator result = sut.GetWordsMap();
 
             Assert.AreEqual(expected, result);
+        }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void GivenInvalidPuzzleWhenCallingGetWordsMapThenGetWordsMapThrowsInvalidDataException(WordSearchPuzzle puzzle)
+        {
+            sut = new WordsLocationFinder(puzzle);
+
+            Assert.Throws<InvalidDataException>(new TestDelegate(GetWordsMapInvalidPuzzle));
+        }
+
+        private void GetWordsMapInvalidPuzzle()
+        {
+            sut.GetWordsMap();
         }
     }
 }
