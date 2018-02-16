@@ -22,6 +22,7 @@ namespace PuzzleSolverUnitTest
         private const String LeftWordTestCase = nameof(WordSearchAlgorithmTestData.LeftWordTestCase);
         private const String RightWordTestCase = nameof(WordSearchAlgorithmTestData.RightWordTestCase);
         private const String UpLeftWordTestCase = nameof(WordSearchAlgorithmTestData.UpLeftWordTestCase);
+        private const String UpRightWordTestCase = nameof(WordSearchAlgorithmTestData.UpRightWordTestCase);
 
         private WordSearchAlgorithm sut;
 
@@ -217,6 +218,17 @@ namespace PuzzleSolverUnitTest
             hanLocation.Add(new Vector2(1, 2));
             hanLocation.Add(new Vector2(0, 1));
             expected.Add("HAN", hanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), UpRightWordTestCase)]
+        public void Given4x4WordWithOneUpRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        {
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
 
             Assert.AreEqual(expected, result);
         }
