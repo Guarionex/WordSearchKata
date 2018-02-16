@@ -30,7 +30,7 @@ namespace PuzzleSolverUnitTest
         private WordSearchAlgorithm sut;
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), ValidOneWordPuzzleTestCase)]
-        public void Given4x4WordWithTwoWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringListVector2Dictionary(WordSearchPuzzle puzzle)
+        public void Given4x4WordWithTwoWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringListVector2Dictionary(WordSearchPuzzle puzzle)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -40,7 +40,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWithWordNotInPuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsThrowsNoException(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithWordNotInPuzzleWhenCallingSearchEachWordsThenSearchEachWordLicationsThrowsNoException(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("UHURA");
 
@@ -51,7 +51,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), ValidOneWordPuzzleTestCase)]
-        public void Given4x4WordPuzzleWith2WordsOneOfWhichIsNotInThePuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsReturnsAnEmptyDictionary(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWith2WordsOneOfWhichIsNotInThePuzzleWhenCallingSearchEachWordsThenSearchEachWordLicationsReturnsAnEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("KHAN");
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
@@ -64,7 +64,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), OneUpWordTestCase)]
-        public void Given4x4WordWithOneUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithOneUpWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -75,7 +75,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), TwoWordsUpTestCase)]
-        public void Given4x4WordWithTwoUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRKAndKHAN(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithTwoUpWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForKIRKAndKHAN(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("KHAN");
 
@@ -95,7 +95,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), DownWordTestCase)]
-        public void Given4x4WordWithOneDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithOneDownWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -106,7 +106,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), DownWordTestCase)]
-        public void Given4x4WordWithTwoDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithTwoDownWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("KHAN");
 
@@ -126,7 +126,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), OneUpOneDownWordTestCase)]
-        public void Given4x4WordWithUpAndDownWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithUpAndDownWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -137,7 +137,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), LeftWordTestCase)]
-        public void Given4x4WordWithOneLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithOneLeftWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -148,7 +148,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), LeftWordTestCase)]
-        public void Given4x4WordWithTwoLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithTwoLeftWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("KHAN");
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
@@ -167,7 +167,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), RightWordTestCase)]
-        public void Given4x4WordWithOneRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithOneRightWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -178,7 +178,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), RightWordTestCase)]
-        public void Given4x4WordWithTwoRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithTwoRightWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("KHAN");
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
@@ -197,7 +197,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), UpLeftWordTestCase)]
-        public void Given4x4WordWithOneUpLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithOneUpLeftWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -208,7 +208,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), UpLeftWordTestCase)]
-        public void Given4x4WordWithTwoUpLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithTwoUpLeftWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("HAN");
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
@@ -226,7 +226,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), UpRightWordTestCase)]
-        public void Given4x4WordWithOneUpRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithOneUpRightWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -237,7 +237,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), UpRightWordTestCase)]
-        public void Given4x4WordWithOneTwoUpRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithOneTwoUpRightWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("HAN");
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
@@ -255,7 +255,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), DownLeftWordTestCase)]
-        public void Given4x4WordWithOneDownLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithOneDownLeftWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -266,7 +266,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), DownLeftWordTestCase)]
-        public void Given4x4WordWithTwoDownLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithTwoDownLeftWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("HAN");
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
@@ -284,7 +284,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), DownRightWordTestCase)]
-        public void Given4x4WordWithOneDownRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithOneDownRightWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -295,7 +295,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), DownRightWordTestCase)]
-        public void Given4x4WordWithTwoDownRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void Given4x4WordWithTwoDownRightWordsPuzzleWhenCallingSearchEachWordsThenSearchEachWordReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             puzzle.AddWord("HAN");
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
@@ -313,7 +313,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), ValidOneWordPuzzleTestCase)]
-        public void GivenValid4x4WordPuzzleWithWordsWhenCallingGetWordsLocationThenGetWordsLocationReturnsDictionaryWithElements(WordSearchPuzzle puzzle)
+        public void GivenValid4x4WordPuzzleWithWordsWhenCallingSearchEachWordThenSearchEachWordReturnsDictionaryWithElements(WordSearchPuzzle puzzle)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -324,7 +324,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWithMissingWordWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithMissingWordWhenCallingSearchEachWordThenSearchEachWordReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("UHURA");
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
@@ -336,7 +336,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithWordTwiceTestCase)]
-        public void Given4x4WordPuzzleWithWordTwiceWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithWordTwiceWhenCallingSearchEachWordThenSearchEachWordReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -347,7 +347,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), ValidOneWordPuzzleTestCase)]
-        public void Given4x4WordPuzzleWithWordAddedTwiceWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithWordAddedTwiceWhenCallingSearchEachWordThenSearchEachWordReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("KIRK");
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
@@ -359,7 +359,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void GivenInvalid4x4WordPuzzleWhenCallingGetWordsLocationTwiceThenSecondGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
+        public void GivenInvalid4x4WordPuzzleWhenCallingSearchEachWordTwiceThenSecondSearchEachWordReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("UHURA");
 
@@ -373,7 +373,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWithoutWordsWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithoutWordsWhenCallingSearchEachWordThenSearchEachWordReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -384,7 +384,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithNoWordsAddedTestCase)]
-        public void Given4x4WordPuzzleWithoutWordsWhenCallingGetWordsLocationAddingAWordThenCallingGetWordsLocationAgainReturnsDictionaryWithElements(WordSearchPuzzle puzzle)
+        public void Given4x4WordPuzzleWithoutWordsWhenCallingSearchEachWordAddingAWordThenCallingSearchEachWordAgainReturnsDictionaryWithElements(WordSearchPuzzle puzzle)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
@@ -397,7 +397,7 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), DownRightWordTestCase)]
-        public void GivenValid4x4WordPuzzleWhenCallingGetWordsLocationThenGetWordsLocationReturnsAllWordsLocations(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        public void GivenValid4x4WordPuzzleWhenCallingSearchEachWordThenSearchEachWordReturnsAllWordsLocations(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory);
