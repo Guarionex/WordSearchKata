@@ -21,13 +21,20 @@ Navigate to the folder where the solution folder that contains the Makefile. The
 |nmake -f Makefile build-test| Builds all and runs the unit test|
 
 ## OSX and Linux
-Open a console and navigate to the project folder where Makefile is located. The following commands are available from Makefile:
+Open a console and navigate to the project folder where Makefile is located. Unfortunately I lack a Mac or Linux machine to confirm this. The following commands are available from Makefile:
 
 |Command|Action performed|
 |-------|----------------|
 |Makefile| Builds production project and unit test project|
 |Makefile all| Builds production project and unit test project|
 |Makefile build-test| Builds all and runs the unit test|
+
+## Makefile Fails
+If the Makefile fails to build or import NuGets for test, you will have to load the solution in Visual Studios.
+Open Visual Studios and click open solution. Navigate to the location of you cloned the repo and load WordSearchKata.sln. Visual studios will automatically download NuGet packages. If it fails, download the following NuGet:
+
+* NUnit
+* NUnit3TestAdapter
 
 # Input
 Program name is a command line program called PuzzleSolverProject.exe. It takes in a single input, which is a text file.
