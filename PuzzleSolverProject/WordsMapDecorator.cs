@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolverProject
 {
+    [Serializable]
     public class WordsMapDecorator : Dictionary<String, List<Vector2>>
     {
         private const int INVALID_COUNT = 0;
