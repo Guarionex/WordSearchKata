@@ -15,6 +15,7 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
     {
         protected const String Base4x4PuzzleTestCase = nameof(DirectionSearchStrategyTestData.Base4x4PuzzleTestCase);
         protected const String Base5x5PuzzleTestCase = nameof(DirectionSearchStrategyTestData.Base5x5PuzzleTestCase);
+        protected const String BaseWordsListTestCase = nameof(DirectionSearchStrategyTestData.BaseWordsListTestCase);
 
         protected abstract IDirectionSearchStrategy CreateInstance(WordSearchPuzzle puzzle);
 
@@ -126,6 +127,15 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
             String expected = "RRJA";
 
             Assert.AreEqual(expected, result);
+        }
+
+        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), BaseWordsListTestCase)]
+        public void GivenWordPuzzleWithWordsWhenCallingGetAllWordsThenGetAllWordsDoesNotReturnNull(WordSearchPuzzle puzzle)
+        {
+            IDirectionSearchStrategy sut = CreateInstance(puzzle);
+            List<String> result = sut.GetAllWords();
+
+            Assert.IsNotNull(result);
         }
     }
 }
