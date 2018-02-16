@@ -26,20 +26,8 @@ namespace PuzzleSolverUnitTest
         private const String DownRightWordTestCase = nameof(WordLocationFinderTestData.DownRightWordTestCase);
         private const String PuzzleWithWordTwiceTestCase = nameof(WordLocationFinderTestData.PuzzleWithWordTwiceTestCase);
 
-        private WordsLocationFinder sut;
-                
-        [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
-        public void Given4x4WordPuzzleWith2WordsOneOfWhichIsNotInThePuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsReturnsAnEmptyDictionary(WordSearchPuzzle puzzle)
-        {
-            puzzle.AddWord("KHAN");
-
-            sut = new WordsLocationFinder(puzzle);
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
-            Dictionary<String, List<Vector2>> expected = new Dictionary<string, List<Vector2>>();
-
-            Assert.AreEqual(expected, result);
-        }
-
+        private WordsLocationFinder sut;  
+        
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), OneUpWordTestCase)]
         public void Given4x4WordWithOneUpWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {

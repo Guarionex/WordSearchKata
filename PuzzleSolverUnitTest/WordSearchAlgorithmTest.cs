@@ -38,5 +38,18 @@ namespace PuzzleSolverUnitTest
 
             sut.SearchEachWord(puzzle.WordsList);
         }
+
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), ValidOneWordPuzzleTestCase)]
+        public void Given4x4WordPuzzleWith2WordsOneOfWhichIsNotInThePuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsReturnsAnEmptyDictionary(WordSearchPuzzle puzzle)
+        {
+            puzzle.AddWord("KHAN");
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
+            Dictionary<String, List<Vector2>> expected = new Dictionary<string, List<Vector2>>();
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
