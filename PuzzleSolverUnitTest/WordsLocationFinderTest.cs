@@ -27,5 +27,23 @@ namespace PuzzleSolverUnitTest
         private const String PuzzleWithWordTwiceTestCase = nameof(WordLocationFinderTestData.PuzzleWithWordTwiceTestCase);
 
         private WordsLocationFinder sut;
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
+        public void GivenValidPuzzleWhenCallingGetWordsMapThenGetWordsMapDoesNotReturnNull(WordSearchPuzzle puzzle)
+        {
+            sut = new WordsLocationFinder(puzzle);
+
+            sut.GetWordsMap();
+        }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
+        public void GivenValidPuzzleWhenCallingGetWordsMapThenGetWordsMapReturnsAWordsMapDecorator(WordSearchPuzzle puzzle)
+        {
+            sut = new WordsLocationFinder(puzzle);
+
+            WordsMapDecorator result = sut.GetWordsMap();
+
+            Assert.IsInstanceOf<WordsMapDecorator>(result);
+        }
     }
 }

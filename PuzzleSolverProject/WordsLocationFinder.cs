@@ -17,9 +17,10 @@ namespace PuzzleSolverProject
             wsPuzzle = puzzle;
         }
 
-        public Dictionary<String, List<Vector2>> GetWordsLocation()
+        public WordsMapDecorator GetWordsMap()
         {
-            return FindAllWordLocations(wsPuzzle);
+            Dictionary<String, List<Vector2>> wordsLocation = FindAllWordLocations(wsPuzzle);
+            return new WordsMapDecorator(wordsLocation);
         }
 
         private Dictionary<String, List<Vector2>> FindAllWordLocations(WordSearchPuzzle puzzle)

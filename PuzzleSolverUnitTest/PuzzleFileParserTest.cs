@@ -48,7 +48,7 @@ namespace PuzzleSolverUnitTest
         {
             WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "Example15x15.txt");
             WordsLocationFinder wordsFinder = new WordsLocationFinder(puzzle);
-            Dictionary<String, List<Vector2>> result = wordsFinder.GetWordsLocation();
+            WordsMapDecorator result = wordsFinder.GetWordsMap();
 
             Assert.AreEqual(expected, result);
         }
@@ -58,15 +58,16 @@ namespace PuzzleSolverUnitTest
         {
             WordSearchPuzzle puzzle = sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "oneWord4x4.txt");
             WordsLocationFinder wordsFinder = new WordsLocationFinder(puzzle);
-            Dictionary<String, List<Vector2>> result = wordsFinder.GetWordsLocation();
+            Dictionary<String, List<Vector2>> result = wordsFinder.GetWordsMap();
 
             List<Vector2> kirkLocation = new List<Vector2>();
             kirkLocation.Add(new Vector2(3, 0));
             kirkLocation.Add(new Vector2(2, 0));
             kirkLocation.Add(new Vector2(1, 0));
             kirkLocation.Add(new Vector2(0, 0));
-            Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
-            expected.Add("KIRK", kirkLocation);
+            Dictionary<String, List<Vector2>> wordsLocation = new Dictionary<String, List<Vector2>>();
+            wordsLocation.Add("KIRK", kirkLocation);
+            WordsMapDecorator expected = new WordsMapDecorator(wordsLocation);
 
             Assert.AreEqual(expected, result);
         }
@@ -273,17 +274,6 @@ namespace PuzzleSolverUnitTest
         private void ParseFile0x0()
         {
             sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "0x0.txt");
-        }
-
-        [Test]
-        public void GivenValidFileNameWith4x4PuzzleWithInvalidWordSearchPuzzleWhenCallingParseFileToWordSearchPuzzleThenParseFileToWordSearchPuzzleThrowsInvalidDataException()
-        {
-            Assert.Throws<InvalidDataException>(new TestDelegate(ParseFileInvalidPuzzle));
-        }
-
-        private void ParseFileInvalidPuzzle()
-        {
-            sut.ParseFileToWordSearchPuzzle(testPuzzlePath + "wordMissing4x4.txt");
         }
     }
 }
