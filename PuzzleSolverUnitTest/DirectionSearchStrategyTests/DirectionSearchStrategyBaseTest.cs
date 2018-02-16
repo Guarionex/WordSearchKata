@@ -68,5 +68,17 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base4x4PuzzleTestCase)]
+        public void Given4x4WordSearchPuzzleWhenPassingEToGetAllLocationsOfLetterThenGetAllLocationsOfLetterReturnsLocationOf1E(WordSearchPuzzle puzzle)
+        {
+            IDirectionSearchStrategy sut = CreateInstance(puzzle);
+
+            List<Vector2> result = sut.GetAllLocationsOfLetter('E');
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(1, 0));
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
