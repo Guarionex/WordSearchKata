@@ -35,5 +35,22 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base4x4PuzzleTestCase)]
+        public void Given4x4WordSearchPuzzleWhenPassing20And3ToGetNeighborsFromThenGetNeighborsFromReturnsListOfLocationsFrom20DownLeft(WordSearchPuzzle puzzle)
+        {
+            IDirectionSearchStrategy sut = CreateInstance(puzzle);
+
+            Vector2 startLocation = new Vector2(2, 0);
+            int length = 3;
+
+            List<Vector2> result = sut.GetNeighborsFrom(startLocation, length);
+            List<Vector2> expected = new List<Vector2>();
+            expected.Add(new Vector2(2, 0));
+            expected.Add(new Vector2(1, 1));
+            expected.Add(new Vector2(0, 2));
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
