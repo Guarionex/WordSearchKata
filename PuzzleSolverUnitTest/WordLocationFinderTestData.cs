@@ -17,9 +17,9 @@ namespace PuzzleSolverUnitTest
             get
             {
                 WordLocationFinderTestData testData = new WordLocationFinderTestData();
-                WordSearchPuzzle setupSUT = testData.KIRKUpInFirstColumnPuzzle();
+                WordSearchPuzzle puzzle = testData.KIRKUpInFirstColumnPuzzle();
 
-                yield return new TestCaseData(setupSUT);
+                yield return new TestCaseData(puzzle);
             }
         }
 
