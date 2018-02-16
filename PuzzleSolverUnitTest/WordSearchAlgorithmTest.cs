@@ -345,5 +345,17 @@ namespace PuzzleSolverUnitTest
 
             Assert.IsEmpty(result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
+        public void Given4x4WordPuzzleWithWordAddedTwiceWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
+        {
+            puzzle.AddWord("KIRK");
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
+
+            Assert.IsEmpty(result);
+        }
     }
 }
