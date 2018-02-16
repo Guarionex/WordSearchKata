@@ -310,5 +310,16 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), ValidOneWordPuzzleTestCase)]
+        public void GivenValid4x4WordPuzzleWithWordsWhenCallingGetWordsLocationThenGetWordsLocationReturnsDictionaryWithElements(WordSearchPuzzle puzzle)
+        {
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
+
+            Assert.IsNotEmpty(result);
+        }
     }
 }
