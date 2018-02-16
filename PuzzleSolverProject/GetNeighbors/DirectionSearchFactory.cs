@@ -10,10 +10,10 @@ namespace PuzzleSolverProject.GetNeighbors
     {
         public Dictionary<DirectionEnum, IDirectionSearchStrategy> GetNeighborStrategy { get; }
 
-        public DirectionSearchFactory()
+        public DirectionSearchFactory(WordSearchPuzzle puzzle)
         {
             GetNeighborStrategy = new Dictionary<DirectionEnum, IDirectionSearchStrategy>();
-            GetNeighborStrategy.Add(DirectionEnum.Up, new UpDirectionSearchStrategy());
+            GetNeighborStrategy.Add(DirectionEnum.Up, new UpDirectionSearchStrategy(puzzle));
             GetNeighborStrategy.Add(DirectionEnum.Down, new DownDirectionSearchStrategy());
             GetNeighborStrategy.Add(DirectionEnum.Left, new LeftDirectionSearchStrategy());
             GetNeighborStrategy.Add(DirectionEnum.Right, new RightDirectionSearchStrategy());

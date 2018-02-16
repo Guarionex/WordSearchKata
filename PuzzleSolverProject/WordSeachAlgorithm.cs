@@ -16,11 +16,11 @@ namespace PuzzleSolverProject
         private Dictionary<Vector2, Char> LettersMap;
         private Dictionary<DirectionEnum, IDirectionSearchStrategy> searchDirectionStrategy;
 
-        public WordSeachAlgorithm(Dictionary<Vector2, Char> lettersMap)
+        public WordSeachAlgorithm(WordSearchPuzzle puzzle)
         {
-            LettersMap = lettersMap;
+            LettersMap = puzzle.LettersMap;
 
-            DirectionSearchFactory getNeighborsFactory = new DirectionSearchFactory();
+            DirectionSearchFactory getNeighborsFactory = new DirectionSearchFactory(puzzle);
             searchDirectionStrategy = getNeighborsFactory.GetNeighborStrategy;
         }
 

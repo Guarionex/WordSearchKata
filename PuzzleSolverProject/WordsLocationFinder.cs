@@ -23,7 +23,7 @@ namespace PuzzleSolverProject
 
         private Dictionary<String, List<Vector2>> FindAllWordLocations(WordSearchPuzzle puzzle)
         {
-            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(puzzle.LettersMap);
+            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(puzzle);
             return algorithm.SearchEachWord(puzzle.WordsList);
         }
     }

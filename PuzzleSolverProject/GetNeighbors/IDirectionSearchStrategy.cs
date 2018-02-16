@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolverProject.GetNeighbors
 {
-    interface IDirectionSearchStrategy
+    public interface IDirectionSearchStrategy
     {
         void AddPositionToLettersDictionary(Dictionary<Vector2, Char> positionsToLetters);
         List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length);

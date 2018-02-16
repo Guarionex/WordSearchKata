@@ -13,7 +13,13 @@ namespace PuzzleSolverProject.GetNeighbors
         private const int DIFFERENCE_THRESHOLD = 0;
 
         private Dictionary<Vector2, Char> letters;
-        
+        private WordSearchPuzzle puzzle;
+
+        public UpDirectionSearchStrategy(WordSearchPuzzle wordSearchPuzzle)
+        {
+            puzzle = wordSearchPuzzle;
+        }
+
         public void AddPositionToLettersDictionary(Dictionary<Vector2, Char> positionsToLetters)
         {
             letters = positionsToLetters;
