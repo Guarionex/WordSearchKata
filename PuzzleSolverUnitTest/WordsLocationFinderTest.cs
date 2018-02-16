@@ -45,5 +45,15 @@ namespace PuzzleSolverUnitTest
 
             Assert.IsInstanceOf<WordsMapDecorator>(result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), OneUpWordTestCase)]
+        public void GivenValidPuzzleWhenCallingGetWordsMapThenGetWordsMapReturnsAWordsMapDecorator(WordSearchPuzzle puzzle, WordsMapDecorator expected)
+        {
+            sut = new WordsLocationFinder(puzzle);
+
+            WordsMapDecorator result = sut.GetWordsMap();
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
