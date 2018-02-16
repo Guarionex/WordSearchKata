@@ -28,7 +28,7 @@ namespace PuzzleSolverProject.GetNeighbors
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
         {
             Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y - (length - ZERO_INDEX_OFFSET));
-            List<Vector2> positionsWithinRange = letters.Select(kvp => kvp.Key).Where(position => withinRangeWhereCondition(maxPosition, position)).ToList();
+            List<Vector2> positionsWithinRange = puzzle.LettersMap.Select(kvp => kvp.Key).Where(position => withinRangeWhereCondition(maxPosition, position)).ToList();
             List<Vector2> positionsUpFromStartPosition = positionsWithinRange.Where(vector => vector.Y <= startPosition.Y).ToList();
             positionsUpFromStartPosition.Reverse();
             return positionsUpFromStartPosition;
