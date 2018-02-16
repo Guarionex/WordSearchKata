@@ -28,23 +28,6 @@ namespace PuzzleSolverUnitTest
 
         private WordsLocationFinder sut;
 
-        [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownLeftWordTestCase)]
-        public void Given4x4WordWithTwoDownLeftWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
-        {
-            puzzle.AddWord("HAN");
-
-            sut = new WordsLocationFinder(puzzle);
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
-
-            List<Vector2> hanLocation = new List<Vector2>();
-            hanLocation.Add(new Vector2(3, 1));
-            hanLocation.Add(new Vector2(2, 2));
-            hanLocation.Add(new Vector2(1, 3));
-            expected.Add("HAN", hanLocation);
-
-            Assert.AreEqual(expected, result);
-        }
-
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), DownRightWordTestCase)]
         public void Given4x4WordWithOneDownRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForKIRK(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
         {
