@@ -133,9 +133,23 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
         public void GivenWordPuzzleWithWordsWhenCallingGetAllWordsThenGetAllWordsDoesNotReturnNull(WordSearchPuzzle puzzle)
         {
             IDirectionSearchStrategy sut = CreateInstance(puzzle);
+
             List<String> result = sut.GetAllWords();
 
             Assert.IsNotNull(result);
+        }
+
+        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), BaseWordsListTestCase)]
+        public void GivenWordPuzzleWithWordsWhenCallingGetAllWordsThenGetAllWordsReturnsListWithKIRKAndKHAN(WordSearchPuzzle puzzle)
+        {
+            IDirectionSearchStrategy sut = CreateInstance(puzzle);
+
+            List<String> result = sut.GetAllWords();
+            List<String> expected = new List<String>();
+            expected.Add("KIRK");
+            expected.Add("KHAN");
+
+            Assert.AreEqual(expected, result);
         }
     }
 }
