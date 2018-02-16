@@ -17,9 +17,9 @@ namespace PuzzleSolverProject
 
         private Dictionary<String, List<Vector2>> wordsMap;
 
-        public WordsMapDecorator(Dictionary<String, List<Vector2>> wordsMap)
+        public WordsMapDecorator(Dictionary<String, List<Vector2>> wordsLocations)
         {
-            this.wordsMap = wordsMap;
+            wordsMap = wordsLocations;
         }
 
         public bool IsValid()
