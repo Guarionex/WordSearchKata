@@ -27,7 +27,7 @@ namespace PuzzleSolverProject.GetNeighbors
 
         public List<Vector2> GetAllLocationsOfLetter(Char v)
         {
-            throw new NotImplementedException();
+            return new List<Vector2>();
         }
 
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
