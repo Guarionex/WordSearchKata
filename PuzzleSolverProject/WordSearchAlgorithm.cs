@@ -14,13 +14,15 @@ namespace PuzzleSolverProject
         private const int FIRST_LETTER_OF_WORD_INDEX = 0;
 
         private Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies;
+        private List<String> words;
 
-        public WordSearchAlgorithm(DirectionSearchFactory directionSearchFactory)
+        public WordSearchAlgorithm(DirectionSearchFactory directionSearchFactory, List<String> wordsList)
         {
             directionSearchStrategies = directionSearchFactory.CreateStrategies();
+            words = wordsList;
         }
 
-        public Dictionary<String, List<Vector2>> SearchEachWord(List<String> words)
+        public Dictionary<String, List<Vector2>> SearchEachWord()
         {
             Dictionary<String, List<Vector2>> wordMap = new Dictionary<string, List<Vector2>>();
             try
