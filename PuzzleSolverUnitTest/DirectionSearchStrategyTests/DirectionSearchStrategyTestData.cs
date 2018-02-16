@@ -15,6 +15,7 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
         {
             get
             {
+                DirectionSearchStrategyTestData testData = new DirectionSearchStrategyTestData();
                 WordSearchPuzzle puzzle = new WordSearchPuzzle();
                 puzzle.AddLetterAt('K', 0, 0);
                 puzzle.AddLetterAt('E', 1, 0);
@@ -41,6 +42,7 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
         {
             get
             {
+                DirectionSearchStrategyTestData testData = new DirectionSearchStrategyTestData();
                 WordSearchPuzzle puzzle = new WordSearchPuzzle();
                 puzzle.AddLetterAt('K', 0, 0);
                 puzzle.AddLetterAt('E', 1, 0);
@@ -67,18 +69,6 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
                 puzzle.AddLetterAt('B', 2, 4);
                 puzzle.AddLetterAt('X', 3, 4);
                 puzzle.AddLetterAt('V', 4, 4);
-
-                yield return new TestCaseData(puzzle);
-            }
-        }
-
-        public static IEnumerable BaseWordsListTestCase
-        {
-            get
-            {
-                WordSearchPuzzle puzzle = new WordSearchPuzzle();
-                puzzle.AddWord("KIRK");
-                puzzle.AddWord("KHAN");
 
                 yield return new TestCaseData(puzzle);
             }

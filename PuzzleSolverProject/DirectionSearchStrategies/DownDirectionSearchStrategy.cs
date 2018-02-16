@@ -25,11 +25,6 @@ namespace PuzzleSolverProject.DirectionSearchStrategies
             return positions;
         }
 
-        public List<string> GetAllWords()
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
         {
             Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y + length - ZERO_INDEX_OFFSET);
