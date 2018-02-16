@@ -25,13 +25,10 @@ namespace PuzzleSolverProject.GetNeighbors
             letters = positionsToLetters;
         }
 
-        public List<Vector2> GetAllLocationsOfLetter(Char v)
+        public List<Vector2> GetAllLocationsOfLetter(Char letter)
         {
-            List<Vector2> expected = new List<Vector2>();
-            expected.Add(new Vector2(0, 0));
-            expected.Add(new Vector2(0, 3));
-
-            return expected;
+            List<Vector2> positions = puzzle.LettersMap.Where(kvp => kvp.Value == letter).Select(kvp => kvp.Key).ToList();
+            return positions;
         }
 
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
