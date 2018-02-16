@@ -27,5 +27,16 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
 
             Assert.IsNotNull(result);
         }
+
+        [Test]
+        public void GivenDirectionSearchFactoryWhenCallingCreateStrategiesThenCreateStrategiesReturnsDictionaryWith8KVP()
+        {
+            Dictionary<DirectionEnum, IDirectionSearchStrategy> strategies = sut.CreateStrategies();
+
+            int result = strategies.Count;
+            int expected = 8;
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
