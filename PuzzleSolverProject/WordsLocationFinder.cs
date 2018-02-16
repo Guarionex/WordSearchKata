@@ -1,6 +1,7 @@
 ﻿using PuzzleSolverProject.DirectionSearchStrategies;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -20,6 +21,13 @@ namespace PuzzleSolverProject
         public WordsMapDecorator GetWordsMap()
         {
             Dictionary<String, List<Vector2>> wordsLocation = FindAllWordLocations(wsPuzzle);
+            WordsMapDecorator wordsMap = new WordsMapDecorator(wordsLocation);
+
+            if(!wordsMap.IsValid())
+            {
+                throw new InvalidDataException();
+            }
+
             return new WordsMapDecorator(wordsLocation);
         }
 
