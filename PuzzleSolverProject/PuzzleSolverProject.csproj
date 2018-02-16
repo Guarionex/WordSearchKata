@@ -58,22 +58,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetNeighbors\DirectionEnum.cs" />
-    <Compile Include="GetNeighbors\DownLeftGetNeighborsFrom.cs" />
-    <Compile Include="GetNeighbors\DownRightGetNeighborsFrom.cs" />
-    <Compile Include="GetNeighbors\GetNeighborsFactory.cs" />
-    <Compile Include="GetNeighbors\IGetNeighborsFrom.cs" />
-    <Compile Include="GetNeighbors\DownGetNeighborsFrom.cs" />
-    <Compile Include="GetNeighbors\LeftGetNeighborsFrom.cs" />
+    <Compile Include="DirectionSearchStrategies\DirectionEnum.cs" />
+    <Compile Include="DirectionSearchStrategies\DownLeftDirectionSearchStrategy.cs" />
+    <Compile Include="DirectionSearchStrategies\DownRightDirectionSearchStrategy.cs" />
+    <Compile Include="DirectionSearchStrategies\DirectionSearchFactory.cs" />
+    <Compile Include="DirectionSearchStrategies\IDirectionSearchStrategy.cs" />
+    <Compile Include="DirectionSearchStrategies\DownDirectionSearchStrategy.cs" />
+    <Compile Include="DirectionSearchStrategies\LeftDirectionSearchStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuzzleFileParser.cs" />
-    <Compile Include="GetNeighbors\RightGetNeighborsFrom.cs" />
-    <Compile Include="GetNeighbors\UpGetNeighborsFrom.cs" />
-    <Compile Include="GetNeighbors\UpLeftGetNeighborsFrom.cs" />
-    <Compile Include="GetNeighbors\UpRightGetNeighborsFrom.cs" />
+    <Compile Include="DirectionSearchStrategies\RightDirectionSearchStrategy.cs" />
+    <Compile Include="DirectionSearchStrategies\UpDirectionSearchStrategy.cs" />
+    <Compile Include="DirectionSearchStrategies\UpLeftDirectionSearchStrategy.cs" />
+    <Compile Include="DirectionSearchStrategies\UpRightDirectionSearchStrategy.cs" />
+    <Compile Include="WordSearchAlgorithm.cs" />
     <Compile Include="WordsMapDecorator.cs" />
-    <Compile Include="WordSeachAlgorithm.cs" />
     <Compile Include="WordSearchPuzzle.cs" />
     <Compile Include="WordsLocationFinder.cs" />
   </ItemGroup>

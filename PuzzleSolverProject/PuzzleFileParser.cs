@@ -38,13 +38,6 @@ namespace PuzzleSolverProject
             Array.Copy(lines, LETTER_ROW_FIRST_INDEX, rawLetters, MIN_DIMENSION_INDEX, lines.Length - NUMBER_OF_WORD_ROWS);
             ParseLettersIntoPuzzle(rawLetters);
 
-            WordsLocationFinder wordsFinder = new WordsLocationFinder(puzzle);
-            WordsMapDecorator wordsMap = new WordsMapDecorator(wordsFinder.GetWordsLocation());
-            if (!wordsMap.IsValid())
-            {
-                throw new InvalidDataException();
-            }
-
             return puzzle;
         }
 

@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PuzzleSolverProject;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -65,7 +66,7 @@ namespace PuzzleSolverUnitTest
                 expectedFromExample15x15.Add("SULU", suluLocations);
                 expectedFromExample15x15.Add("UHURA", uhuraLocations);
 
-                yield return new TestCaseData(expectedFromExample15x15);
+                yield return new TestCaseData(new WordsMapDecorator(expectedFromExample15x15));
             }
         }
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PuzzleSolverProject.GetNeighbors
+namespace PuzzleSolverProject.DirectionSearchStrategies
 {
     public enum DirectionEnum { Up, Down, Left, Right, UpRight, DownRight, UpLeft, DownLeft}
 }

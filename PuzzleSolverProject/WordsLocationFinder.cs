@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PuzzleSolverProject.DirectionSearchStrategies;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -16,15 +18,25 @@ namespace PuzzleSolverProject
             wsPuzzle = puzzle;
         }
 
-        public Dictionary<String, List<Vector2>> GetWordsLocation()
+        public WordsMapDecorator GetWordsMap()
         {
-            return FindAllWordLocations(wsPuzzle);
+            Dictionary<String, List<Vector2>> wordsLocation = FindAllWordLocations(wsPuzzle);
+            WordsMapDecorator wordsMap = new WordsMapDecorator(wordsLocation);
+
+            if(!wordsMap.IsValid())
+            {
+                throw new InvalidDataException();
+            }
+
+            return new WordsMapDecorator(wordsLocation);
         }
 
         private Dictionary<String, List<Vector2>> FindAllWordLocations(WordSearchPuzzle puzzle)
         {
-            WordSeachAlgorithm algorithm = new WordSeachAlgorithm(puzzle.LettersMap);
-            return algorithm.SearchEachWord(puzzle.WordsList);
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            WordSearchAlgorithm algorithm = new WordSearchAlgorithm(directionSearchFactory, puzzle.WordsList);
+
+            return algorithm.SearchEachWord();
         }
     }
 }
