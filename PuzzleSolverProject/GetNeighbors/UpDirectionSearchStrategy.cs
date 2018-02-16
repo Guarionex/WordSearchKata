@@ -42,7 +42,7 @@ namespace PuzzleSolverProject.GetNeighbors
 
         public String GetStringFromLocations(List<Vector2> locations)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         private bool withinRangeWhereCondition(Vector2 maxPosition, Vector2 currentPosition)
