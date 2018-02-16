@@ -43,7 +43,7 @@ namespace PuzzleSolverProject
         private List<List<Vector2>> SearchAllDirections(String word)
         {
             List<List<Vector2>> wordDirections = new List<List<Vector2>>();
-            foreach (DirectionEnum direction in Enum.GetValues(typeof(DirectionEnum)))
+            foreach (DirectionEnum direction in directionSearchStrategies.Keys)
             {
                 wordDirections.Add(SearchWordInDirection(word, directionSearchStrategies[direction]));
             }
