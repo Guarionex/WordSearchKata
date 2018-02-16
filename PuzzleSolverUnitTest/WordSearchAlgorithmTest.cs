@@ -232,5 +232,23 @@ namespace PuzzleSolverUnitTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), UpRightWordTestCase)]
+        public void Given4x4WordWithOneTwoUpRightWordsPuzzleWhenCallingGetWordsLocationsThenGetWordsReturnsAStringVector2DictionaryWithEntryForAllWords(WordSearchPuzzle puzzle, Dictionary<String, List<Vector2>> expected)
+        {
+            puzzle.AddWord("HAN");
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
+
+            List<Vector2> hanLocation = new List<Vector2>();
+            hanLocation.Add(new Vector2(0, 2));
+            hanLocation.Add(new Vector2(1, 1));
+            hanLocation.Add(new Vector2(2, 0));
+            expected.Add("HAN", hanLocation);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
