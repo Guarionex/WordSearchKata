@@ -111,5 +111,21 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base4x4PuzzleTestCase)]
+        public void Given4x4WordSearchPuzzleWhenSecondRowLocationListToGetStringFromLocationsThenGetStringFromLocationsReturnsRRJA(WordSearchPuzzle puzzle)
+        {
+            IDirectionSearchStrategy sut = CreateInstance(puzzle);
+            List<Vector2> secondRow = new List<Vector2>();
+            secondRow.Add(new Vector2(0, 1));
+            secondRow.Add(new Vector2(1, 1));
+            secondRow.Add(new Vector2(2, 1));
+            secondRow.Add(new Vector2(3, 1));
+
+            String result = sut.GetStringFromLocations(secondRow);
+            String expected = "RRJA";
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
