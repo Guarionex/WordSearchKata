@@ -13,13 +13,10 @@ namespace PuzzleSolverProject
         private const int INVALID_COUNT = 0;
         private const int FIRST_LETTER_OF_WORD_INDEX = 0;
 
-        private Dictionary<Vector2, Char> LettersMap;
         private Dictionary<DirectionEnum, IDirectionSearchStrategy> searchDirectionStrategy;
 
         public WordSeachAlgorithm(WordSearchPuzzle puzzle)
         {
-            LettersMap = puzzle.LettersMap;
-
             DirectionSearchFactory getNeighborsFactory = new DirectionSearchFactory(puzzle);
             searchDirectionStrategy = getNeighborsFactory.GetNeighborStrategy;
         }
