@@ -14,6 +14,7 @@ namespace PuzzleSolverUnitTest
     public class WordSearchAlgorithmTest
     {
         private const String ValidOneWordPuzzleTestCase = nameof(WordSearchAlgorithmTestData.ValidOneWordPuzzleTestCase);
+        private const String PuzzleWithNoWordsAddedTestCase = nameof(WordSearchAlgorithmTestData.PuzzleWithNoWordsAddedTestCase);
 
         private WordSearchAlgorithm sut;
 
@@ -25,6 +26,17 @@ namespace PuzzleSolverUnitTest
 
             Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
             Assert.IsInstanceOf(typeof(Dictionary<String, List<Vector2>>), result);
+        }
+
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void Given4x4WordPuzzleWithWordNotInPuzzleWhenCallingGetWordsLocationsThenGetWordsLicationsThrowsNoException(WordSearchPuzzle puzzle)
+        {
+            puzzle.AddWord("UHURA");
+
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+
+            sut.SearchEachWord(puzzle.WordsList);
         }
     }
 }
