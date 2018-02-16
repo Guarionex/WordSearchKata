@@ -15,9 +15,9 @@ namespace PuzzleSolverProject
 
         private Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies;
 
-        public WordSearchAlgorithm(Dictionary<DirectionEnum, IDirectionSearchStrategy> directionSearchStrategies)
+        public WordSearchAlgorithm(DirectionSearchFactory directionSearchFactory)
         {
-            this.directionSearchStrategies = directionSearchStrategies;
+            directionSearchStrategies = directionSearchFactory.CreateStrategies();
         }
 
         public Dictionary<String, List<Vector2>> SearchEachWord(List<String> words)
