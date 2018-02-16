@@ -25,6 +25,7 @@ namespace PuzzleSolverUnitTest
         private const String UpRightWordTestCase = nameof(WordSearchAlgorithmTestData.UpRightWordTestCase);
         private const String DownLeftWordTestCase = nameof(WordSearchAlgorithmTestData.DownLeftWordTestCase);
         private const String DownRightWordTestCase = nameof(WordSearchAlgorithmTestData.DownRightWordTestCase);
+        private const String PuzzleWithWordTwiceTestCase = nameof(WordSearchAlgorithmTestData.PuzzleWithWordTwiceTestCase);
 
         private WordSearchAlgorithm sut;
 
@@ -322,10 +323,21 @@ namespace PuzzleSolverUnitTest
             Assert.IsNotEmpty(result);
         }
 
-        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithNoWordsAddedTestCase)]
         public void Given4x4WordPuzzleWithMissingWordWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("UHURA");
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
+
+            Assert.IsEmpty(result);
+        }
+
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithWordTwiceTestCase)]
+        public void Given4x4WordPuzzleWithWordTwiceWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
+        {
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
 

@@ -28,16 +28,6 @@ namespace PuzzleSolverUnitTest
 
         private WordsLocationFinder sut;
 
-        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithWordTwiceTestCase)]
-        public void Given4x4WordPuzzleWithWordTwiceWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
-        {
-            sut = new WordsLocationFinder(puzzle);
-
-            Dictionary<String, List<Vector2>> result = sut.GetWordsLocation();
-
-            Assert.IsEmpty(result);
-        }
-
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
         public void Given4x4WordPuzzleWithWordAddedTwiceWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
