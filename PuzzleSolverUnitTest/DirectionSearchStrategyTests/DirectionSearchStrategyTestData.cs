@@ -83,5 +83,16 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
                 yield return new TestCaseData(puzzle);
             }
         }
+
+        public static IEnumerable BaseOneWordsListTestCase
+        {
+            get
+            {
+                WordSearchPuzzle puzzle = new WordSearchPuzzle();
+                puzzle.AddWord("KIRK");
+
+                yield return new TestCaseData(puzzle);
+            }
+        }
     }
 }
