@@ -13,11 +13,12 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
     [TestFixture]
     public abstract class DirectionSearchStrategyBaseTest
     {
-        protected const String BasePuzzleTestCase = nameof(DirectionSearchStrategyTestData.BasePuzzleTestCase);
+        protected const String Base4x4PuzzleTestCase = nameof(DirectionSearchStrategyTestData.Base4x4PuzzleTestCase);
+        protected const String Base5x5PuzzleTestCase = nameof(DirectionSearchStrategyTestData.Base5x5PuzzleTestCase);
 
         protected abstract IDirectionSearchStrategy CreateInstance(WordSearchPuzzle puzzle);
 
-        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), BasePuzzleTestCase)]
+        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base4x4PuzzleTestCase)]
         public void GivenStartingLocationAndLengthWhenPassedToGetNeighborsFromThenGetNeighborsFromDoesNotReturnNull(WordSearchPuzzle puzzle)
         {
             IDirectionSearchStrategy sut = CreateInstance(puzzle);
@@ -28,6 +29,21 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
             List<Vector2> result = sut.GetNeighborsFrom(startLocation, length);
 
             Assert.IsNotNull(result);
+        }
+
+        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base5x5PuzzleTestCase)]
+        public void GivenStartingLocationAndLengthLongerThanPuzzlesLengthWhenPassedToGetNeighborsFromThenGetNeighborsFromReturnsVector3ListWith3Elements(WordSearchPuzzle puzzle)
+        {
+            IDirectionSearchStrategy sut = CreateInstance(puzzle);
+
+            Vector2 startLocation = new Vector2(2, 2);
+            int length = 5;
+            List<Vector2> locations = sut.GetNeighborsFrom(startLocation, length);
+
+            int result = locations.Count;
+            int expected = 3;
+
+            Assert.AreEqual(expected, result);
         }
     }
 }
