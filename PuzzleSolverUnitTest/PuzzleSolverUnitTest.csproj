@@ -45,6 +45,7 @@
     <Compile Include="DirectionSearchStrategyTests\DirectionSearchStrategyTestData.cs" />
     <Compile Include="DirectionSearchStrategyTests\DownDirectionSearchStrategyTest.cs" />
     <Compile Include="DirectionSearchStrategyTests\DownLeftDirectionSearchStrategyTest.cs" />
+    <Compile Include="DirectionSearchStrategyTests\DownRightDirectionSearchStrategyTest.cs" />
     <Compile Include="DirectionSearchStrategyTests\LeftDirectionSearchStrategyTest.cs" />
     <Compile Include="DirectionSearchStrategyTests\RightDirectionSearchStrategyTest.cs" />
     <Compile Include="DirectionSearchStrategyTests\UpDirectionSearchStrategyTest.cs" />
