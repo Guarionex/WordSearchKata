@@ -16,7 +16,6 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
         protected const String Base4x4PuzzleTestCase = nameof(DirectionSearchStrategyTestData.Base4x4PuzzleTestCase);
         protected const String Base5x5PuzzleTestCase = nameof(DirectionSearchStrategyTestData.Base5x5PuzzleTestCase);
         protected const String BaseWordsListTestCase = nameof(DirectionSearchStrategyTestData.BaseWordsListTestCase);
-        protected const String BaseOneWordsListTestCase = nameof(DirectionSearchStrategyTestData.BaseOneWordsListTestCase);
 
         protected abstract IDirectionSearchStrategy CreateInstance(WordSearchPuzzle puzzle);
 
@@ -149,18 +148,6 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
             List<String> expected = new List<String>();
             expected.Add("KIRK");
             expected.Add("KHAN");
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), BaseOneWordsListTestCase)]
-        public void GivenWordPuzzleWithWordWhenCallingGetAllWordsThenGetAllWordsReturnsListWithKIRK(WordSearchPuzzle puzzle)
-        {
-            IDirectionSearchStrategy sut = CreateInstance(puzzle);
-
-            List<String> result = sut.GetAllWords();
-            List<String> expected = new List<String>();
-            expected.Add("KIRK");
 
             Assert.AreEqual(expected, result);
         }
