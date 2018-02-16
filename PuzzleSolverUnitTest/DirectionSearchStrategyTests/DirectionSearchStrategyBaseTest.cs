@@ -45,5 +45,15 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base4x4PuzzleTestCase)]
+        public void Given4x4WordSearchPuzzleWhenPassingKToGetAllLocationsOfLetterThenGetAllLocationsOfLetterDoesNotReturnNull(WordSearchPuzzle puzzle)
+        {
+            IDirectionSearchStrategy sut = CreateInstance(puzzle);
+
+            List<Vector2> result = sut.GetAllLocationsOfLetter('K');
+
+            Assert.IsNotNull(result);
+        }
     }
 }

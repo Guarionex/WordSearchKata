@@ -18,6 +18,11 @@ namespace PuzzleSolverProject.GetNeighbors
             letters = positionsToLetters;
         }
 
+        public List<Vector2> GetAllLocationsOfLetter(Char v)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
         {
             List<Vector2> positionsDownLeftFromStartPosition = new List<Vector2>();

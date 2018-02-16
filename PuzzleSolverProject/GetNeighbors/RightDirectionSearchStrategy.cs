@@ -19,6 +19,11 @@ namespace PuzzleSolverProject.GetNeighbors
             letters = positionsToLetters;
         }
 
+        public List<Vector2> GetAllLocationsOfLetter(Char v)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
         {
             Vector2 maxPosition = new Vector2(startPosition.X + length - ZERO_INDEX_OFFSET, startPosition.Y);
