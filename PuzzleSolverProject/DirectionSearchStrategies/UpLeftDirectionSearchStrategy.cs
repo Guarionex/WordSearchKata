@@ -26,11 +26,7 @@ namespace PuzzleSolverProject.DirectionSearchStrategies
 
         public List<String> GetAllWords()
         {
-            List<String> expected = new List<String>();
-            expected.Add("KIRK");
-            expected.Add("KHAN");
-
-            return expected;
+            return puzzle.WordsList;
         }
 
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
