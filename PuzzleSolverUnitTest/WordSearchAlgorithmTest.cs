@@ -382,5 +382,18 @@ namespace PuzzleSolverUnitTest
 
             Assert.IsEmpty(result);
         }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void Given4x4WordPuzzleWithoutWordsWhenCallingGetWordsLocationAddingAWordThenCallingGetWordsLocationAgainReturnsDictionaryWithElements(WordSearchPuzzle puzzle)
+        {
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
+            sut.SearchEachWord(puzzle.WordsList);
+            puzzle.AddWord("KIRK");
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
+
+            Assert.IsNotEmpty(result);
+        }
     }
 }
