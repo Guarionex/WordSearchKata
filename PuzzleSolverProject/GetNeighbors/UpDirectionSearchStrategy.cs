@@ -42,7 +42,9 @@ namespace PuzzleSolverProject.GetNeighbors
 
         public String GetStringFromLocations(List<Vector2> locations)
         {
-            return "KEFN";
+            Char[] candidateLetters = locations.Select(key => puzzle.LettersMap[key]).ToArray();
+
+            return new String(candidateLetters);
         }
 
         private bool withinRangeWhereCondition(Vector2 maxPosition, Vector2 currentPosition)
