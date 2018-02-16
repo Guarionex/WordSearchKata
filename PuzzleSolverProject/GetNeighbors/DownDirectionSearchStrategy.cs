@@ -25,22 +25,24 @@ namespace PuzzleSolverProject.GetNeighbors
             letters = positionsToLetters;
         }
 
-        public List<Vector2> GetAllLocationsOfLetter(Char v)
+        public List<Vector2> GetAllLocationsOfLetter(Char letter)
         {
-            throw new NotImplementedException();
+            List<Vector2> positions = puzzle.LettersMap.Where(kvp => kvp.Value == letter).Select(kvp => kvp.Key).ToList();
+            return positions;
         }
 
         public List<Vector2> GetNeighborsFrom(Vector2 startPosition, int length)
         {
             Vector2 maxPosition = new Vector2(startPosition.X, startPosition.Y + length - ZERO_INDEX_OFFSET);
-            List<Vector2> positionsWithinRange = letters.Select(kvp => kvp.Key).Where(position => withinRangeWhereCondition(maxPosition, position)).ToList();
+            List<Vector2> positionsWithinRange = puzzle.LettersMap.Select(kvp => kvp.Key).Where(position => withinRangeWhereCondition(maxPosition, position)).ToList();
             List<Vector2> positionsDownFromStartPosition = positionsWithinRange.Where(vector => vector.Y >= startPosition.Y).ToList();
             return positionsDownFromStartPosition;
         }
 
         public String GetStringFromLocations(List<Vector2> locations)
         {
-            throw new NotImplementedException();
+            Char[] candidateLetters = locations.Select(key => puzzle.LettersMap[key]).ToArray();
+            return new String(candidateLetters);
         }
 
         private bool withinRangeWhereCondition(Vector2 maxPosition, Vector2 currentPosition)
