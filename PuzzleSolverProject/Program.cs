@@ -13,7 +13,7 @@ namespace PuzzleSolverProject
             PuzzleFileParser solver = new PuzzleFileParser();
             WordSearchPuzzle puzzle = solver.ParseFileToWordSearchPuzzle(args[0]);
             WordsLocationFinder wordsFinder = new WordsLocationFinder(puzzle);
-            WordsMapDecorator wordsMap = new WordsMapDecorator(wordsFinder.GetWordsMap());
+            WordsMapDecorator wordsMap = wordsFinder.GetWordsMap();
             Console.WriteLine(wordsMap.ToString());
         }
     }
