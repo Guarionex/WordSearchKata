@@ -346,7 +346,7 @@ namespace PuzzleSolverUnitTest
             Assert.IsEmpty(result);
         }
 
-        [Test, TestCaseSource(typeof(WordLocationFinderTestData), ValidOneWordPuzzleTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), ValidOneWordPuzzleTestCase)]
         public void Given4x4WordPuzzleWithWordAddedTwiceWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("KIRK");
@@ -358,7 +358,7 @@ namespace PuzzleSolverUnitTest
             Assert.IsEmpty(result);
         }
 
-        [Test, TestCaseSource(typeof(WordLocationFinderTestData), PuzzleWithNoWordsAddedTestCase)]
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithNoWordsAddedTestCase)]
         public void GivenInvalid4x4WordPuzzleWhenCallingGetWordsLocationTwiceThenSecondGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
         {
             puzzle.AddWord("UHURA");
@@ -366,6 +366,17 @@ namespace PuzzleSolverUnitTest
             DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
             sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
             sut.SearchEachWord(puzzle.WordsList);
+
+            Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
+
+            Assert.IsEmpty(result);
+        }
+
+        [Test, TestCaseSource(typeof(WordSearchAlgorithmTestData), PuzzleWithNoWordsAddedTestCase)]
+        public void Given4x4WordPuzzleWithoutWordsWhenCallingGetWordsLocationThenGetWordsLocationReturnsEmptyDictionary(WordSearchPuzzle puzzle)
+        {
+            DirectionSearchFactory directionSearchFactory = new DirectionSearchFactory(puzzle);
+            sut = new WordSearchAlgorithm(directionSearchFactory.CreateStrategies());
 
             Dictionary<String, List<Vector2>> result = sut.SearchEachWord(puzzle.WordsList);
 
