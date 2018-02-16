@@ -38,5 +38,36 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
 
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void GivenDirectionSearchFactoryWhenCallingCreateStrategiesThenCreateStrategiesReturnsDictionaryWithAllEightStrategiesOnlyOnceEach()
+        {
+            Dictionary<DirectionEnum, IDirectionSearchStrategy> strategiesMap = sut.CreateStrategies();
+
+            Dictionary<Type, int> result = new Dictionary<Type, int>();
+            foreach (IDirectionSearchStrategy strategy in strategiesMap.Values)
+            {
+                if(result.ContainsKey(strategy.GetType()))
+                {
+                    result[strategy.GetType()]++;
+                }
+                else
+                {
+                    result.Add(strategy.GetType(), 1);
+                }
+            }
+
+            Dictionary<Type, int> expected = new Dictionary<Type, int>();
+            expected.Add(typeof(UpDirectionSearchStrategy), 1);
+            expected.Add(typeof(DownDirectionSearchStrategy), 1);
+            expected.Add(typeof(LeftDirectionSearchStrategy), 1);
+            expected.Add(typeof(RightDirectionSearchStrategy), 1);
+            expected.Add(typeof(UpLeftDirectionSearchStrategy), 1);
+            expected.Add(typeof(UpRightDirectionSearchStrategy), 1);
+            expected.Add(typeof(DownLeftDirectionSearchStrategy), 1);
+            expected.Add(typeof(DownRightDirectionSearchStrategy), 1);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
