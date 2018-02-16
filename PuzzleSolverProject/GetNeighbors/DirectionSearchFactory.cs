@@ -19,7 +19,7 @@ namespace PuzzleSolverProject.GetNeighbors
             GetNeighborStrategy.Add(DirectionEnum.Right, new RightDirectionSearchStrategy(puzzle));
             GetNeighborStrategy.Add(DirectionEnum.UpLeft, new UpLeftDirectionSearchStrategy(puzzle));
             GetNeighborStrategy.Add(DirectionEnum.UpRight, new UpRightDirectionSearchStrategy(puzzle));
-            GetNeighborStrategy.Add(DirectionEnum.DownLeft, new DownLeftDirectionSearchStrategy());
+            GetNeighborStrategy.Add(DirectionEnum.DownLeft, new DownLeftDirectionSearchStrategy(puzzle));
             GetNeighborStrategy.Add(DirectionEnum.DownRight, new DownRightDirectionSearchStrategy());
         }
     }
