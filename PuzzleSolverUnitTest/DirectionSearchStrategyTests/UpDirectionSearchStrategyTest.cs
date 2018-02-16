@@ -20,7 +20,7 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
         }
 
         [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base4x4PuzzleTestCase)]
-        public void GivenStartingLocation03AndLength4WhenPassedToGetNeighborsFromThenGetNeighborsFromReturnsListOfLocationsFrom03Up(WordSearchPuzzle puzzle)
+        public void Given4x4WordSearchPuzzleWhenPassing03And4ToGetNeighborsFromThenGetNeighborsFromReturnsListOfLocationsFrom03Up(WordSearchPuzzle puzzle)
         {
             IDirectionSearchStrategy sut = CreateInstance(puzzle);
 
@@ -38,7 +38,7 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
         }
 
         [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base4x4PuzzleTestCase)]
-        public void GivenStartingLocation33AndLength4WhenPassedToGetNeighborsFromThenGetNeighborsFromReturnsListOfLocationsFrom33Up(WordSearchPuzzle puzzle)
+        public void Given4x4WordSearchPuzzleWhenPassing33And4ToGetNeighborsFromThenGetNeighborsFromReturnsListOfLocationsFrom33Up(WordSearchPuzzle puzzle)
         {
             IDirectionSearchStrategy sut = CreateInstance(puzzle);
 

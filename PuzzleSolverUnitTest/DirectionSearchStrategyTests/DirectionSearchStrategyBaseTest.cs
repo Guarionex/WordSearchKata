@@ -19,7 +19,7 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
         protected abstract IDirectionSearchStrategy CreateInstance(WordSearchPuzzle puzzle);
 
         [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base4x4PuzzleTestCase)]
-        public void GivenStartingLocationAndLengthWhenPassedToGetNeighborsFromThenGetNeighborsFromDoesNotReturnNull(WordSearchPuzzle puzzle)
+        public void Given4x4WordSearchPuzzleWhenPassingStarting00and4ToGetNeighborsFromThenGetNeighborsFromDoesNotReturnNull(WordSearchPuzzle puzzle)
         {
             IDirectionSearchStrategy sut = CreateInstance(puzzle);
 
@@ -32,7 +32,7 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
         }
 
         [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), Base5x5PuzzleTestCase)]
-        public void GivenStartingLocationAndLengthLongerThanPuzzlesLengthWhenPassedToGetNeighborsFromThenGetNeighborsFromReturnsVector3ListWith3Elements(WordSearchPuzzle puzzle)
+        public void Given5x5WordSearchPuzzleWhenPassing22And5ToGetNeighborsFromThenGetNeighborsFromReturnsVector2ListWith3Elements(WordSearchPuzzle puzzle)
         {
             IDirectionSearchStrategy sut = CreateInstance(puzzle);
 
