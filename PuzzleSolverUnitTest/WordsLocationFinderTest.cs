@@ -47,7 +47,17 @@ namespace PuzzleSolverUnitTest
         }
 
         [Test, TestCaseSource(typeof(WordLocationFinderTestData), OneUpWordTestCase)]
-        public void GivenValidPuzzleWhenCallingGetWordsMapThenGetWordsMapReturnsAWordsMapDecorator(WordSearchPuzzle puzzle, WordsMapDecorator expected)
+        public void GivenValidPuzzleWithOneWhenCallingGetWordsMapThenGetWordsMapReturnsAWordsMapDecoratorWithOneWord(WordSearchPuzzle puzzle, WordsMapDecorator expected)
+        {
+            sut = new WordsLocationFinder(puzzle);
+
+            WordsMapDecorator result = sut.GetWordsMap();
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test, TestCaseSource(typeof(WordLocationFinderTestData), TwoWordsUpTestCase)]
+        public void GivenValidPuzzleWithTwoWordsWhenCallingGetWordsMapThenGetWordsMapReturnsAWordsMapDecoratorWithTwoWords(WordSearchPuzzle puzzle, WordsMapDecorator expected)
         {
             sut = new WordsLocationFinder(puzzle);
 

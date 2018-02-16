@@ -91,8 +91,9 @@ namespace PuzzleSolverUnitTest
 
                 WordLocationFinderTestData testData = new WordLocationFinderTestData();
                 List<Vector2> kirkLocation = testData.KIRKUpInFirstColumnLocations();
-                Dictionary<String, List<Vector2>> expected = new Dictionary<String, List<Vector2>>();
-                expected.Add("KIRK", kirkLocation);
+                Dictionary<String, List<Vector2>> wordsLocation = new Dictionary<String, List<Vector2>>();
+                wordsLocation.Add("KIRK", kirkLocation);
+                WordsMapDecorator expected = new WordsMapDecorator(wordsLocation);
 
                 yield return new TestCaseData(setupSUT, expected);
             }
