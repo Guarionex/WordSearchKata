@@ -18,13 +18,16 @@ namespace PuzzleSolverUnitTest.DirectionSearchStrategyTests
         protected abstract IDirectionSearchStrategy CreateInstance(WordSearchPuzzle puzzle);
 
         [Test, TestCaseSource(typeof(DirectionSearchStrategyTestData), BasePuzzleTestCase)]
-        public void GivenStartingLocationAndLengthWhenPassedToGetNeighborsFromThenGetNeighborsFromThrowsNoException(WordSearchPuzzle puzzle)
+        public void GivenStartingLocationAndLengthWhenPassedToGetNeighborsFromThenGetNeighborsFromDoesNotReturnNull(WordSearchPuzzle puzzle)
         {
             IDirectionSearchStrategy sut = CreateInstance(puzzle);
 
             Vector2 startLocation = new Vector2(0, 0);
             int length = 4;
-            sut.GetNeighborsFrom(startLocation, length);
+
+            List<Vector2> result = sut.GetNeighborsFrom(startLocation, length);
+
+            Assert.IsNotNull(result);
         }
     }
 }
